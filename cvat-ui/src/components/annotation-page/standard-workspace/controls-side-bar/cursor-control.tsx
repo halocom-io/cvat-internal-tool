@@ -1,11 +1,11 @@
-// Copyright (C) 2020-2021 Intel Corporation
+// Copyright (C) 2022 Intel Corporation
 //
 // SPDX-License-Identifier: MIT
 
 import React from 'react';
 import Icon from '@ant-design/icons';
 
-import { CursorIcon } from 'icons';
+import { CursorClickIcon } from '@heroicons/react/outline';
 import { ActiveControl } from 'reducers/interfaces';
 import { Canvas } from 'cvat-canvas-wrapper';
 import { Canvas3d } from 'cvat-canvas3d-wrapper';
@@ -23,7 +23,7 @@ function CursorControl(props: Props): JSX.Element {
     return (
         <CVATTooltip title={`Cursor ${cursorShortkey}`} placement='right'>
             <Icon
-                component={CursorIcon}
+                component={() => <CursorClickIcon width={40} height={40} />}
                 className={
                     activeControl === ActiveControl.CURSOR ?
                         'cvat-active-canvas-control cvat-cursor-control' :

@@ -119,7 +119,7 @@ class TaskItemComponent extends React.PureComponent<TaskItemProps & RouteCompone
                         <Progress
                             className={`${progressColor} cvat-task-progress`}
                             percent={jobsProgress * 100}
-                            strokeColor='#1890FF'
+                            strokeColor='#009B4C'
                             showInfo={false}
                             strokeWidth={5}
                             size='small'

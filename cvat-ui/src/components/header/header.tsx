@@ -13,11 +13,8 @@ import Icon, {
     EditOutlined,
     LoadingOutlined,
     LogoutOutlined,
-    GithubOutlined,
-    QuestionCircleOutlined,
     CaretDownOutlined,
     ControlOutlined,
-    UserOutlined,
     TeamOutlined,
     PlusOutlined,
 } from '@ant-design/icons';
@@ -32,9 +29,10 @@ import Select from 'antd/lib/select';
 import getCore from 'cvat-core-wrapper';
 import consts from 'consts';
 
-import { CVATLogo } from 'icons';
+import { UserIcon } from '@heroicons/react/outline';
+
+import { HaloLogo } from 'icons';
 import ChangePasswordDialog from 'components/change-password-modal/change-password-modal';
-import CVATTooltip from 'components/common/cvat-tooltip';
 import { switchSettingsDialog as switchSettingsDialogAction } from 'actions/settings-actions';
 import { logoutAsync, authActions } from 'actions/auth-actions';
 import { CombinedState } from 'reducers/interfaces';
@@ -163,7 +161,8 @@ function HeaderContainer(props: Props): JSX.Element {
     } = props;
 
     const {
-        CHANGELOG_URL, LICENSE_URL, GITTER_URL, FORUM_URL, GITHUB_URL, GUIDE_URL,
+        CHANGELOG_URL, LICENSE_URL, GITTER_URL, FORUM_URL,
+        // , GITHUB_URL, GUIDE_URL,
     } = consts;
 
     const history = useHistory();
@@ -267,12 +266,24 @@ function HeaderContainer(props: Props): JSX.Element {
                 icon={organizationsFetching ? <LoadingOutlined /> : <TeamOutlined />}
             >
                 {currentOrganization ? (
-                    <Menu.Item icon={<SettingOutlined />} key='open_organization' onClick={() => history.push('/organization')} className='cvat-header-menu-open-organization'>
+                    <Menu.Item
+                        icon={<SettingOutlined />}
+                        key='open_organization'
+                        onClick={() => history.push('/organization')}
+                        className='cvat-header-menu-open-organization'
+                    >
                         Settings
                     </Menu.Item>
                 ) : null}
-                <Menu.Item icon={<PlusOutlined />} key='create_organization' onClick={() => history.push('/organizations/create')} className='cvat-header-menu-create-organization'>Create</Menu.Item>
-                { organizationsList.length > 5 ? (
+                <Menu.Item
+                    icon={<PlusOutlined />}
+                    key='create_organization'
+                    onClick={() => history.push('/organizations/create')}
+                    className='cvat-header-menu-create-organization'
+                >
+                    Create
+                </Menu.Item>
+                {organizationsList.length > 5 ? (
                     <Menu.Item
                         key='switch_organization'
                         onClick={() => {
@@ -292,18 +303,25 @@ function HeaderContainer(props: Props): JSX.Element {
                                                 return;
                                             }
 
-                                            const [organization] = organizationsList
-                                                .filter((_organization): boolean => _organization.slug === value);
+                                            const [organization] = organizationsList.filter(
+                                                (_organization): boolean => _organization.slug === value,
+                                            );
                                             if (organization) {
                                                 setNewOrganization(organization);
                                             }
                                         }}
                                     >
                                         <Select.Option value='$personal'>Personal workspace</Select.Option>
-                                        {organizationsList.map((organization: any): JSX.Element => {
-                                            const { slug } = organization;
-                                            return <Select.Option key={slug} value={slug}>{slug}</Select.Option>;
-                                        })}
+                                        {organizationsList.map(
+                                            (organization: any): JSX.Element => {
+                                                const { slug } = organization;
+                                                return (
+                                                    <Select.Option key={slug} value={slug}>
+                                                        {slug}
+                                                    </Select.Option>
+                                                );
+                                            },
+                                        )}
                                     </Select>
                                 ),
                             });
@@ -316,23 +334,31 @@ function HeaderContainer(props: Props): JSX.Element {
                         <Menu.Divider />
                         <Menu.ItemGroup>
                             <Menu.Item
-                                className={!currentOrganization ?
-                                    'cvat-header-menu-active-organization-item' : 'cvat-header-menu-organization-item'}
+                                className={
+                                    !currentOrganization ?
+                                        'cvat-header-menu-active-organization-item' :
+                                        'cvat-header-menu-organization-item'
+                                }
                                 key='$personal'
                                 onClick={resetOrganization}
                             >
                                 Personal workspace
                             </Menu.Item>
-                            {organizationsList.map((organization: any): JSX.Element => (
-                                <Menu.Item
-                                    className={currentOrganization?.slug === organization.slug ?
-                                        'cvat-header-menu-active-organization-item' : 'cvat-header-menu-organization-item'}
-                                    key={organization.slug}
-                                    onClick={() => setNewOrganization(organization)}
-                                >
-                                    {organization.slug}
-                                </Menu.Item>
-                            ))}
+                            {organizationsList.map(
+                                (organization: any): JSX.Element => (
+                                    <Menu.Item
+                                        className={
+                                            currentOrganization?.slug === organization.slug ?
+                                                'cvat-header-menu-active-organization-item' :
+                                                'cvat-header-menu-organization-item'
+                                        }
+                                        key={organization.slug}
+                                        onClick={() => setNewOrganization(organization)}
+                                    >
+                                        {organization.slug}
+                                    </Menu.Item>
+                                ),
+                            )}
                         </Menu.ItemGroup>
                     </>
                 )}
@@ -378,9 +404,9 @@ function HeaderContainer(props: Props): JSX.Element {
     };
 
     return (
-        <Layout.Header className='cvat-header'>
+        <Layout.Header className='cvat-header bg-white shadow z-10'>
             <div className='cvat-left-header'>
-                <Icon className='cvat-logo-icon' component={CVATLogo} />
+                <Icon className='cvat-logo-icon mx-3' component={HaloLogo} />
                 <Button
                     className={getButtonClassName('projects')}
                     type='link'
@@ -391,7 +417,7 @@ function HeaderContainer(props: Props): JSX.Element {
                         history.push('/projects');
                     }}
                 >
-                    Projects
+                    <span className='font-bold text-xs'>Projects</span>
                 </Button>
                 <Button
                     className={getButtonClassName('tasks')}
@@ -403,7 +429,7 @@ function HeaderContainer(props: Props): JSX.Element {
                         history.push('/tasks');
                     }}
                 >
-                    Tasks
+                    <span className='font-bold text-xs'>Tasks</span>
                 </Button>
                 <Button
                     className={getButtonClassName('jobs')}
@@ -415,7 +441,7 @@ function HeaderContainer(props: Props): JSX.Element {
                         history.push('/jobs');
                     }}
                 >
-                    Jobs
+                    <span className='font-bold text-xs'>Jobs</span>
                 </Button>
                 <Button
                     className={getButtonClassName('cloudstorages')}
@@ -427,7 +453,7 @@ function HeaderContainer(props: Props): JSX.Element {
                         history.push('/cloudstorages');
                     }}
                 >
-                    Cloud Storages
+                    <span className='font-bold text-xs'>Clouds</span>
                 </Button>
                 {isModelsPluginActive ? (
                     <Button
@@ -460,22 +486,7 @@ function HeaderContainer(props: Props): JSX.Element {
                 ) : null}
             </div>
             <div className='cvat-right-header'>
-                <CVATTooltip overlay='Click to open repository'>
-                    <Button
-                        icon={<GithubOutlined />}
-                        size='large'
-                        className='cvat-header-button'
-                        type='link'
-                        href={GITHUB_URL}
-                        onClick={(event: React.MouseEvent): void => {
-                            event.preventDefault();
-                            // false alarm
-                            // eslint-disable-next-line security/detect-non-literal-fs-filename
-                            window.open(GITHUB_URL, '_blank');
-                        }}
-                    />
-                </CVATTooltip>
-                <CVATTooltip overlay='Click to open guide'>
+                {/* <CVATTooltip overlay='Click to open guide'>
                     <Button
                         icon={<QuestionCircleOutlined />}
                         size='large'
@@ -489,23 +500,23 @@ function HeaderContainer(props: Props): JSX.Element {
                             window.open(GUIDE_URL, '_blank');
                         }}
                     />
-                </CVATTooltip>
+                </CVATTooltip> */}
                 <Dropdown placement='bottomRight' overlay={userMenu} className='cvat-header-menu-user-dropdown'>
                     <span>
-                        <UserOutlined className='cvat-header-dropdown-icon' />
+                        <UserIcon className='mx-2' height={18} width={18} />
                         <Row>
                             <Col span={24}>
                                 <Text strong className='cvat-header-menu-user-dropdown-user'>
                                     {user.username.length > 14 ? `${user.username.slice(0, 10)} ...` : user.username}
                                 </Text>
                             </Col>
-                            { currentOrganization ? (
+                            {currentOrganization ? (
                                 <Col span={24}>
                                     <Text className='cvat-header-menu-user-dropdown-organization'>
                                         {currentOrganization.slug}
                                     </Text>
                                 </Col>
-                            ) : null }
+                            ) : null}
                         </Row>
                         <CaretDownOutlined className='cvat-header-dropdown-icon' />
                     </span>

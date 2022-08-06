@@ -1035,17 +1035,21 @@ export class ToolsControlComponent extends React.PureComponent<Props, State> {
                         const states = result.map(
                             (data: any): any => new core.classes.ObjectState({
                                 shapeType: data.type,
-                                label: jobInstance.labels.filter((label: any): boolean => label.name === data.label)[0],
+                                label: jobInstance.labels.filter(
+                                    (label: any): boolean => label.name === data.label,
+                                )[0],
                                 points: data.points,
                                 objectType: ObjectType.SHAPE,
                                 frame,
                                 occluded: false,
                                 source: 'auto',
-                                attributes: (data.attributes as { name: string, value: string }[])
-                                    .reduce((mapping, attr) => {
+                                attributes: (data.attributes as { name: string; value: string }[]).reduce(
+                                    (mapping, attr) => {
                                         mapping[attrsMap[data.label][attr.name]] = attr.value;
                                         return mapping;
-                                    }, {} as Record<number, string>),
+                                    },
+                                    {} as Record<number, string>,
+                                ),
                                 zOrder: curZOrder,
                             }),
                         );

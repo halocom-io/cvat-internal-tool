@@ -1,4 +1,4 @@
-// Copyright (C) 2020-2021 Intel Corporation
+// Copyright (C) 2022 Intel Corporation
 //
 // SPDX-License-Identifier: MIT
 
@@ -11,12 +11,12 @@ import Text from 'antd/lib/typography/Text';
 import Tooltip from 'antd/lib/tooltip';
 import Moment from 'react-moment';
 
+import { ArrowsExpandIcon, InformationCircleIcon, FilterIcon } from '@heroicons/react/outline';
+
 import moment from 'moment';
 import { useSelector } from 'react-redux';
 
-import {
-    FilterIcon, FullscreenIcon, InfoIcon, BrainIcon,
-} from 'icons';
+import { BrainIcon } from 'icons';
 import {
     CombinedState, DimensionType, Workspace, PredictorState,
 } from 'reducers/interfaces';
@@ -152,11 +152,15 @@ function RightGroup(props: Props): JSX.Element {
                     }
                 }}
             >
-                <Icon component={FullscreenIcon} />
+                <span className='text-zinc-500'>
+                    <ArrowsExpandIcon width={18} height={18} />
+                </span>
                 Fullscreen
             </Button>
             <Button type='link' className='cvat-annotation-header-button' onClick={showStatistics}>
-                <Icon component={InfoIcon} />
+                <span className='text-zinc-500'>
+                    <InformationCircleIcon width={18} height={18} />
+                </span>
                 Info
             </Button>
             <Button
@@ -164,7 +168,9 @@ function RightGroup(props: Props): JSX.Element {
                 className={`cvat-annotation-header-button ${filters.length ? 'filters-armed' : ''}`}
                 onClick={showFilters}
             >
-                <Icon component={FilterIcon} />
+                <span className='text-zinc-500'>
+                    <FilterIcon width={18} height={18} />
+                </span>
                 Filters
             </Button>
             <div>

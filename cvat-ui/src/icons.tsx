@@ -51,8 +51,10 @@ import SVGCVATAzureProvider from './assets/vscode-icons_file-type-azure.svg';
 import SVGCVATS3Provider from './assets/S3.svg';
 import SVGCVATGoogleCloudProvider from './assets/google-cloud.svg';
 import SVGOpenVINO from './assets/openvino.svg';
+import SVGHaloLogo from './assets/halo.svg';
 
 export const CVATLogo = React.memo((): JSX.Element => <SVGCVATLogo />);
+export const HaloLogo = React.memo((): JSX.Element => <SVGHaloLogo />);
 export const CursorIcon = React.memo((): JSX.Element => <SVGCursorIcon />);
 export const MoveIcon = React.memo((): JSX.Element => <SVGMoveIcon />);
 export const RotateIcon = React.memo((): JSX.Element => <SVGRotateIcon />);

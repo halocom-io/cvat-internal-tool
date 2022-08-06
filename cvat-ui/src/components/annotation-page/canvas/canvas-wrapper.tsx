@@ -831,20 +831,22 @@ export default class CanvasWrapperComponent extends React.PureComponent<Props> {
                     <UpOutlined className='cvat-canvas-image-setups-trigger' />
                 </Dropdown>
 
-                <div className='cvat-canvas-z-axis-wrapper'>
-                    <Slider
-                        disabled={minZLayer === maxZLayer}
-                        min={minZLayer}
-                        max={maxZLayer}
-                        value={curZLayer}
-                        vertical
-                        reverse
-                        defaultValue={0}
-                        onChange={(value: number): void => onSwitchZLayer(value as number)}
-                    />
-                    <CVATTooltip title={`Add new layer ${maxZLayer + 1} and switch to it`}>
-                        <PlusCircleOutlined onClick={onAddZLayer} />
-                    </CVATTooltip>
+                <div className='hidden'>
+                    <div className='cvat-canvas-z-axis-wrapper'>
+                        <Slider
+                            disabled={minZLayer === maxZLayer}
+                            min={minZLayer}
+                            max={maxZLayer}
+                            value={curZLayer}
+                            vertical
+                            reverse
+                            defaultValue={0}
+                            onChange={(value: number): void => onSwitchZLayer(value as number)}
+                        />
+                        <CVATTooltip title={`Add new layer ${maxZLayer + 1} and switch to it`}>
+                            <PlusCircleOutlined onClick={onAddZLayer} />
+                        </CVATTooltip>
+                    </div>
                 </div>
             </Layout.Content>
         );

@@ -24,6 +24,7 @@
         opacity: 0.7;
 
         &.cvat-active-header-button {
+            color: $halo-main-color;
             font-weight: bold;
             opacity: 1;
         }
@@ -51,7 +52,7 @@
 
 .anticon.cvat-logo-icon {
     > svg {
-        transform: scale(0.7);
+        transform: scale(0.9);
     }
 }
 

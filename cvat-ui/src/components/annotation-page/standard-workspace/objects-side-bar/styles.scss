@@ -51,6 +51,7 @@
     background: $header-color;
     box-sizing: border-box;
     border: none;
+    border-left: 1px solid #c3c3c3;
 
     .ant-tabs-nav {
         &::before {
@@ -153,7 +154,7 @@
 }
 
 .cvat-objects-sidebar-states-list {
-    background-color: $background-color-2;
+    background-color: #ffffff;
     height: calc(100% - 50px);
     overflow-y: auto;
 }

@@ -4,16 +4,17 @@
 
 import React from 'react';
 import { Col } from 'antd/lib/grid';
-import Icon, { StopOutlined, CheckCircleOutlined } from '@ant-design/icons';
+import { StopOutlined, CheckCircleOutlined } from '@ant-design/icons';
 import Modal from 'antd/lib/modal';
 import Button from 'antd/lib/button';
 import Timeline from 'antd/lib/timeline';
 import Dropdown from 'antd/lib/dropdown';
 
-import AnnotationMenuContainer from 'containers/annotation-page/top-bar/annotation-menu';
 import {
-    MainMenuIcon, SaveIcon, UndoIcon, RedoIcon,
-} from 'icons';
+    MenuIcon, SaveIcon, ArrowSmLeftIcon, ArrowSmRightIcon,
+} from '@heroicons/react/outline';
+
+import AnnotationMenuContainer from 'containers/annotation-page/top-bar/annotation-menu';
 import { ActiveControl, ToolsBlockerState } from 'reducers/interfaces';
 import CVATTooltip from 'components/common/cvat-tooltip';
 
@@ -81,8 +82,9 @@ function LeftGroup(props: Props): JSX.Element {
             <Col className='cvat-annotation-header-left-group'>
                 <Dropdown overlay={<AnnotationMenuContainer />}>
                     <Button type='link' className='cvat-annotation-header-button'>
-                        <Icon component={MainMenuIcon} />
-                        Menu
+                        <span className='text-white'>
+                            <MenuIcon width={18} height={18} fill='#fff' />
+                        </span>
                     </Button>
                 </Dropdown>
                 <CVATTooltip overlay={`Save current changes ${saveShortcut}`}>
@@ -91,7 +93,9 @@ function LeftGroup(props: Props): JSX.Element {
                         type='link'
                         className={saving ? 'cvat-annotation-disabled-header-button' : 'cvat-annotation-header-button'}
                     >
-                        <Icon component={SaveIcon} />
+                        <span className='text-zinc-500'>
+                            <SaveIcon width={18} height={18} />
+                        </span>
                         {saving ? 'Saving...' : 'Save'}
                     </Button>
                 </CVATTooltip>
@@ -102,7 +106,9 @@ function LeftGroup(props: Props): JSX.Element {
                         className='cvat-annotation-header-button'
                         onClick={onUndoClick}
                     >
-                        <Icon component={UndoIcon} />
+                        <span className='text-zinc-500'>
+                            <ArrowSmLeftIcon width={18} height={18} />
+                        </span>
                         <span>Undo</span>
                     </Button>
                 </CVATTooltip>
@@ -113,7 +119,9 @@ function LeftGroup(props: Props): JSX.Element {
                         className='cvat-annotation-header-button'
                         onClick={onRedoClick}
                     >
-                        <Icon component={RedoIcon} />
+                        <span className='text-zinc-500'>
+                            <ArrowSmRightIcon width={18} height={18} />
+                        </span>
                         Redo
                     </Button>
                 </CVATTooltip>

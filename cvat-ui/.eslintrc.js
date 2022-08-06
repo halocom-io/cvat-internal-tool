@@ -14,17 +14,12 @@ module.exports = {
         project: './tsconfig.json',
         tsconfigRootDir: __dirname,
     },
-    ignorePatterns: [
-        '.eslintrc.js',
-        'webpack.config.js',
-        'node_modules/**',
-        'dist/**',
-    ],
+    ignorePatterns: ['.eslintrc.js', 'webpack.config.js', 'node_modules/**', 'dist/**'],
     plugins: ['@typescript-eslint'],
     extends: ['plugin:@typescript-eslint/recommended', 'airbnb-typescript'],
     rules: {
         ...globalConfig.rules,
-
+        'max-len': 'warn',
         '@typescript-eslint/no-explicit-any': 0,
         '@typescript-eslint/indent': ['error', 4],
         '@typescript-eslint/lines-between-class-members': 0,
