@@ -6,7 +6,7 @@ pipeline {
   }
 
   environment {
-      SERVICE = "cvat-backend"
+      SERVICE = "cvat-frontend"
       PROJECT = "halocom-io/cvat-internal-tool"
       GITHUB_REPO = "https://github.com/${PROJECT}"
       REGISTRY = "registry.digitalocean.com/halocom"
@@ -74,8 +74,8 @@ pipeline {
 					  env.IMAGE_TAG = "${IMAGE_TAG_PRE}:${VERSION}"
 					  sh 'echo deploy "${IMAGE_TAG}"'
 					  sh """
-						   sed -i -e 's|{{SERVICE}}|${SERVICE}|g; s|{{IMAGE_TAG}}|${IMAGE_TAG}|g' ./k8s/deployment-be.stag.yaml
-						   kubectl apply -f ./k8s/deployment-be.stag.yaml -n ${NAMESPACE} 
+						   sed -i -e 's|{{SERVICE}}|${SERVICE}|g; s|{{IMAGE_TAG}}|${IMAGE_TAG}|g' ./k8s/deployment-fe.stag.yaml
+						   kubectl apply -f ./k8s/deployment-fe.stag.yaml -n ${NAMESPACE} 
 						   kubectl rollout status deployment/${SERVICE} -n ${NAMESPACE}
 					   """
 			   }
