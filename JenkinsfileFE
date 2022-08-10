@@ -1,0 +1,87 @@
+pipeline {
+  agent {
+    kubernetes {
+        yamlFile "./k8s/build.yaml"
+    }
+  }
+
+  environment {
+      SERVICE = "cvat-frontend"
+      PROJECT = "halocom-io/cvat-internal-tool"
+      GITHUB_REPO = "https://github.com/${PROJECT}"
+      REGISTRY = "registry.digitalocean.com/halocom"
+  }
+
+  stages {
+
+    stage('Checkout Source') {
+      when {
+          branch 'release/*'
+      }
+
+      steps {
+          checkout scm
+          script {
+              env.VERSION = env.BRANCH_NAME.split("/")[1]
+          }
+      }
+    }
+    
+    stage("Build image") {
+          environment {
+              IMAGE_TAG_PRE = "${REGISTRY}/${PROJECT}-fe"
+          }
+          steps {
+			container('docker') {
+				script {
+					  env.VERSION = env.BRANCH_NAME.split("/")[1]
+					  env.IMAGE_TAG = "${IMAGE_TAG_PRE}:${VERSION}"
+					  sh 'echo build image "${IMAGE_TAG}"'
+					  sh 'docker build -t "${IMAGE_TAG}" --file Dockerfile.ui .'
+				}
+			}
+          }
+      }
+    
+    stage("Push image") {
+          environment {
+              IMAGE_TAG_PRE = "${REGISTRY}/${PROJECT}-fe"
+          }
+          steps {
+              container('docker') {
+                  script {
+                      docker.withRegistry('https://${REGISTRY}', 'do-registry-id') {
+						  env.VERSION = env.BRANCH_NAME.split("/")[1]
+						  env.IMAGE_TAG = "${IMAGE_TAG_PRE}:${VERSION}"
+						  sh 'echo push image "${IMAGE_TAG}"'
+                          sh 'docker push "${IMAGE_TAG}"'
+                      }
+                  }
+              }
+          }
+     }
+
+    stage('Deploy') {
+       environment {
+           NAMESPACE = "cvat"
+           IMAGE_TAG_PRE = "${REGISTRY}/${PROJECT}-fe"
+       }
+       steps {
+           timeout(10) {
+             withKubeConfig([credentialsId: 'k8s-config-file']) {
+                  script {
+					  env.VERSION = env.BRANCH_NAME.split("/")[1]
+					  env.IMAGE_TAG = "${IMAGE_TAG_PRE}:${VERSION}"
+					  sh 'echo deploy "${IMAGE_TAG}"'
+					  sh """
+						   sed -i -e 's|{{SERVICE}}|${SERVICE}|g; s|{{IMAGE_TAG}}|${IMAGE_TAG}|g' ./k8s/deployment-fe.stag.yaml
+						   kubectl apply -f ./k8s/deployment-fe.stag.yaml -n ${NAMESPACE} 
+						   kubectl rollout status deployment/${SERVICE} -n ${NAMESPACE}
+					   """
+			   }
+             }
+           }
+       }
+    }
+  }
+}

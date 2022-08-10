@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cvat-opa-conf
+  namespace: cvat
+immutable: true
+binaryData:
+  rules.tar.gz: |-
+    {{ .Files.Get "rules.tar.gz" | b64enc | indent 4}}
+
+

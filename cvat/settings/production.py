@@ -32,3 +32,4 @@ DATABASES = {
         'PORT': os.getenv('CVAT_POSTGRES_PORT', 5432),
     }
 }
+IAM_OPA_DATA_URL = os.getenv('IAM_OPA_DATA_URL','http://opa:8181/v1/data')
