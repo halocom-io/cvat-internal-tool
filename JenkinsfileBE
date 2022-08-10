@@ -32,20 +32,18 @@ pipeline {
               IMAGE_TAG = "${REGISTRY}/${PROJECT}:${VERSION}"
           }
           steps {
-              sh 'echo "${BRANCH_NAME}"'
-			  sh 'echo "${VERSION}"'
-			  sh 'echo "${IMAGE_TAG}"'
-			  env.VERSION = env.BRANCH_NAME.split("/")[1]
-			  sh 'echo "${VERSION}"'
-			  VERSION = env.BRANCH_NAME.split("/")[1]
-			  sh 'echo "${VERSION}"'
-
-
-					  /*               container('docker') { */
-					  /*                   script { */
-					  /* sh 'docker build -t "${IMAGE_TAG}" --build-arg TF_ANNOTATION=no --build-arg AUTO_SEGMENTATION=no --build-arg WITH_TESTS=no --build-arg TZ="Etc/UTC" --build-arg OPENVINO_TOOLKIT=no --build-arg USER=django --build-arg DJANGO_CONFIGURATION=production --build-arg TZ="Etc/UTC" .' */
-					  /*                   } */
-					  /*               } */
+			container('docker') {
+				script {
+					  sh 'echo "${BRANCH_NAME}"'
+					  sh 'echo "${VERSION}"'
+					  sh 'echo "${IMAGE_TAG}"'
+					  env.VERSION = env.BRANCH_NAME.split("/")[1]
+					  sh 'echo "${VERSION}"'
+					  VERSION = env.BRANCH_NAME.split("/")[1]
+					  sh 'echo "${VERSION}"'
+					/* sh 'docker build -t "${IMAGE_TAG}" --build-arg TF_ANNOTATION=no --build-arg AUTO_SEGMENTATION=no --build-arg WITH_TESTS=no --build-arg TZ="Etc/UTC" --build-arg OPENVINO_TOOLKIT=no --build-arg USER=django --build-arg DJANGO_CONFIGURATION=production --build-arg TZ="Etc/UTC" .' */
+				}
+			}
           }
       }
     
