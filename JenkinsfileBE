@@ -34,12 +34,10 @@ pipeline {
           steps {
 			container('docker') {
 				script {
-					  sh 'echo "${BRANCH_NAME}"'
 					  env.VERSION = env.BRANCH_NAME.split("/")[1]
-					  sh 'echo "${VERSION}"'
 					  env.IMAGE_TAG = "${IMAGE_TAG_PRE}:${VERSION}"
 					  sh 'echo build image "${IMAGE_TAG}"'
-					  /* sh 'docker build -t "${IMAGE_TAG}" --build-arg TF_ANNOTATION=no --build-arg AUTO_SEGMENTATION=no --build-arg WITH_TESTS=no --build-arg TZ="Etc/UTC" --build-arg OPENVINO_TOOLKIT=no --build-arg USER=django --build-arg DJANGO_CONFIGURATION=production --build-arg TZ="Etc/UTC" .' */
+					  sh 'docker build -t "${IMAGE_TAG}" --build-arg TF_ANNOTATION=no --build-arg AUTO_SEGMENTATION=no --build-arg WITH_TESTS=no --build-arg TZ="Etc/UTC" --build-arg OPENVINO_TOOLKIT=no --build-arg USER=django --build-arg DJANGO_CONFIGURATION=production --build-arg TZ="Etc/UTC" .'
 				}
 			}
           }
@@ -53,12 +51,10 @@ pipeline {
               container('docker') {
                   script {
                       docker.withRegistry('https://${REGISTRY}', 'do-registry-id') {
-						  sh 'echo "${BRANCH_NAME}"'
 						  env.VERSION = env.BRANCH_NAME.split("/")[1]
-						  sh 'echo "${VERSION}"'
 						  env.IMAGE_TAG = "${IMAGE_TAG_PRE}:${VERSION}"
 						  sh 'echo push image "${IMAGE_TAG}"'
-                          /* sh 'docker push "${IMAGE_TAG}"' */
+                          sh 'docker push "${IMAGE_TAG}"'
                       }
                   }
               }
@@ -74,18 +70,14 @@ pipeline {
            timeout(10) {
              withKubeConfig([credentialsId: 'k8s-config-file']) {
                   script {
-					  sh 'echo "${BRANCH_NAME}"'
 					  env.VERSION = env.BRANCH_NAME.split("/")[1]
-					  sh 'echo "${VERSION}"'
 					  env.IMAGE_TAG = "${IMAGE_TAG_PRE}:${VERSION}"
 					  sh 'echo deploy "${IMAGE_TAG}"'
-					  sh 'echo "${SERVICE}"'
-					  sh 'echo "${NAMESPACE}"'
-				   /* sh """ */
-				   /*     sed -i -e 's|{{SERVICE}}|${SERVICE}|g; s|{{IMAGE_TAG}}|${IMAGE_TAG}|g' ./k8s/deployment.stag.yaml */
-				   /*     kubectl apply -f ./k8s/deployment-be.stag.yaml -n ${NAMESPACE}  */
-				   /*     kubectl rollout status deployment/${SERVICE} -n ${NAMESPACE} */
-				   /* """ */
+					  sh """
+						   sed -i -e 's|{{SERVICE}}|${SERVICE}|g; s|{{IMAGE_TAG}}|${IMAGE_TAG}|g' ./k8s/deployment.stag.yaml
+						   kubectl apply -f ./k8s/deployment-be.stag.yaml -n ${NAMESPACE} 
+						   kubectl rollout status deployment/${SERVICE} -n ${NAMESPACE}
+					   """
 			   }
              }
            }
