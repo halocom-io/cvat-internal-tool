@@ -1,0 +1,103 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: cvat-backend-data
+  namespace: cvat
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: standard
+  resources:
+    requests:
+      storage: 20Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cvat-backend
+  namespace: cvat
+  labels:
+    app: cvat-app
+    tier: backend
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: cvat-app
+      tier: backend
+  template:
+    metadata:
+      labels:
+        app: cvat-app
+        tier: backend
+    spec:
+      containers:
+        - name: cvat-backend-app-container
+          image: {{IMAGE_TAG}} 
+          imagePullPolicy: Always
+          resources:
+            requests:
+              cpu: 10m
+              memory: 100Mi
+          envFrom:
+            - configMapRef:
+              - name: cvat-backend-conf
+          ports:
+          - containerPort: 8080
+          volumeMounts:
+          - mountPath: /home/django/data
+            name: cvat-backend-data
+            subPath: data
+          - mountPath: /home/django/keys
+            name: cvat-backend-data
+            subPath: keys
+          - mountPath: /home/django/logs
+            name: cvat-backend-data
+            subPath: logs
+          - mountPath: /home/django/models
+            name: cvat-backend-data
+            subPath: models
+      initContainers:
+        - name: user-data-permission-fix
+          image: busybox
+          command: ["/bin/chmod", "-R", "777", "/home/django"]
+          volumeMounts:
+          - mountPath: /home/django/data
+            name: cvat-backend-data
+            subPath: data
+          - mountPath: /home/django/keys
+            name: cvat-backend-data
+            subPath: keys
+          - mountPath: /home/django/logs
+            name: cvat-backend-data
+            subPath: logs
+          - mountPath: /home/django/models
+            name: cvat-backend-data
+            subPath: models
+      volumes:
+        - name: cvat-backend-data
+          persistentVolumeClaim:
+            claimName: cvat-backend-data
+      imagePullSecrets:
+        - name: gitlab-registry
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cvat-backend-service
+  namespace: cvat
+  labels:
+    app: cvat-app
+    tier: backend
+spec:
+  type: ClusterIP
+  selector:
+      app: cvat-app
+      tier: backend
+  ports:
+    - port: 8080
+      targetPort: 8080
+      protocol: TCP
+      name: http

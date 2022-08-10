@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cvat-backend-conf
+  namespace: cvat
+data:
+  DJANGO_MODWSGI_EXTRA_ARGS: ""
+  UI_PORT: "80"
+  UI_HOST: "cvat-frontend-service"
+  ALLOWED_HOSTS: "*"
+  CVAT_REDIS_HOST: "cvat-redis-service"
+  CVAT_POSTGRES_HOST: "10.104.0.11"
+  CVAT_POSTGRES_DBNAME: "cvat"
+  CVAT_POSTGRES_USER: "halocom"
+  CVAT_POSTGRES_PASSWORD: "halocom"
+  CVAT_POSTGRES_PORT: "5432"
