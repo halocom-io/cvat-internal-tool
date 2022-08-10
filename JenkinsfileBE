@@ -38,7 +38,7 @@ pipeline {
 					  env.VERSION = env.BRANCH_NAME.split("/")[1]
 					  sh 'echo "${VERSION}"'
 					  env.IMAGE_TAG = "${IMAGE_TAG_PRE}:${VERSION}"
-					  sh 'echo "${IMAGE_TAG}"'
+					  sh 'echo build image "${IMAGE_TAG}"'
 					  /* sh 'docker build -t "${IMAGE_TAG}" --build-arg TF_ANNOTATION=no --build-arg AUTO_SEGMENTATION=no --build-arg WITH_TESTS=no --build-arg TZ="Etc/UTC" --build-arg OPENVINO_TOOLKIT=no --build-arg USER=django --build-arg DJANGO_CONFIGURATION=production --build-arg TZ="Etc/UTC" .' */
 				}
 			}
@@ -46,6 +46,9 @@ pipeline {
       }
     
     stage("Push image") {
+          environment {
+              IMAGE_TAG_PRE = "${REGISTRY}/${PROJECT}"
+          }
           steps {
               container('docker') {
                   script {
@@ -54,7 +57,7 @@ pipeline {
 						  env.VERSION = env.BRANCH_NAME.split("/")[1]
 						  sh 'echo "${VERSION}"'
 						  env.IMAGE_TAG = "${IMAGE_TAG_PRE}:${VERSION}"
-						  sh 'echo "${IMAGE_TAG}"'
+						  sh 'echo push image "${IMAGE_TAG}"'
                           /* sh 'docker push "${IMAGE_TAG}"' */
                       }
                   }
@@ -65,7 +68,7 @@ pipeline {
     stage('Deploy') {
        environment {
            NAMESPACE = "cvat"
-           IMAGE_TAG = "${REGISTRY}/${PROJECT}:${VERSION}"
+           IMAGE_TAG_PRE = "${REGISTRY}/${PROJECT}"
        }
        steps {
            timeout(10) {
@@ -75,8 +78,9 @@ pipeline {
 					  env.VERSION = env.BRANCH_NAME.split("/")[1]
 					  sh 'echo "${VERSION}"'
 					  env.IMAGE_TAG = "${IMAGE_TAG_PRE}:${VERSION}"
-					  sh 'echo "${IMAGE_TAG}"'
+					  sh 'echo deploy "${IMAGE_TAG}"'
 					  sh 'echo "${SERVICE}"'
+					  sh 'echo "${NAMESPACE}"'
 				   /* sh """ */
 				   /*     sed -i -e 's|{{SERVICE}}|${SERVICE}|g; s|{{IMAGE_TAG}}|${IMAGE_TAG}|g' ./k8s/deployment.stag.yaml */
 				   /*     kubectl apply -f ./k8s/deployment-be.stag.yaml -n ${NAMESPACE}  */
