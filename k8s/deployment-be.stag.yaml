@@ -42,8 +42,8 @@ spec:
               cpu: 10m
               memory: 100Mi
           envFrom:
-          - configMapRef:
-            name: cvat-backend-conf
+            - configMapRef:
+                name: cvat-backend-conf
           ports:
           - containerPort: 8080
           volumeMounts:
