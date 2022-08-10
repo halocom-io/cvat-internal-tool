@@ -29,10 +29,11 @@ pipeline {
     
     stage("Build image") {
           environment {
-              IMAGE_TAG = '${REGISTRY}/${PROJECT}:${VERSION}'
+              IMAGE_TAG = "${REGISTRY}/${PROJECT}:${VERSION}"
           }
           steps {
               sh 'echo "${BRANCH_NAME}"'
+			  sh 'echo "${VERSION}"'
 			  sh 'echo "${IMAGE_TAG}"'
               container('docker') {
                   script {
