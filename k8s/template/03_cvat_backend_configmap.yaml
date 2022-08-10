@@ -14,3 +14,4 @@ data:
   CVAT_POSTGRES_USER: "halocom"
   CVAT_POSTGRES_PASSWORD: "halocom"
   CVAT_POSTGRES_PORT: "5432"
+  IAM_OPA_DATA_URL: "http://cvat-redis-service:8181/v1/data"

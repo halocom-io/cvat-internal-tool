@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cvat-opa
+  namespace: cvat
+  labels:
+    app: cvat-app
+    tier: opa-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cvat-app
+      tier: opa-app
+  template:
+    metadata:
+      labels:
+        app: cvat-app
+        tier: opa-app
+    spec:
+      containers:
+      - image: openpolicyagent/opa:0.34.2-rootless
+        args:
+            - run
+            - --server
+            - --addr
+            - :8181
+            - --set=decision_logs.console=true
+            - /rules/rules.tar.gz
+        name: cvat-opa
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8181
+        resources:
+          limits:
+            cpu: "0.1"
+        volumeMounts:
+          - mountPath: /rules
+            name: cvat-opa-rules
+      volumes:
+        - name: cvat-opa-rules
+          configMap:
+            name: "cvat-opa-conf"
+            items:
+            - key: "rules.tar.gz"
+              path: "rules.tar.gz"

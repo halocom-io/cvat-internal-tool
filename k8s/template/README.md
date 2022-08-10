@@ -81,3 +81,6 @@ python3 ~/manage.py createsuperuser
 ### Running out of storage
 By default the backend is reserving 20GB of storage if this is not enough,
 you will need to ajust the `02_cvat_backend_storage.yml` persistant volume claim to increase it.
+
+
+kubectl create configmap cvat-opa-conf -n cvat --from-file="./rules.tar.gz"
