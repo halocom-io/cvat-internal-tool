@@ -67,8 +67,6 @@ spec:
         - name: cvat-backend-data
           persistentVolumeClaim:
             claimName: cvat-backend-data
-      imagePullSecrets:
-        - name: gitlab-registry
 ---
 apiVersion: v1
 kind: Service
