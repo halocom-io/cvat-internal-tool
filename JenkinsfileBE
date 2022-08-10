@@ -70,17 +70,19 @@ pipeline {
        steps {
            timeout(10) {
              withKubeConfig([credentialsId: 'k8s-config-file']) {
-				  sh 'echo "${BRANCH_NAME}"'
-				  env.VERSION = env.BRANCH_NAME.split("/")[1]
-				  sh 'echo "${VERSION}"'
-				  env.IMAGE_TAG = "${IMAGE_TAG_PRE}:${VERSION}"
-				  sh 'echo "${IMAGE_TAG}"'
-				  sh 'echo "${SERVICE}"'
-               /* sh """ */
-               /*     sed -i -e 's|{{SERVICE}}|${SERVICE}|g; s|{{IMAGE_TAG}}|${IMAGE_TAG}|g' ./k8s/deployment.stag.yaml */
-               /*     kubectl apply -f ./k8s/deployment-be.stag.yaml -n ${NAMESPACE}  */
-               /*     kubectl rollout status deployment/${SERVICE} -n ${NAMESPACE} */
-               /* """ */
+                  script {
+					  sh 'echo "${BRANCH_NAME}"'
+					  env.VERSION = env.BRANCH_NAME.split("/")[1]
+					  sh 'echo "${VERSION}"'
+					  env.IMAGE_TAG = "${IMAGE_TAG_PRE}:${VERSION}"
+					  sh 'echo "${IMAGE_TAG}"'
+					  sh 'echo "${SERVICE}"'
+				   /* sh """ */
+				   /*     sed -i -e 's|{{SERVICE}}|${SERVICE}|g; s|{{IMAGE_TAG}}|${IMAGE_TAG}|g' ./k8s/deployment.stag.yaml */
+				   /*     kubectl apply -f ./k8s/deployment-be.stag.yaml -n ${NAMESPACE}  */
+				   /*     kubectl rollout status deployment/${SERVICE} -n ${NAMESPACE} */
+				   /* """ */
+			   }
              }
            }
        }
