@@ -82,10 +82,41 @@ module.exports = (env) => ({
                     {
                         loader: 'postcss-loader',
                         options: {
-                            plugins: [require('postcss-preset-env')],
+                            postcssOptions: {
+                                plugins: [
+                                    require('tailwindcss'),
+                                    require('autoprefixer'),
+                                    require('postcss-preset-env'),
+                                ],
+                            },
                         },
                     },
                     'sass-loader',
+                ],
+            },
+            {
+                test: /\.less$/,
+                use: [
+                    {
+                        loader: 'style-loader',
+                    },
+                    {
+                        loader: 'css-loader', // translates CSS into CommonJS
+                    },
+                    {
+                        loader: 'less-loader', // compiles Less to CSS
+                        options: {
+                            modifyVars: {
+                                'primary-color': '#009B4C',
+                                'link-color': '#1DA57A',
+                                'border-radius-base': '4px',
+                            },
+                            javascriptEnabled: true,
+                            // lessOptions: {
+                            //     // If you are using less-loader@5 please spread the lessOptions to options directly
+                            // },
+                        },
+                    },
                 ],
             },
             {

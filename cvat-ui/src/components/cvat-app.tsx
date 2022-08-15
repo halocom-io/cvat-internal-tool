@@ -11,7 +11,8 @@ import Modal from 'antd/lib/modal';
 import notification from 'antd/lib/notification';
 import Spin from 'antd/lib/spin';
 import Text from 'antd/lib/typography/Text';
-import 'antd/dist/antd.css';
+import 'antd/dist/antd.less';
+import '../halo-styles.scss';
 
 import LoginPageContainer from 'containers/login-page/login-page';
 import LoginWithTokenComponent from 'components/login-with-token/login-with-token';
