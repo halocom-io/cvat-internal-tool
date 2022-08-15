@@ -14,11 +14,15 @@ import { CloudStoragesQuery } from 'reducers/interfaces';
 import {
     config,
     localStorageRecentCapacity,
-    localStorageRecentKeyword, predefinedFilterValues,
+    localStorageRecentKeyword,
+    predefinedFilterValues,
 } from './cloud-storages-filter-configuration';
 
 const FilteringComponent = ResourceFilterHOC(
-    config, localStorageRecentKeyword, localStorageRecentCapacity, predefinedFilterValues,
+    config,
+    localStorageRecentKeyword,
+    localStorageRecentCapacity,
+    predefinedFilterValues,
 );
 
 interface Props {
@@ -29,9 +33,7 @@ interface Props {
 }
 
 export default function StoragesTopBar(props: Props): JSX.Element {
-    const {
-        query, onApplyFilter, onApplySorting, onApplySearch,
-    } = props;
+    const { query, onApplyFilter, onApplySorting, onApplySearch } = props;
     const history = useHistory();
     const [visibility, setVisibility] = useState(defaultVisibility);
 
@@ -51,11 +53,20 @@ export default function StoragesTopBar(props: Props): JSX.Element {
                     <div>
                         <SortingComponent
                             visible={visibility.sorting}
-                            onVisibleChange={(visible: boolean) => (
+                            onVisibleChange={(visible: boolean) =>
                                 setVisibility({ ...defaultVisibility, sorting: visible })
-                            )}
+                            }
                             defaultFields={query.sort?.split(',') || ['-ID']}
-                            sortingFields={['ID', 'Provider type', 'Updated date', 'Display name', 'Resource', 'Credentials type', 'Owner', 'Description']}
+                            sortingFields={[
+                                'ID',
+                                'Provider type',
+                                'Updated date',
+                                'Display name',
+                                'Resource',
+                                'Credentials type',
+                                'Owner',
+                                'Description',
+                            ]}
                             onApplySorting={(sorting: string | null) => {
                                 onApplySorting(sorting);
                             }}
@@ -65,15 +76,15 @@ export default function StoragesTopBar(props: Props): JSX.Element {
                             predefinedVisible={visibility.predefined}
                             builderVisible={visibility.builder}
                             recentVisible={visibility.recent}
-                            onPredefinedVisibleChange={(visible: boolean) => (
+                            onPredefinedVisibleChange={(visible: boolean) =>
                                 setVisibility({ ...defaultVisibility, predefined: visible })
-                            )}
-                            onBuilderVisibleChange={(visible: boolean) => (
+                            }
+                            onBuilderVisibleChange={(visible: boolean) =>
                                 setVisibility({ ...defaultVisibility, builder: visible })
-                            )}
-                            onRecentVisibleChange={(visible: boolean) => (
+                            }
+                            onRecentVisibleChange={(visible: boolean) =>
                                 setVisibility({ ...defaultVisibility, builder: visibility.builder, recent: visible })
-                            )}
+                            }
                             onApplyFilter={(filter: string | null) => {
                                 onApplyFilter(filter);
                             }}

@@ -34,9 +34,7 @@ interface Props {
 }
 
 function LockAllSwitcher(props: Props): JSX.Element {
-    const {
-        statesLocked, switchLockAllShortcut, unlockAllStates, lockAllStates,
-    } = props;
+    const { statesLocked, switchLockAllShortcut, unlockAllStates, lockAllStates } = props;
     return (
         <Col span={2}>
             <CVATTooltip title={`Switch lock property for all ${switchLockAllShortcut}`}>
@@ -47,9 +45,7 @@ function LockAllSwitcher(props: Props): JSX.Element {
 }
 
 function HideAllSwitcher(props: Props): JSX.Element {
-    const {
-        statesHidden, switchHiddenAllShortcut, showAllStates, hideAllStates,
-    } = props;
+    const { statesHidden, switchHiddenAllShortcut, showAllStates, hideAllStates } = props;
     return (
         <Col span={2}>
             <CVATTooltip title={`Switch hidden property for all ${switchHiddenAllShortcut}`}>

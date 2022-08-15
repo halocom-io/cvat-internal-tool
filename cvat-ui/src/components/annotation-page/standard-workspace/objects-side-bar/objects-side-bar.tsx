@@ -59,9 +59,7 @@ function mapDispatchToProps(dispatch: Dispatch<AnyAction>): DispatchToProps {
 }
 
 function ObjectsSideBar(props: StateToProps & DispatchToProps & OwnProps): JSX.Element {
-    const {
-        sidebarCollapsed, canvasInstance, collapseSidebar, objectsList, jobInstance,
-    } = props;
+    const { sidebarCollapsed, canvasInstance, collapseSidebar, objectsList, jobInstance } = props;
 
     const collapse = (): void => {
         const [collapser] = window.document.getElementsByClassName('cvat-objects-sidebar');

@@ -61,9 +61,9 @@ function OrganizationPage(): JSX.Element | null {
                     <TopBarComponent
                         organizationInstance={organization}
                         userInstance={user}
-                        fetchMembers={() => fetchMembers(
-                            organization, pageNumber, pageSize, setMembers, setMembersFetching,
-                        )}
+                        fetchMembers={() =>
+                            fetchMembers(organization, pageNumber, pageSize, setMembers, setMembersFetching)
+                        }
                     />
                     <MembersList
                         fetching={membersFetching}
@@ -74,9 +74,9 @@ function OrganizationPage(): JSX.Element | null {
                         pageNumber={pageNumber}
                         setPageNumber={setPageNumber}
                         setPageSize={setPageSize}
-                        fetchMembers={() => fetchMembers(
-                            organization, pageNumber, pageSize, setMembers, setMembersFetching,
-                        )}
+                        fetchMembers={() =>
+                            fetchMembers(organization, pageNumber, pageSize, setMembers, setMembersFetching)
+                        }
                     />
                 </>
             )}

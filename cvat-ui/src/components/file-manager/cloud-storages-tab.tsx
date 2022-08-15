@@ -47,9 +47,11 @@ const { Option } = Select;
 const searchCloudStoragesWrapper = debounce((phrase, setList) => {
     const filter = {
         filter: JSON.stringify({
-            and: [{
-                '==': [{ var: 'display_name' }, phrase],
-            }],
+            and: [
+                {
+                    '==': [{ var: 'display_name' }, phrase],
+                },
+            ],
         }),
     };
     searchCloudStorages(filter).then((list) => {
@@ -61,9 +63,7 @@ export default function CloudStorageTab(props: Props): JSX.Element {
     const { searchPhrase, setSearchPhrase } = props;
     const [initialList, setInitialList] = useState<CloudStorage[]>([]);
     const [list, setList] = useState<CloudStorage[]>([]);
-    const {
-        formRef, cloudStorage, selectedFiles, onSelectFiles, onSelectCloudStorage,
-    } = props;
+    const { formRef, cloudStorage, selectedFiles, onSelectFiles, onSelectCloudStorage } = props;
     const [selectedManifest, setSelectedManifest] = useState<string | null>(null);
 
     useEffect(() => {
@@ -129,15 +129,12 @@ export default function CloudStorageTab(props: Props): JSX.Element {
                     options={list.map((_cloudStorage) => ({
                         value: _cloudStorage.id.toString(),
                         label: (
-                            <span
-                                className='cvat-cloud-storage-select-provider'
-                            >
+                            <span className='cvat-cloud-storage-select-provider'>
                                 {_cloudStorage.providerType === ProviderType.AWS_S3_BUCKET && <S3Provider />}
                                 {_cloudStorage.providerType === ProviderType.AZURE_CONTAINER && <AzureProvider />}
-                                {
-                                    _cloudStorage.providerType === ProviderType.GOOGLE_CLOUD_STORAGE &&
+                                {_cloudStorage.providerType === ProviderType.GOOGLE_CLOUD_STORAGE && (
                                     <GoogleCloudProvider />
-                                }
+                                )}
                                 {_cloudStorage.displayName}
                             </span>
                         ),
@@ -163,9 +160,7 @@ export default function CloudStorageTab(props: Props): JSX.Element {
                     rules={[{ required: true, message: 'Please, specify a manifest file' }]}
                     initialValue={cloudStorage.manifests[0]}
                 >
-                    <Select
-                        onSelect={(value: string) => setSelectedManifest(value)}
-                    >
+                    <Select onSelect={(value: string) => setSelectedManifest(value)}>
                         {cloudStorage.manifests.map(
                             (manifest: string): JSX.Element => (
                                 <Option key={manifest} value={manifest}>

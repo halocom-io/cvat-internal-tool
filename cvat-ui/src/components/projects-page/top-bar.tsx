@@ -16,11 +16,16 @@ import { usePrevious } from 'utils/hooks';
 
 import {
     config,
-    localStorageRecentCapacity, localStorageRecentKeyword, predefinedFilterValues,
+    localStorageRecentCapacity,
+    localStorageRecentKeyword,
+    predefinedFilterValues,
 } from './projects-filter-configuration';
 
 const FilteringComponent = ResourceFilterHOC(
-    config, localStorageRecentKeyword, localStorageRecentCapacity, predefinedFilterValues,
+    config,
+    localStorageRecentKeyword,
+    localStorageRecentCapacity,
+    predefinedFilterValues,
 );
 
 interface Props {
@@ -33,9 +38,7 @@ interface Props {
 }
 
 function TopBarComponent(props: Props): JSX.Element {
-    const {
-        importing, query, onApplyFilter, onApplySorting, onApplySearch, onImportProject,
-    } = props;
+    const { importing, query, onApplyFilter, onApplySorting, onApplySearch, onImportProject } = props;
     const [visibility, setVisibility] = useState(defaultVisibility);
     const prevImporting = usePrevious(importing);
 
@@ -62,9 +65,9 @@ function TopBarComponent(props: Props): JSX.Element {
                     <div>
                         <SortingComponent
                             visible={visibility.sorting}
-                            onVisibleChange={(visible: boolean) => (
+                            onVisibleChange={(visible: boolean) =>
                                 setVisibility({ ...defaultVisibility, sorting: visible })
-                            )}
+                            }
                             defaultFields={query.sort?.split(',') || ['-ID']}
                             sortingFields={['ID', 'Assignee', 'Owner', 'Status', 'Name', 'Updated date']}
                             onApplySorting={onApplySorting}
@@ -74,15 +77,15 @@ function TopBarComponent(props: Props): JSX.Element {
                             predefinedVisible={visibility.predefined}
                             builderVisible={visibility.builder}
                             recentVisible={visibility.recent}
-                            onPredefinedVisibleChange={(visible: boolean) => (
+                            onPredefinedVisibleChange={(visible: boolean) =>
                                 setVisibility({ ...defaultVisibility, predefined: visible })
-                            )}
-                            onBuilderVisibleChange={(visible: boolean) => (
+                            }
+                            onBuilderVisibleChange={(visible: boolean) =>
                                 setVisibility({ ...defaultVisibility, builder: visible })
-                            )}
-                            onRecentVisibleChange={(visible: boolean) => (
+                            }
+                            onRecentVisibleChange={(visible: boolean) =>
                                 setVisibility({ ...defaultVisibility, builder: visibility.builder, recent: visible })
-                            )}
+                            }
                             onApplyFilter={onApplyFilter}
                         />
                     </div>
@@ -90,7 +93,7 @@ function TopBarComponent(props: Props): JSX.Element {
                 <div>
                     <Dropdown
                         trigger={['click']}
-                        overlay={(
+                        overlay={
                             <div className='cvat-projects-page-control-buttons-wrapper'>
                                 <Button
                                     id='cvat-create-project-button'
@@ -118,11 +121,13 @@ function TopBarComponent(props: Props): JSX.Element {
                                         icon={<UploadOutlined />}
                                     >
                                         Create from backup
-                                        {importing && <LoadingOutlined className='cvat-import-project-button-loading' />}
+                                        {importing && (
+                                            <LoadingOutlined className='cvat-import-project-button-loading' />
+                                        )}
                                     </Button>
                                 </Upload>
                             </div>
-                        )}
+                        }
                     >
                         <Button type='primary' className='cvat-create-project-dropdown' icon={<PlusOutlined />} />
                     </Dropdown>

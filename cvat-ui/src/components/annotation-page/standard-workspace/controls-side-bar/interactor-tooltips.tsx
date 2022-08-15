@@ -15,9 +15,7 @@ interface Props {
 }
 
 function InteractorTooltips(props: Props): JSX.Element {
-    const {
-        name, gif, message, withNegativePoints,
-    } = props;
+    const { name, gif, message, withNegativePoints } = props;
     const UNKNOWN_MESSAGE = 'Selected interactor does not have a help message';
     const desc = message || UNKNOWN_MESSAGE;
     return (

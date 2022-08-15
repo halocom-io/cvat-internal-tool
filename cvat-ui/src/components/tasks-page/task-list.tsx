@@ -29,7 +29,9 @@ function TaskListComponent(props: Props): JSX.Element {
     );
 }
 
-export default React.memo(TaskListComponent, (prev: Props, cur: Props) => (
-    prev.currentTasksIndexes.length !== cur.currentTasksIndexes.length || prev.currentTasksIndexes
-        .some((val: number, idx: number) => val !== cur.currentTasksIndexes[idx])
-));
+export default React.memo(
+    TaskListComponent,
+    (prev: Props, cur: Props) =>
+        prev.currentTasksIndexes.length !== cur.currentTasksIndexes.length ||
+        prev.currentTasksIndexes.some((val: number, idx: number) => val !== cur.currentTasksIndexes[idx]),
+);

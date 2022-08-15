@@ -2,10 +2,7 @@
 //
 // SPDX-License-Identifier: MIT
 
-import {
-    EyeInvisibleFilled, EyeOutlined,
-    LockFilled, UnlockOutlined,
-} from '@ant-design/icons';
+import { EyeInvisibleFilled, EyeOutlined, LockFilled, UnlockOutlined } from '@ant-design/icons';
 import Button from 'antd/lib/button';
 import { Col, Row } from 'antd/lib/grid';
 import Text from 'antd/lib/typography/Text';

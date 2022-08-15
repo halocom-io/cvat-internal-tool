@@ -28,8 +28,15 @@ function EmailConfirmationPage(): JSX.Element {
                 <Row justify='center' align='middle' id='email-confirmation-page-container'>
                     <Col>
                         <h1>Your email is confirmed</h1>
-                        <Countdown format='ss' title='Redirecting to login page after...' value={Date.now() + 1000 * 6} onFinish={onFinish} />
-                        <Link to='/auth/login' ref={linkRef}>Or click this link</Link>
+                        <Countdown
+                            format='ss'
+                            title='Redirecting to login page after...'
+                            value={Date.now() + 1000 * 6}
+                            onFinish={onFinish}
+                        />
+                        <Link to='/auth/login' ref={linkRef}>
+                            Or click this link
+                        </Link>
                     </Col>
                 </Row>
             </Content>

@@ -148,9 +148,7 @@ class LabelItemContainer extends React.PureComponent<Props, State> {
     }
 
     public render(): JSX.Element {
-        const {
-            labelName, labelColor, keyToLabelMapping, labelID, updateLabelShortcutKey,
-        } = this.props;
+        const { labelName, labelColor, keyToLabelMapping, labelID, updateLabelShortcutKey } = this.props;
         const { visible, statesHidden, statesLocked } = this.state;
 
         return (

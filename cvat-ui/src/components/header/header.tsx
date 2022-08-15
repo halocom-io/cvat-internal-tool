@@ -336,9 +336,9 @@ function HeaderContainer(props: Props): JSX.Element {
                         <Menu.ItemGroup>
                             <Menu.Item
                                 className={
-                                    !currentOrganization ?
-                                        'cvat-header-menu-active-organization-item' :
-                                        'cvat-header-menu-organization-item'
+                                    !currentOrganization
+                                        ? 'cvat-header-menu-active-organization-item'
+                                        : 'cvat-header-menu-organization-item'
                                 }
                                 key='$personal'
                                 onClick={resetOrganization}
@@ -349,9 +349,9 @@ function HeaderContainer(props: Props): JSX.Element {
                                 (organization: any): JSX.Element => (
                                     <Menu.Item
                                         className={
-                                            currentOrganization?.slug === organization.slug ?
-                                                'cvat-header-menu-active-organization-item' :
-                                                'cvat-header-menu-organization-item'
+                                            currentOrganization?.slug === organization.slug
+                                                ? 'cvat-header-menu-active-organization-item'
+                                                : 'cvat-header-menu-organization-item'
                                         }
                                         key={organization.slug}
                                         onClick={() => setNewOrganization(organization)}

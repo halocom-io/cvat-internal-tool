@@ -34,13 +34,15 @@ export default (state: ExportState = defaultState, action: ExportActions): Expor
         case ExportActionTypes.EXPORT_DATASET: {
             const { instance, format } = action.payload;
             const activities = deepCopy(instance instanceof core.classes.Project ? state.projects : state.tasks);
-            const instanceId = instance instanceof core.classes.Project ||
-                instance instanceof core.classes.Task ? instance.id : instance.taskId;
+            const instanceId =
+                instance instanceof core.classes.Project || instance instanceof core.classes.Task
+                    ? instance.id
+                    : instance.taskId;
 
             activities[instanceId] =
-                instanceId in activities && !activities[instanceId].includes(format) ?
-                    [...activities[instanceId], format] :
-                    activities[instanceId] || [format];
+                instanceId in activities && !activities[instanceId].includes(format)
+                    ? [...activities[instanceId], format]
+                    : activities[instanceId] || [format];
 
             return {
                 ...state,
@@ -51,8 +53,10 @@ export default (state: ExportState = defaultState, action: ExportActions): Expor
         case ExportActionTypes.EXPORT_DATASET_SUCCESS: {
             const { instance, format } = action.payload;
             const activities = deepCopy(instance instanceof core.classes.Project ? state.projects : state.tasks);
-            const instanceId = instance instanceof core.classes.Project ||
-                instance instanceof core.classes.Task ? instance.id : instance.taskId;
+            const instanceId =
+                instance instanceof core.classes.Project || instance instanceof core.classes.Task
+                    ? instance.id
+                    : instance.taskId;
 
             activities[instanceId] = activities[instanceId].filter(
                 (exporterName: string): boolean => exporterName !== format,

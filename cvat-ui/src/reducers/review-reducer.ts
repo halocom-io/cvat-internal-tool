@@ -92,18 +92,19 @@ export default function (state: ReviewState = defaultState, action: any): Review
 
             return {
                 ...state,
-                latestComments: state.latestComments.includes(issue.comments[0].message) ?
-                    state.latestComments :
-                    Array.from(
-                        new Set(
-                            [...state.latestComments, issue.comments[0].message].filter(
-                                (message: string): boolean => ![
-                                    consts.QUICK_ISSUE_INCORRECT_POSITION_TEXT,
-                                    consts.QUICK_ISSUE_INCORRECT_ATTRIBUTE_TEXT,
-                                ].includes(message),
-                            ),
-                        ),
-                    ).slice(-consts.LATEST_COMMENTS_SHOWN_QUICK_ISSUE),
+                latestComments: state.latestComments.includes(issue.comments[0].message)
+                    ? state.latestComments
+                    : Array.from(
+                          new Set(
+                              [...state.latestComments, issue.comments[0].message].filter(
+                                  (message: string): boolean =>
+                                      ![
+                                          consts.QUICK_ISSUE_INCORRECT_POSITION_TEXT,
+                                          consts.QUICK_ISSUE_INCORRECT_ATTRIBUTE_TEXT,
+                                      ].includes(message),
+                              ),
+                          ),
+                      ).slice(-consts.LATEST_COMMENTS_SHOWN_QUICK_ISSUE),
                 frameIssues,
                 issues,
                 newIssuePosition: null,

@@ -3,10 +3,7 @@
 // SPDX-License-Identifier: MIT
 
 import { CheckCircleOutlined, StopOutlined } from '@ant-design/icons';
-import {
-    ArrowSmLeftIcon, ArrowSmRightIcon,
-    MenuIcon, SaveIcon,
-} from '@heroicons/react/outline';
+import { ArrowSmLeftIcon, ArrowSmRightIcon, MenuIcon, SaveIcon } from '@heroicons/react/outline';
 import Button from 'antd/lib/button';
 import Dropdown from 'antd/lib/dropdown';
 import { Col } from 'antd/lib/grid';

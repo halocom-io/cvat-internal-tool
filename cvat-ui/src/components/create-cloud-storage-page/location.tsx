@@ -29,9 +29,7 @@ interface Locations {
 }
 
 export default function Location(props: Props): JSX.Element {
-    const {
-        selectedRegion, onSelectRegion, internalCommonProps, name, values, href, label,
-    } = props;
+    const { selectedRegion, onSelectRegion, internalCommonProps, name, values, href, label } = props;
     const [locations, setLocations] = useState<Locations>(() => Object.fromEntries(values));
     const [newRegionKey, setNewRegionKey] = useState<string>('');
     const [newRegionName, setNewRegionName] = useState<string>('');
@@ -59,21 +57,16 @@ export default function Location(props: Props): JSX.Element {
 
     return (
         <Form.Item
-            label={(
+            label={
                 <>
                     {label}
                     <Tooltip title='More information'>
-                        <Button
-                            className='cvat-cloud-storage-help-button'
-                            type='link'
-                            target='_blank'
-                            href={href}
-                        >
+                        <Button className='cvat-cloud-storage-help-button' type='link' target='_blank' href={href}>
                             <QuestionCircleOutlined />
                         </Button>
                     </Tooltip>
                 </>
-            )}
+            }
             name={name}
             {...internalCommonProps}
         >
@@ -96,10 +89,7 @@ export default function Location(props: Props): JSX.Element {
                                 onChange={(event: any) => setNewRegionName(event.target.value)}
                                 placeholder='name'
                             />
-                            <Button
-                                type='link'
-                                onClick={handleAddingRegion}
-                            >
+                            <Button type='link' onClick={handleAddingRegion}>
                                 Add region
                                 <PlusCircleOutlined />
                             </Button>
@@ -108,15 +98,13 @@ export default function Location(props: Props): JSX.Element {
                 )}
                 onSelect={(_, instance) => onSelectRegion(instance.key)}
             >
-                {
-                    Array.from(Object.entries(locations)).map(
-                        ([key, value]): JSX.Element => (
-                            <Option key={key} value={value}>
-                                {value}
-                            </Option>
-                        ),
-                    )
-                }
+                {Array.from(Object.entries(locations)).map(
+                    ([key, value]): JSX.Element => (
+                        <Option key={key} value={value}>
+                            {value}
+                        </Option>
+                    ),
+                )}
             </Select>
         </Form.Item>
     );

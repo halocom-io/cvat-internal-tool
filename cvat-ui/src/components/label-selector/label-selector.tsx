@@ -14,14 +14,12 @@ interface Props extends SelectProps<string> {
 }
 
 export default function LabelSelector(props: Props): JSX.Element {
-    const {
-        labels, value, onChange, ...rest
-    } = props;
-    const dinamicProps = value ?
-        {
-            value: typeof value === 'number' ? value : value.id,
-        } :
-        {};
+    const { labels, value, onChange, ...rest } = props;
+    const dinamicProps = value
+        ? {
+              value: typeof value === 'number' ? value : value.id,
+          }
+        : {};
 
     return (
         <Select

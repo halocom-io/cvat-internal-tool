@@ -18,9 +18,7 @@ interface Props {
 }
 
 function SetupTagPopover(props: Props): JSX.Element {
-    const {
-        labels, selectedLabelID, repeatShapeShortcut, onChangeLabel, onSetup,
-    } = props;
+    const { labels, selectedLabelID, repeatShapeShortcut, onChangeLabel, onSetup } = props;
 
     return (
         <div className='cvat-setup-tag-popover-content'>

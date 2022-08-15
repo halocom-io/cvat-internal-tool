@@ -21,9 +21,9 @@ function mapStateToProps(state: CombinedState): StateToProps {
         fetching: state.tasks.fetching,
         query: tasks.gettingQuery,
         count: state.tasks.count,
-        countInvisible: tasks.hideEmpty ?
-            tasks.current.filter((task: Task): boolean => !task.instance.jobs.length).length :
-            0,
+        countInvisible: tasks.hideEmpty
+            ? tasks.current.filter((task: Task): boolean => !task.instance.jobs.length).length
+            : 0,
         importing: state.tasks.importing,
     };
 }

@@ -12,7 +12,7 @@ export default function EmptyListComponent(): JSX.Element {
     return (
         <Empty
             className='cvat-empty-models-list'
-            description={(
+            description={
                 <div>
                     <Row justify='center' align='middle'>
                         <Col>
@@ -31,7 +31,7 @@ export default function EmptyListComponent(): JSX.Element {
                         </Col>
                     </Row>
                 </div>
-            )}
+            }
         />
     );
 }

@@ -73,12 +73,12 @@ export default function ProjectItemComponent(props: Props): JSX.Element {
             className='cvat-projects-project-item-card'
         >
             <Meta
-                title={(
+                title={
                     <span onClick={onOpenProject} className='cvat-projects-project-item-title' aria-hidden>
                         {instance.name}
                     </span>
-                )}
-                description={(
+                }
+                description={
                     <div className='cvat-porjects-project-item-description'>
                         <div>
                             {ownerName && (
@@ -95,7 +95,7 @@ export default function ProjectItemComponent(props: Props): JSX.Element {
                             </Dropdown>
                         </div>
                     </div>
-                )}
+                }
             />
         </Card>
     );

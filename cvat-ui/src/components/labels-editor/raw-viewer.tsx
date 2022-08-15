@@ -13,10 +13,7 @@ import Paragraph from 'antd/lib/typography/Paragraph';
 import CVATTooltip from 'components/common/cvat-tooltip';
 import React, { RefObject } from 'react';
 
-import {
-    Attribute, idGenerator,
-    Label, validateParsedLabel,
-} from './common';
+import { Attribute, idGenerator, Label, validateParsedLabel } from './common';
 
 function validateLabels(_: RuleObject, value: string): Promise<void> {
     try {
@@ -114,17 +111,19 @@ export default class RawViewer extends React.PureComponent<Props> {
                             <Paragraph>
                                 Following labels are going to be removed:
                                 <div className='cvat-modal-confirm-content-remove-existing-labels'>
-                                    {deletedLabels
-                                        .map((_label: Label) => <Tag color={_label.color}>{_label.name}</Tag>)}
+                                    {deletedLabels.map((_label: Label) => (
+                                        <Tag color={_label.color}>{_label.name}</Tag>
+                                    ))}
                                 </div>
-
                             </Paragraph>
                         ) : null}
                         {deletedAttributes.length ? (
                             <Paragraph>
                                 Following attributes are going to be removed:
                                 <div className='cvat-modal-confirm-content-remove-existing-attributes'>
-                                    {deletedAttributes.map((_attr: Attribute) => <Tag>{_attr.name}</Tag>)}
+                                    {deletedAttributes.map((_attr: Attribute) => (
+                                        <Tag>{_attr.name}</Tag>
+                                    ))}
                                 </div>
                             </Paragraph>
                         ) : null}
@@ -155,7 +154,9 @@ export default class RawViewer extends React.PureComponent<Props> {
                     <Input.TextArea
                         onPaste={(e: React.ClipboardEvent) => {
                             const data = e.clipboardData.getData('text');
-                            const element = window.document.getElementsByClassName('cvat-raw-labels-viewer')[0] as HTMLTextAreaElement;
+                            const element = window.document.getElementsByClassName(
+                                'cvat-raw-labels-viewer',
+                            )[0] as HTMLTextAreaElement;
                             if (element && this.formRef.current) {
                                 const { selectionStart, selectionEnd } = element;
                                 // remove all "id": <number>,
@@ -164,8 +165,8 @@ export default class RawViewer extends React.PureComponent<Props> {
                                     // remove all carriage characters (textarea value does not contain them)
                                     replaced = replaced.replace(/\r/g, '');
                                     const value = this.formRef.current.getFieldValue('labels');
-                                    const updatedValue = value
-                                        .substr(0, selectionStart) + replaced + value.substr(selectionEnd);
+                                    const updatedValue =
+                                        value.substr(0, selectionStart) + replaced + value.substr(selectionEnd);
                                     this.formRef.current.setFieldsValue({ labels: updatedValue });
                                     setTimeout(() => {
                                         element.setSelectionRange(selectionEnd, selectionEnd);

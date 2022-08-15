@@ -25,7 +25,7 @@ function PhotoContextControl(props: Props): JSX.Element {
                 className={`cvat-context-image-control
     cvat-control-side-bar-icon-size ${
         activeControl === ActiveControl.PHOTO_CONTEXT ? 'cvat-active-canvas-control' : ''
-        }`}
+    }`}
                 onClick={(): void => {
                     hideShowContextImage(!contextImageHide);
                 }}

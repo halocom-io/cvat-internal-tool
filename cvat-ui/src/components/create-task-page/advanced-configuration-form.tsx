@@ -33,7 +33,7 @@ export interface AdvancedConfiguration {
     stopFrame?: number;
     frameFilter?: string;
     lfs: boolean;
-    format?: string,
+    format?: string;
     repository?: string;
     useZipChunks: boolean;
     dataChunkSize?: number;
@@ -55,7 +55,7 @@ interface Props {
     onSubmit(values: AdvancedConfiguration): void;
     installedGit: boolean;
     activeFileManagerTab: string;
-    dumpers: []
+    dumpers: [];
 }
 
 function validateURL(_: RuleObject, value: string): Promise<void> {
@@ -83,29 +83,28 @@ function validateRepository(_: RuleObject, value: string): Promise<[void, void]>
     return Promise.resolve();
 }
 
-const isInteger = ({ min, max }: { min?: number; max?: number }) => (
-    _: RuleObject,
-    value?: number | string,
-): Promise<void> => {
-    if (typeof value === 'undefined' || value === '') {
+const isInteger =
+    ({ min, max }: { min?: number; max?: number }) =>
+    (_: RuleObject, value?: number | string): Promise<void> => {
+        if (typeof value === 'undefined' || value === '') {
+            return Promise.resolve();
+        }
+
+        const intValue = +value;
+        if (Number.isNaN(intValue) || !Number.isInteger(intValue)) {
+            return Promise.reject(new Error('Value must be a positive integer'));
+        }
+
+        if (typeof min !== 'undefined' && intValue < min) {
+            return Promise.reject(new Error(`Value must be more than ${min}`));
+        }
+
+        if (typeof max !== 'undefined' && intValue > max) {
+            return Promise.reject(new Error(`Value must be less than ${max}`));
+        }
+
         return Promise.resolve();
-    }
-
-    const intValue = +value;
-    if (Number.isNaN(intValue) || !Number.isInteger(intValue)) {
-        return Promise.reject(new Error('Value must be a positive integer'));
-    }
-
-    if (typeof min !== 'undefined' && intValue < min) {
-        return Promise.reject(new Error(`Value must be more than ${min}`));
-    }
-
-    if (typeof max !== 'undefined' && intValue > max) {
-        return Promise.reject(new Error(`Value must be less than ${max}`));
-    }
-
-    return Promise.resolve();
-};
+    };
 
 const validateOverlapSize: RuleRender = ({ getFieldValue }): RuleObject => ({
     validator(_: RuleObject, value?: string | number): Promise<void> {
@@ -148,20 +147,18 @@ class AdvancedConfigurationForm extends React.PureComponent<Props> {
     public submit(): Promise<void> {
         const { onSubmit } = this.props;
         if (this.formRef.current) {
-            return this.formRef.current.validateFields().then(
-                (values: Store): Promise<void> => {
-                    const frameFilter = values.frameStep ? `step=${values.frameStep}` : undefined;
-                    const entries = Object.entries(values).filter(
-                        (entry: [string, unknown]): boolean => entry[0] !== frameFilter,
-                    );
+            return this.formRef.current.validateFields().then((values: Store): Promise<void> => {
+                const frameFilter = values.frameStep ? `step=${values.frameStep}` : undefined;
+                const entries = Object.entries(values).filter(
+                    (entry: [string, unknown]): boolean => entry[0] !== frameFilter,
+                );
 
-                    onSubmit({
-                        ...((Object.fromEntries(entries) as any) as AdvancedConfiguration),
-                        frameFilter,
-                    });
-                    return Promise.resolve();
-                },
-            );
+                onSubmit({
+                    ...(Object.fromEntries(entries) as any as AdvancedConfiguration),
+                    frameFilter,
+                });
+                return Promise.resolve();
+            });
         }
 
         return Promise.reject(new Error('Form ref is empty'));
@@ -205,11 +202,15 @@ class AdvancedConfigurationForm extends React.PureComponent<Props> {
                     <Radio value={SortingMethod.LEXICOGRAPHICAL} key={SortingMethod.LEXICOGRAPHICAL}>
                         Lexicographical
                     </Radio>
-                    <Radio value={SortingMethod.NATURAL} key={SortingMethod.NATURAL}>Natural</Radio>
+                    <Radio value={SortingMethod.NATURAL} key={SortingMethod.NATURAL}>
+                        Natural
+                    </Radio>
                     <Radio value={SortingMethod.PREDEFINED} key={SortingMethod.PREDEFINED}>
                         Predefined
                     </Radio>
-                    <Radio value={SortingMethod.RANDOM} key={SortingMethod.RANDOM}>Random</Radio>
+                    <Radio value={SortingMethod.RANDOM} key={SortingMethod.RANDOM}>
+                        Random
+                    </Radio>
                 </Radio.Group>
             </Form.Item>
         );
@@ -320,22 +321,13 @@ class AdvancedConfigurationForm extends React.PureComponent<Props> {
     private renderGitFormat(): JSX.Element {
         const { dumpers } = this.props;
         return (
-            <Form.Item
-                initialValue='CVAT for video 1.1'
-                name='format'
-                label='Choose format'
-            >
+            <Form.Item initialValue='CVAT for video 1.1' name='format' label='Choose format'>
                 <Select style={{ width: '100%' }}>
-                    {
-                        dumpers.map((dumper: any) => (
-                            <Option
-                                key={dumper.name}
-                                value={dumper.name}
-                            >
-                                {dumper.name}
-                            </Option>
-                        ))
-                    }
+                    {dumpers.map((dumper: any) => (
+                        <Option key={dumper.name} value={dumper.name}>
+                            {dumper.name}
+                        </Option>
+                    ))}
                 </Select>
             </Form.Item>
         );
@@ -353,7 +345,6 @@ class AdvancedConfigurationForm extends React.PureComponent<Props> {
                 <Row>
                     <Col span={24}>{this.renderGitLFSBox()}</Col>
                 </Row>
-
             </>
         );
     }
@@ -399,7 +390,7 @@ class AdvancedConfigurationForm extends React.PureComponent<Props> {
     private renderChunkSize(): JSX.Element {
         return (
             <CVATTooltip
-                title={(
+                title={
                     <>
                         Defines a number of frames to be packed in a chunk when send from client to server. Server
                         defines automatically if empty.
@@ -414,7 +405,7 @@ class AdvancedConfigurationForm extends React.PureComponent<Props> {
                         <br />
                         More: 1 - 4
                     </>
-                )}
+                }
             >
                 <Form.Item label='Chunk size' name='dataChunkSize' rules={[{ validator: isInteger({ min: 1 }) }]}>
                     <Input size='large' type='number' />

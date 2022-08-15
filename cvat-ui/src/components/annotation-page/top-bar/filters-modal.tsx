@@ -12,9 +12,7 @@ import Menu from 'antd/lib/menu';
 import Modal from 'antd/lib/modal';
 import { omit } from 'lodash';
 import React, { useEffect, useState } from 'react';
-import {
-    Builder, Config, ImmutableTree, JsonLogicTree, Query, Utils as QbUtils,
-} from 'react-awesome-query-builder';
+import { Builder, Config, ImmutableTree, JsonLogicTree, Query, Utils as QbUtils } from 'react-awesome-query-builder';
 import AntdWidgets from 'react-awesome-query-builder/lib/components/widgets/antd';
 import AntdConfig from 'react-awesome-query-builder/lib/config/antd';
 import { useDispatch, useSelector } from 'react-redux';
@@ -186,9 +184,9 @@ function FiltersModalComponent(): JSX.Element {
 
     useEffect(() => {
         if (visible) {
-            const treeFromActiveFilters = activeFilters.length ?
-                QbUtils.checkTree(QbUtils.loadFromJsonLogic(activeFilters[0], config), config) :
-                null;
+            const treeFromActiveFilters = activeFilters.length
+                ? QbUtils.checkTree(QbUtils.loadFromJsonLogic(activeFilters[0], config), config)
+                : null;
             setState({
                 tree: treeFromActiveFilters || initialState.tree,
                 config,
@@ -214,9 +212,8 @@ function FiltersModalComponent(): JSX.Element {
         applyFilters([QbUtils.jsonLogicFormat(state.tree, config).logic]);
     };
 
-    const isModalConfirmable = (): boolean => (
-        (QbUtils.queryString(state.tree, config) || '').trim().length > 0 && QbUtils.isValidTree(state.tree)
-    );
+    const isModalConfirmable = (): boolean =>
+        (QbUtils.queryString(state.tree, config) || '').trim().length > 0 && QbUtils.isValidTree(state.tree);
 
     const renderBuilder = (builderProps: any): JSX.Element => (
         <div className='query-builder-container'>
@@ -280,9 +277,7 @@ function FiltersModalComponent(): JSX.Element {
             >
                 <Dropdown overlay={menu}>
                     <Button type='text'>
-                        Recently used
-                        {' '}
-                        <DownOutlined />
+                        Recently used <DownOutlined />
                     </Button>
                 </Dropdown>
             </div>

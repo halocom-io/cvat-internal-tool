@@ -24,9 +24,8 @@ export interface Props {
 }
 
 function MembersList(props: Props): JSX.Element {
-    const {
-        organizationInstance, fetching, members, pageSize, pageNumber, fetchMembers, setPageNumber, setPageSize,
-    } = props;
+    const { organizationInstance, fetching, members, pageSize, pageNumber, fetchMembers, setPageNumber, setPageSize } =
+        props;
     const dispatch = useDispatch();
     const inviting = useSelector((state: CombinedState) => state.organizations.inviting);
     const updatingMember = useSelector((state: CombinedState) => state.organizations.updatingMember);

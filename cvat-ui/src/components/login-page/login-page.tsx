@@ -66,7 +66,6 @@ function LoginPageComponent(props: LoginPageComponentProps & RouteComponentProps
                                 </Col>
                             </Row>
                         )}
-
                     </Col>
                 </Row>
                 <Row className='cvat-login-openvino-block' justify='center'>
@@ -76,15 +75,12 @@ function LoginPageComponent(props: LoginPageComponentProps & RouteComponentProps
                             Learn more about products of
                             {/* It is important to keep the referer header here */}
                             {/* eslint-disable-next-line react/jsx-no-target-blank */}
-                            <a target='_blank' rel='noopener' href={consts.OPENVINO_URL}> OpenVINO™ Toolkit </a>
+                            <a target='_blank' rel='noopener' href={consts.OPENVINO_URL}>
+                                {' '}
+                                OpenVINO™ Toolkit{' '}
+                            </a>
                         </Text>
-                        <Button
-                            href={consts.OPENVINO_URL}
-                            icon={<OpenVINOIcon />}
-                            block
-                            type='link'
-                            target='_blank'
-                        />
+                        <Button href={consts.OPENVINO_URL} icon={<OpenVINOIcon />} block type='link' target='_blank' />
                     </Col>
                 </Row>
             </Content>

@@ -49,28 +49,28 @@ function ApproximationAccuracy(props: Props): React.ReactPortal | null {
     const { approxPolyAccuracy, onChange } = props;
     const target = window.document.getElementsByClassName('cvat-canvas-container')[0];
 
-    return target ?
-        ReactDOM.createPortal(
-            <Row align='middle' className='cvat-approx-poly-threshold-wrapper'>
-                <Col span={5}>
-                    <Text>Points: </Text>
-                </Col>
-                <Col offset={1} span={18}>
-                    <Slider
-                        value={approxPolyAccuracy}
-                        min={0}
-                        max={MAX_ACCURACY}
-                        step={1}
-                        dots
-                        tooltipVisible={false}
-                        onChange={onChange}
-                        marks={marks}
-                    />
-                </Col>
-            </Row>,
-            target,
-        ) :
-        null;
+    return target
+        ? ReactDOM.createPortal(
+              <Row align='middle' className='cvat-approx-poly-threshold-wrapper'>
+                  <Col span={5}>
+                      <Text>Points: </Text>
+                  </Col>
+                  <Col offset={1} span={18}>
+                      <Slider
+                          value={approxPolyAccuracy}
+                          min={0}
+                          max={MAX_ACCURACY}
+                          step={1}
+                          dots
+                          tooltipVisible={false}
+                          onChange={onChange}
+                          marks={marks}
+                      />
+                  </Col>
+              </Row>,
+              target,
+          )
+        : null;
 }
 
 export default React.memo(ApproximationAccuracy);

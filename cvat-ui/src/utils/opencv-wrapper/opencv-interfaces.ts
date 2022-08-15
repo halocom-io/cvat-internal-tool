@@ -23,5 +23,5 @@ export interface OpenCVTracker {
     name: string;
     description: string;
     type: string;
-    model: (() => TrackerModel);
+    model: () => TrackerModel;
 }

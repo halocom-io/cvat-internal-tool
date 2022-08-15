@@ -12,9 +12,7 @@ import Select from 'antd/lib/select';
 import Switch from 'antd/lib/switch';
 import Text from 'antd/lib/typography/Text';
 import LabelsEditor from 'components/labels-editor/labels-editor';
-import React, {
-    RefObject, useContext, useEffect, useRef, useState,
-} from 'react';
+import React, { RefObject, useContext, useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
 import { CombinedState } from 'reducers/interfaces';

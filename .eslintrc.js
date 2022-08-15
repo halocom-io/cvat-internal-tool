@@ -2,6 +2,8 @@
 //
 // SPDX-License-Identifier: MIT
 
+const { off } = require('process');
+
 module.exports = {
     root: true,
     env: {
@@ -14,7 +16,7 @@ module.exports = {
         ecmaVersion: 2018,
     },
     ignorePatterns: ['.eslintrc.js', 'lint-staged.config.js'],
-    plugins: ['security', 'no-unsanitized', 'eslint-plugin-header', 'import', 'simple-import-sort'],
+    plugins: ['security', 'no-unsanitized', 'eslint-plugin-header', 'import', 'simple-import-sort', 'prettier'],
     extends: [
         'eslint:recommended',
         'plugin:security/recommended',
@@ -23,16 +25,18 @@ module.exports = {
         'plugin:import/errors',
         'plugin:import/warnings',
         'plugin:import/typescript',
+        'plugin:prettier/recommended',
     ],
     rules: {
+        'object-curly-newline': 'off',
         'no-plusplus': 0,
         'no-continue': 0,
         'no-console': 0,
         'no-param-reassign': ['error', { props: false }],
         'no-restricted-syntax': [0, { selector: 'ForOfStatement' }],
         'no-await-in-loop': 0,
-        indent: ['error', 4, { SwitchCase: 1 }],
-        'max-len': ['warn', { code: 120, ignoreStrings: true }],
+        indent: 'off',
+        'max-len': 'off',
         'func-names': 0,
         'valid-typeof': 0,
         'no-useless-constructor': 0, // sometimes constructor is necessary to generate right documentation in cvat-core
@@ -41,7 +45,7 @@ module.exports = {
         'class-methods-use-this': 0,
         'no-underscore-dangle': ['error', { allowAfterThis: true }],
         'max-classes-per-file': 0,
-        'operator-linebreak': ['error', 'after'],
+        'operator-linebreak': 'off',
         'newline-per-chained-call': 0,
         'global-require': 0,
         'arrow-parens': ['error', 'always'],
@@ -53,5 +57,8 @@ module.exports = {
         'import/no-duplicates': 'error',
         'simple-import-sort/imports': 'error',
         'simple-import-sort/exports': 'error',
+        'prettier/prettier': 'error',
+        'implicit-arrow-linebreak': 0,
+        'function-paren-newline': 0,
     },
 };

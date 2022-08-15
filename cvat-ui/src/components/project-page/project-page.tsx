@@ -19,7 +19,10 @@ import ImportDatasetModal from 'components/import-dataset-modal/import-dataset-m
 import ModelRunnerDialog from 'components/model-runner-modal/model-runner-dialog';
 import MoveTaskModal from 'components/move-task-modal/move-task-modal';
 import {
-    defaultVisibility, ResourceFilterHOC, SortingComponent, updateHistoryFromQuery,
+    defaultVisibility,
+    ResourceFilterHOC,
+    SortingComponent,
+    updateHistoryFromQuery,
 } from 'components/resource-sorting-filtering';
 import TaskItem from 'components/tasks-page/task-item';
 import React, { useEffect, useState } from 'react';
@@ -30,12 +33,17 @@ import { CombinedState, Indexable, Task } from 'reducers/interfaces';
 import DetailsComponent from './details';
 import {
     config,
-    localStorageRecentCapacity, localStorageRecentKeyword, predefinedFilterValues,
+    localStorageRecentCapacity,
+    localStorageRecentKeyword,
+    predefinedFilterValues,
 } from './project-tasks-filter-configuration';
 import ProjectTopBar from './top-bar';
 
 const FilteringComponent = ResourceFilterHOC(
-    config, localStorageRecentKeyword, localStorageRecentCapacity, predefinedFilterValues,
+    config,
+    localStorageRecentKeyword,
+    localStorageRecentCapacity,
+    predefinedFilterValues,
 );
 
 interface ParamType {
@@ -140,11 +148,13 @@ export default function ProjectPageComponent(): JSX.Element {
                     <Pagination
                         className='cvat-project-tasks-pagination'
                         onChange={(page: number) => {
-                            dispatch(getProjectTasksAsync({
-                                ...tasksQuery,
-                                projectId: id,
-                                page,
-                            }));
+                            dispatch(
+                                getProjectTasksAsync({
+                                    ...tasksQuery,
+                                    projectId: id,
+                                    page,
+                                }),
+                            );
                         }}
                         showSizeChanger={false}
                         total={tasksCount}
@@ -170,12 +180,14 @@ export default function ProjectPageComponent(): JSX.Element {
                             <Input.Search
                                 enterButton
                                 onSearch={(_search: string) => {
-                                    dispatch(getProjectTasksAsync({
-                                        ...tasksQuery,
-                                        page: 1,
-                                        projectId: id,
-                                        search: _search,
-                                    }));
+                                    dispatch(
+                                        getProjectTasksAsync({
+                                            ...tasksQuery,
+                                            page: 1,
+                                            projectId: id,
+                                            search: _search,
+                                        }),
+                                    );
                                 }}
                                 defaultValue={tasksQuery.search || ''}
                                 className='cvat-project-page-tasks-search-bar'
@@ -184,18 +196,30 @@ export default function ProjectPageComponent(): JSX.Element {
                             <div>
                                 <SortingComponent
                                     visible={visibility.sorting}
-                                    onVisibleChange={(visible: boolean) => (
+                                    onVisibleChange={(visible: boolean) =>
                                         setVisibility({ ...defaultVisibility, sorting: visible })
-                                    )}
+                                    }
                                     defaultFields={tasksQuery.sort?.split(',') || ['-ID']}
-                                    sortingFields={['ID', 'Owner', 'Status', 'Assignee', 'Updated date', 'Subset', 'Mode', 'Dimension', 'Name']}
+                                    sortingFields={[
+                                        'ID',
+                                        'Owner',
+                                        'Status',
+                                        'Assignee',
+                                        'Updated date',
+                                        'Subset',
+                                        'Mode',
+                                        'Dimension',
+                                        'Name',
+                                    ]}
                                     onApplySorting={(sorting: string | null) => {
-                                        dispatch(getProjectTasksAsync({
-                                            ...tasksQuery,
-                                            page: 1,
-                                            projectId: id,
-                                            sort: sorting,
-                                        }));
+                                        dispatch(
+                                            getProjectTasksAsync({
+                                                ...tasksQuery,
+                                                page: 1,
+                                                projectId: id,
+                                                sort: sorting,
+                                            }),
+                                        );
                                     }}
                                 />
                                 <FilteringComponent
@@ -203,26 +227,28 @@ export default function ProjectPageComponent(): JSX.Element {
                                     predefinedVisible={visibility.predefined}
                                     builderVisible={visibility.builder}
                                     recentVisible={visibility.recent}
-                                    onPredefinedVisibleChange={(visible: boolean) => (
+                                    onPredefinedVisibleChange={(visible: boolean) =>
                                         setVisibility({ ...defaultVisibility, predefined: visible })
-                                    )}
-                                    onBuilderVisibleChange={(visible: boolean) => (
+                                    }
+                                    onBuilderVisibleChange={(visible: boolean) =>
                                         setVisibility({ ...defaultVisibility, builder: visible })
-                                    )}
-                                    onRecentVisibleChange={(visible: boolean) => (
+                                    }
+                                    onRecentVisibleChange={(visible: boolean) =>
                                         setVisibility({
                                             ...defaultVisibility,
                                             builder: visibility.builder,
                                             recent: visible,
                                         })
-                                    )}
+                                    }
                                     onApplyFilter={(filter: string | null) => {
-                                        dispatch(getProjectTasksAsync({
-                                            ...tasksQuery,
-                                            page: 1,
-                                            projectId: id,
-                                            filter,
-                                        }));
+                                        dispatch(
+                                            getProjectTasksAsync({
+                                                ...tasksQuery,
+                                                page: 1,
+                                                projectId: id,
+                                                filter,
+                                            }),
+                                        );
                                     }}
                                 />
                             </div>
@@ -235,9 +261,7 @@ export default function ProjectPageComponent(): JSX.Element {
                         />
                     </Col>
                 </Row>
-                { tasksFetching ? (
-                    <Spin size='large' className='cvat-spinner' />
-                ) : content }
+                {tasksFetching ? <Spin size='large' className='cvat-spinner' /> : content}
             </Col>
 
             <MoveTaskModal />

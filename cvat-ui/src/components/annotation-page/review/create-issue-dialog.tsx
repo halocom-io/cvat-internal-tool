@@ -22,9 +22,7 @@ interface FormProps {
 }
 
 function MessageForm(props: FormProps): JSX.Element {
-    const {
-        top, left, angle, scale, submit, cancel,
-    } = props;
+    const { top, left, angle, scale, submit, cancel } = props;
 
     function handleSubmit(values: Store): void {
         submit(values.issue_description);
@@ -64,9 +62,7 @@ interface Props {
 
 export default function CreateIssueDialog(props: Props): ReactPortal {
     const dispatch = useDispatch();
-    const {
-        top, left, angle, scale,
-    } = props;
+    const { top, left, angle, scale } = props;
 
     return ReactDOM.createPortal(
         <MessageForm

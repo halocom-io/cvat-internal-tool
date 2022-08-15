@@ -31,9 +31,7 @@ interface Props {
 }
 
 function TasksPageComponent(props: Props): JSX.Element {
-    const {
-        query, fetching, importing, count, countInvisible,
-    } = props;
+    const { query, fetching, importing, count, countInvisible } = props;
 
     const dispatch = useDispatch();
     const history = useHistory();
@@ -90,10 +88,12 @@ function TasksPageComponent(props: Props): JSX.Element {
                     <Pagination
                         className='cvat-tasks-pagination'
                         onChange={(page: number) => {
-                            dispatch(getTasksAsync({
-                                ...query,
-                                page,
-                            }));
+                            dispatch(
+                                getTasksAsync({
+                                    ...query,
+                                    page,
+                                }),
+                            );
                         }}
                         showSizeChanger={false}
                         total={count}
@@ -142,11 +142,13 @@ function TasksPageComponent(props: Props): JSX.Element {
                 onImportTask={(file: File) => dispatch(importTaskAsync(file))}
                 importing={importing}
             />
-            { fetching ? (
+            {fetching ? (
                 <div className='cvat-empty-tasks-list'>
                     <Spin size='large' className='cvat-spinner' />
                 </div>
-            ) : content }
+            ) : (
+                content
+            )}
             {/* <FeedbackComponent /> */}
         </div>
     );

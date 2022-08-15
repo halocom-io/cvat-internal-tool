@@ -37,9 +37,7 @@ function attrAreTheSame(prevProps: Props, nextProps: Props): boolean {
 }
 
 function ItemAttributesComponent(props: Props): JSX.Element {
-    const {
-        collapsed, attributes, values, readonly, changeAttribute, collapse,
-    } = props;
+    const { collapsed, attributes, values, readonly, changeAttribute, collapse } = props;
 
     return (
         <Row>

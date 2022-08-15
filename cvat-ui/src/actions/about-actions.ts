@@ -21,13 +21,15 @@ const aboutActions = {
 
 export type AboutActions = ActionUnion<typeof aboutActions>;
 
-export const getAboutAsync = (): ThunkAction => async (dispatch): Promise<void> => {
-    dispatch(aboutActions.getAbout());
+export const getAboutAsync =
+    (): ThunkAction =>
+    async (dispatch): Promise<void> => {
+        dispatch(aboutActions.getAbout());
 
-    try {
-        const about = await core.server.about();
-        dispatch(aboutActions.getAboutSuccess(about));
-    } catch (error) {
-        dispatch(aboutActions.getAboutFailed(error));
-    }
-};
+        try {
+            const about = await core.server.about();
+            dispatch(aboutActions.getAboutSuccess(about));
+        } catch (error) {
+            dispatch(aboutActions.getAboutFailed(error));
+        }
+    };

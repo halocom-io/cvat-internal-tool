@@ -4,28 +4,28 @@
 
 import { ImageProcessing } from './opencv-interfaces';
 
-export interface HistogramEqualization extends ImageProcessing{
-    processImage: (src:ImageData, frameNumber: number)=>ImageData;
+export interface HistogramEqualization extends ImageProcessing {
+    processImage: (src: ImageData, frameNumber: number) => ImageData;
 }
 
-interface HashedImage{
-    frameNumber: number,
-    frameData: ImageData,
-    timestamp: number,
+interface HashedImage {
+    frameNumber: number;
+    frameData: ImageData;
+    timestamp: number;
 }
 
 export default class HistogramEqualizationImplementation implements HistogramEqualization {
     private readonly bufferSize: number = 20;
-    private cv:any;
+    private cv: any;
     private histHash: HashedImage[];
     public currentProcessedImage: number | undefined;
 
-    constructor(cv:any) {
+    constructor(cv: any) {
         this.cv = cv;
         this.histHash = [];
     }
 
-    public processImage(src:ImageData, frameNumber: number) : ImageData {
+    public processImage(src: ImageData, frameNumber: number): ImageData {
         const hashedFrame = this.hashedFrame(frameNumber);
         if (!hashedFrame) {
             const { cv } = this;
@@ -49,9 +49,12 @@ export default class HistogramEqualizationImplementation implements HistogramEqu
                 cv.equalizeHist(Y, equalizedY);
                 Y.delete();
                 channels = new cv.MatVector();
-                channels.push_back(equalizedY); equalizedY.delete();
-                channels.push_back(U); U.delete();
-                channels.push_back(V); V.delete();
+                channels.push_back(equalizedY);
+                equalizedY.delete();
+                channels.push_back(U);
+                U.delete();
+                channels.push_back(V);
+                V.delete();
                 cv.merge(channels, YUVDist);
                 cv.cvtColor(YUVDist, RGBDist, cv.COLOR_YUV2RGB, 0);
                 cv.cvtColor(RGBDist, RGBADist, cv.COLOR_RGB2RGBA, 0);
@@ -84,7 +87,7 @@ export default class HistogramEqualizationImplementation implements HistogramEqu
         return hashed?.frameData || null;
     }
 
-    private hashFrame(frameData:ImageData, frameNumber:number):void {
+    private hashFrame(frameData: ImageData, frameNumber: number): void {
         if (this.histHash.length >= this.bufferSize) {
             const leastRecentlyUsed = this.histHash[0];
             const currentTimestamp = Date.now();

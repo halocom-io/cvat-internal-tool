@@ -54,15 +54,17 @@ export default function IssueAggregatorComponent(): JSX.Element | null {
     useEffect(() => {
         if (canvasInstance instanceof Canvas) {
             type IssueRegionSet = Record<number, { hidden: boolean; points: number[] }>;
-            const regions = !issuesHidden ? frameIssues
-                .filter((_issue: any) => !issuesResolvedHidden || !_issue.resolved)
-                .reduce((acc: IssueRegionSet, issue: any): IssueRegionSet => {
-                    acc[issue.id] = {
-                        points: issue.position,
-                        hidden: issue.resolved,
-                    };
-                    return acc;
-                }, {}) : {};
+            const regions = !issuesHidden
+                ? frameIssues
+                      .filter((_issue: any) => !issuesResolvedHidden || !_issue.resolved)
+                      .reduce((acc: IssueRegionSet, issue: any): IssueRegionSet => {
+                          acc[issue.id] = {
+                              points: issue.position,
+                              hidden: issue.resolved,
+                          };
+                          return acc;
+                      }, {})
+                : {};
 
             if (newIssuePosition) {
                 // regions[0] is always empty because key is an id of an issue (<0, >0 are possible)
@@ -164,12 +166,12 @@ export default function IssueAggregatorComponent(): JSX.Element | null {
     }
 
     const translated = newIssuePosition ? newIssuePosition.map((coord: number): number => coord + geometry.offset) : [];
-    const createLeft = translated.length ?
-        Math.max(...translated.filter((_: number, idx: number): boolean => idx % 2 === 0)) :
-        null;
-    const createTop = translated.length ?
-        Math.min(...translated.filter((_: number, idx: number): boolean => idx % 2 !== 0)) :
-        null;
+    const createLeft = translated.length
+        ? Math.max(...translated.filter((_: number, idx: number): boolean => idx % 2 === 0))
+        : null;
+    const createTop = translated.length
+        ? Math.min(...translated.filter((_: number, idx: number): boolean => idx % 2 !== 0))
+        : null;
 
     return (
         <>

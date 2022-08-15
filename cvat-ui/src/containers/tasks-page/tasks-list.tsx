@@ -35,11 +35,7 @@ type TasksListContainerProps = StateToProps & DispatchToProps;
 function TasksListContainer(props: TasksListContainerProps): JSX.Element {
     const { tasks } = props;
 
-    return (
-        <TasksListComponent
-            currentTasksIndexes={tasks.current.map((task): number => task.instance.id)}
-        />
-    );
+    return <TasksListComponent currentTasksIndexes={tasks.current.map((task): number => task.instance.id)} />;
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(TasksListContainer);

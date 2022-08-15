@@ -15,11 +15,10 @@ export enum FormatsActionTypes {
 
 const formatsActions = {
     getFormats: () => createAction(FormatsActionTypes.GET_FORMATS),
-    getFormatsSuccess: (annotationFormats: any) => (
+    getFormatsSuccess: (annotationFormats: any) =>
         createAction(FormatsActionTypes.GET_FORMATS_SUCCESS, {
             annotationFormats,
-        })
-    ),
+        }),
     getFormatsFailed: (error: any) => createAction(FormatsActionTypes.GET_FORMATS_FAILED, { error }),
 };
 

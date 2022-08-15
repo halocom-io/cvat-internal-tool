@@ -20,9 +20,7 @@ export interface ICardHeightHOC {
 }
 
 export function useCardHeightHOC(params: ICardHeightHOC): () => string {
-    const {
-        numberOfRows, paddings, containerClassName, siblingClassNames,
-    } = params;
+    const { numberOfRows, paddings, containerClassName, siblingClassNames } = params;
 
     return (): string => {
         const [height, setHeight] = useState('auto');

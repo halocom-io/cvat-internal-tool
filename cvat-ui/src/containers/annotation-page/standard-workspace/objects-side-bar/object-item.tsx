@@ -20,9 +20,7 @@ import { Canvas3d } from 'cvat-canvas3d-wrapper';
 import { LogType } from 'cvat-logger';
 import React from 'react';
 import { connect } from 'react-redux';
-import {
-    ActiveControl, ColorBy, CombinedState, ShapeType,
-} from 'reducers/interfaces';
+import { ActiveControl, ColorBy, CombinedState, ShapeType } from 'reducers/interfaces';
 import { shift } from 'utils/math';
 
 interface OwnProps {
@@ -152,9 +150,7 @@ class ObjectItemContainer extends React.PureComponent<Props> {
     };
 
     private remove = (): void => {
-        const {
-            objectState, jobInstance, readonly, removeObject,
-        } = this.props;
+        const { objectState, jobInstance, readonly, removeObject } = this.props;
 
         if (!readonly) {
             removeObject(jobInstance, objectState);
@@ -220,9 +216,7 @@ class ObjectItemContainer extends React.PureComponent<Props> {
     };
 
     private activate = (): void => {
-        const {
-            objectState, ready, activeControl, activateObject, canvasInstance,
-        } = this.props;
+        const { objectState, ready, activeControl, activateObject, canvasInstance } = this.props;
 
         if (ready && activeControl === ActiveControl.CURSOR) {
             activateObject(objectState.clientID);

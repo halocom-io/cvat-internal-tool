@@ -2,9 +2,7 @@
 //
 // SPDX-License-Identifier: MIT
 
-import {
-    ColorBy, GridColor, SettingsState, ToolsBlockerState,
-} from 'reducers/interfaces';
+import { ColorBy, GridColor, SettingsState, ToolsBlockerState } from 'reducers/interfaces';
 import { AnyAction } from 'redux';
 
 export enum SettingsActionTypes {

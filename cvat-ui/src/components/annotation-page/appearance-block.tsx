@@ -53,9 +53,7 @@ function mapStateToProps(state: CombinedState): StateToProps {
             job: { instance: jobInstance },
         },
         settings: {
-            shapes: {
-                colorBy, opacity, selectedOpacity, outlined, outlineColor, showBitmap, showProjections,
-            },
+            shapes: { colorBy, opacity, selectedOpacity, outlined, outlineColor, showBitmap, showProjections },
         },
     } = state;
 
@@ -129,11 +127,11 @@ function AppearanceBlock(props: Props): JSX.Element {
             className='cvat-objects-appearance-collapse'
         >
             <Collapse.Panel
-                header={(
+                header={
                     <Text strong className='cvat-objects-appearance-collapse-header'>
                         Appearance
                     </Text>
-                )}
+                }
                 key='appearance'
             >
                 <div className='cvat-objects-appearance-content'>

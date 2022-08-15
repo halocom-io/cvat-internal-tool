@@ -37,9 +37,7 @@ function attrIsTheSame(prevProps: Props, nextProps: Props): boolean {
 }
 
 function ItemAttributeComponent(props: Props): JSX.Element {
-    const {
-        attrInputType, attrValues, attrValue, attrName, attrID, readonly, changeAttribute,
-    } = props;
+    const { attrInputType, attrValues, attrValue, attrName, attrID, readonly, changeAttribute } = props;
 
     const attrNameStyle: React.CSSProperties = { wordBreak: 'break-word', lineHeight: '1em' };
 

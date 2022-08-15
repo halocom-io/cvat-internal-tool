@@ -4,8 +4,11 @@
 
 import {
     DeleteOutlined,
-    EditTwoTone, EnvironmentOutlined,
-    MailOutlined, PhoneOutlined, PlusCircleOutlined,
+    EditTwoTone,
+    EnvironmentOutlined,
+    MailOutlined,
+    PhoneOutlined,
+    PlusCircleOutlined,
 } from '@ant-design/icons';
 import {
     inviteOrganizationMembersAsync,
@@ -35,9 +38,7 @@ export interface Props {
 
 function OrganizationTopBar(props: Props): JSX.Element {
     const { organizationInstance, userInstance, fetchMembers } = props;
-    const {
-        owner, createdDate, description, updatedDate, slug, name, contact,
-    } = organizationInstance;
+    const { owner, createdDate, description, updatedDate, slug, name, contact } = organizationInstance;
     const { id: userID } = userInstance;
     const [form] = useForm();
     const descriptionEditingRef = useRef<HTMLDivElement>(null);
@@ -122,13 +123,14 @@ function OrganizationTopBar(props: Props): JSX.Element {
                     <div className='cvat-organization-top-bar-contacts'>
                         <div>
                             <PhoneOutlined />
-                            { !contact.phoneNumber ? <Text type='secondary'>Add phone number</Text> : null }
+                            {!contact.phoneNumber ? <Text type='secondary'>Add phone number</Text> : null}
                             <Text
                                 type='secondary'
                                 editable={{
                                     onChange: (value: string) => {
                                         organizationContacts = {
-                                            ...organizationInstance.contact, phoneNumber: value,
+                                            ...organizationInstance.contact,
+                                            phoneNumber: value,
                                         };
                                     },
                                     onEnd: () => {
@@ -142,13 +144,14 @@ function OrganizationTopBar(props: Props): JSX.Element {
                         </div>
                         <div>
                             <MailOutlined />
-                            { !contact.email ? <Text type='secondary'>Add email</Text> : null }
+                            {!contact.email ? <Text type='secondary'>Add email</Text> : null}
                             <Text
                                 type='secondary'
                                 editable={{
                                     onChange: (value: string) => {
                                         organizationContacts = {
-                                            ...organizationInstance.contact, email: value,
+                                            ...organizationInstance.contact,
+                                            email: value,
                                         };
                                     },
                                     onEnd: () => {
@@ -162,13 +165,14 @@ function OrganizationTopBar(props: Props): JSX.Element {
                         </div>
                         <div>
                             <EnvironmentOutlined />
-                            { !contact.location ? <Text type='secondary'>Add location</Text> : null }
+                            {!contact.location ? <Text type='secondary'>Add location</Text> : null}
                             <Text
                                 type='secondary'
                                 editable={{
                                     onChange: (value: string) => {
                                         organizationContacts = {
-                                            ...organizationInstance.contact, location: value,
+                                            ...organizationInstance.contact,
+                                            location: value,
                                         };
                                     },
                                     onEnd: () => {
@@ -325,9 +329,7 @@ function OrganizationTopBar(props: Props): JSX.Element {
                                             </Form.Item>
                                         </Col>
                                         <Col span={1} offset={1}>
-                                            {index > 0 ? (
-                                                <DeleteOutlined onClick={() => remove(field.name)} />
-                                            ) : null}
+                                            {index > 0 ? <DeleteOutlined onClick={() => remove(field.name)} /> : null}
                                         </Col>
                                     </Row>
                                 ))}

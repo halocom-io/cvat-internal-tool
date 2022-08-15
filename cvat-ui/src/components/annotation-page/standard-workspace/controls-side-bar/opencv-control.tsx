@@ -173,9 +173,7 @@ class OpenCVControlComponent extends React.PureComponent<Props & DispatchToProps
 
     public componentDidUpdate(prevProps: Props, prevState: State): void {
         const { approxPolyAccuracy } = this.state;
-        const {
-            isActivated, defaultApproxPolyAccuracy, canvasInstance, toolsBlockerState,
-        } = this.props;
+        const { isActivated, defaultApproxPolyAccuracy, canvasInstance, toolsBlockerState } = this.props;
 
         if (!prevProps.isActivated && isActivated) {
             // reset flags & states before using a tool
@@ -248,9 +246,7 @@ class OpenCVControlComponent extends React.PureComponent<Props & DispatchToProps
             return;
         }
 
-        const {
-            shapesUpdated, isDone, threshold, shapes,
-        } = (e as CustomEvent).detail;
+        const { shapesUpdated, isDone, threshold, shapes } = (e as CustomEvent).detail;
         const pressedPoints = convertShapesForInteractor(shapes, 0).flat();
         try {
             if (shapesUpdated) {
@@ -314,9 +310,7 @@ class OpenCVControlComponent extends React.PureComponent<Props & DispatchToProps
     };
 
     private onTracking = async (e: Event): Promise<void> => {
-        const {
-            isActivated, jobInstance, frame, curZOrder, fetchAnnotations,
-        } = this.props;
+        const { isActivated, jobInstance, frame, curZOrder, fetchAnnotations } = this.props;
 
         if (!isActivated) {
             return;
@@ -384,9 +378,7 @@ class OpenCVControlComponent extends React.PureComponent<Props & DispatchToProps
     };
 
     private onChangeToolsBlockerState = (event: string): void => {
-        const {
-            isActivated, toolsBlockerState, onSwitchToolsBlockerState, canvasInstance,
-        } = this.props;
+        const { isActivated, toolsBlockerState, onSwitchToolsBlockerState, canvasInstance } = this.props;
         if (isActivated && event === 'keyup') {
             onSwitchToolsBlockerState({ algorithmsLocked: !toolsBlockerState.algorithmsLocked });
             canvasInstance.interact({
@@ -400,16 +392,15 @@ class OpenCVControlComponent extends React.PureComponent<Props & DispatchToProps
 
     private runImageModifier = async (): Promise<void> => {
         const { activeImageModifiers } = this.state;
-        const {
-            frameData, states, curZOrder, canvasInstance, frame,
-        } = this.props;
+        const { frameData, states, curZOrder, canvasInstance, frame } = this.props;
 
         try {
             if (activeImageModifiers.length !== 0 && activeImageModifiers[0].modifier.currentProcessedImage !== frame) {
                 this.enableCanvasForceUpdate();
                 const imageData = this.getCanvasImageData();
                 const newImageData = activeImageModifiers.reduce(
-                    (oldImageData, activeImageModifier) => activeImageModifier.modifier.processImage(oldImageData, frame),
+                    (oldImageData, activeImageModifier) =>
+                        activeImageModifier.modifier.processImage(oldImageData, frame),
                     imageData,
                 );
                 const imageBitmap = await createImageBitmap(newImageData);
@@ -427,34 +418,35 @@ class OpenCVControlComponent extends React.PureComponent<Props & DispatchToProps
         }
     };
 
-    private applyTracking = (imageData: ImageData, shape: TrackedShape, objectState: any): Promise<void> => new Promise((resolve, reject) => {
-        setTimeout(() => {
-            try {
-                const stateIsRelevant =
+    private applyTracking = (imageData: ImageData, shape: TrackedShape, objectState: any): Promise<void> =>
+        new Promise((resolve, reject) => {
+            setTimeout(() => {
+                try {
+                    const stateIsRelevant =
                         objectState.points.length === shape.shapePoints.length &&
                         objectState.points.every((coord: number, index: number) => coord === shape.shapePoints[index]);
-                if (!stateIsRelevant) {
-                    shape.trackerModel.reinit(objectState.points);
-                    shape.shapePoints = objectState.points;
+                    if (!stateIsRelevant) {
+                        shape.trackerModel.reinit(objectState.points);
+                        shape.shapePoints = objectState.points;
+                    }
+                    const { updated, points } = shape.trackerModel.update(imageData);
+                    if (updated) {
+                        objectState.points = points;
+                        objectState
+                            .save()
+                            .then(() => {
+                                shape.shapePoints = points;
+                            })
+                            .catch((error) => {
+                                reject(error);
+                            });
+                    }
+                    resolve();
+                } catch (error) {
+                    reject(error);
                 }
-                const { updated, points } = shape.trackerModel.update(imageData);
-                if (updated) {
-                    objectState.points = points;
-                    objectState
-                        .save()
-                        .then(() => {
-                            shape.shapePoints = points;
-                        })
-                        .catch((error) => {
-                            reject(error);
-                        });
-                }
-                resolve();
-            } catch (error) {
-                reject(error);
-            }
+            });
         });
-    });
 
     private setActiveTracker = (value: string): void => {
         const { trackers } = this.state;
@@ -464,9 +456,7 @@ class OpenCVControlComponent extends React.PureComponent<Props & DispatchToProps
     };
 
     private checkTrackedStates(prevProps: Props): void {
-        const {
-            frame, states: objectStates, fetchAnnotations, switchNavigationBlocked,
-        } = this.props;
+        const { frame, states: objectStates, fetchAnnotations, switchNavigationBlocked } = this.props;
         const { trackedShapes } = this.state;
         if (prevProps.frame !== frame && trackedShapes.length) {
             type AccumulatorType = {
@@ -682,9 +672,7 @@ class OpenCVControlComponent extends React.PureComponent<Props & DispatchToProps
 
     private renderTrackingContent(): JSX.Element {
         const { activeLabelID, trackers, activeTracker } = this.state;
-        const {
-            labels, canvasInstance, onInteractionStart, frame, jobInstance,
-        } = this.props;
+        const { labels, canvasInstance, onInteractionStart, frame, jobInstance } = this.props;
         if (!trackers.length) {
             return (
                 <Row justify='center' align='middle' className='cvat-opencv-tracker-content'>
@@ -846,24 +834,24 @@ class OpenCVControlComponent extends React.PureComponent<Props & DispatchToProps
     public render(): JSX.Element {
         const { isActivated, canvasInstance, labels } = this.props;
         const { libraryInitialized, approxPolyAccuracy, mode } = this.state;
-        const dynamcPopoverPros = isActivated ?
-            {
-                overlayStyle: {
-                    display: 'none',
-                },
-            } :
-            {};
+        const dynamcPopoverPros = isActivated
+            ? {
+                  overlayStyle: {
+                      display: 'none',
+                  },
+              }
+            : {};
 
-        const dynamicIconProps = isActivated ?
-            {
-                className: 'cvat-opencv-control cvat-active-canvas-control',
-                onClick: (): void => {
-                    canvasInstance.interact({ enabled: false });
-                },
-            } :
-            {
-                className: 'cvat-tools-control',
-            };
+        const dynamicIconProps = isActivated
+            ? {
+                  className: 'cvat-opencv-control cvat-active-canvas-control',
+                  onClick: (): void => {
+                      canvasInstance.interact({ enabled: false });
+                  },
+              }
+            : {
+                  className: 'cvat-tools-control',
+              };
 
         const Magic = () => <CubeTransparentIcon width={40} height={40} />;
 

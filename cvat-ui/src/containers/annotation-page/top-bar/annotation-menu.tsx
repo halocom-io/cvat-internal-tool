@@ -71,7 +71,7 @@ function mapDispatchToProps(dispatch: any): DispatchToProps {
         showExportModal(jobInstance: any): void {
             dispatch(exportActions.openExportModal(jobInstance));
         },
-        removeAnnotations(startnumber: number, endnumber: number, delTrackKeyframesOnly:boolean) {
+        removeAnnotations(startnumber: number, endnumber: number, delTrackKeyframesOnly: boolean) {
             dispatch(removeAnnotationsAsyncAction(startnumber, endnumber, delTrackKeyframesOnly));
         },
         setForceExitAnnotationFlag(forceExit: boolean): void {

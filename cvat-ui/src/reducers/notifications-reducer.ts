@@ -656,8 +656,7 @@ export default function (state = defaultState, action: AnyAction): Notifications
                     ...state.messages,
                     projects: {
                         ...state.messages.projects,
-                        restoringDone:
-                            `Project has been created succesfully.
+                        restoringDone: `Project has been created succesfully.
                              Click <a href="/projects/${projectID}">here</a> to open`,
                     },
                 },
@@ -1004,10 +1003,7 @@ export default function (state = defaultState, action: AnyAction): Notifications
         case AnnotationActionTypes.UPLOAD_JOB_ANNOTATIONS_FAILED: {
             const { job, error } = action.payload;
 
-            const {
-                id: jobID,
-                taskId: taskID,
-            } = job;
+            const { id: jobID, taskId: taskID } = job;
 
             return {
                 ...state,
@@ -1355,8 +1351,7 @@ export default function (state = defaultState, action: AnyAction): Notifications
                     cloudStorages: {
                         ...state.errors.cloudStorages,
                         deleting: {
-                            message:
-                                `Could not delete cloud storage ${cloudStorageID}`,
+                            message: `Could not delete cloud storage ${cloudStorageID}`,
                             reason: action.payload.error.toString(),
                             className: 'cvat-notification-notice-delete-cloud-storage-failed',
                         },

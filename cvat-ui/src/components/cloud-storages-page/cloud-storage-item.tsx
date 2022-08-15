@@ -31,15 +31,7 @@ export default function CloudStorageItemComponent(props: Props): JSX.Element {
     const dispatch = useDispatch();
 
     const { cloudStorage } = props;
-    const {
-        id,
-        displayName,
-        providerType,
-        owner,
-        createdDate,
-        updatedDate,
-        description,
-    } = cloudStorage;
+    const { id, displayName, providerType, owner, createdDate, updatedDate, description } = cloudStorage;
     const deletes = useSelector((state: CombinedState) => state.cloudStorages.activities.deletes);
     const deleted = cloudStorage.id in deletes ? deletes[cloudStorage.id] : false;
 
@@ -72,7 +64,7 @@ export default function CloudStorageItemComponent(props: Props): JSX.Element {
 
     return (
         <Card
-            cover={(
+            cover={
                 <>
                     <Preview cloudStorage={cloudStorage} />
                     {description ? (
@@ -81,20 +73,20 @@ export default function CloudStorageItemComponent(props: Props): JSX.Element {
                         </CVATTooltip>
                     ) : null}
                 </>
-            )}
+            }
             size='small'
             style={style}
             className='cvat-cloud-storage-item'
             hoverable
         >
             <Meta
-                title={(
+                title={
                     <Paragraph>
                         <Text strong>{`#${id}: `}</Text>
                         <Text>{displayName}</Text>
                     </Paragraph>
-                )}
-                description={(
+                }
+                description={
                     <>
                         <Paragraph>
                             <Text type='secondary'>Provider: </Text>
@@ -112,12 +104,12 @@ export default function CloudStorageItemComponent(props: Props): JSX.Element {
                         </Paragraph>
                         <Status cloudStorage={cloudStorage} />
                         <Dropdown
-                            overlay={(
+                            overlay={
                                 <Menu className='cvat-project-actions-menu'>
                                     <Menu.Item onClick={onUpdate}>Update</Menu.Item>
                                     <Menu.Item onClick={onDelete}>Delete</Menu.Item>
                                 </Menu>
-                            )}
+                            }
                         >
                             <Button
                                 className='cvat-cloud-storage-item-menu-button'
@@ -127,7 +119,7 @@ export default function CloudStorageItemComponent(props: Props): JSX.Element {
                             />
                         </Dropdown>
                     </>
-                )}
+                }
             />
         </Card>
     );

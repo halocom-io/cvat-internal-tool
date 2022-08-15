@@ -44,9 +44,7 @@ const searchUsers = debounce(
 );
 
 export default function UserSelector(props: Props): JSX.Element {
-    const {
-        value, className, username, onSelect,
-    } = props;
+    const { value, className, username, onSelect } = props;
     const [searchPhrase, setSearchPhrase] = useState(username || '');
     const [initialUsers, setInitialUsers] = useState<User[]>([]);
     const [users, setUsers] = useState<User[]>([]);

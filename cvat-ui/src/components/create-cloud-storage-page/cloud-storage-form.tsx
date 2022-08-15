@@ -375,7 +375,9 @@ export default function CreateCloudStorageForm(props: Props): JSX.Element {
                             visibilityToggle={accountNameVisibility}
                             onChange={() => setAccountNameVisibility(true)}
                             onFocus={() => onFocusCredentialsItem('accountName', 'account_name')}
-                            onBlur={() => onBlurCredentialsItem('accountName', 'account_name', setAccountNameVisibility)}
+                            onBlur={() =>
+                                onBlurCredentialsItem('accountName', 'account_name', setAccountNameVisibility)
+                            }
                         />
                     </Form.Item>
                     <Form.Item
@@ -389,7 +391,9 @@ export default function CreateCloudStorageForm(props: Props): JSX.Element {
                             maxLength={437}
                             onChange={() => setSessionTokenVisibility(true)}
                             onFocus={() => onFocusCredentialsItem('sessionToken', 'session_token')}
-                            onBlur={() => onBlurCredentialsItem('sessionToken', 'session_token', setSessionTokenVisibility)}
+                            onBlur={() =>
+                                onBlurCredentialsItem('sessionToken', 'session_token', setSessionTokenVisibility)
+                            }
                         />
                     </Form.Item>
                 </>
@@ -421,8 +425,9 @@ export default function CreateCloudStorageForm(props: Props): JSX.Element {
                 <Form.Item
                     name='key_file'
                     {...internalCommonProps}
-                    label={(
-                        <Tooltip title='You can upload a key file.
+                    label={
+                        <Tooltip
+                            title='You can upload a key file.
                                 If you leave this field blank, the environment variable
                                 GOOGLE_APPLICATION_CREDENTIALS will be used.'
                         >
@@ -436,17 +441,14 @@ export default function CreateCloudStorageForm(props: Props): JSX.Element {
                                 <QuestionCircleOutlined />
                             </Button>
                         </Tooltip>
-
-                    )}
+                    }
                 >
                     <Space align='start' className='cvat-cloud-storage-form-item-key-file'>
                         <Dragger
                             accept='.json, application/json'
                             multiple={false}
                             maxCount={1}
-                            fileList={
-                                uploadedKeyFile ? [{ uid: '1', name: uploadedKeyFile.name }] : []
-                            }
+                            fileList={uploadedKeyFile ? [{ uid: '1', name: uploadedKeyFile.name }] : []}
                             beforeUpload={(file: RcFile): boolean => {
                                 setIsFakeKeyFileAttached(false);
                                 setUploadedKeyFile(file);
@@ -576,25 +578,15 @@ export default function CreateCloudStorageForm(props: Props): JSX.Element {
                     {...internalCommonProps}
                 >
                     <Select onSelect={(value: CredentialsType) => onChangeCredentialsType(value)}>
-                        <Select.Option value={CredentialsType.KEY_FILE_PATH}>
-                            Key file
-                        </Select.Option>
+                        <Select.Option value={CredentialsType.KEY_FILE_PATH}>Key file</Select.Option>
                         <Select.Option value={CredentialsType.ANONYMOUS_ACCESS}>Anonymous access</Select.Option>
                     </Select>
                 </Form.Item>
                 {credentialsBlok()}
-                <Form.Item
-                    label='Prefix'
-                    name='prefix'
-                    {...internalCommonProps}
-                >
+                <Form.Item label='Prefix' name='prefix' {...internalCommonProps}>
                     <Input />
                 </Form.Item>
-                <Form.Item
-                    label='Project ID'
-                    name='project_id'
-                    {...internalCommonProps}
-                >
+                <Form.Item label='Project ID' name='project_id' {...internalCommonProps}>
                     <Input />
                 </Form.Item>
                 <GCSLocation

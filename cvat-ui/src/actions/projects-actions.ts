@@ -5,10 +5,7 @@
 import { getTasksAsync } from 'actions/tasks-actions';
 import getCore from 'cvat-core-wrapper';
 import { getCVATStore } from 'cvat-store';
-import {
-    CombinedState, Indexable,
-    ProjectsQuery, TasksQuery,
-} from 'reducers/interfaces';
+import { CombinedState, Indexable, ProjectsQuery, TasksQuery } from 'reducers/interfaces';
 import { ActionCreator, Dispatch } from 'redux';
 import { ActionUnion, createAction, ThunkAction } from 'utils/redux';
 
@@ -85,10 +82,7 @@ export function getProjectTasksAsync(tasksQuery: Partial<TasksQuery> = {}): Thun
     return (dispatch: ActionCreator<Dispatch>, getState: () => CombinedState): void => {
         const store = getCVATStore();
         const state: CombinedState = store.getState();
-        dispatch(projectActions.updateProjectsGettingQuery(
-            getState().projects.gettingQuery,
-            tasksQuery,
-        ));
+        dispatch(projectActions.updateProjectsGettingQuery(getState().projects.gettingQuery, tasksQuery));
         const query: Partial<TasksQuery> = {
             ...state.projects.tasksGettingQuery,
             ...tasksQuery,
@@ -98,9 +92,7 @@ export function getProjectTasksAsync(tasksQuery: Partial<TasksQuery> = {}): Thun
     };
 }
 
-export function getProjectsAsync(
-    query: Partial<ProjectsQuery>, tasksQuery: Partial<TasksQuery> = {},
-): ThunkAction {
+export function getProjectsAsync(query: Partial<ProjectsQuery>, tasksQuery: Partial<TasksQuery> = {}): ThunkAction {
     return async (dispatch: ActionCreator<Dispatch>): Promise<void> => {
         dispatch(projectActions.getProjects());
         dispatch(projectActions.updateProjectsGettingQuery(query, tasksQuery));
@@ -133,10 +125,12 @@ export function getProjectsAsync(
 
         // Appropriate tasks fetching proccess needs with retrieving only a single project
         if (Object.keys(filteredQuery).includes('id') && typeof filteredQuery.id === 'number') {
-            dispatch(getProjectTasksAsync({
-                ...tasksQuery,
-                projectId: filteredQuery.id,
-            }));
+            dispatch(
+                getProjectTasksAsync({
+                    ...tasksQuery,
+                    projectId: filteredQuery.id,
+                }),
+            );
         }
     };
 }

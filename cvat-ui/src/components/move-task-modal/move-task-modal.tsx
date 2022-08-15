@@ -117,7 +117,7 @@ export default function MoveTaskModal(): JSX.Element {
             onCancel={onCancel}
             onOk={submitMove}
             okButtonProps={{ disabled: taskUpdating }}
-            title={(
+            title={
                 <span>
                     {`Move task ${task?.id} to project`}
                     {/* TODO: replace placeholder */}
@@ -125,7 +125,7 @@ export default function MoveTaskModal(): JSX.Element {
                         <QuestionCircleOutlined className='ant-typography-secondary' />
                     </CVATTooltip>
                 </span>
-            )}
+            }
             className='cvat-task-move-modal'
         >
             <Row align='middle'>

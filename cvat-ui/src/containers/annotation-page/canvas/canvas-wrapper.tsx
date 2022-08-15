@@ -168,9 +168,7 @@ function mapStateToProps(state: CombinedState): StateToProps {
                 textPosition,
                 textContent,
             },
-            shapes: {
-                opacity, colorBy, selectedOpacity, outlined, outlineColor, showBitmap, showProjections,
-            },
+            shapes: { opacity, colorBy, selectedOpacity, outlined, outlineColor, showBitmap, showProjections },
         },
         shortcuts: { keyMap },
     } = state;

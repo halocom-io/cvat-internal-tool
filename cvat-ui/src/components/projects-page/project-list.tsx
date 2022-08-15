@@ -19,14 +19,20 @@ export default function ProjectListComponent(): JSX.Element {
     const tasksQuery = useSelector((state: CombinedState) => state.projects.tasksGettingQuery);
     const { page } = gettingQuery;
 
-    const changePage = useCallback((p: number) => {
-        dispatch(
-            getProjectsAsync({
-                ...gettingQuery,
-                page: p,
-            }, tasksQuery),
-        );
-    }, [gettingQuery]);
+    const changePage = useCallback(
+        (p: number) => {
+            dispatch(
+                getProjectsAsync(
+                    {
+                        ...gettingQuery,
+                        page: p,
+                    },
+                    tasksQuery,
+                ),
+            );
+        },
+        [gettingQuery],
+    );
 
     const dimensions = {
         md: 22,

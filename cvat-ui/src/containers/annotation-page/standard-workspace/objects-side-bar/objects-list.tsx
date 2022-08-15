@@ -14,10 +14,7 @@ import {
 import ObjectsListComponent from 'components/annotation-page/standard-workspace/objects-side-bar/objects-list';
 import React from 'react';
 import { connect } from 'react-redux';
-import {
-    ColorBy,
-    CombinedState, ObjectType, StatesOrdering,
-} from 'reducers/interfaces';
+import { ColorBy, CombinedState, ObjectType, StatesOrdering } from 'reducers/interfaces';
 import isAbleToChangeFrame from 'utils/is-able-to-change-frame';
 import GlobalHotKeys, { KeyMap } from 'utils/mousetrap-react';
 

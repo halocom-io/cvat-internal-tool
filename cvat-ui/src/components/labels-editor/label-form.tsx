@@ -18,10 +18,7 @@ import { ColorizeIcon } from 'icons';
 import React, { RefObject } from 'react';
 import patterns from 'utils/validation-patterns';
 
-import {
-    Attribute,
-    equalArrayHead, idGenerator, Label,
-} from './common';
+import { Attribute, equalArrayHead, idGenerator, Label } from './common';
 
 export enum AttributeType {
     SELECT = 'SELECT',
@@ -216,7 +213,8 @@ export default class LabelForm extends React.Component<Props> {
                         {
                             required: true,
                             message: 'Please, specify a default value',
-                        }]}
+                        },
+                    ]}
                     name={[key, 'values']}
                     fieldKey={[fieldInstance.fieldKey, 'values']}
                 >
@@ -537,9 +535,7 @@ export default class LabelForm extends React.Component<Props> {
                     <Col span={3} offset={1}>
                         {this.renderChangeColorButton()}
                     </Col>
-                    <Col offset={1}>
-                        {this.renderNewAttributeButton()}
-                    </Col>
+                    <Col offset={1}>{this.renderNewAttributeButton()}</Col>
                 </Row>
                 <Row justify='start' align='top'>
                     <Col span={24}>

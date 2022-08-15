@@ -14,7 +14,7 @@ export interface IntelligentScissorsParams {
         enableSliding: boolean;
         allowRemoveOnlyLast: boolean;
         minPosVertices: number;
-        onChangeToolsBlockerState: (event:string)=>void;
+        onChangeToolsBlockerState: (event: string) => void;
     };
 }
 
@@ -22,7 +22,7 @@ export interface IntelligentScissors {
     reset(): void;
     run(points: number[], image: ImageData, offsetX: number, offsetY: number): number[];
     params: IntelligentScissorsParams;
-    switchBlockMode(mode?:boolean):void;
+    switchBlockMode(mode?: boolean): void;
 }
 
 function applyOffset(points: Point[], offsetX: number, offsetY: number): Point[] {
@@ -36,30 +36,30 @@ function applyOffset(points: Point[], offsetX: number, offsetY: number): Point[]
 
 export default class IntelligentScissorsImplementation implements IntelligentScissors {
     private cv: any;
-    private onChangeToolsBlockerState: (event:string)=>void;
+    private onChangeToolsBlockerState: (event: string) => void;
     private scissors: {
         tool: any;
         state: {
             path: number[];
             anchors: Record<
-            number,
-            {
-                point: Point;
-                start: number;
-            }
+                number,
+                {
+                    point: Point;
+                    start: number;
+                }
             >; // point index : start index in path
             image: any | null;
             blocked: boolean;
         };
     };
 
-    public constructor(cv: any, onChangeToolsBlockerState:(event:string)=>void) {
+    public constructor(cv: any, onChangeToolsBlockerState: (event: string) => void) {
         this.cv = cv;
         this.onChangeToolsBlockerState = onChangeToolsBlockerState;
         this.reset();
     }
 
-    public switchBlockMode(mode:boolean): void {
+    public switchBlockMode(mode: boolean): void {
         this.scissors.state.blocked = mode;
     }
 

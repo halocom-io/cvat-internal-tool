@@ -105,9 +105,7 @@ class CVATApplication extends React.PureComponent<CVATAppProps & RouteComponentP
 
         verifyAuthorized();
 
-        const {
-            name, version, engine, os,
-        } = platformInfo();
+        const { name, version, engine, os } = platformInfo();
 
         if (showPlatformNotification()) {
             stopNotifications(false);

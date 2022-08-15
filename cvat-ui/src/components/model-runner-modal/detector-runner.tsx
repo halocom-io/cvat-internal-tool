@@ -30,9 +30,7 @@ interface Props {
 }
 
 function DetectorRunner(props: Props): JSX.Element {
-    const {
-        models, withCleanup, labels, dimension, runInference,
-    } = props;
+    const { models, withCleanup, labels, dimension, runInference } = props;
 
     const [modelID, setModelID] = useState<string | null>(null);
     const [mapping, setMapping] = useState<StringObject>({});
@@ -186,13 +184,13 @@ function DetectorRunner(props: Props): JSX.Element {
                 <>
                     <Row justify='start' align='middle'>
                         <Col span={10}>
-                            {renderSelector(
-                                match.model || '', 'Model labels', modelLabels, (modelLabel: string) => updateMatch(modelLabel, null),
+                            {renderSelector(match.model || '', 'Model labels', modelLabels, (modelLabel: string) =>
+                                updateMatch(modelLabel, null),
                             )}
                         </Col>
                         <Col span={10} offset={1}>
-                            {renderSelector(
-                                match.task || '', 'Task labels', taskLabels, (taskLabel: string) => updateMatch(null, taskLabel),
+                            {renderSelector(match.task || '', 'Task labels', taskLabels, (taskLabel: string) =>
+                                updateMatch(null, taskLabel),
                             )}
                         </Col>
                         <Col span={1} offset={1}>
@@ -262,11 +260,15 @@ function DetectorRunner(props: Props): JSX.Element {
                         disabled={!buttonEnabled}
                         type='primary'
                         onClick={() => {
-                            runInference(model, model.type === 'detector' ?
-                                { mapping, cleanup } : {
-                                    threshold,
-                                    max_distance: distance,
-                                });
+                            runInference(
+                                model,
+                                model.type === 'detector'
+                                    ? { mapping, cleanup }
+                                    : {
+                                          threshold,
+                                          max_distance: distance,
+                                      },
+                            );
                         }}
                     >
                         Annotate

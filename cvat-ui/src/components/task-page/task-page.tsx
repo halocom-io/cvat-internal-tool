@@ -39,9 +39,7 @@ class TaskPageComponent extends React.PureComponent<Props> {
     }
 
     public componentDidUpdate(): void {
-        const {
-            deleteActivity, history, task, fetching, getTask,
-        } = this.props;
+        const { deleteActivity, history, task, fetching, getTask } = this.props;
 
         if (task === null && !fetching) {
             getTask();
@@ -72,7 +70,7 @@ class TaskPageComponent extends React.PureComponent<Props> {
 
         return (
             <>
-                { updating ? <Spin size='large' className='cvat-spinner' /> : null }
+                {updating ? <Spin size='large' className='cvat-spinner' /> : null}
                 <Row
                     style={{ display: updating ? 'none' : undefined }}
                     justify='center'

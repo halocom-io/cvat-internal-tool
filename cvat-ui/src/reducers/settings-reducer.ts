@@ -8,10 +8,7 @@ import { BoundariesActionTypes } from 'actions/boundaries-actions';
 import { SettingsActionTypes } from 'actions/settings-actions';
 import { AnyAction } from 'redux';
 
-import {
-    ColorBy, DimensionType,
-    FrameSpeed, GridColor, SettingsState,
-} from './interfaces';
+import { ColorBy, DimensionType, FrameSpeed, GridColor, SettingsState } from './interfaces';
 
 const defaultState: SettingsState = {
     shapes: {
@@ -365,12 +362,12 @@ export default (state = defaultState, action: AnyAction): SettingsState => {
                 },
                 shapes: {
                     ...defaultState.shapes,
-                    ...(job.dimension === DimensionType.DIM_3D ?
-                        {
-                            opacity: 40,
-                            selectedOpacity: 60,
-                        } :
-                        {}),
+                    ...(job.dimension === DimensionType.DIM_3D
+                        ? {
+                              opacity: 40,
+                              selectedOpacity: 60,
+                          }
+                        : {}),
                 },
             };
         }

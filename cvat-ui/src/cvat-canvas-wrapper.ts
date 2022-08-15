@@ -31,6 +31,4 @@ export function convertShapesForInteractor(shapes: InteractionResult[], button: 
 export type InteractionData = _InteractionData;
 export type InteractionResult = _InteractionResult;
 
-export {
-    Canvas, CanvasMode, CanvasVersion, CuboidDrawingMethod, RectDrawingMethod,
-};
+export { Canvas, CanvasMode, CanvasVersion, CuboidDrawingMethod, RectDrawingMethod };

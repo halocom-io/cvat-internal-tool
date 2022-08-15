@@ -14,11 +14,20 @@ function FooterDrawer(): JSX.Element | null {
     return isPublic() ? (
         <Footer style={{ textAlign: 'center', borderTop: '1px solid #e8e8e8' }}>
             © Intel Corporation |
-            <a target='_blank' rel='noopener noreferrer' href={INTEL_TERMS_OF_USE_URL}> Terms of Use </a>
+            <a target='_blank' rel='noopener noreferrer' href={INTEL_TERMS_OF_USE_URL}>
+                {' '}
+                Terms of Use{' '}
+            </a>
             |
-            <a target='_blank' rel='noopener noreferrer' data-cookie-notice='true' href={INTEL_COOKIES_URL}> Cookies </a>
+            <a target='_blank' rel='noopener noreferrer' data-cookie-notice='true' href={INTEL_COOKIES_URL}>
+                {' '}
+                Cookies{' '}
+            </a>
             |
-            <a target='_blank' rel='noopener noreferrer' href={INTEL_PRIVACY_URL}> Privacy </a>
+            <a target='_blank' rel='noopener noreferrer' href={INTEL_PRIVACY_URL}>
+                {' '}
+                Privacy{' '}
+            </a>
         </Footer>
     ) : null;
 }

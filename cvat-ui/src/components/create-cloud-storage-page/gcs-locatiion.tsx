@@ -13,11 +13,7 @@ interface Props {
 }
 
 export default function GCSLocation(props: Props): JSX.Element {
-    const {
-        selectedRegion,
-        onSelectRegion,
-        internalCommonProps,
-    } = props;
+    const { selectedRegion, onSelectRegion, internalCommonProps } = props;
     return (
         <Location
             selectedRegion={selectedRegion}

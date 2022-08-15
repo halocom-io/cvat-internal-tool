@@ -20,9 +20,7 @@ import {
     Task,
     Workspace,
 } from 'reducers/interfaces';
-import {
-    ActionCreator, AnyAction, Dispatch, Store,
-} from 'redux';
+import { ActionCreator, AnyAction, Dispatch, Store } from 'redux';
 import isAbleToChangeFrame from 'utils/is-able-to-change-frame';
 import { ThunkAction } from 'utils/redux';
 
@@ -255,9 +253,7 @@ export function switchZLayer(cur: number): AnyAction {
 export function fetchAnnotationsAsync(): ThunkAction {
     return async (dispatch: ActionCreator<Dispatch>): Promise<void> => {
         try {
-            const {
-                filters, frame, showAllInterpolationTracks, jobInstance,
-            } = receiveAnnotationsParameters();
+            const { filters, frame, showAllInterpolationTracks, jobInstance } = receiveAnnotationsParameters();
             const states = await jobInstance.annotations.get(frame, showAllInterpolationTracks, filters);
             const history = await jobInstance.actions.get();
             const [minZ, maxZ] = computeZRange(states);
@@ -309,13 +305,13 @@ export function updateCanvasContextMenu(
 }
 
 export function removeAnnotationsAsync(
-    startFrame: number, endFrame: number, delTrackKeyframesOnly: boolean,
+    startFrame: number,
+    endFrame: number,
+    delTrackKeyframesOnly: boolean,
 ): ThunkAction {
     return async (dispatch: ActionCreator<Dispatch>): Promise<void> => {
         try {
-            const {
-                filters, frame, showAllInterpolationTracks, jobInstance,
-            } = receiveAnnotationsParameters();
+            const { filters, frame, showAllInterpolationTracks, jobInstance } = receiveAnnotationsParameters();
             await jobInstance.annotations.clear(false, startFrame, endFrame, delTrackKeyframesOnly);
             await jobInstance.actions.clear();
             const history = await jobInstance.actions.get();
@@ -618,9 +614,7 @@ export function getPredictionsAsync(): ThunkAction {
             predictor: { enabled, annotatedFrames },
         } = getStore().getState().annotation;
 
-        const {
-            filters, frame, showAllInterpolationTracks, jobInstance: job,
-        } = receiveAnnotationsParameters();
+        const { filters, frame, showAllInterpolationTracks, jobInstance: job } = receiveAnnotationsParameters();
         if (!enabled || currentStates.length || annotatedFrames.includes(frame)) return;
 
         dispatch({
@@ -639,17 +633,18 @@ export function getPredictionsAsync(): ThunkAction {
                 return;
             }
             annotations = annotations.map(
-                (data: any): any => new cvat.classes.ObjectState({
-                    shapeType: data.type,
-                    label: job.labels.filter((label: any): boolean => label.id === data.label)[0],
-                    points: data.points,
-                    objectType: ObjectType.SHAPE,
-                    frame,
-                    occluded: false,
-                    source: 'auto',
-                    attributes: {},
-                    zOrder: curZOrder,
-                }),
+                (data: any): any =>
+                    new cvat.classes.ObjectState({
+                        shapeType: data.type,
+                        label: job.labels.filter((label: any): boolean => label.id === data.label)[0],
+                        points: data.points,
+                        objectType: ObjectType.SHAPE,
+                        frame,
+                        occluded: false,
+                        source: 'auto',
+                        attributes: {},
+                        zOrder: curZOrder,
+                    }),
             );
 
             dispatch({
@@ -706,7 +701,7 @@ export function changeFrameAsync(
 
             const abortAction = (): AnyAction => {
                 const currentState = getState();
-                return ({
+                return {
                     type: AnnotationActionTypes.CHANGE_FRAME_SUCCESS,
                     payload: {
                         number: currentState.annotation.player.frame.number,
@@ -720,7 +715,7 @@ export function changeFrameAsync(
                         maxZ: currentState.annotation.annotations.zLayer.max,
                         curZ: currentState.annotation.annotations.zLayer.cur,
                     },
-                });
+                };
             };
 
             dispatch({
@@ -1215,9 +1210,7 @@ export function splitTrack(enabled: boolean): AnyAction {
 
 export function updateAnnotationsAsync(statesToUpdate: any[]): ThunkAction {
     return async (dispatch: ActionCreator<Dispatch>): Promise<void> => {
-        const {
-            jobInstance, filters, frame, showAllInterpolationTracks,
-        } = receiveAnnotationsParameters();
+        const { jobInstance, filters, frame, showAllInterpolationTracks } = receiveAnnotationsParameters();
 
         try {
             if (statesToUpdate.some((state: any): boolean => state.updateFlags.zOrder)) {

@@ -39,12 +39,5 @@ export default function Preview({ cloudStorage }: Props): JSX.Element {
         );
     }
 
-    return (
-        <img
-            className='cvat-cloud-storage-item-preview'
-            src={preview.preview}
-            alt='Preview image'
-            aria-hidden
-        />
-    );
+    return <img className='cvat-cloud-storage-item-preview' src={preview.preview} alt='Preview image' aria-hidden />;
 }

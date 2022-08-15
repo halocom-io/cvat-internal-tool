@@ -22,9 +22,7 @@ interface ProjectPartialWithSubsets {
 }
 
 export default function ProjectSubsetField(props: Props): JSX.Element {
-    const {
-        projectId, projectSubsets, value, onChange,
-    } = props;
+    const { projectId, projectSubsets, value, onChange } = props;
 
     const [internalValue, setInternalValue] = useState('');
     const [internalSubsets, setInternalSubsets] = useState<Set<string>>(new Set());

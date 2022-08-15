@@ -24,9 +24,9 @@ function CursorControl(props: Props): JSX.Element {
             <Icon
                 component={() => <CursorClickIcon width={40} height={40} />}
                 className={
-                    activeControl === ActiveControl.CURSOR ?
-                        'cvat-active-canvas-control cvat-cursor-control' :
-                        'cvat-cursor-control'
+                    activeControl === ActiveControl.CURSOR
+                        ? 'cvat-active-canvas-control cvat-cursor-control'
+                        : 'cvat-cursor-control'
                 }
                 onClick={activeControl !== ActiveControl.CURSOR ? (): void => canvasInstance.cancel() : undefined}
             />

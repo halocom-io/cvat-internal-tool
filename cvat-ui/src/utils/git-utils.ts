@@ -38,8 +38,8 @@ interface ReposData {
         value: 'sync' | '!sync' | 'merged';
         error: string | null;
     };
-    format: string
-    lfs: boolean
+    format: string;
+    lfs: boolean;
 }
 
 function waitForClone(cloneResponse: any): Promise<void> {

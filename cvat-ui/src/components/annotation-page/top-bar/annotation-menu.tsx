@@ -28,7 +28,7 @@ interface Props {
     onClickMenu(params: MenuInfo): void;
     onUploadAnnotations(format: string, file: File): void;
     stopFrame: number;
-    removeAnnotations(startnumber: number, endnumber: number, delTrackKeyframesOnly:boolean): void;
+    removeAnnotations(startnumber: number, endnumber: number, delTrackKeyframesOnly: boolean): void;
     setForceExitAnnotationFlag(forceExit: boolean): void;
     saveAnnotations(jobInstance: any, afterSave?: () => void): void;
 }
@@ -113,11 +113,13 @@ function AnnotationMenuComponent(props: Props & RouteComponentProps): JSX.Elemen
                                         removeFrom = value;
                                     }}
                                 />
-                                <Text>  To: </Text>
+                                <Text> To: </Text>
                                 <InputNumber
                                     min={0}
                                     max={stopFrame}
-                                    onChange={(value) => { removeUpTo = value; }}
+                                    onChange={(value) => {
+                                        removeUpTo = value;
+                                    }}
                                 />
                                 <CVATTooltip title='Applicable only for annotations in range'>
                                     <br />
@@ -169,7 +171,8 @@ function AnnotationMenuComponent(props: Props & RouteComponentProps): JSX.Elemen
         } else if (params.key === Actions.RENEW_JOB) {
             Modal.confirm({
                 title: 'Do you want to renew the job?',
-                content: 'Stage will be set to "in progress", state will be set to "annotation". Would you like to continue?',
+                content:
+                    'Stage will be set to "in progress", state will be set to "annotation". Would you like to continue?',
                 okText: 'Continue',
                 cancelText: 'Cancel',
                 className: 'cvat-modal-content-renew-job',
@@ -188,7 +191,11 @@ function AnnotationMenuComponent(props: Props & RouteComponentProps): JSX.Elemen
     };
 
     return (
-        <Menu onClick={(params: MenuInfo) => onClickMenuWrapper(params)} className='cvat-annotation-menu' selectable={false}>
+        <Menu
+            onClick={(params: MenuInfo) => onClickMenuWrapper(params)}
+            className='cvat-annotation-menu'
+            selectable={false}
+        >
             {LoadSubmenu({
                 loaders,
                 loadActivity,
@@ -226,7 +233,11 @@ function AnnotationMenuComponent(props: Props & RouteComponentProps): JSX.Elemen
                     Open the task
                 </a>
             </Menu.Item>
-            <Menu.SubMenu popupClassName='cvat-annotation-menu-job-state-submenu' key='job-state-submenu' title='Change job state'>
+            <Menu.SubMenu
+                popupClassName='cvat-annotation-menu-job-state-submenu'
+                key='job-state-submenu'
+                title='Change job state'
+            >
                 <Menu.Item key={`state:${JobState.NEW}`}>
                     <Text className={computeClassName(JobState.NEW)}>{JobState.NEW}</Text>
                 </Menu.Item>
@@ -240,10 +251,10 @@ function AnnotationMenuComponent(props: Props & RouteComponentProps): JSX.Elemen
                     <Text className={computeClassName(JobState.COMPLETED)}>{JobState.COMPLETED}</Text>
                 </Menu.Item>
             </Menu.SubMenu>
-            {[JobStage.ANNOTATION, JobStage.REVIEW].includes(jobStage) ?
-                <Menu.Item key={Actions.FINISH_JOB}>Finish the job</Menu.Item> : null}
-            {jobStage === JobStage.ACCEPTANCE ?
-                <Menu.Item key={Actions.RENEW_JOB}>Renew the job</Menu.Item> : null}
+            {[JobStage.ANNOTATION, JobStage.REVIEW].includes(jobStage) ? (
+                <Menu.Item key={Actions.FINISH_JOB}>Finish the job</Menu.Item>
+            ) : null}
+            {jobStage === JobStage.ACCEPTANCE ? <Menu.Item key={Actions.RENEW_JOB}>Renew the job</Menu.Item> : null}
         </Menu>
     );
 }

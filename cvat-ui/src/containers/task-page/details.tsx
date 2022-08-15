@@ -35,11 +35,11 @@ function mapStateToProps(state: CombinedState, own: OwnProps): StateToProps {
         user: state.auth.user,
         installedGit: list.GIT_INTEGRATION,
         activeInference: state.models.inferences[own.task.instance.id] || null,
-        projectSubsets: taskProject ?
-            ([
-                ...new Set(taskProject.tasks.map((task: any) => task.subset).filter((subset: string) => subset)),
-            ] as string[]) :
-            [],
+        projectSubsets: taskProject
+            ? ([
+                  ...new Set(taskProject.tasks.map((task: any) => task.subset).filter((subset: string) => subset)),
+              ] as string[])
+            : [],
     };
 }
 
@@ -55,9 +55,8 @@ function mapDispatchToProps(dispatch: any, own: OwnProps): DispatchToProps {
 }
 
 function TaskPageContainer(props: StateToProps & DispatchToProps & OwnProps): JSX.Element {
-    const {
-        task, installedGit, activeInference, projectSubsets, cancelAutoAnnotation, onTaskUpdate, dumpers, user,
-    } = props;
+    const { task, installedGit, activeInference, projectSubsets, cancelAutoAnnotation, onTaskUpdate, dumpers, user } =
+        props;
 
     return (
         <DetailsComponent

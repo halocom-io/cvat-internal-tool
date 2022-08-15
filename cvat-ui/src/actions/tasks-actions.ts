@@ -445,7 +445,7 @@ export function updateTaskSuccess(task: any, taskID: number): AnyAction {
 function updateJob(): AnyAction {
     const action = {
         type: TasksActionTypes.UPDATE_JOB,
-        payload: { },
+        payload: {},
     };
 
     return action;

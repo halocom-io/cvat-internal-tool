@@ -151,15 +151,13 @@ export default (
                         error: '',
                     },
                 },
-                current: state.current.map(
-                    (_cloudStorage: CloudStorage): CloudStorage => {
-                        if (_cloudStorage.id === cloudStorage.id) {
-                            return cloudStorage;
-                        }
+                current: state.current.map((_cloudStorage: CloudStorage): CloudStorage => {
+                    if (_cloudStorage.id === cloudStorage.id) {
+                        return cloudStorage;
+                    }
 
-                        return _cloudStorage;
-                    },
-                ),
+                    return _cloudStorage;
+                }),
             };
         }
         case CloudStorageActionTypes.UPDATE_CLOUD_STORAGE_FAILED: {

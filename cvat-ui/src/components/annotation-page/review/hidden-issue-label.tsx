@@ -22,9 +22,7 @@ interface Props {
 }
 
 export default function HiddenIssueLabel(props: Props): ReactPortal {
-    const {
-        id, message, top, left, angle, scale, resolved, onClick, highlight, blur,
-    } = props;
+    const { id, message, top, left, angle, scale, resolved, onClick, highlight, blur } = props;
 
     const ref = useRef<HTMLElement>(null);
 

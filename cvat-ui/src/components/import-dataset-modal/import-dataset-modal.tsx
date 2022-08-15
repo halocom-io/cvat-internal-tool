@@ -4,10 +4,7 @@
 
 import './styles.scss';
 
-import {
-    InboxOutlined, LoadingOutlined, QuestionCircleOutlined,
-    UploadOutlined,
-} from '@ant-design/icons';
+import { InboxOutlined, LoadingOutlined, QuestionCircleOutlined, UploadOutlined } from '@ant-design/icons';
 import { importActions, importDatasetAsync } from 'actions/import-actions';
 import Form from 'antd/lib/form';
 import message from 'antd/lib/message';
@@ -64,20 +61,20 @@ function ImportDatasetModal(): JSX.Element {
     return (
         <>
             <Modal
-                title={(
+                title={
                     <>
                         <Text>Import dataset to project</Text>
                         <CVATTooltip
                             title={
-                                instance && !instance.labels.length ?
-                                    'Labels will be imported from dataset' :
-                                    'Labels from project will be used'
+                                instance && !instance.labels.length
+                                    ? 'Labels will be imported from dataset'
+                                    : 'Labels from project will be used'
                             }
                         >
                             <QuestionCircleOutlined className='cvat-modal-import-header-question-icon' />
                         </CVATTooltip>
                     </>
-                )}
+                }
                 visible={modalVisible}
                 onCancel={closeModal}
                 onOk={() => form.submit()}
@@ -98,29 +95,26 @@ function ImportDatasetModal(): JSX.Element {
                             {importers
                                 .sort((a: any, b: any) => a.name.localeCompare(b.name))
                                 .filter(
-                                    (importer: any): boolean => (
+                                    (importer: any): boolean =>
                                         instance !== null &&
-                                        (!instance?.dimension || importer.dimension === instance.dimension)
-                                    ),
+                                        (!instance?.dimension || importer.dimension === instance.dimension),
                                 )
-                                .map(
-                                    (importer: any): JSX.Element => {
-                                        const pending = currentImportId !== null;
-                                        const disabled = !importer.enabled || pending;
-                                        return (
-                                            <Select.Option
-                                                value={importer.name}
-                                                key={importer.name}
-                                                disabled={disabled}
-                                                className='cvat-modal-import-dataset-option-item'
-                                            >
-                                                <UploadOutlined />
-                                                <Text disabled={disabled}>{importer.name}</Text>
-                                                {pending && <LoadingOutlined style={{ marginLeft: 10 }} />}
-                                            </Select.Option>
-                                        );
-                                    },
-                                )}
+                                .map((importer: any): JSX.Element => {
+                                    const pending = currentImportId !== null;
+                                    const disabled = !importer.enabled || pending;
+                                    return (
+                                        <Select.Option
+                                            value={importer.name}
+                                            key={importer.name}
+                                            disabled={disabled}
+                                            className='cvat-modal-import-dataset-option-item'
+                                        >
+                                            <UploadOutlined />
+                                            <Text disabled={disabled}>{importer.name}</Text>
+                                            {pending && <LoadingOutlined style={{ marginLeft: 10 }} />}
+                                        </Select.Option>
+                                    );
+                                })}
                         </Select>
                     </Form.Item>
                     <Upload.Dragger

@@ -18,27 +18,25 @@ export interface Props {
 }
 
 function SplitControl(props: Props): JSX.Element {
-    const {
-        switchSplitShortcut, activeControl, canvasInstance, splitTrack, disabled,
-    } = props;
+    const { switchSplitShortcut, activeControl, canvasInstance, splitTrack, disabled } = props;
 
     const dynamicIconProps =
-        activeControl === ActiveControl.SPLIT ?
-            {
-                className: 'cvat-split-track-control cvat-active-canvas-control',
-                onClick: (): void => {
-                    canvasInstance.split({ enabled: false });
-                    splitTrack(false);
-                },
-            } :
-            {
-                className: 'cvat-split-track-control',
-                onClick: (): void => {
-                    canvasInstance.cancel();
-                    canvasInstance.split({ enabled: true });
-                    splitTrack(true);
-                },
-            };
+        activeControl === ActiveControl.SPLIT
+            ? {
+                  className: 'cvat-split-track-control cvat-active-canvas-control',
+                  onClick: (): void => {
+                      canvasInstance.split({ enabled: false });
+                      splitTrack(false);
+                  },
+              }
+            : {
+                  className: 'cvat-split-track-control',
+                  onClick: (): void => {
+                      canvasInstance.cancel();
+                      canvasInstance.split({ enabled: true });
+                      splitTrack(true);
+                  },
+              };
 
     return disabled ? (
         <Icon className='cvat-split-track-control cvat-disabled-canvas-control' component={SplitIcon} />

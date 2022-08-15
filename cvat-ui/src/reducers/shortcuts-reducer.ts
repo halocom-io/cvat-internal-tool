@@ -22,7 +22,7 @@ function formatShortcuts(shortcuts: KeyMapItem): string {
         .join(', ')}]`;
 }
 
-const defaultKeyMap = ({
+const defaultKeyMap = {
     SWITCH_SHORTCUTS: {
         name: 'Show shortcuts',
         description: 'Open/hide the list of available shortcuts',
@@ -421,7 +421,7 @@ const defaultKeyMap = ({
         action: 'keydown',
         applicable: [DimensionType.DIM_3D],
     },
-} as any) as KeyMap;
+} as any as KeyMap;
 
 const defaultState: ShortcutsState = {
     visibleShortcutsHelp: false,

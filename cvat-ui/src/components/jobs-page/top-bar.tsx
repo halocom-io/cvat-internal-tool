@@ -10,11 +10,16 @@ import { JobsQuery } from 'reducers/interfaces';
 
 import {
     config,
-    localStorageRecentCapacity, localStorageRecentKeyword, predefinedFilterValues,
+    localStorageRecentCapacity,
+    localStorageRecentKeyword,
+    predefinedFilterValues,
 } from './jobs-filter-configuration';
 
 const FilteringComponent = ResourceFilterHOC(
-    config, localStorageRecentKeyword, localStorageRecentCapacity, predefinedFilterValues,
+    config,
+    localStorageRecentKeyword,
+    localStorageRecentCapacity,
+    predefinedFilterValues,
 );
 
 interface Props {
@@ -25,9 +30,7 @@ interface Props {
 }
 
 function TopBarComponent(props: Props): JSX.Element {
-    const {
-        query, onApplyFilter, onApplySorting, onApplySearch,
-    } = props;
+    const { query, onApplyFilter, onApplySorting, onApplySearch } = props;
     const [visibility, setVisibility] = useState(defaultVisibility);
 
     return (
@@ -46,11 +49,21 @@ function TopBarComponent(props: Props): JSX.Element {
                     <div>
                         <SortingComponent
                             visible={visibility.sorting}
-                            onVisibleChange={(visible: boolean) => (
+                            onVisibleChange={(visible: boolean) =>
                                 setVisibility({ ...defaultVisibility, sorting: visible })
-                            )}
+                            }
                             defaultFields={query.sort?.split(',') || ['-ID']}
-                            sortingFields={['ID', 'Assignee', 'Updated date', 'Stage', 'State', 'Task ID', 'Project ID', 'Task name', 'Project name']}
+                            sortingFields={[
+                                'ID',
+                                'Assignee',
+                                'Updated date',
+                                'Stage',
+                                'State',
+                                'Task ID',
+                                'Project ID',
+                                'Task name',
+                                'Project name',
+                            ]}
                             onApplySorting={onApplySorting}
                         />
                         <FilteringComponent
@@ -58,15 +71,15 @@ function TopBarComponent(props: Props): JSX.Element {
                             predefinedVisible={visibility.predefined}
                             builderVisible={visibility.builder}
                             recentVisible={visibility.recent}
-                            onPredefinedVisibleChange={(visible: boolean) => (
+                            onPredefinedVisibleChange={(visible: boolean) =>
                                 setVisibility({ ...defaultVisibility, predefined: visible })
-                            )}
-                            onBuilderVisibleChange={(visible: boolean) => (
+                            }
+                            onBuilderVisibleChange={(visible: boolean) =>
                                 setVisibility({ ...defaultVisibility, builder: visible })
-                            )}
-                            onRecentVisibleChange={(visible: boolean) => (
+                            }
+                            onRecentVisibleChange={(visible: boolean) =>
                                 setVisibility({ ...defaultVisibility, builder: visibility.builder, recent: visible })
-                            )}
+                            }
                             onApplyFilter={onApplyFilter}
                         />
                     </div>

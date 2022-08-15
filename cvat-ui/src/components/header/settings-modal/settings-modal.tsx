@@ -75,7 +75,7 @@ const SettingsModal = (props: SettingsModalProps): JSX.Element => {
             onCancel={onClose}
             width={800}
             className='cvat-settings-modal'
-            footer={(
+            footer={
                 <>
                     <Tooltip title='Will save settings from this page and appearance settings on standard workspace page in browser'>
                         <Button type='primary' onClick={onSaveSettings}>
@@ -86,28 +86,28 @@ const SettingsModal = (props: SettingsModalProps): JSX.Element => {
                         Close
                     </Button>
                 </>
-            )}
+            }
         >
             <div className='cvat-settings-tabs'>
                 <Tabs type='card' tabBarStyle={{ marginBottom: '0px', marginLeft: '-1px' }}>
                     <Tabs.TabPane
-                        tab={(
+                        tab={
                             <span>
                                 <PlayCircleOutlined />
                                 <Text>Player</Text>
                             </span>
-                        )}
+                        }
                         key='player'
                     >
                         <PlayerSettingsContainer />
                     </Tabs.TabPane>
                     <Tabs.TabPane
-                        tab={(
+                        tab={
                             <span>
                                 <LaptopOutlined />
                                 <Text>Workspace</Text>
                             </span>
-                        )}
+                        }
                         key='workspace'
                     >
                         <WorkspaceSettingsContainer />

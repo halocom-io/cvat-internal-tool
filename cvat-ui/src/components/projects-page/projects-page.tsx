@@ -58,40 +58,51 @@ export default function ProjectsPageComponent(): JSX.Element {
             <TopBarComponent
                 onApplySearch={(search: string | null) => {
                     dispatch(
-                        getProjectsAsync({
-                            ...query,
-                            search,
-                            page: 1,
-                        }, { ...tasksQuery, page: 1 }),
+                        getProjectsAsync(
+                            {
+                                ...query,
+                                search,
+                                page: 1,
+                            },
+                            { ...tasksQuery, page: 1 },
+                        ),
                     );
                 }}
                 onApplyFilter={(filter: string | null) => {
                     dispatch(
-                        getProjectsAsync({
-                            ...query,
-                            filter,
-                            page: 1,
-                        }, { ...tasksQuery, page: 1 }),
+                        getProjectsAsync(
+                            {
+                                ...query,
+                                filter,
+                                page: 1,
+                            },
+                            { ...tasksQuery, page: 1 },
+                        ),
                     );
                 }}
                 onApplySorting={(sorting: string | null) => {
                     dispatch(
-                        getProjectsAsync({
-                            ...query,
-                            sort: sorting,
-                            page: 1,
-                        }, { ...tasksQuery, page: 1 }),
+                        getProjectsAsync(
+                            {
+                                ...query,
+                                sort: sorting,
+                                page: 1,
+                            },
+                            { ...tasksQuery, page: 1 },
+                        ),
                     );
                 }}
                 query={updatedQuery}
                 onImportProject={(file: File) => dispatch(restoreProjectAsync(file))}
                 importing={importing}
             />
-            { fetching ? (
+            {fetching ? (
                 <div className='cvat-empty-project-list'>
                     <Spin size='large' className='cvat-spinner' />
                 </div>
-            ) : content }
+            ) : (
+                content
+            )}
             {/* <FeedbackComponent /> */}
             <ImportDatasetModal />
         </div>

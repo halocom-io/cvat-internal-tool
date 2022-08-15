@@ -31,7 +31,7 @@ function ResetPasswordConfirmFormComponent({ fetching, onSubmit }: Props): JSX.E
                 const uid = params.get('uid');
                 const token = params.get('token');
                 if (uid && token) {
-                    onSubmit(({ ...values, uid, token } as ResetPasswordConfirmData));
+                    onSubmit({ ...values, uid, token } as ResetPasswordConfirmData);
                 }
             }}
             className='cvat-reset-password-confirm-form'
@@ -43,7 +43,8 @@ function ResetPasswordConfirmFormComponent({ fetching, onSubmit }: Props): JSX.E
                     {
                         required: true,
                         message: 'Please input new password!',
-                    }, validatePassword,
+                    },
+                    validatePassword,
                 ]}
             >
                 <Input.Password
@@ -61,7 +62,8 @@ function ResetPasswordConfirmFormComponent({ fetching, onSubmit }: Props): JSX.E
                     {
                         required: true,
                         message: 'Please confirm your new password!',
-                    }, validateConfirmation('newPassword1'),
+                    },
+                    validateConfirmation('newPassword1'),
                 ]}
             >
                 <Input.Password

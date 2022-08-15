@@ -111,7 +111,7 @@ function PlayerButtons(props: Props): JSX.Element {
             <Popover
                 trigger='contextMenu'
                 placement='bottom'
-                content={(
+                content={
                     <>
                         <CVATTooltip title={`${prevRegularText}`}>
                             <Icon
@@ -141,7 +141,7 @@ function PlayerButtons(props: Props): JSX.Element {
                             />
                         </CVATTooltip>
                     </>
-                )}
+                }
             >
                 <CVATTooltip placement='top' title={`${prevButtonTooltipMessage} ${previousFrameShortcut}`}>
                     {prevButton}
@@ -161,7 +161,7 @@ function PlayerButtons(props: Props): JSX.Element {
             <Popover
                 trigger='contextMenu'
                 placement='bottom'
-                content={(
+                content={
                     <>
                         <CVATTooltip title={`${nextRegularText}`}>
                             <Icon
@@ -191,7 +191,7 @@ function PlayerButtons(props: Props): JSX.Element {
                             />
                         </CVATTooltip>
                     </>
-                )}
+                }
             >
                 <CVATTooltip placement='top' title={`${nextButtonTooltipMessage} ${nextFrameShortcut}`}>
                     {nextButton}

@@ -51,9 +51,8 @@ export const authActions = {
     changePassword: () => createAction(AuthActionTypes.CHANGE_PASSWORD),
     changePasswordSuccess: () => createAction(AuthActionTypes.CHANGE_PASSWORD_SUCCESS),
     changePasswordFailed: (error: any) => createAction(AuthActionTypes.CHANGE_PASSWORD_FAILED, { error }),
-    switchChangePasswordDialog: (showChangePasswordDialog: boolean) => (
-        createAction(AuthActionTypes.SWITCH_CHANGE_PASSWORD_DIALOG, { showChangePasswordDialog })
-    ),
+    switchChangePasswordDialog: (showChangePasswordDialog: boolean) =>
+        createAction(AuthActionTypes.SWITCH_CHANGE_PASSWORD_DIALOG, { showChangePasswordDialog }),
     requestPasswordReset: () => createAction(AuthActionTypes.REQUEST_PASSWORD_RESET),
     requestPasswordResetSuccess: () => createAction(AuthActionTypes.REQUEST_PASSWORD_RESET_SUCCESS),
     requestPasswordResetFailed: (error: any) => createAction(AuthActionTypes.REQUEST_PASSWORD_RESET_FAILED, { error }),
@@ -61,56 +60,59 @@ export const authActions = {
     resetPasswordSuccess: () => createAction(AuthActionTypes.RESET_PASSWORD_SUCCESS),
     resetPasswordFailed: (error: any) => createAction(AuthActionTypes.RESET_PASSWORD_FAILED, { error }),
     loadServerAuthActions: () => createAction(AuthActionTypes.LOAD_AUTH_ACTIONS),
-    loadServerAuthActionsSuccess: (allowChangePassword: boolean, allowResetPassword: boolean) => (
+    loadServerAuthActionsSuccess: (allowChangePassword: boolean, allowResetPassword: boolean) =>
         createAction(AuthActionTypes.LOAD_AUTH_ACTIONS_SUCCESS, {
             allowChangePassword,
             allowResetPassword,
-        })
-    ),
+        }),
     loadServerAuthActionsFailed: (error: any) => createAction(AuthActionTypes.LOAD_AUTH_ACTIONS_FAILED, { error }),
 };
 
 export type AuthActions = ActionUnion<typeof authActions>;
 
-export const registerAsync = (
-    username: string,
-    firstName: string,
-    lastName: string,
-    email: string,
-    password1: string,
-    password2: string,
-    confirmations: UserConfirmation[],
-): ThunkAction => async (dispatch) => {
-    dispatch(authActions.register());
+export const registerAsync =
+    (
+        username: string,
+        firstName: string,
+        lastName: string,
+        email: string,
+        password1: string,
+        password2: string,
+        confirmations: UserConfirmation[],
+    ): ThunkAction =>
+    async (dispatch) => {
+        dispatch(authActions.register());
 
-    try {
-        const user = await cvat.server.register(
-            username,
-            firstName,
-            lastName,
-            email,
-            password1,
-            password2,
-            confirmations,
-        );
+        try {
+            const user = await cvat.server.register(
+                username,
+                firstName,
+                lastName,
+                email,
+                password1,
+                password2,
+                confirmations,
+            );
 
-        dispatch(authActions.registerSuccess(user));
-    } catch (error) {
-        dispatch(authActions.registerFailed(error));
-    }
-};
+            dispatch(authActions.registerSuccess(user));
+        } catch (error) {
+            dispatch(authActions.registerFailed(error));
+        }
+    };
 
-export const loginAsync = (username: string, password: string): ThunkAction => async (dispatch) => {
-    dispatch(authActions.login());
+export const loginAsync =
+    (username: string, password: string): ThunkAction =>
+    async (dispatch) => {
+        dispatch(authActions.login());
 
-    try {
-        await cvat.server.login(username, password);
-        const users = await cvat.users.get({ self: true });
-        dispatch(authActions.loginSuccess(users[0]));
-    } catch (error) {
-        dispatch(authActions.loginFailed(error));
-    }
-};
+        try {
+            await cvat.server.login(username, password);
+            const users = await cvat.users.get({ self: true });
+            dispatch(authActions.loginSuccess(users[0]));
+        } catch (error) {
+            dispatch(authActions.loginFailed(error));
+        }
+    };
 
 export const logoutAsync = (): ThunkAction => async (dispatch) => {
     dispatch(authActions.logout());
@@ -139,47 +141,44 @@ export const authorizedAsync = (): ThunkAction => async (dispatch) => {
     }
 };
 
-export const changePasswordAsync = (
-    oldPassword: string,
-    newPassword1: string,
-    newPassword2: string,
-): ThunkAction => async (dispatch) => {
-    dispatch(authActions.changePassword());
+export const changePasswordAsync =
+    (oldPassword: string, newPassword1: string, newPassword2: string): ThunkAction =>
+    async (dispatch) => {
+        dispatch(authActions.changePassword());
 
-    try {
-        await cvat.server.changePassword(oldPassword, newPassword1, newPassword2);
-        dispatch(authActions.changePasswordSuccess());
-    } catch (error) {
-        dispatch(authActions.changePasswordFailed(error));
-    }
-};
+        try {
+            await cvat.server.changePassword(oldPassword, newPassword1, newPassword2);
+            dispatch(authActions.changePasswordSuccess());
+        } catch (error) {
+            dispatch(authActions.changePasswordFailed(error));
+        }
+    };
 
-export const requestPasswordResetAsync = (email: string): ThunkAction => async (dispatch) => {
-    dispatch(authActions.requestPasswordReset());
+export const requestPasswordResetAsync =
+    (email: string): ThunkAction =>
+    async (dispatch) => {
+        dispatch(authActions.requestPasswordReset());
 
-    try {
-        await cvat.server.requestPasswordReset(email);
-        dispatch(authActions.requestPasswordResetSuccess());
-    } catch (error) {
-        dispatch(authActions.requestPasswordResetFailed(error));
-    }
-};
+        try {
+            await cvat.server.requestPasswordReset(email);
+            dispatch(authActions.requestPasswordResetSuccess());
+        } catch (error) {
+            dispatch(authActions.requestPasswordResetFailed(error));
+        }
+    };
 
-export const resetPasswordAsync = (
-    newPassword1: string,
-    newPassword2: string,
-    uid: string,
-    token: string,
-): ThunkAction => async (dispatch) => {
-    dispatch(authActions.resetPassword());
+export const resetPasswordAsync =
+    (newPassword1: string, newPassword2: string, uid: string, token: string): ThunkAction =>
+    async (dispatch) => {
+        dispatch(authActions.resetPassword());
 
-    try {
-        await cvat.server.resetPassword(newPassword1, newPassword2, uid, token);
-        dispatch(authActions.resetPasswordSuccess());
-    } catch (error) {
-        dispatch(authActions.resetPasswordFailed(error));
-    }
-};
+        try {
+            await cvat.server.resetPassword(newPassword1, newPassword2, uid, token);
+            dispatch(authActions.resetPasswordSuccess());
+        } catch (error) {
+            dispatch(authActions.resetPasswordFailed(error));
+        }
+    };
 
 export const loadAuthActionsAsync = (): ThunkAction => async (dispatch) => {
     dispatch(authActions.loadServerAuthActions());

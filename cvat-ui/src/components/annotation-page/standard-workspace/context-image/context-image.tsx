@@ -28,9 +28,11 @@ export function adjustContextImagePosition(sidebarCollapsed: boolean): void {
 function ContextImage(): JSX.Element | null {
     const dispatch = useDispatch();
     const { number: frame, hasRelatedContext } = useSelector((state: CombinedState) => state.annotation.player.frame);
-    const { data: contextImageData, hidden: contextImageHidden, fetching: contextImageFetching } = useSelector(
-        (state: CombinedState) => state.annotation.player.contextImage,
-    );
+    const {
+        data: contextImageData,
+        hidden: contextImageHidden,
+        fetching: contextImageFetching,
+    } = useSelector((state: CombinedState) => state.annotation.player.contextImage);
     const [requested, setRequested] = useState(false);
 
     useEffect(() => {

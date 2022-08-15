@@ -44,7 +44,10 @@ export default function EmptyStoragesListComponent(props: Props): JSX.Element {
 
     return (
         <div className='cvat-empty-cloud-storages-list'>
-            <Empty description={description} image={<CloudOutlined className='cvat-empty-cloud-storages-list-icon' />} />
+            <Empty
+                description={description}
+                image={<CloudOutlined className='cvat-empty-cloud-storages-list-icon' />}
+            />
         </div>
     );
 }

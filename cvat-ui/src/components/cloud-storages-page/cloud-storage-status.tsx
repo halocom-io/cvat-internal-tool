@@ -31,7 +31,9 @@ export default function Status({ cloudStorage }: Props): JSX.Element {
     } else if (status.initialized && !status.status) {
         message = <Text type='danger'>Error</Text>;
     } else {
-        message = <Text type={status.status === StorageStatuses.AVAILABLE ? 'success' : 'danger'}>{status.status}</Text>;
+        message = (
+            <Text type={status.status === StorageStatuses.AVAILABLE ? 'success' : 'danger'}>{status.status}</Text>
+        );
     }
 
     return (

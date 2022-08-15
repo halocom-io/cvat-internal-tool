@@ -17,10 +17,7 @@ import Icon, {
 } from '@ant-design/icons';
 import { Col, Row } from 'antd/lib/grid';
 import CVATTooltip from 'components/common/cvat-tooltip';
-import {
-    FirstIcon, LastIcon, NextIcon,
-    ObjectOutsideIcon, PreviousIcon,
-} from 'icons';
+import { FirstIcon, LastIcon, NextIcon, ObjectOutsideIcon, PreviousIcon } from 'icons';
 import React from 'react';
 import { ObjectType, ShapeType } from 'reducers/interfaces';
 
@@ -136,9 +133,7 @@ function NavigateLastKeyframe(props: Props): JSX.Element {
 }
 
 function SwitchLock(props: Props): JSX.Element {
-    const {
-        locked, switchLockShortcut, lock, unlock,
-    } = props;
+    const { locked, switchLockShortcut, lock, unlock } = props;
     return (
         <CVATTooltip title={`Switch lock property ${switchLockShortcut}`}>
             {locked ? (
@@ -151,9 +146,7 @@ function SwitchLock(props: Props): JSX.Element {
 }
 
 function SwitchOccluded(props: Props): JSX.Element {
-    const {
-        switchOccludedShortcut, occluded, unsetOccluded, setOccluded,
-    } = props;
+    const { switchOccludedShortcut, occluded, unsetOccluded, setOccluded } = props;
     return (
         <CVATTooltip title={`Switch occluded property ${switchOccludedShortcut}`}>
             {occluded ? (
@@ -179,9 +172,7 @@ function SwitchPinned(props: Props): JSX.Element {
 }
 
 function SwitchHidden(props: Props): JSX.Element {
-    const {
-        switchHiddenShortcut, hidden, hiddenDisabled, show, hide,
-    } = props;
+    const { switchHiddenShortcut, hidden, hiddenDisabled, show, hide } = props;
     const hiddenStyle = hiddenDisabled ? { opacity: 0.5, pointerEvents: 'none' as const } : {};
     return (
         <CVATTooltip title={`Switch hidden property ${switchHiddenShortcut}`}>
@@ -195,9 +186,7 @@ function SwitchHidden(props: Props): JSX.Element {
 }
 
 function SwitchOutside(props: Props): JSX.Element {
-    const {
-        outside, switchOutsideShortcut, outsideDisabled, unsetOutside, setOutside,
-    } = props;
+    const { outside, switchOutsideShortcut, outsideDisabled, unsetOutside, setOutside } = props;
     const outsideStyle = outsideDisabled ? { opacity: 0.5, pointerEvents: 'none' as const } : {};
     return (
         <CVATTooltip title={`Switch outside property ${switchOutsideShortcut}`}>
@@ -216,9 +205,7 @@ function SwitchOutside(props: Props): JSX.Element {
 }
 
 function SwitchKeyframe(props: Props): JSX.Element {
-    const {
-        keyframe, switchKeyFrameShortcut, keyframeDisabled, unsetKeyframe, setKeyframe,
-    } = props;
+    const { keyframe, switchKeyFrameShortcut, keyframeDisabled, unsetKeyframe, setKeyframe } = props;
     const keyframeStyle = keyframeDisabled ? { opacity: 0.5, pointerEvents: 'none' as const } : {};
     return (
         <CVATTooltip title={`Switch keyframe property ${switchKeyFrameShortcut}`}>

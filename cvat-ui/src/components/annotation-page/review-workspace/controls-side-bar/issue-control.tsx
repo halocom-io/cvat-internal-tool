@@ -23,9 +23,9 @@ function CreateIssueControl(props: Props): JSX.Element {
             <Icon
                 component={RectangleIcon}
                 className={
-                    activeControl === ActiveControl.OPEN_ISSUE ?
-                        'cvat-issue-control cvat-active-canvas-control' :
-                        'cvat-issue-control'
+                    activeControl === ActiveControl.OPEN_ISSUE
+                        ? 'cvat-issue-control cvat-active-canvas-control'
+                        : 'cvat-issue-control'
                 }
                 onClick={(): void => {
                     if (activeControl === ActiveControl.OPEN_ISSUE) {

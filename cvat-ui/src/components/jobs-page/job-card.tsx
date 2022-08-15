@@ -47,7 +47,7 @@ function JobCardComponent(props: Props): JSX.Element {
             onMouseLeave={() => setExpanded(false)}
             style={{ height }}
             className='cvat-job-page-list-item'
-            cover={(
+            cover={
                 <>
                     {preview ? (
                         <img
@@ -68,36 +68,44 @@ function JobCardComponent(props: Props): JSX.Element {
                     </div>
                     <div className='cvat-job-page-list-item-dimension'>{job.dimension.toUpperCase()}</div>
                 </>
-            )}
+            }
         >
             <Descriptions column={1} size='small'>
                 <Descriptions.Item label='Stage'>{job.stage}</Descriptions.Item>
                 <Descriptions.Item label='State'>{job.state}</Descriptions.Item>
-                { expanded ? (
+                {expanded ? (
                     <Descriptions.Item label='Size'>{job.stopFrame - job.startFrame + 1}</Descriptions.Item>
                 ) : null}
-                { expanded && job.assignee ? (
+                {expanded && job.assignee ? (
                     <Descriptions.Item label='Assignee'>{job.assignee.username}</Descriptions.Item>
                 ) : null}
             </Descriptions>
-            <Dropdown overlay={(
-                <Menu onClick={(action: MenuInfo) => {
-                    if (action.key === 'task') {
-                        history.push(`/tasks/${job.taskId}`);
-                    } else if (action.key === 'project') {
-                        history.push(`/projects/${job.projectId}`);
-                    } else if (action.key === 'bug_tracker') {
-                        // false alarm
-                        // eslint-disable-next-line security/detect-non-literal-fs-filename
-                        window.open(job.bugTracker, '_blank', 'noopener noreferrer');
-                    }
-                }}
-                >
-                    <Menu.Item key='task' disabled={job.taskId === null}>Go to the task</Menu.Item>
-                    <Menu.Item key='project' disabled={job.projectId === null}>Go to the project</Menu.Item>
-                    <Menu.Item key='bug_tracker' disabled={!job.bugTracker}>Go to the bug tracker</Menu.Item>
-                </Menu>
-            )}
+            <Dropdown
+                overlay={
+                    <Menu
+                        onClick={(action: MenuInfo) => {
+                            if (action.key === 'task') {
+                                history.push(`/tasks/${job.taskId}`);
+                            } else if (action.key === 'project') {
+                                history.push(`/projects/${job.projectId}`);
+                            } else if (action.key === 'bug_tracker') {
+                                // false alarm
+                                // eslint-disable-next-line security/detect-non-literal-fs-filename
+                                window.open(job.bugTracker, '_blank', 'noopener noreferrer');
+                            }
+                        }}
+                    >
+                        <Menu.Item key='task' disabled={job.taskId === null}>
+                            Go to the task
+                        </Menu.Item>
+                        <Menu.Item key='project' disabled={job.projectId === null}>
+                            Go to the project
+                        </Menu.Item>
+                        <Menu.Item key='bug_tracker' disabled={!job.bugTracker}>
+                            Go to the bug tracker
+                        </Menu.Item>
+                    </Menu>
+                }
             >
                 <MoreOutlined className='cvat-job-card-more-button' />
             </Dropdown>

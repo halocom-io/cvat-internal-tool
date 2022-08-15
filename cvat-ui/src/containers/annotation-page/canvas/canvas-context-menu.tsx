@@ -36,9 +36,7 @@ function mapStateToProps(state: CombinedState): StateToProps {
         annotation: {
             annotations: { collapsed, states: objectStates },
             canvas: {
-                contextMenu: {
-                    visible, top, left, type, clientID,
-                },
+                contextMenu: { visible, top, left, type, clientID },
                 ready,
             },
             workspace,

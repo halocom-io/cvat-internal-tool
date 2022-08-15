@@ -4,9 +4,7 @@
 
 import 'react-awesome-query-builder/lib/css/styles.css';
 
-import {
-    DownOutlined, FilterFilled, FilterOutlined,
-} from '@ant-design/icons';
+import { DownOutlined, FilterFilled, FilterOutlined } from '@ant-design/icons';
 import Button from 'antd/lib/button';
 import Checkbox, { CheckboxChangeEvent } from 'antd/lib/checkbox/Checkbox';
 import Dropdown from 'antd/lib/dropdown';
@@ -14,9 +12,7 @@ import Menu from 'antd/lib/menu';
 import Space from 'antd/lib/space';
 import { User } from 'components/task-page/user-selector';
 import React, { useEffect, useState } from 'react';
-import {
-    Builder, Config, ImmutableTree, Query, Utils as QbUtils,
-} from 'react-awesome-query-builder';
+import { Builder, Config, ImmutableTree, Query, Utils as QbUtils } from 'react-awesome-query-builder';
 import AntdConfig from 'react-awesome-query-builder/lib/config/antd';
 import { useSelector } from 'react-redux';
 import { CombinedState } from 'reducers/interfaces';
@@ -40,7 +36,8 @@ export default function ResourceFilterHOC(
 ): React.FunctionComponent<ResourceFilterProps> {
     const config: Config = { ...AntdConfig, ...filtrationCfg };
     const defaultTree = QbUtils.checkTree(
-        QbUtils.loadTree({ id: QbUtils.uuid(), type: 'group' }), config,
+        QbUtils.loadTree({ id: QbUtils.uuid(), type: 'group' }),
+        config,
     ) as ImmutableTree;
 
     function keepFilterInLocalStorage(filter: string): void {
@@ -73,8 +70,7 @@ export default function ResourceFilterHOC(
             // nothing to do
         }
 
-        return recentFilters
-            .reduce((acc: Record<string, string>, val: string) => ({ ...acc, [val]: val }), {});
+        return recentFilters.reduce((acc: Record<string, string>, val: string) => ({ ...acc, [val]: val }), {});
     }
 
     const defaultAppliedFilter: {
@@ -114,8 +110,14 @@ export default function ResourceFilterHOC(
 
     function ResourceFilterComponent(props: ResourceFilterProps): JSX.Element {
         const {
-            predefinedVisible, builderVisible, recentVisible, value,
-            onPredefinedVisibleChange, onBuilderVisibleChange, onRecentVisibleChange, onApplyFilter,
+            predefinedVisible,
+            builderVisible,
+            recentVisible,
+            value,
+            onPredefinedVisibleChange,
+            onBuilderVisibleChange,
+            onRecentVisibleChange,
+            onApplyFilter,
         } = props;
 
         const user = useSelector((state: CombinedState) => state.auth.user);
@@ -129,9 +131,13 @@ export default function ResourceFilterHOC(
             setIsMounted(true);
 
             const listener = (event: MouseEvent): void => {
-                const path: HTMLElement[] = event.composedPath()
+                const path: HTMLElement[] = event
+                    .composedPath()
                     .filter((el: EventTarget) => el instanceof HTMLElement) as HTMLElement[];
-                if (path.some((el: HTMLElement) => el.id === 'root') && !path.some((el: HTMLElement) => el.classList.contains('ant-btn'))) {
+                if (
+                    path.some((el: HTMLElement) => el.id === 'root') &&
+                    !path.some((el: HTMLElement) => el.classList.contains('ant-btn'))
+                ) {
                     onBuilderVisibleChange(false);
                     onRecentVisibleChange(false);
                 }
@@ -195,58 +201,57 @@ export default function ResourceFilterHOC(
                     destroyPopupOnHide
                     visible={predefinedVisible}
                     placement='bottomLeft'
-                    overlay={(
+                    overlay={
                         <div className='cvat-resource-page-predefined-filters-list'>
-                            {Object.keys(predefinedFilters).map((key: string): JSX.Element => (
-                                <Checkbox
-                                    checked={appliedFilter.predefined?.includes(predefinedFilters[key])}
-                                    onChange={(event: CheckboxChangeEvent) => {
-                                        let updatedValue: string[] | null = appliedFilter.predefined || [];
-                                        if (event.target.checked) {
-                                            updatedValue.push(predefinedFilters[key]);
-                                        } else {
-                                            updatedValue = updatedValue
-                                                .filter((appliedValue: string) => (
-                                                    appliedValue !== predefinedFilters[key]
-                                                ));
-                                        }
+                            {Object.keys(predefinedFilters).map(
+                                (key: string): JSX.Element => (
+                                    <Checkbox
+                                        checked={appliedFilter.predefined?.includes(predefinedFilters[key])}
+                                        onChange={(event: CheckboxChangeEvent) => {
+                                            let updatedValue: string[] | null = appliedFilter.predefined || [];
+                                            if (event.target.checked) {
+                                                updatedValue.push(predefinedFilters[key]);
+                                            } else {
+                                                updatedValue = updatedValue.filter(
+                                                    (appliedValue: string) => appliedValue !== predefinedFilters[key],
+                                                );
+                                            }
 
-                                        if (!updatedValue.length) {
-                                            updatedValue = null;
-                                        }
+                                            if (!updatedValue.length) {
+                                                updatedValue = null;
+                                            }
 
-                                        setAppliedFilter({
-                                            ...defaultAppliedFilter,
-                                            predefined: updatedValue,
-                                        });
-                                    }}
-                                    key={key}
-                                >
-                                    {key}
-                                </Checkbox>
-                            )) }
+                                            setAppliedFilter({
+                                                ...defaultAppliedFilter,
+                                                predefined: updatedValue,
+                                            });
+                                        }}
+                                        key={key}
+                                    >
+                                        {key}
+                                    </Checkbox>
+                                ),
+                            )}
                         </div>
-                    )}
+                    }
                 >
                     <Button type='default' onClick={() => onPredefinedVisibleChange(!predefinedVisible)}>
                         Quick filters
-                        { appliedFilter.predefined ?
-                            <FilterFilled /> :
-                            <FilterOutlined />}
+                        {appliedFilter.predefined ? <FilterFilled /> : <FilterOutlined />}
                     </Button>
                 </Dropdown>
                 <Dropdown
                     placement='bottomRight'
                     visible={builderVisible}
                     destroyPopupOnHide
-                    overlay={(
+                    overlay={
                         <div className='cvat-resource-page-filters-builder'>
-                            { Object.keys(recentFilters).length ? (
+                            {Object.keys(recentFilters).length ? (
                                 <Dropdown
                                     placement='bottomRight'
                                     visible={recentVisible}
                                     destroyPopupOnHide
-                                    overlay={(
+                                    overlay={
                                         <div className='cvat-resource-page-recent-filters-list'>
                                             <Menu selectable={false}>
                                                 {Object.keys(recentFilters).map((key: string): JSX.Element | null => {
@@ -276,14 +281,12 @@ export default function ResourceFilterHOC(
                                                 })}
                                             </Menu>
                                         </div>
-                                    )}
+                                    }
                                 >
                                     <Button
                                         size='small'
                                         type='text'
-                                        onClick={
-                                            () => onRecentVisibleChange(!recentVisible)
-                                        }
+                                        onClick={() => onRecentVisibleChange(!recentVisible)}
                                     >
                                         Recent
                                         <DownOutlined />
@@ -334,20 +337,20 @@ export default function ResourceFilterHOC(
                                 </Button>
                             </Space>
                         </div>
-                    )}
+                    }
                 >
                     <Button type='default' onClick={() => onBuilderVisibleChange(!builderVisible)}>
                         Filter
-                        { appliedFilter.built || appliedFilter.recent ?
-                            <FilterFilled /> :
-                            <FilterOutlined />}
+                        {appliedFilter.built || appliedFilter.recent ? <FilterFilled /> : <FilterOutlined />}
                     </Button>
                 </Dropdown>
                 <Button
                     disabled={!(appliedFilter.built || appliedFilter.predefined || appliedFilter.recent)}
                     size='small'
                     type='link'
-                    onClick={() => { setAppliedFilter({ ...defaultAppliedFilter }); }}
+                    onClick={() => {
+                        setAppliedFilter({ ...defaultAppliedFilter });
+                    }}
                 >
                     Clear filters
                 </Button>

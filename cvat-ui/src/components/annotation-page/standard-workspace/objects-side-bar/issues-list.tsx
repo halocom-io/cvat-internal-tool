@@ -3,9 +3,12 @@
 // SPDX-License-Identifier: MIT
 
 import {
-    CheckCircleFilled, CheckCircleOutlined,
-    EyeInvisibleFilled, EyeOutlined,
-    LeftOutlined, RightOutlined,
+    CheckCircleFilled,
+    CheckCircleOutlined,
+    EyeInvisibleFilled,
+    EyeOutlined,
+    LeftOutlined,
+    RightOutlined,
 } from '@ant-design/icons';
 import { changeFrameAsync } from 'actions/annotation-actions';
 import { reviewActions } from 'actions/review-actions';
@@ -25,28 +28,28 @@ export default function LabelsListComponent(): JSX.Element {
     const issuesResolvedHidden = useSelector((state: CombinedState): any => state.review.issuesResolvedHidden);
     const frames = issues.map((issue: any): number => issue.frame).sort((a: number, b: number) => +a - +b);
     const nearestLeft = frames.filter((_frame: number): boolean => _frame < frame).reverse()[0];
-    const dinamicLeftProps: any = Number.isInteger(nearestLeft) ?
-        {
-            onClick: () => dispatch(changeFrameAsync(nearestLeft)),
-        } :
-        {
-            style: {
-                pointerEvents: 'none',
-                opacity: 0.5,
-            },
-        };
+    const dinamicLeftProps: any = Number.isInteger(nearestLeft)
+        ? {
+              onClick: () => dispatch(changeFrameAsync(nearestLeft)),
+          }
+        : {
+              style: {
+                  pointerEvents: 'none',
+                  opacity: 0.5,
+              },
+          };
 
     const nearestRight = frames.filter((_frame: number): boolean => _frame > frame)[0];
-    const dinamicRightProps: any = Number.isInteger(nearestRight) ?
-        {
-            onClick: () => dispatch(changeFrameAsync(nearestRight)),
-        } :
-        {
-            style: {
-                pointerEvents: 'none',
-                opacity: 0.5,
-            },
-        };
+    const dinamicRightProps: any = Number.isInteger(nearestRight)
+        ? {
+              onClick: () => dispatch(changeFrameAsync(nearestRight)),
+          }
+        : {
+              style: {
+                  pointerEvents: 'none',
+                  opacity: 0.5,
+              },
+          };
 
     return (
         <>
@@ -79,7 +82,7 @@ export default function LabelsListComponent(): JSX.Element {
                     </Col>
                     <Col offset={2}>
                         <CVATTooltip title='Show/hide resolved issues'>
-                            { issuesResolvedHidden ? (
+                            {issuesResolvedHidden ? (
                                 <CheckCircleFilled
                                     className='cvat-issues-sidebar-hidden-resolved-status'
                                     onClick={() => dispatch(reviewActions.switchIssuesHiddenResolvedFlag(false))}
@@ -89,7 +92,6 @@ export default function LabelsListComponent(): JSX.Element {
                                     className='cvat-issues-sidebar-hidden-resolved-status'
                                     onClick={() => dispatch(reviewActions.switchIssuesHiddenResolvedFlag(true))}
                                 />
-
                             )}
                         </CVATTooltip>
                     </Col>

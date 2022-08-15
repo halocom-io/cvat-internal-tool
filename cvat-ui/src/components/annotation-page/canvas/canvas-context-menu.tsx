@@ -39,9 +39,7 @@ enum ReviewContextMenuKeys {
     QUICK_ISSUE_FROM_LATEST = 'quick_issue_from_latest',
 }
 
-function ReviewContextMenu({
-    top, left, latestComments, onClick,
-}: ReviewContextMenuProps): JSX.Element {
+function ReviewContextMenu({ top, left, latestComments, onClick }: ReviewContextMenuProps): JSX.Element {
     return (
         <Menu onClick={onClick} selectable={false} className='cvat-canvas-context-menu' style={{ top, left }}>
             <Menu.Item className='cvat-context-menu-item' key={ReviewContextMenuKeys.OPEN_ISSUE}>
@@ -108,24 +106,32 @@ export default function CanvasContextMenu(props: Props): JSX.Element | null {
                         if (state) {
                             let { points } = state;
                             if (['ellipse', 'rectangle'].includes(state.shapeType)) {
-                                const [cx, cy] = state.shapeType === 'ellipse' ? state.points : [
-                                    (state.points[0] + state.points[2]) / 2,
-                                    (state.points[1] + state.points[3]) / 2,
-                                ];
+                                const [cx, cy] =
+                                    state.shapeType === 'ellipse'
+                                        ? state.points
+                                        : [
+                                              (state.points[0] + state.points[2]) / 2,
+                                              (state.points[1] + state.points[3]) / 2,
+                                          ];
                                 const [rx, ry] = [state.points[2] - cx, cy - state.points[3]];
-                                points = state.shapeType === 'ellipse' ? [
-                                    state.points[0] - rx,
-                                    state.points[1] - ry,
-                                    state.points[0] + rx,
-                                    state.points[1] + ry,
-                                ] : state.points;
+                                points =
+                                    state.shapeType === 'ellipse'
+                                        ? [
+                                              state.points[0] - rx,
+                                              state.points[1] - ry,
+                                              state.points[0] + rx,
+                                              state.points[1] + ry,
+                                          ]
+                                        : state.points;
 
                                 points = [
                                     [points[0], points[1]],
                                     [points[2], points[1]],
                                     [points[2], points[3]],
                                     [points[0], points[3]],
-                                ].map(([x, y]: number[]) => rotatePoint(x, y, state.rotation, cx, cy)).flat();
+                                ]
+                                    .map(([x, y]: number[]) => rotatePoint(x, y, state.rotation, cx, cy))
+                                    .flat();
                             }
 
                             onStartIssue(points);

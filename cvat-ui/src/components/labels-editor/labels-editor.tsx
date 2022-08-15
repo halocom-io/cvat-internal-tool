@@ -4,9 +4,7 @@
 
 import './styles.scss';
 
-import {
-    BuildOutlined, EditOutlined, ExclamationCircleOutlined,
-} from '@ant-design/icons';
+import { BuildOutlined, EditOutlined, ExclamationCircleOutlined } from '@ant-design/icons';
 import ModalConfirm from 'antd/lib/modal/confirm';
 import Tabs from 'antd/lib/tabs';
 import Text from 'antd/lib/typography/Text';
@@ -50,7 +48,7 @@ export default class LabelsEditor extends React.PureComponent<LabelsEditorProps,
 
     public componentDidMount(): void {
         // just need performe the same code
-        this.componentDidUpdate((null as any) as LabelsEditorProps);
+        this.componentDidUpdate(null as any as LabelsEditorProps);
     }
 
     public componentDidUpdate(prevProps: LabelsEditorProps): void {
@@ -195,35 +193,29 @@ export default class LabelsEditor extends React.PureComponent<LabelsEditorProps,
 
     public render(): JSX.Element {
         const { labels } = this.props;
-        const {
-            savedLabels, unsavedLabels, constructorMode, labelForUpdate,
-        } = this.state;
+        const { savedLabels, unsavedLabels, constructorMode, labelForUpdate } = this.state;
 
         return (
-            <Tabs
-                defaultActiveKey='2'
-                type='card'
-                tabBarStyle={{ marginBottom: '0px' }}
-            >
+            <Tabs defaultActiveKey='2' type='card' tabBarStyle={{ marginBottom: '0px' }}>
                 <Tabs.TabPane
-                    tab={(
+                    tab={
                         <span>
                             <EditOutlined />
                             <Text>Raw</Text>
                         </span>
-                    )}
+                    }
                     key='1'
                 >
                     <RawViewer labels={[...savedLabels, ...unsavedLabels]} onSubmit={this.handleRawSubmit} />
                 </Tabs.TabPane>
 
                 <Tabs.TabPane
-                    tab={(
+                    tab={
                         <span>
                             <BuildOutlined />
                             <Text>Constructor</Text>
                         </span>
-                    )}
+                    }
                     key='2'
                 >
                     {constructorMode === ConstructorMode.SHOW && (

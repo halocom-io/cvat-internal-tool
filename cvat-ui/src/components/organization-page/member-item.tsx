@@ -17,12 +17,8 @@ export interface Props {
 }
 
 function MemberItem(props: Props): JSX.Element {
-    const {
-        membershipInstance, onRemoveMembership, onUpdateMembershipRole,
-    } = props;
-    const {
-        user, joined_date: joinedDate, role, invitation,
-    } = membershipInstance;
+    const { membershipInstance, onRemoveMembership, onUpdateMembershipRole } = props;
+    const { user, joined_date: joinedDate, role, invitation } = membershipInstance;
     const { username, firstName, lastName } = user;
 
     return (
@@ -36,7 +32,9 @@ function MemberItem(props: Props): JSX.Element {
             <Col span={8} className='cvat-organization-member-item-dates'>
                 {invitation ? (
                     <Text type='secondary'>
-                        {`Invited ${moment(invitation.created_date).fromNow()} ${invitation.owner ? `by ${invitation.owner.username}` : ''}`}
+                        {`Invited ${moment(invitation.created_date).fromNow()} ${
+                            invitation.owner ? `by ${invitation.owner.username}` : ''
+                        }`}
                     </Text>
                 ) : null}
                 {joinedDate ? <Text type='secondary'>{`Joined ${moment(joinedDate).fromNow()}`}</Text> : null}

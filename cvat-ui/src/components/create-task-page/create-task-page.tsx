@@ -20,13 +20,11 @@ interface Props {
     error: string;
     taskId: number | null;
     installedGit: boolean;
-    dumpers: []
+    dumpers: [];
 }
 
 export default function CreateTaskPage(props: Props): JSX.Element {
-    const {
-        error, status, taskId, onCreate, installedGit, dumpers,
-    } = props;
+    const { error, status, taskId, onCreate, installedGit, dumpers } = props;
 
     const location = useLocation();
 

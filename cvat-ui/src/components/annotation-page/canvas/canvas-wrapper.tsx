@@ -13,10 +13,7 @@ import { Canvas3d } from 'cvat-canvas3d-wrapper';
 import getCore from 'cvat-core-wrapper';
 import { LogType } from 'cvat-logger';
 import React from 'react';
-import {
-    ColorBy, ContextMenuType, GridColor, ObjectType, ShapeType,
-    Workspace,
-} from 'reducers/interfaces';
+import { ColorBy, ContextMenuType, GridColor, ObjectType, ShapeType, Workspace } from 'reducers/interfaces';
 import GlobalHotKeys, { KeyMap } from 'utils/mousetrap-react';
 
 import ContextImage from '../standard-workspace/context-image/context-image';
@@ -368,9 +365,7 @@ export default class CanvasWrapperComponent extends React.PureComponent<Props> {
     };
 
     private onCanvasShapeDrawn = (event: any): void => {
-        const {
-            jobInstance, activeLabelID, activeObjectType, frame, onShapeDrawn, onCreateAnnotations,
-        } = this.props;
+        const { jobInstance, activeLabelID, activeObjectType, frame, onShapeDrawn, onCreateAnnotations } = this.props;
 
         if (!event.detail.continue) {
             onShapeDrawn();
@@ -394,9 +389,7 @@ export default class CanvasWrapperComponent extends React.PureComponent<Props> {
     };
 
     private onCanvasObjectsMerged = (event: any): void => {
-        const {
-            jobInstance, frame, onMergeAnnotations, onMergeObjects,
-        } = this.props;
+        const { jobInstance, frame, onMergeAnnotations, onMergeObjects } = this.props;
 
         onMergeObjects(false);
 
@@ -409,9 +402,7 @@ export default class CanvasWrapperComponent extends React.PureComponent<Props> {
     };
 
     private onCanvasObjectsGroupped = (event: any): void => {
-        const {
-            jobInstance, frame, onGroupAnnotations, onGroupObjects,
-        } = this.props;
+        const { jobInstance, frame, onGroupAnnotations, onGroupObjects } = this.props;
 
         onGroupObjects(false);
 
@@ -427,9 +418,7 @@ export default class CanvasWrapperComponent extends React.PureComponent<Props> {
     };
 
     private onCanvasTrackSplitted = (event: any): void => {
-        const {
-            jobInstance, frame, onSplitAnnotations, onSplitTrack,
-        } = this.props;
+        const { jobInstance, frame, onSplitAnnotations, onSplitTrack } = this.props;
 
         onSplitTrack(false);
 
@@ -514,9 +503,7 @@ export default class CanvasWrapperComponent extends React.PureComponent<Props> {
     };
 
     private onCanvasCursorMoved = async (event: any): Promise<void> => {
-        const {
-            jobInstance, activatedStateID, workspace, onActivateObject,
-        } = this.props;
+        const { jobInstance, activatedStateID, workspace, onActivateObject } = this.props;
 
         if (![Workspace.STANDARD, Workspace.REVIEW_WORKSPACE].includes(workspace)) {
             return;
@@ -619,14 +606,8 @@ export default class CanvasWrapperComponent extends React.PureComponent<Props> {
     };
 
     private activateOnCanvas(): void {
-        const {
-            activatedStateID,
-            activatedAttributeID,
-            selectedOpacity,
-            aamZoomMargin,
-            workspace,
-            annotations,
-        } = this.props;
+        const { activatedStateID, activatedAttributeID, selectedOpacity, aamZoomMargin, workspace, annotations } =
+            this.props;
         const { canvasInstance } = this.props as { canvasInstance: Canvas };
 
         if (activatedStateID !== null) {
@@ -643,15 +624,13 @@ export default class CanvasWrapperComponent extends React.PureComponent<Props> {
             }
             const el = window.document.getElementById(`cvat_canvas_shape_${activatedStateID}`);
             if (el) {
-                ((el as any) as SVGElement).setAttribute('fill-opacity', `${selectedOpacity}`);
+                (el as any as SVGElement).setAttribute('fill-opacity', `${selectedOpacity}`);
             }
         }
     }
 
     private updateShapesView(): void {
-        const {
-            annotations, opacity, colorBy, outlined, outlineColor,
-        } = this.props;
+        const { annotations, opacity, colorBy, outlined, outlineColor } = this.props;
 
         for (const state of annotations) {
             let shapeColor = '';
@@ -679,9 +658,7 @@ export default class CanvasWrapperComponent extends React.PureComponent<Props> {
     }
 
     private updateCanvas(): void {
-        const {
-            curZLayer, annotations, frameData, canvasInstance,
-        } = this.props;
+        const { curZLayer, annotations, frameData, canvasInstance } = this.props;
 
         if (frameData !== null && canvasInstance) {
             canvasInstance.setup(

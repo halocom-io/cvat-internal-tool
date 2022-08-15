@@ -34,9 +34,7 @@ interface Props {
 }
 
 export default function AnnotationPageComponent(props: Props): JSX.Element {
-    const {
-        job, fetching, workspace, frameNumber, getJob, closeJob, saveLogs, changeFrame,
-    } = props;
+    const { job, fetching, workspace, frameNumber, getJob, closeJob, saveLogs, changeFrame } = props;
     const prevJob = usePrevious(job);
     const prevFetching = usePrevious(fetching);
 
@@ -106,9 +104,7 @@ export default function AnnotationPageComponent(props: Props): JSX.Element {
                             {`${job.projectId ? 'Project' : 'Task'} ${
                                 job.projectId || job.taskId
                             } does not contain any label. `}
-                            <a href={`/${job.projectId ? 'projects' : 'tasks'}/${job.projectId || job.id}/`}>
-                                Add
-                            </a>
+                            <a href={`/${job.projectId ? 'projects' : 'tasks'}/${job.projectId || job.id}/`}>Add</a>
                             {' the first one for editing annotation.'}
                         </span>
                     ),

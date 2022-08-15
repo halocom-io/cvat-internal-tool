@@ -37,14 +37,7 @@ function mapStateToProps(state: CombinedState): StateToProps {
             statistics: { visible, collecting, data },
             job: {
                 saving: savingJobStatus,
-                instance: {
-                    bugTracker,
-                    startFrame,
-                    stopFrame,
-                    assignee,
-                    dimension,
-                    status: jobStatus,
-                },
+                instance: { bugTracker, startFrame, stopFrame, assignee, dimension, status: jobStatus },
             },
         },
     } = state;
@@ -72,17 +65,8 @@ function mapDispatchToProps(dispatch: any): DispatchToProps {
 }
 
 function StatisticsModalComponent(props: StateToProps & DispatchToProps): JSX.Element {
-    const {
-        collecting,
-        data,
-        visible,
-        assignee,
-        startFrame,
-        stopFrame,
-        bugTracker,
-        closeStatistics,
-        dimension,
-    } = props;
+    const { collecting, data, visible, assignee, startFrame, stopFrame, bugTracker, closeStatistics, dimension } =
+        props;
 
     const is2D = dimension === DimensionType.DIM_2D;
 

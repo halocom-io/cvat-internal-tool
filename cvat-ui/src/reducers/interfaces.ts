@@ -53,7 +53,7 @@ export interface ProjectsState {
         };
         backups: {
             [projectId: number]: boolean;
-        }
+        };
     };
     restoring: boolean;
 }
@@ -466,7 +466,7 @@ export interface NotificationsState {
         };
         projects: {
             restoringDone: string;
-        }
+        };
     };
 }
 

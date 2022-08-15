@@ -21,9 +21,9 @@ import {
 } from './interfaces';
 
 function updateActivatedStateID(newStates: any[], prevActivatedStateID: number | null): number | null {
-    return prevActivatedStateID === null || newStates.some((_state: any) => _state.clientID === prevActivatedStateID) ?
-        prevActivatedStateID :
-        null;
+    return prevActivatedStateID === null || newStates.some((_state: any) => _state.clientID === prevActivatedStateID)
+        ? prevActivatedStateID
+        : null;
 }
 
 const defaultState: AnnotationState = {
@@ -177,11 +177,10 @@ export default (state = defaultState, action: AnyAction): AnnotationState => {
                     fetching: false,
                     instance: job,
                     labels: job.labels,
-                    attributes: job.labels
-                        .reduce((acc: Record<number, any[]>, label: any): Record<number, any[]> => {
-                            acc[label.id] = label.attributes;
-                            return acc;
-                        }, {}),
+                    attributes: job.labels.reduce((acc: Record<number, any[]>, label: any): Record<number, any[]> => {
+                        acc[label.id] = label.attributes;
+                        return acc;
+                    }, {}),
                 },
                 annotations: {
                     ...state.annotations,
@@ -258,18 +257,8 @@ export default (state = defaultState, action: AnyAction): AnnotationState => {
         }
         case AnnotationActionTypes.CHANGE_FRAME_SUCCESS: {
             const { activatedStateID } = state.annotations;
-            const {
-                number,
-                data,
-                filename,
-                hasRelatedContext,
-                states,
-                minZ,
-                maxZ,
-                curZ,
-                delay,
-                changeTime,
-            } = action.payload;
+            const { number, data, filename, hasRelatedContext, states, minZ, maxZ, curZ, delay, changeTime } =
+                action.payload;
 
             return {
                 ...state,
@@ -592,9 +581,7 @@ export default (state = defaultState, action: AnyAction): AnnotationState => {
             };
         }
         case AnnotationActionTypes.UPDATE_ANNOTATIONS_SUCCESS: {
-            const {
-                history, states: updatedStates, minZ, maxZ,
-            } = action.payload;
+            const { history, states: updatedStates, minZ, maxZ } = action.payload;
             const { states: prevStates } = state.annotations;
             const nextStates = [...prevStates];
 
@@ -936,9 +923,7 @@ export default (state = defaultState, action: AnyAction): AnnotationState => {
             };
         }
         case AnnotationActionTypes.UPDATE_CANVAS_CONTEXT_MENU: {
-            const {
-                visible, left, top, type, pointID,
-            } = action.payload;
+            const { visible, left, top, type, pointID } = action.payload;
 
             return {
                 ...state,
@@ -959,9 +944,7 @@ export default (state = defaultState, action: AnyAction): AnnotationState => {
         case AnnotationActionTypes.REDO_ACTION_SUCCESS:
         case AnnotationActionTypes.UNDO_ACTION_SUCCESS: {
             const { activatedStateID } = state.annotations;
-            const {
-                history, states, minZ, maxZ,
-            } = action.payload;
+            const { history, states, minZ, maxZ } = action.payload;
 
             return {
                 ...state,
@@ -980,9 +963,7 @@ export default (state = defaultState, action: AnyAction): AnnotationState => {
         }
         case AnnotationActionTypes.FETCH_ANNOTATIONS_SUCCESS: {
             const { activatedStateID } = state.annotations;
-            const {
-                states, history, minZ, maxZ,
-            } = action.payload;
+            const { states, history, minZ, maxZ } = action.payload;
 
             return {
                 ...state,
@@ -1066,9 +1047,9 @@ export default (state = defaultState, action: AnyAction): AnnotationState => {
                 },
                 canvas: {
                     ...state.canvas,
-                    activeControl: activeInteractor.type.startsWith('opencv') ?
-                        ActiveControl.OPENCV_TOOLS :
-                        ActiveControl.AI_TOOLS,
+                    activeControl: activeInteractor.type.startsWith('opencv')
+                        ? ActiveControl.OPENCV_TOOLS
+                        : ActiveControl.AI_TOOLS,
                 },
             };
         }

@@ -265,9 +265,7 @@ export default class DetailsComponent extends React.PureComponent<Props, State> 
 
     private renderDatasetRepository(): JSX.Element | boolean {
         const { taskInstance, dumpers } = this.props;
-        const {
-            repository, repositoryStatus, format, lfs, updatingRepository,
-        } = this.state;
+        const { repository, repositoryStatus, format, lfs, updatingRepository } = this.state;
         return (
             !!repository && (
                 <Row>
@@ -333,14 +331,21 @@ export default class DetailsComponent extends React.PureComponent<Props, State> 
                                 </Tag>
                             )}
                         </Paragraph>
-                        <Text strong className='cvat-text-color'>Using format: </Text>
+                        <Text strong className='cvat-text-color'>
+                            Using format:{' '}
+                        </Text>
                         <Space>
-                            <Select disabled={updatingRepository} onChange={this.onChangeFormatValue} className='cvat-repository-format-select' value={format}>
-                                {
-                                    dumpers.map((dumper: any) => (
-                                        <Option key={dumper.name} value={dumper.name}>{dumper.name}</Option>
-                                    ))
-                                }
+                            <Select
+                                disabled={updatingRepository}
+                                onChange={this.onChangeFormatValue}
+                                className='cvat-repository-format-select'
+                                value={format}
+                            >
+                                {dumpers.map((dumper: any) => (
+                                    <Option key={dumper.name} value={dumper.name}>
+                                        {dumper.name}
+                                    </Option>
+                                ))}
                             </Select>
                             <Checkbox disabled={updatingRepository} onChange={this.onChangeLFSValue} checked={lfs}>
                                 Large file support
@@ -402,9 +407,7 @@ export default class DetailsComponent extends React.PureComponent<Props, State> 
     }
 
     public render(): JSX.Element {
-        const {
-            activeInference, cancelAutoAnnotation, taskInstance, onTaskUpdate,
-        } = this.props;
+        const { activeInference, cancelAutoAnnotation, taskInstance, onTaskUpdate } = this.props;
 
         return (
             <div className='cvat-task-details'>

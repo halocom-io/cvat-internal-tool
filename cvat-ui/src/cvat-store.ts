@@ -2,9 +2,7 @@
 //
 // SPDX-License-Identifier: MIT
 
-import {
-    applyMiddleware, createStore, Reducer, Store,
-} from 'redux';
+import { applyMiddleware, createStore, Reducer, Store } from 'redux';
 import { createLogger } from 'redux-logger';
 import thunk from 'redux-thunk';
 import { isDev } from 'utils/enviroment';

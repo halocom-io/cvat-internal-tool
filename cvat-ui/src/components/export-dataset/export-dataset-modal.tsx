@@ -118,24 +118,22 @@ function ExportDatasetModal(): JSX.Element {
                         {dumpers
                             .sort((a: any, b: any) => a.name.localeCompare(b.name))
                             .filter((dumper: any): boolean => dumper.dimension === instance?.dimension)
-                            .map(
-                                (dumper: any): JSX.Element => {
-                                    const pending = (activities || []).includes(dumper.name);
-                                    const disabled = !dumper.enabled || pending;
-                                    return (
-                                        <Select.Option
-                                            value={dumper.name}
-                                            key={dumper.name}
-                                            disabled={disabled}
-                                            className='cvat-modal-export-option-item'
-                                        >
-                                            <DownloadOutlined />
-                                            <Text disabled={disabled}>{dumper.name}</Text>
-                                            {pending && <LoadingOutlined style={{ marginLeft: 10 }} />}
-                                        </Select.Option>
-                                    );
-                                },
-                            )}
+                            .map((dumper: any): JSX.Element => {
+                                const pending = (activities || []).includes(dumper.name);
+                                const disabled = !dumper.enabled || pending;
+                                return (
+                                    <Select.Option
+                                        value={dumper.name}
+                                        key={dumper.name}
+                                        disabled={disabled}
+                                        className='cvat-modal-export-option-item'
+                                    >
+                                        <DownloadOutlined />
+                                        <Text disabled={disabled}>{dumper.name}</Text>
+                                        {pending && <LoadingOutlined style={{ marginLeft: 10 }} />}
+                                    </Select.Option>
+                                );
+                            })}
                     </Select>
                 </Form.Item>
                 <Form.Item name='saveImages' valuePropName='checked' wrapperCol={{ offset: 8, span: 16 }}>

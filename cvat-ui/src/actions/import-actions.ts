@@ -19,24 +19,19 @@ export enum ImportActionTypes {
 export const importActions = {
     openImportModal: (instance: any) => createAction(ImportActionTypes.OPEN_IMPORT_MODAL, { instance }),
     closeImportModal: () => createAction(ImportActionTypes.CLOSE_IMPORT_MODAL),
-    importDataset: (projectId: number) => (
-        createAction(ImportActionTypes.IMPORT_DATASET, { id: projectId })
-    ),
-    importDatasetSuccess: () => (
-        createAction(ImportActionTypes.IMPORT_DATASET_SUCCESS)
-    ),
-    importDatasetFailed: (instance: any, error: any) => (
+    importDataset: (projectId: number) => createAction(ImportActionTypes.IMPORT_DATASET, { id: projectId }),
+    importDatasetSuccess: () => createAction(ImportActionTypes.IMPORT_DATASET_SUCCESS),
+    importDatasetFailed: (instance: any, error: any) =>
         createAction(ImportActionTypes.IMPORT_DATASET_FAILED, {
             instance,
             error,
-        })
-    ),
-    importDatasetUpdateStatus: (progress: number, status: string) => (
-        createAction(ImportActionTypes.IMPORT_DATASET_UPDATE_STATUS, { progress, status })
-    ),
+        }),
+    importDatasetUpdateStatus: (progress: number, status: string) =>
+        createAction(ImportActionTypes.IMPORT_DATASET_UPDATE_STATUS, { progress, status }),
 };
 
-export const importDatasetAsync = (instance: any, format: string, file: File): ThunkAction => (
+export const importDatasetAsync =
+    (instance: any, format: string, file: File): ThunkAction =>
     async (dispatch, getState) => {
         try {
             const state: CombinedState = getState();
@@ -44,9 +39,9 @@ export const importDatasetAsync = (instance: any, format: string, file: File): T
                 throw Error('Only one importing of dataset allowed at the same time');
             }
             dispatch(importActions.importDataset(instance.id));
-            await instance.annotations.importDataset(format, file, (message: string, progress: number) => (
-                dispatch(importActions.importDatasetUpdateStatus(progress * 100, message))
-            ));
+            await instance.annotations.importDataset(format, file, (message: string, progress: number) =>
+                dispatch(importActions.importDatasetUpdateStatus(progress * 100, message)),
+            );
         } catch (error) {
             dispatch(importActions.importDatasetFailed(instance, error));
             return;
@@ -54,7 +49,6 @@ export const importDatasetAsync = (instance: any, format: string, file: File): T
 
         dispatch(importActions.importDatasetSuccess());
         dispatch(getProjectsAsync({ id: instance.id }, getState().projects.tasksGettingQuery));
-    }
-);
+    };
 
 export type ImportActions = ActionUnion<typeof importActions>;

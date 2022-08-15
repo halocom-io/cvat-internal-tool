@@ -65,8 +65,7 @@ export default function StoragesPageComponent(): JSX.Element {
         xxl: 16,
     };
 
-    const anySearch = Object.keys(query)
-        .some((value: string) => value !== 'page' && (query as any)[value] !== null);
+    const anySearch = Object.keys(query).some((value: string) => value !== 'page' && (query as any)[value] !== null);
     const content = current.length ? (
         <CloudStoragesListComponent
             totalCount={totalCount}
@@ -111,11 +110,13 @@ export default function StoragesPageComponent(): JSX.Element {
                     }}
                     query={updatedQuery}
                 />
-                { fetching ? (
+                {fetching ? (
                     <Row className='cvat-cloud-storages-page' justify='center' align='middle'>
                         <Spin size='large' />
                     </Row>
-                ) : content }
+                ) : (
+                    content
+                )}
             </Col>
         </Row>
     );

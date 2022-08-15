@@ -2,11 +2,7 @@
 //
 // SPDX-License-Identifier: MIT
 
-import {
-    changeFrameAsync,
-    closeJob as closeJobAction,
-    getJobAsync, saveLogsAsync,
-} from 'actions/annotation-actions';
+import { changeFrameAsync, closeJob as closeJobAction, getJobAsync, saveLogsAsync } from 'actions/annotation-actions';
 import AnnotationPageComponent from 'components/annotation-page/annotation-page';
 import { connect } from 'react-redux';
 import { RouteComponentProps } from 'react-router';
@@ -40,9 +36,7 @@ function mapStateToProps(state: CombinedState, own: OwnProps): StateToProps {
             job: { requestedId, instance: job, fetching },
             workspace,
             player: {
-                frame: {
-                    number: frameNumber,
-                },
+                frame: { number: frameNumber },
             },
         },
     } = state;

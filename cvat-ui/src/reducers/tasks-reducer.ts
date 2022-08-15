@@ -280,36 +280,32 @@ export default (state: TasksState = defaultState, action: AnyAction): TasksState
             return {
                 ...state,
                 updating: false,
-                current: state.current.map(
-                    (_task): Task => {
-                        if (_task.instance.id === task.id) {
-                            return {
-                                ..._task,
-                                instance: task,
-                            };
-                        }
+                current: state.current.map((_task): Task => {
+                    if (_task.instance.id === task.id) {
+                        return {
+                            ..._task,
+                            instance: task,
+                        };
+                    }
 
-                        return _task;
-                    },
-                ),
+                    return _task;
+                }),
             };
         }
         case TasksActionTypes.UPDATE_TASK_FAILED: {
             return {
                 ...state,
                 updating: false,
-                current: state.current.map(
-                    (task): Task => {
-                        if (task.instance.id === action.payload.task.id) {
-                            return {
-                                ...task,
-                                instance: action.payload.task,
-                            };
-                        }
+                current: state.current.map((task): Task => {
+                    if (task.instance.id === action.payload.task.id) {
+                        return {
+                            ...task,
+                            instance: action.payload.task,
+                        };
+                    }
 
-                        return task;
-                    },
-                ),
+                    return task;
+                }),
             };
         }
         case TasksActionTypes.UPDATE_JOB: {
@@ -321,16 +317,18 @@ export default (state: TasksState = defaultState, action: AnyAction): TasksState
         case TasksActionTypes.UPDATE_JOB_SUCCESS: {
             const { jobInstance } = action.payload;
             const idx = state.current.findIndex((task: Task) => task.instance.id === jobInstance.taskId);
-            const newCurrent = idx === -1 ?
-                state.current : [...(state.current.splice(idx, 1), state.current)];
+            const newCurrent = idx === -1 ? state.current : [...(state.current.splice(idx, 1), state.current)];
 
             return {
                 ...state,
                 current: newCurrent,
-                gettingQuery: state.gettingQuery.id === jobInstance.taskId ? {
-                    ...state.gettingQuery,
-                    id: null,
-                } : state.gettingQuery,
+                gettingQuery:
+                    state.gettingQuery.id === jobInstance.taskId
+                        ? {
+                              ...state.gettingQuery,
+                              id: null,
+                          }
+                        : state.gettingQuery,
                 updating: false,
             };
         }

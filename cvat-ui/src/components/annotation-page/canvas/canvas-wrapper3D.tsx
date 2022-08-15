@@ -2,26 +2,17 @@
 //
 // SPDX-License-Identifier: MIT
 
-import {
-    ArrowDownOutlined, ArrowLeftOutlined, ArrowRightOutlined, ArrowUpOutlined,
-} from '@ant-design/icons';
+import { ArrowDownOutlined, ArrowLeftOutlined, ArrowRightOutlined, ArrowUpOutlined } from '@ant-design/icons';
 import Layout from 'antd/lib/layout/layout';
 import ContextImage from 'components/annotation-page/standard-workspace/context-image/context-image';
 import CVATTooltip from 'components/common/cvat-tooltip';
 import { Canvas } from 'cvat-canvas-wrapper';
-import {
-    CameraAction, Canvas3d, ViewsDOM,
-    ViewType,
-} from 'cvat-canvas3d-wrapper';
+import { CameraAction, Canvas3d, ViewsDOM, ViewType } from 'cvat-canvas3d-wrapper';
 import getCore from 'cvat-core-wrapper';
 import { LogType } from 'cvat-logger';
-import React, {
-    ReactElement, SyntheticEvent, useEffect, useReducer, useRef,
-} from 'react';
+import React, { ReactElement, SyntheticEvent, useEffect, useReducer, useRef } from 'react';
 import { ResizableBox } from 'react-resizable';
-import {
-    ColorBy, ContextMenuType, ObjectType, Workspace,
-} from 'reducers/interfaces';
+import { ColorBy, ContextMenuType, ObjectType, Workspace } from 'reducers/interfaces';
 
 const cvat = getCore();
 
@@ -71,7 +62,7 @@ function viewSizeReducer(
     state: ViewSize,
     action: { type: ViewType | 'set' | 'resize'; e?: SyntheticEvent; data?: ViewSize },
 ): ViewSize {
-    const event = (action.e as unknown) as MouseEvent;
+    const event = action.e as unknown as MouseEvent;
     const canvas3dContainer = document.getElementById('canvas3d-container');
     if (canvas3dContainer) {
         switch (action.type) {

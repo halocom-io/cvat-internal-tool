@@ -30,11 +30,13 @@ function mapDispatchToProps(dispatch: any): DispatchToProps {
             dispatch(createAnnotationsAsync(sessionInstance, frame, states));
         },
         onRememberObject(labelID: number): void {
-            dispatch(rememberObject({
-                activeObjectType: ObjectType.TAG,
-                activeLabelID: labelID,
-                activeShapeType: undefined,
-            }));
+            dispatch(
+                rememberObject({
+                    activeObjectType: ObjectType.TAG,
+                    activeLabelID: labelID,
+                    activeShapeType: undefined,
+                }),
+            );
         },
     };
 }
@@ -83,9 +85,7 @@ class DrawShapePopoverContainer extends React.PureComponent<Props, State> {
     };
 
     private onSetup = (): void => {
-        const {
-            frame, labels, jobInstance, canvasInstance, onAnnotationCreate, onRememberObject,
-        } = this.props;
+        const { frame, labels, jobInstance, canvasInstance, onAnnotationCreate, onRememberObject } = this.props;
 
         const { selectedLabelID } = this.state;
 

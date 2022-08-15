@@ -4,10 +4,7 @@
 
 import './styles.scss';
 
-import {
-    CloseCircleOutlined, LikeOutlined, MessageOutlined,
-    StarOutlined,
-} from '@ant-design/icons';
+import { CloseCircleOutlined, LikeOutlined, MessageOutlined, StarOutlined } from '@ant-design/icons';
 import Button from 'antd/lib/button';
 import Popover from 'antd/lib/popover';
 import Text from 'antd/lib/typography/Text';

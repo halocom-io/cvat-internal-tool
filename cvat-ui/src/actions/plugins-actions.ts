@@ -23,12 +23,14 @@ const pluginActions = {
 
 export type PluginActions = ActionUnion<typeof pluginActions>;
 
-export const getPluginsAsync = (): ThunkAction => async (dispatch): Promise<void> => {
-    dispatch(pluginActions.checkPlugins());
-    try {
-        const list: PluginsList = await core.server.installedApps();
-        dispatch(pluginActions.checkPluginsSuccess(list));
-    } catch (error) {
-        dispatch(pluginActions.checkPluginsFailed(error));
-    }
-};
+export const getPluginsAsync =
+    (): ThunkAction =>
+    async (dispatch): Promise<void> => {
+        dispatch(pluginActions.checkPlugins());
+        try {
+            const list: PluginsList = await core.server.installedApps();
+            dispatch(pluginActions.checkPluginsSuccess(list));
+        } catch (error) {
+            dispatch(pluginActions.checkPluginsFailed(error));
+        }
+    };

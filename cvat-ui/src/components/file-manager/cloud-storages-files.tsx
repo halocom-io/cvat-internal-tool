@@ -41,14 +41,12 @@ interface DataStructure {
 type Files =
     | ReactText[]
     | {
-        checked: ReactText[];
-        halfChecked: ReactText[];
-    };
+          checked: ReactText[];
+          halfChecked: ReactText[];
+      };
 
 export default function CloudStorageFiles(props: Props): JSX.Element {
-    const {
-        cloudStorage, selectedManifest, selectedFiles, onSelectFiles,
-    } = props;
+    const { cloudStorage, selectedManifest, selectedFiles, onSelectFiles } = props;
     const dispatch = useDispatch();
     const isFetching = useSelector((state: CombinedState) => state.cloudStorages.activities.contentLoads.fetching);
     const content = useSelector((state: CombinedState) => state.cloudStorages.activities.contentLoads.content);
@@ -118,17 +116,18 @@ export default function CloudStorageFiles(props: Props): JSX.Element {
         return data;
     };
 
-    const onLoadData = (key: string): Promise<void> => new Promise((resolve) => {
-        if (initialData.children === null) {
+    const onLoadData = (key: string): Promise<void> =>
+        new Promise((resolve) => {
+            if (initialData.children === null) {
+                resolve();
+                return;
+            }
+            setInitialData({
+                ...initialData,
+                children: updateData(key, initialData.children),
+            });
             resolve();
-            return;
-        }
-        setInitialData({
-            ...initialData,
-            children: updateData(key, initialData.children),
         });
-        resolve();
-    });
 
     useEffect(() => {
         if (content) {

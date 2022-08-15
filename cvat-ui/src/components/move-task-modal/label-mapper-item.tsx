@@ -25,9 +25,7 @@ export interface LabelMapperItemProps {
 }
 
 export default function LabelMapperItem(props: LabelMapperItemProps): JSX.Element {
-    const {
-        label, value, onChange, projectLabels, labelMappers,
-    } = props;
+    const { label, value, onChange, projectLabels, labelMappers } = props;
 
     const labelNames = labelMappers.map((mapper) => mapper.newLabelName).filter((el) => el);
 
@@ -48,10 +46,12 @@ export default function LabelMapperItem(props: LabelMapperItemProps): JSX.Elemen
                     className='cvat-move-task-label-mapper-item-select'
                     disabled={typeof projectLabels === 'undefined'}
                     value={value.newLabelName || ''}
-                    onChange={(_value) => onChange({
-                        ...value,
-                        newLabelName: _value as string,
-                    })}
+                    onChange={(_value) =>
+                        onChange({
+                            ...value,
+                            newLabelName: _value as string,
+                        })
+                    }
                 >
                     {projectLabels
                         ?.filter((_label) => !labelNames.includes(_label.name))
@@ -66,10 +66,12 @@ export default function LabelMapperItem(props: LabelMapperItemProps): JSX.Elemen
                 <Checkbox
                     disabled
                     checked={value.clearAttributes}
-                    onChange={(_value) => onChange({
-                        ...value,
-                        clearAttributes: _value.target.checked,
-                    })}
+                    onChange={(_value) =>
+                        onChange({
+                            ...value,
+                            clearAttributes: _value.target.checked,
+                        })
+                    }
                 >
                     Clear attributes
                 </Checkbox>

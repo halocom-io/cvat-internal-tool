@@ -16,11 +16,16 @@ import { usePrevious } from 'utils/hooks';
 
 import {
     config,
-    localStorageRecentCapacity, localStorageRecentKeyword, predefinedFilterValues,
+    localStorageRecentCapacity,
+    localStorageRecentKeyword,
+    predefinedFilterValues,
 } from './tasks-filter-configuration';
 
 const FilteringComponent = ResourceFilterHOC(
-    config, localStorageRecentKeyword, localStorageRecentCapacity, predefinedFilterValues,
+    config,
+    localStorageRecentKeyword,
+    localStorageRecentCapacity,
+    predefinedFilterValues,
 );
 
 interface VisibleTopBarProps {
@@ -33,9 +38,7 @@ interface VisibleTopBarProps {
 }
 
 export default function TopBarComponent(props: VisibleTopBarProps): JSX.Element {
-    const {
-        importing, query, onApplyFilter, onApplySorting, onApplySearch, onImportTask,
-    } = props;
+    const { importing, query, onApplyFilter, onApplySorting, onApplySearch, onImportTask } = props;
     const [visibility, setVisibility] = useState(defaultVisibility);
     const history = useHistory();
     const prevImporting = usePrevious(importing);
@@ -62,11 +65,23 @@ export default function TopBarComponent(props: VisibleTopBarProps): JSX.Element 
                     <div>
                         <SortingComponent
                             visible={visibility.sorting}
-                            onVisibleChange={(visible: boolean) => (
+                            onVisibleChange={(visible: boolean) =>
                                 setVisibility({ ...defaultVisibility, sorting: visible })
-                            )}
+                            }
                             defaultFields={query.sort?.split(',') || ['-ID']}
-                            sortingFields={['ID', 'Owner', 'Status', 'Assignee', 'Updated date', 'Subset', 'Mode', 'Dimension', 'Project ID', 'Name', 'Project name']}
+                            sortingFields={[
+                                'ID',
+                                'Owner',
+                                'Status',
+                                'Assignee',
+                                'Updated date',
+                                'Subset',
+                                'Mode',
+                                'Dimension',
+                                'Project ID',
+                                'Name',
+                                'Project name',
+                            ]}
                             onApplySorting={onApplySorting}
                         />
                         <FilteringComponent
@@ -74,15 +89,15 @@ export default function TopBarComponent(props: VisibleTopBarProps): JSX.Element 
                             predefinedVisible={visibility.predefined}
                             builderVisible={visibility.builder}
                             recentVisible={visibility.recent}
-                            onPredefinedVisibleChange={(visible: boolean) => (
+                            onPredefinedVisibleChange={(visible: boolean) =>
                                 setVisibility({ ...defaultVisibility, predefined: visible })
-                            )}
-                            onBuilderVisibleChange={(visible: boolean) => (
+                            }
+                            onBuilderVisibleChange={(visible: boolean) =>
                                 setVisibility({ ...defaultVisibility, builder: visible })
-                            )}
-                            onRecentVisibleChange={(visible: boolean) => (
+                            }
+                            onRecentVisibleChange={(visible: boolean) =>
                                 setVisibility({ ...defaultVisibility, builder: visibility.builder, recent: visible })
-                            )}
+                            }
                             onApplyFilter={onApplyFilter}
                         />
                     </div>
@@ -90,7 +105,7 @@ export default function TopBarComponent(props: VisibleTopBarProps): JSX.Element 
                 <div>
                     <Dropdown
                         trigger={['click']}
-                        overlay={(
+                        overlay={
                             <div className='cvat-tasks-page-control-buttons-wrapper'>
                                 <Button
                                     className='cvat-create-task-button'
@@ -121,7 +136,7 @@ export default function TopBarComponent(props: VisibleTopBarProps): JSX.Element 
                                     </Button>
                                 </Upload>
                             </div>
-                        )}
+                        }
                     >
                         <Button type='primary' className='cvat-create-task-dropdown' icon={<PlusOutlined />} />
                     </Dropdown>

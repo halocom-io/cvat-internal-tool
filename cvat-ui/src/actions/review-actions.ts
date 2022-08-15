@@ -33,12 +33,10 @@ export enum ReviewActionTypes {
 
 export const reviewActions = {
     createIssue: () => createAction(ReviewActionTypes.CREATE_ISSUE, {}),
-    startIssue: (position: number[]) => (
-        createAction(ReviewActionTypes.START_ISSUE, { position: cvat.classes.Issue.hull(position) })
-    ),
-    finishIssueSuccess: (frame: number, issue: any) => (
-        createAction(ReviewActionTypes.FINISH_ISSUE_SUCCESS, { frame, issue })
-    ),
+    startIssue: (position: number[]) =>
+        createAction(ReviewActionTypes.START_ISSUE, { position: cvat.classes.Issue.hull(position) }),
+    finishIssueSuccess: (frame: number, issue: any) =>
+        createAction(ReviewActionTypes.FINISH_ISSUE_SUCCESS, { frame, issue }),
     finishIssueFailed: (error: any) => createAction(ReviewActionTypes.FINISH_ISSUE_FAILED, { error }),
     cancelIssue: () => createAction(ReviewActionTypes.CANCEL_ISSUE),
     commentIssue: (issueId: number) => createAction(ReviewActionTypes.COMMENT_ISSUE, { issueId }),
@@ -52,120 +50,125 @@ export const reviewActions = {
     reopenIssueFailed: (error: any) => createAction(ReviewActionTypes.REOPEN_ISSUE_FAILED, { error }),
     submitReview: (jobId: number) => createAction(ReviewActionTypes.SUBMIT_REVIEW, { jobId }),
     submitReviewSuccess: () => createAction(ReviewActionTypes.SUBMIT_REVIEW_SUCCESS),
-    submitReviewFailed: (error: any, jobId: number) => (
-        createAction(ReviewActionTypes.SUBMIT_REVIEW_FAILED, { error, jobId })
-    ),
-    removeIssueSuccess: (issueId: number, frame: number) => (
-        createAction(ReviewActionTypes.REMOVE_ISSUE_SUCCESS, { issueId, frame })
-    ),
+    submitReviewFailed: (error: any, jobId: number) =>
+        createAction(ReviewActionTypes.SUBMIT_REVIEW_FAILED, { error, jobId }),
+    removeIssueSuccess: (issueId: number, frame: number) =>
+        createAction(ReviewActionTypes.REMOVE_ISSUE_SUCCESS, { issueId, frame }),
     removeIssueFailed: (error: any) => createAction(ReviewActionTypes.REMOVE_ISSUE_FAILED, { error }),
     switchIssuesHiddenFlag: (hidden: boolean) => createAction(ReviewActionTypes.SWITCH_ISSUES_HIDDEN_FLAG, { hidden }),
-    switchIssuesHiddenResolvedFlag: (hidden: boolean) => (
-        createAction(ReviewActionTypes.SWITCH_RESOLVED_ISSUES_HIDDEN_FLAG, { hidden })
-    ),
+    switchIssuesHiddenResolvedFlag: (hidden: boolean) =>
+        createAction(ReviewActionTypes.SWITCH_RESOLVED_ISSUES_HIDDEN_FLAG, { hidden }),
 };
 
 export type ReviewActions = ActionUnion<typeof reviewActions>;
 
-export const finishIssueAsync = (message: string): ThunkAction => async (dispatch, getState) => {
-    const state = getState();
-    const {
-        annotation: {
-            player: {
-                frame: { number: frameNumber },
+export const finishIssueAsync =
+    (message: string): ThunkAction =>
+    async (dispatch, getState) => {
+        const state = getState();
+        const {
+            annotation: {
+                player: {
+                    frame: { number: frameNumber },
+                },
+                job: { instance: jobInstance },
             },
-            job: {
-                instance: jobInstance,
+            review: { newIssuePosition },
+        } = state;
+
+        try {
+            const issue = new cvat.classes.Issue({
+                job: jobInstance.id,
+                frame: frameNumber,
+                position: newIssuePosition,
+            });
+
+            const savedIssue = await jobInstance.openIssue(issue, message);
+            dispatch(reviewActions.finishIssueSuccess(frameNumber, savedIssue));
+        } catch (error) {
+            dispatch(reviewActions.finishIssueFailed(error));
+        }
+    };
+
+export const commentIssueAsync =
+    (id: number, message: string): ThunkAction =>
+    async (dispatch, getState) => {
+        const state = getState();
+        const {
+            auth: { user },
+            review: { frameIssues },
+        } = state;
+
+        try {
+            dispatch(reviewActions.commentIssue(id));
+            const [issue] = frameIssues.filter((_issue: any): boolean => _issue.id === id);
+            await issue.comment({
+                message,
+                owner: user,
+            });
+
+            dispatch(reviewActions.commentIssueSuccess());
+        } catch (error) {
+            dispatch(reviewActions.commentIssueFailed(error));
+        }
+    };
+
+export const resolveIssueAsync =
+    (id: number): ThunkAction =>
+    async (dispatch, getState) => {
+        const state = getState();
+        const {
+            auth: { user },
+            review: { frameIssues },
+        } = state;
+
+        try {
+            dispatch(reviewActions.resolveIssue(id));
+            const [issue] = frameIssues.filter((_issue: any): boolean => _issue.id === id);
+            await issue.resolve(user);
+            dispatch(reviewActions.resolveIssueSuccess());
+        } catch (error) {
+            dispatch(reviewActions.resolveIssueFailed(error));
+        }
+    };
+
+export const reopenIssueAsync =
+    (id: number): ThunkAction =>
+    async (dispatch, getState) => {
+        const state = getState();
+        const {
+            auth: { user },
+            review: { frameIssues },
+        } = state;
+
+        try {
+            dispatch(reviewActions.reopenIssue(id));
+            const [issue] = frameIssues.filter((_issue: any): boolean => _issue.id === id);
+            await issue.reopen(user);
+            dispatch(reviewActions.reopenIssueSuccess());
+        } catch (error) {
+            dispatch(reviewActions.reopenIssueFailed(error));
+        }
+    };
+
+export const deleteIssueAsync =
+    (id: number): ThunkAction =>
+    async (dispatch, getState) => {
+        const state = getState();
+        const {
+            review: { frameIssues },
+            annotation: {
+                player: {
+                    frame: { number: frameNumber },
+                },
             },
-        },
-        review: { newIssuePosition },
-    } = state;
+        } = state;
 
-    try {
-        const issue = new cvat.classes.Issue({
-            job: jobInstance.id,
-            frame: frameNumber,
-            position: newIssuePosition,
-        });
-
-        const savedIssue = await jobInstance.openIssue(issue, message);
-        dispatch(reviewActions.finishIssueSuccess(frameNumber, savedIssue));
-    } catch (error) {
-        dispatch(reviewActions.finishIssueFailed(error));
-    }
-};
-
-export const commentIssueAsync = (id: number, message: string): ThunkAction => async (dispatch, getState) => {
-    const state = getState();
-    const {
-        auth: { user },
-        review: { frameIssues },
-    } = state;
-
-    try {
-        dispatch(reviewActions.commentIssue(id));
-        const [issue] = frameIssues.filter((_issue: any): boolean => _issue.id === id);
-        await issue.comment({
-            message,
-            owner: user,
-        });
-
-        dispatch(reviewActions.commentIssueSuccess());
-    } catch (error) {
-        dispatch(reviewActions.commentIssueFailed(error));
-    }
-};
-
-export const resolveIssueAsync = (id: number): ThunkAction => async (dispatch, getState) => {
-    const state = getState();
-    const {
-        auth: { user },
-        review: { frameIssues },
-    } = state;
-
-    try {
-        dispatch(reviewActions.resolveIssue(id));
-        const [issue] = frameIssues.filter((_issue: any): boolean => _issue.id === id);
-        await issue.resolve(user);
-        dispatch(reviewActions.resolveIssueSuccess());
-    } catch (error) {
-        dispatch(reviewActions.resolveIssueFailed(error));
-    }
-};
-
-export const reopenIssueAsync = (id: number): ThunkAction => async (dispatch, getState) => {
-    const state = getState();
-    const {
-        auth: { user },
-        review: { frameIssues },
-    } = state;
-
-    try {
-        dispatch(reviewActions.reopenIssue(id));
-        const [issue] = frameIssues.filter((_issue: any): boolean => _issue.id === id);
-        await issue.reopen(user);
-        dispatch(reviewActions.reopenIssueSuccess());
-    } catch (error) {
-        dispatch(reviewActions.reopenIssueFailed(error));
-    }
-};
-
-export const deleteIssueAsync = (id: number): ThunkAction => async (dispatch, getState) => {
-    const state = getState();
-    const {
-        review: { frameIssues },
-        annotation: {
-            player: {
-                frame: { number: frameNumber },
-            },
-        },
-    } = state;
-
-    try {
-        const [issue] = frameIssues.filter((_issue: any): boolean => _issue.id === id);
-        await issue.delete();
-        dispatch(reviewActions.removeIssueSuccess(id, frameNumber));
-    } catch (error) {
-        dispatch(reviewActions.removeIssueFailed(error));
-    }
-};
+        try {
+            const [issue] = frameIssues.filter((_issue: any): boolean => _issue.id === id);
+            await issue.delete();
+            dispatch(reviewActions.removeIssueSuccess(id, frameNumber));
+        } catch (error) {
+            dispatch(reviewActions.removeIssueFailed(error));
+        }
+    };

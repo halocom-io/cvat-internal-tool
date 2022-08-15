@@ -61,7 +61,6 @@ export const config: Partial<Config> = {
                 //         is_active: true,
                 //         ...(search ? { search } : {}),
                 //     });
-
                 //     return {
                 //         values: users.map((user: any) => ({
                 //             value: user.username, title: user.username,

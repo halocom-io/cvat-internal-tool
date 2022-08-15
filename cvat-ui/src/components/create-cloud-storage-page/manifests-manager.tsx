@@ -72,7 +72,7 @@ export default function ManifestsManager(props: Props): JSX.Element {
             <Form.Item
                 name='manifests'
                 className='cvat-manifests-manager-form-item'
-                label={(
+                label={
                     <>
                         Manifests
                         <Tooltip title='More information'>
@@ -86,14 +86,14 @@ export default function ManifestsManager(props: Props): JSX.Element {
                             </Button>
                         </Tooltip>
                     </>
-                )}
+                }
                 rules={[{ required: true, message: 'Please, specify at least one manifest file' }]}
             />
             <Form.List name='manifests'>
-                {
-                    (fields) => (
-                        <>
-                            {fields.map((field, idx): JSX.Element => (
+                {(fields) => (
+                    <>
+                        {fields.map(
+                            (field, idx): JSX.Element => (
                                 <Form.Item key={idx} shouldUpdate>
                                     <Row justify='space-between' align='top'>
                                         <Col>
@@ -122,10 +122,10 @@ export default function ManifestsManager(props: Props): JSX.Element {
                                         </Col>
                                     </Row>
                                 </Form.Item>
-                            ))}
-                        </>
-                    )
-                }
+                            ),
+                        )}
+                    </>
+                )}
             </Form.List>
             <Row justify='start'>
                 <Col>

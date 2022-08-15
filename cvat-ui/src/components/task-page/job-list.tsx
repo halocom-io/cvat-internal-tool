@@ -197,11 +197,7 @@ function JobListComponent(props: Props & RouteComponentProps): JSX.Element {
             className: 'cvat-job-item-state',
             render: (jobInstance: any): JSX.Element => {
                 const { state } = jobInstance;
-                return (
-                    <Text type='secondary'>
-                        {state}
-                    </Text>
-                );
+                return <Text type='secondary'>{state}</Text>;
             },
             sorter: sorter('state.state'),
             filters: [
@@ -241,9 +237,8 @@ function JobListComponent(props: Props & RouteComponentProps): JSX.Element {
             ),
             sorter: sorter('assignee.assignee.username'),
             filters: collectUsers('assignee'),
-            onFilter: (value: string | number | boolean, record: any) => (
-                record.assignee.assignee?.username || false
-            ) === value,
+            onFilter: (value: string | number | boolean, record: any) =>
+                (record.assignee.assignee?.username || false) === value,
         },
     ];
 

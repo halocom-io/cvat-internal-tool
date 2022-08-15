@@ -9,7 +9,7 @@ function deepCopy<T>(obj: T): T {
     if (!obj) {
         return obj;
     }
-    const container: any = (obj instanceof Array) ? [] : {};
+    const container: any = obj instanceof Array ? [] : {};
     for (const i in obj) {
         if (Object.prototype.hasOwnProperty.call(obj, i)) {
             container[i] = deepCopy(obj[i]);

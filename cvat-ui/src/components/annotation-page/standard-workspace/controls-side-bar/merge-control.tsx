@@ -18,27 +18,25 @@ export interface Props {
 }
 
 function MergeControl(props: Props): JSX.Element {
-    const {
-        switchMergeShortcut, activeControl, canvasInstance, mergeObjects, disabled,
-    } = props;
+    const { switchMergeShortcut, activeControl, canvasInstance, mergeObjects, disabled } = props;
 
     const dynamicIconProps =
-        activeControl === ActiveControl.MERGE ?
-            {
-                className: 'cvat-merge-control cvat-active-canvas-control',
-                onClick: (): void => {
-                    canvasInstance.merge({ enabled: false });
-                    mergeObjects(false);
-                },
-            } :
-            {
-                className: 'cvat-merge-control',
-                onClick: (): void => {
-                    canvasInstance.cancel();
-                    canvasInstance.merge({ enabled: true });
-                    mergeObjects(true);
-                },
-            };
+        activeControl === ActiveControl.MERGE
+            ? {
+                  className: 'cvat-merge-control cvat-active-canvas-control',
+                  onClick: (): void => {
+                      canvasInstance.merge({ enabled: false });
+                      mergeObjects(false);
+                  },
+              }
+            : {
+                  className: 'cvat-merge-control',
+                  onClick: (): void => {
+                      canvasInstance.cancel();
+                      canvasInstance.merge({ enabled: true });
+                      mergeObjects(true);
+                  },
+              };
 
     return disabled ? (
         <Icon className='cvat-merge-control cvat-disabled-canvas-control' component={MergeIcon} />

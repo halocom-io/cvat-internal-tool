@@ -13,7 +13,7 @@ interface StateToProps {
     status: string;
     error: string;
     installedGit: boolean;
-    dumpers:[]
+    dumpers: [];
 }
 
 interface DispatchToProps {

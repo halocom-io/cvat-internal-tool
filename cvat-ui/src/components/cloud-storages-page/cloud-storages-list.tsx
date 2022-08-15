@@ -17,9 +17,7 @@ interface Props {
 }
 
 export default function StoragesList(props: Props): JSX.Element {
-    const {
-        storages, totalCount, page, onChangePage,
-    } = props;
+    const { storages, totalCount, page, onChangePage } = props;
 
     const groupedStorages = storages.reduce(
         (acc: CloudStorage[][], storage: CloudStorage, index: number): CloudStorage[][] => {

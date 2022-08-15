@@ -49,9 +49,7 @@ function mapDispatchToProps(dispatch: ThunkDispatch): DispatchToProps {
 }
 
 function ModelRunnerDialog(props: StateToProps & DispatchToProps): JSX.Element {
-    const {
-        reid, detectors, task, visible, runInference, closeDialog,
-    } = props;
+    const { reid, detectors, task, visible, runInference, closeDialog } = props;
 
     const models = [...reid, ...detectors];
 
@@ -64,7 +62,7 @@ function ModelRunnerDialog(props: StateToProps & DispatchToProps): JSX.Element {
             maskClosable
             title='Automatic annotation'
         >
-            { task ? (
+            {task ? (
                 <DetectorRunner
                     withCleanup
                     models={models}
@@ -75,7 +73,7 @@ function ModelRunnerDialog(props: StateToProps & DispatchToProps): JSX.Element {
                         runInference(task.id, ...args);
                     }}
                 />
-            ) : null }
+            ) : null}
         </Modal>
     );
 }

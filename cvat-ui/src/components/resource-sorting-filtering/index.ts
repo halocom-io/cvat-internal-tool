@@ -27,9 +27,4 @@ function updateHistoryFromQuery(query: Indexable): string {
     return decodeURIComponent(search.toString());
 }
 
-export {
-    defaultVisibility,
-    ResourceFilterHOC,
-    SortingComponent,
-    updateHistoryFromQuery,
-};
+export { defaultVisibility, ResourceFilterHOC, SortingComponent, updateHistoryFromQuery };

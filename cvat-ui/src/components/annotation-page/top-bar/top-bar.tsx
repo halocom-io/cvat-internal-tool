@@ -5,9 +5,7 @@
 import { Col, Row } from 'antd/lib/grid';
 import Input from 'antd/lib/input';
 import React from 'react';
-import {
-    ActiveControl, PredictorState, ToolsBlockerState, Workspace,
-} from 'reducers/interfaces';
+import { ActiveControl, PredictorState, ToolsBlockerState, Workspace } from 'reducers/interfaces';
 
 import LeftGroup from './left-group';
 import PlayerButtons from './player-buttons';
