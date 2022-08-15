@@ -27,7 +27,7 @@ export default function ModelsPageComponent(props: Props): JSX.Element {
     return (
         <div className='cvat-models-page'>
             {deployedModels.length ? <DeployedModelsList models={deployedModels} /> : <EmptyListComponent />}
-            <FeedbackComponent />
+            {/* <FeedbackComponent /> */}
         </div>
     );
 }

@@ -36,6 +36,7 @@ import ChangePasswordDialog from 'components/change-password-modal/change-passwo
 import { switchSettingsDialog as switchSettingsDialogAction } from 'actions/settings-actions';
 import { logoutAsync, authActions } from 'actions/auth-actions';
 import { CombinedState } from 'reducers/interfaces';
+import { Link } from 'react-router-dom';
 import SettingsModal from './settings-modal/settings-modal';
 
 const core = getCore();
@@ -161,7 +162,10 @@ function HeaderContainer(props: Props): JSX.Element {
     } = props;
 
     const {
-        CHANGELOG_URL, LICENSE_URL, GITTER_URL, FORUM_URL,
+        CHANGELOG_URL,
+        LICENSE_URL,
+        GITTER_URL,
+        FORUM_URL,
         // , GITHUB_URL, GUIDE_URL,
     } = consts;
 
@@ -312,16 +316,14 @@ function HeaderContainer(props: Props): JSX.Element {
                                         }}
                                     >
                                         <Select.Option value='$personal'>Personal workspace</Select.Option>
-                                        {organizationsList.map(
-                                            (organization: any): JSX.Element => {
-                                                const { slug } = organization;
-                                                return (
-                                                    <Select.Option key={slug} value={slug}>
-                                                        {slug}
-                                                    </Select.Option>
-                                                );
-                                            },
-                                        )}
+                                        {organizationsList.map((organization: any): JSX.Element => {
+                                            const { slug } = organization;
+                                            return (
+                                                <Select.Option key={slug} value={slug}>
+                                                    {slug}
+                                                </Select.Option>
+                                            );
+                                        })}
                                     </Select>
                                 ),
                             });
@@ -406,7 +408,9 @@ function HeaderContainer(props: Props): JSX.Element {
     return (
         <Layout.Header className='cvat-header bg-white shadow z-10'>
             <div className='cvat-left-header'>
-                <Icon className='cvat-logo-icon mx-3' component={HaloLogo} />
+                <Link href='/projects' to='/projects'>
+                    <Icon className='cvat-logo-icon mx-3' component={HaloLogo} />
+                </Link>
                 <Button
                     className={getButtonClassName('projects')}
                     type='link'
