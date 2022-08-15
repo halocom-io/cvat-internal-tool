@@ -2,14 +2,12 @@
 //
 // SPDX-License-Identifier: MIT
 
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
-import { RouteComponentProps } from 'react-router';
-
 import { getTasksAsync } from 'actions/tasks-actions';
-
 import TaskPageComponent from 'components/task-page/task-page';
-import { Task, CombinedState } from 'reducers/interfaces';
+import { connect } from 'react-redux';
+import { RouteComponentProps } from 'react-router';
+import { withRouter } from 'react-router-dom';
+import { CombinedState, Task } from 'reducers/interfaces';
 
 type Props = RouteComponentProps<{ id: string }>;
 

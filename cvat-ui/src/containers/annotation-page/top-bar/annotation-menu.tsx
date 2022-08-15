@@ -2,23 +2,22 @@
 //
 // SPDX-License-Identifier: MIT
 
-import React from 'react';
-import { withRouter, RouteComponentProps } from 'react-router';
-import { connect } from 'react-redux';
-// eslint-disable-next-line import/no-extraneous-dependencies
-import { MenuInfo } from 'rc-menu/lib/interface';
-
-import { CombinedState, JobStage } from 'reducers/interfaces';
-import AnnotationMenuComponent, { Actions } from 'components/annotation-page/top-bar/annotation-menu';
-import { updateJobAsync } from 'actions/tasks-actions';
 import {
-    uploadJobAnnotationsAsync,
+    removeAnnotationsAsync as removeAnnotationsAsyncAction,
     saveAnnotationsAsync,
     setForceExitAnnotationFlag as setForceExitAnnotationFlagAction,
-    removeAnnotationsAsync as removeAnnotationsAsyncAction,
+    uploadJobAnnotationsAsync,
 } from 'actions/annotation-actions';
 import { exportActions } from 'actions/export-actions';
+import { updateJobAsync } from 'actions/tasks-actions';
+import AnnotationMenuComponent, { Actions } from 'components/annotation-page/top-bar/annotation-menu';
 import getCore from 'cvat-core-wrapper';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { MenuInfo } from 'rc-menu/lib/interface';
+import React from 'react';
+import { connect } from 'react-redux';
+import { RouteComponentProps, withRouter } from 'react-router';
+import { CombinedState, JobStage } from 'reducers/interfaces';
 
 const core = getCore();
 

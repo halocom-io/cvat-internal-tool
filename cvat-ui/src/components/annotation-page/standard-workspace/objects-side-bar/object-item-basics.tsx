@@ -2,15 +2,15 @@
 //
 // SPDX-License-Identifier: MIT
 
-import React, { useState } from 'react';
-import { Row, Col } from 'antd/lib/grid';
 import { MoreOutlined } from '@ant-design/icons';
 import Dropdown from 'antd/lib/dropdown';
+import { Col, Row } from 'antd/lib/grid';
 import Text from 'antd/lib/typography/Text';
-
-import { ObjectType, ShapeType, ColorBy } from 'reducers/interfaces';
 import CVATTooltip from 'components/common/cvat-tooltip';
 import LabelSelector from 'components/label-selector/label-selector';
+import React, { useState } from 'react';
+import { ColorBy, ObjectType, ShapeType } from 'reducers/interfaces';
+
 import ItemMenu from './object-item-menu';
 
 interface Props {

@@ -2,23 +2,21 @@
 //
 // SPDX-License-Identifier: MIT
 
-import React from 'react';
-import { Col } from 'antd/lib/grid';
 import Icon from '@ant-design/icons';
-import Select from 'antd/lib/select';
+import { ArrowsExpandIcon, FilterIcon, InformationCircleIcon } from '@heroicons/react/outline';
 import Button from 'antd/lib/button';
-import Text from 'antd/lib/typography/Text';
+import { Col } from 'antd/lib/grid';
+import Select from 'antd/lib/select';
 import Tooltip from 'antd/lib/tooltip';
-import Moment from 'react-moment';
-
-import { ArrowsExpandIcon, InformationCircleIcon, FilterIcon } from '@heroicons/react/outline';
-
-import moment from 'moment';
-import { useSelector } from 'react-redux';
-
+import Text from 'antd/lib/typography/Text';
 import { BrainIcon } from 'icons';
+import moment from 'moment';
+import React from 'react';
+import Moment from 'react-moment';
+import { useSelector } from 'react-redux';
 import {
-    CombinedState, DimensionType, Workspace, PredictorState,
+    CombinedState, DimensionType, PredictorState,
+    Workspace,
 } from 'reducers/interfaces';
 
 interface Props {

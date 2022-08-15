@@ -2,27 +2,26 @@
 //
 // SPDX-License-Identifier: MIT
 
-import { AnyAction } from 'redux';
-
-import { AuthActionTypes } from 'actions/auth-actions';
-import { FormatsActionTypes } from 'actions/formats-actions';
-import { ModelsActionTypes } from 'actions/models-actions';
-import { ShareActionTypes } from 'actions/share-actions';
-import { TasksActionTypes } from 'actions/tasks-actions';
-import { ProjectsActionTypes } from 'actions/projects-actions';
 import { AboutActionTypes } from 'actions/about-actions';
 import { AnnotationActionTypes } from 'actions/annotation-actions';
-import { NotificationsActionType } from 'actions/notification-actions';
+import { AuthActionTypes } from 'actions/auth-actions';
 import { BoundariesActionTypes } from 'actions/boundaries-actions';
-import { UserAgreementsActionTypes } from 'actions/useragreements-actions';
-import { ReviewActionTypes } from 'actions/review-actions';
-import { ExportActionTypes } from 'actions/export-actions';
-import { ImportActionTypes } from 'actions/import-actions';
 import { CloudStorageActionTypes } from 'actions/cloud-storage-actions';
-import { OrganizationActionsTypes } from 'actions/organization-actions';
+import { ExportActionTypes } from 'actions/export-actions';
+import { FormatsActionTypes } from 'actions/formats-actions';
+import { ImportActionTypes } from 'actions/import-actions';
 import { JobsActionTypes } from 'actions/jobs-actions';
-
+import { ModelsActionTypes } from 'actions/models-actions';
+import { NotificationsActionType } from 'actions/notification-actions';
+import { OrganizationActionsTypes } from 'actions/organization-actions';
+import { ProjectsActionTypes } from 'actions/projects-actions';
+import { ReviewActionTypes } from 'actions/review-actions';
+import { ShareActionTypes } from 'actions/share-actions';
+import { TasksActionTypes } from 'actions/tasks-actions';
+import { UserAgreementsActionTypes } from 'actions/useragreements-actions';
 import getCore from 'cvat-core-wrapper';
+import { AnyAction } from 'redux';
+
 import { NotificationsState } from './interfaces';
 
 const core = getCore();

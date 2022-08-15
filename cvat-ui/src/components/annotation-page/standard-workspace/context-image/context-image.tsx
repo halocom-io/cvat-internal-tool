@@ -2,16 +2,15 @@
 //
 // SPDX-License-Identifier: MIT
 
-import React, { useEffect, useState } from 'react';
-import notification from 'antd/lib/notification';
-import { useDispatch, useSelector } from 'react-redux';
 import { QuestionCircleOutlined, ShrinkOutlined } from '@ant-design/icons';
-import Spin from 'antd/lib/spin';
+import { getContextImageAsync, hideShowContextImage } from 'actions/annotation-actions';
 import Image from 'antd/lib/image';
-
-import { CombinedState } from 'reducers/interfaces';
-import { hideShowContextImage, getContextImageAsync } from 'actions/annotation-actions';
+import notification from 'antd/lib/notification';
+import Spin from 'antd/lib/spin';
 import CVATTooltip from 'components/common/cvat-tooltip';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { CombinedState } from 'reducers/interfaces';
 
 export function adjustContextImagePosition(sidebarCollapsed: boolean): void {
     const element = window.document.getElementsByClassName('cvat-context-image-wrapper')[0] as

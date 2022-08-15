@@ -2,18 +2,17 @@
 //
 // SPDX-License-Identifier: MIT
 
-import React from 'react';
-import { connect } from 'react-redux';
-import { Row, Col } from 'antd/lib/grid';
 import { QuestionCircleOutlined } from '@ant-design/icons';
-import Table from 'antd/lib/table';
+import { showStatistics } from 'actions/annotation-actions';
+import { Col, Row } from 'antd/lib/grid';
 import Modal from 'antd/lib/modal';
 import Spin from 'antd/lib/spin';
+import Table from 'antd/lib/table';
 import Text from 'antd/lib/typography/Text';
-
 import CVATTooltip from 'components/common/cvat-tooltip';
+import React from 'react';
+import { connect } from 'react-redux';
 import { CombinedState, DimensionType } from 'reducers/interfaces';
-import { showStatistics } from 'actions/annotation-actions';
 
 interface StateToProps {
     visible: boolean;

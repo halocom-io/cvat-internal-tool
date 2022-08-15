@@ -2,28 +2,29 @@
 //
 // SPDX-License-Identifier: MIT
 
-import React from 'react';
-import { Row, Col } from 'antd/lib/grid';
-import Tag from 'antd/lib/tag';
 import { CheckCircleOutlined, ExclamationCircleOutlined, LoadingOutlined } from '@ant-design/icons';
+import Checkbox, { CheckboxChangeEvent } from 'antd/lib/checkbox';
+import Descriptions from 'antd/lib/descriptions';
+import { Col, Row } from 'antd/lib/grid';
 import Modal from 'antd/lib/modal';
 import notification from 'antd/lib/notification';
+import Select from 'antd/lib/select';
+import Space from 'antd/lib/space';
+import Tag from 'antd/lib/tag';
+import Paragraph from 'antd/lib/typography/Paragraph';
 import Text from 'antd/lib/typography/Text';
 import Title from 'antd/lib/typography/Title';
-import moment from 'moment';
-import Paragraph from 'antd/lib/typography/Paragraph';
-import Select from 'antd/lib/select';
-import Checkbox, { CheckboxChangeEvent } from 'antd/lib/checkbox';
-import getCore from 'cvat-core-wrapper';
-import { getReposData, syncRepos, changeRepo } from 'utils/git-utils';
-import { ActiveInference } from 'reducers/interfaces';
 import AutomaticAnnotationProgress from 'components/tasks-page/automatic-annotation-progress';
-import Descriptions from 'antd/lib/descriptions';
-import Space from 'antd/lib/space';
-import UserSelector, { User } from './user-selector';
-import BugTrackerEditor from './bug-tracker-editor';
-import LabelsEditorComponent from '../labels-editor/labels-editor';
+import getCore from 'cvat-core-wrapper';
+import moment from 'moment';
+import React from 'react';
+import { ActiveInference } from 'reducers/interfaces';
+import { changeRepo, getReposData, syncRepos } from 'utils/git-utils';
+
 import ProjectSubsetField from '../create-task-page/project-subset-field';
+import LabelsEditorComponent from '../labels-editor/labels-editor';
+import BugTrackerEditor from './bug-tracker-editor';
+import UserSelector, { User } from './user-selector';
 
 const { Option } = Select;
 

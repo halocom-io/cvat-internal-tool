@@ -2,11 +2,10 @@
 //
 // SPDX-License-Identifier: MIT
 
-import React from 'react';
 import Layout from 'antd/lib/layout';
-
-import { isPublic } from 'utils/enviroment';
 import consts from 'consts';
+import React from 'react';
+import { isPublic } from 'utils/enviroment';
 
 function FooterDrawer(): JSX.Element | null {
     const { Footer } = Layout;

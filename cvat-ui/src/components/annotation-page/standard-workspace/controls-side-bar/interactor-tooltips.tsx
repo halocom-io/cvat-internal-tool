@@ -2,10 +2,10 @@
 //
 // SPDX-License-Identifier: MIT
 
-import React from 'react';
 import Image from 'antd/lib/image';
 import Paragraph from 'antd/lib/typography/Paragraph';
 import Text from 'antd/lib/typography/Text';
+import React from 'react';
 
 interface Props {
     name?: string;

@@ -2,45 +2,44 @@
 //
 // SPDX-License-Identifier: MIT
 
-import React from 'react';
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router';
-import { RouteComponentProps } from 'react-router-dom';
-import Input from 'antd/lib/input';
-import copy from 'copy-to-clipboard';
-
 import {
     activateObject,
     changeFrameAsync,
     changeWorkspace as changeWorkspaceAction,
     collectStatisticsAsync,
+    getPredictionsAsync,
     redoActionAsync,
     saveAnnotationsAsync,
     searchAnnotationsAsync,
     searchEmptyFrameAsync,
     setForceExitAnnotationFlag as setForceExitAnnotationFlagAction,
-    switchPredictor as switchPredictorAction,
-    getPredictionsAsync,
     showFilters as showFiltersAction,
     showStatistics as showStatisticsAction,
     switchPlay,
+    switchPredictor as switchPredictorAction,
     undoActionAsync,
 } from 'actions/annotation-actions';
+import { switchToolsBlockerState } from 'actions/settings-actions';
+import Input from 'antd/lib/input';
 import AnnotationTopBarComponent from 'components/annotation-page/top-bar/top-bar';
+import copy from 'copy-to-clipboard';
 import { Canvas } from 'cvat-canvas-wrapper';
 import { Canvas3d } from 'cvat-canvas3d-wrapper';
+import React from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
+import { RouteComponentProps } from 'react-router-dom';
 import {
-    CombinedState,
-    FrameSpeed,
-    Workspace,
-    PredictorState,
-    DimensionType,
     ActiveControl,
+    CombinedState,
+    DimensionType,
+    FrameSpeed,
+    PredictorState,
     ToolsBlockerState,
+    Workspace,
 } from 'reducers/interfaces';
 import isAbleToChangeFrame from 'utils/is-able-to-change-frame';
 import GlobalHotKeys, { KeyMap } from 'utils/mousetrap-react';
-import { switchToolsBlockerState } from 'actions/settings-actions';
 
 interface StateToProps {
     jobInstance: any;

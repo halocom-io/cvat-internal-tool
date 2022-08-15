@@ -2,18 +2,17 @@
 //
 // SPDX-License-Identifier: MIT
 
-import React from 'react';
 import Layout from 'antd/lib/layout';
-
-import GlobalHotKeys, { KeyMap } from 'utils/mousetrap-react';
-import { ActiveControl, Rotation } from 'reducers/interfaces';
-import { Canvas } from 'cvat-canvas-wrapper';
-
-import RotateControl from 'components/annotation-page/standard-workspace/controls-side-bar/rotate-control';
 import CursorControl from 'components/annotation-page/standard-workspace/controls-side-bar/cursor-control';
-import MoveControl from 'components/annotation-page/standard-workspace/controls-side-bar/move-control';
 import FitControl from 'components/annotation-page/standard-workspace/controls-side-bar/fit-control';
+import MoveControl from 'components/annotation-page/standard-workspace/controls-side-bar/move-control';
 import ResizeControl from 'components/annotation-page/standard-workspace/controls-side-bar/resize-control';
+import RotateControl from 'components/annotation-page/standard-workspace/controls-side-bar/rotate-control';
+import { Canvas } from 'cvat-canvas-wrapper';
+import React from 'react';
+import { ActiveControl, Rotation } from 'reducers/interfaces';
+import GlobalHotKeys, { KeyMap } from 'utils/mousetrap-react';
+
 import IssueControl from './issue-control';
 
 interface Props {

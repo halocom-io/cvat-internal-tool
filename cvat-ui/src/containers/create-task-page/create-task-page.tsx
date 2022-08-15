@@ -2,12 +2,11 @@
 //
 // SPDX-License-Identifier: MIT
 
-import { connect } from 'react-redux';
-
-import { CombinedState } from 'reducers/interfaces';
-import CreateTaskComponent from 'components/create-task-page/create-task-page';
-import { CreateTaskData } from 'components/create-task-page/create-task-content';
 import { createTaskAsync } from 'actions/tasks-actions';
+import { CreateTaskData } from 'components/create-task-page/create-task-content';
+import CreateTaskComponent from 'components/create-task-page/create-task-page';
+import { connect } from 'react-redux';
+import { CombinedState } from 'reducers/interfaces';
 
 interface StateToProps {
     taskId: number | null;

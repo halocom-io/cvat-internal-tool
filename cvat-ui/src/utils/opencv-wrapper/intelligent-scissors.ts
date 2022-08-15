@@ -2,7 +2,7 @@
 //
 // SPDX-License-Identifier: MIT
 
-import { numberArrayToPoints, pointsToNumberArray, Point } from '../math';
+import { numberArrayToPoints, Point, pointsToNumberArray } from '../math';
 
 export interface IntelligentScissorsParams {
     shape: {

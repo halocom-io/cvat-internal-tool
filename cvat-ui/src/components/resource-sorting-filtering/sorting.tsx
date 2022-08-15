@@ -2,16 +2,15 @@
 //
 // SPDX-License-Identifier: MIT
 
-import React, { useState, useEffect } from 'react';
-import { SortableContainer, SortableElement } from 'react-sortable-hoc';
 import {
     OrderedListOutlined, SortAscendingOutlined, SortDescendingOutlined,
 } from '@ant-design/icons';
 import Button from 'antd/lib/button';
 import Dropdown from 'antd/lib/dropdown';
 import Radio from 'antd/lib/radio';
-
 import CVATTooltip from 'components/common/cvat-tooltip';
+import React, { useEffect, useState } from 'react';
+import { SortableContainer, SortableElement } from 'react-sortable-hoc';
 
 interface Props {
     sortingFields: string[];

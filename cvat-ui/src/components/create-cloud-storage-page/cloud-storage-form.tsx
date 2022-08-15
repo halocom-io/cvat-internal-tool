@@ -2,28 +2,28 @@
 //
 // SPDX-License-Identifier: MIT
 
-import React, { useState, useEffect, useRef } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router';
-import { Row, Col } from 'antd/lib/grid';
+import { QuestionCircleOutlined, UploadOutlined } from '@ant-design/icons';
+import { createCloudStorageAsync, updateCloudStorageAsync } from 'actions/cloud-storage-actions';
 import Button from 'antd/lib/button';
 import Form from 'antd/lib/form';
-import Select from 'antd/lib/select';
+import { Col, Row } from 'antd/lib/grid';
 import Input from 'antd/lib/input';
 import TextArea from 'antd/lib/input/TextArea';
 import notification from 'antd/lib/notification';
-import Tooltip from 'antd/lib/tooltip';
-
-import { CombinedState, CloudStorage } from 'reducers/interfaces';
-import { createCloudStorageAsync, updateCloudStorageAsync } from 'actions/cloud-storage-actions';
-import { ProviderType, CredentialsType } from 'utils/enums';
-import { QuestionCircleOutlined, UploadOutlined } from '@ant-design/icons';
-import Upload, { RcFile } from 'antd/lib/upload';
+import Select from 'antd/lib/select';
 import Space from 'antd/lib/space';
-import { AzureProvider, S3Provider, GoogleCloudProvider } from '../../icons';
-import S3Region from './s3-region';
+import Tooltip from 'antd/lib/tooltip';
+import Upload, { RcFile } from 'antd/lib/upload';
+import React, { useEffect, useRef, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router';
+import { CloudStorage, CombinedState } from 'reducers/interfaces';
+import { CredentialsType, ProviderType } from 'utils/enums';
+
+import { AzureProvider, GoogleCloudProvider, S3Provider } from '../../icons';
 import GCSLocation from './gcs-locatiion';
 import ManifestsManager from './manifests-manager';
+import S3Region from './s3-region';
 
 export interface Props {
     cloudStorage?: CloudStorage;

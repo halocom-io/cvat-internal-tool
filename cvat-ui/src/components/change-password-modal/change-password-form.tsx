@@ -2,13 +2,12 @@
 //
 // SPDX-License-Identifier: MIT
 
-import React from 'react';
-import Form from 'antd/lib/form';
 import { LockOutlined } from '@ant-design/icons';
 import Button from 'antd/lib/button';
+import Form from 'antd/lib/form';
 import Input from 'antd/lib/input';
-
 import { validateConfirmation, validatePassword } from 'components/register-page/register-form';
+import React from 'react';
 
 export interface ChangePasswordData {
     oldPassword: string;

@@ -2,16 +2,15 @@
 //
 // SPDX-License-Identifier: MIT
 
-import React, { useCallback } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import Modal from 'antd/lib/modal';
-import Menu from 'antd/lib/menu';
 import { LoadingOutlined } from '@ant-design/icons';
-
-import { CombinedState } from 'reducers/interfaces';
-import { deleteProjectAsync, backupProjectAsync } from 'actions/projects-actions';
 import { exportActions } from 'actions/export-actions';
 import { importActions } from 'actions/import-actions';
+import { backupProjectAsync, deleteProjectAsync } from 'actions/projects-actions';
+import Menu from 'antd/lib/menu';
+import Modal from 'antd/lib/modal';
+import React, { useCallback } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { CombinedState } from 'reducers/interfaces';
 
 interface Props {
     projectInstance: any;

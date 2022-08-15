@@ -2,13 +2,13 @@
 //
 // SPDX-License-Identifier: MIT
 
-import React from 'react';
-import { connect } from 'react-redux';
+import { changePasswordAsync } from 'actions/auth-actions';
 import Modal from 'antd/lib/modal';
 import Title from 'antd/lib/typography/Title';
-
-import { changePasswordAsync } from 'actions/auth-actions';
+import React from 'react';
+import { connect } from 'react-redux';
 import { CombinedState } from 'reducers/interfaces';
+
 import ChangePasswordForm, { ChangePasswordData } from './change-password-form';
 
 interface StateToProps {

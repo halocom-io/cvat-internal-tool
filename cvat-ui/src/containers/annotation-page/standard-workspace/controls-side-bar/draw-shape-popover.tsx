@@ -2,14 +2,13 @@
 //
 // SPDX-License-Identifier: MIT
 
+import { rememberObject } from 'actions/annotation-actions';
+import { RadioChangeEvent } from 'antd/lib/radio';
+import DrawShapePopoverComponent from 'components/annotation-page/standard-workspace/controls-side-bar/draw-shape-popover';
+import { Canvas, CuboidDrawingMethod, RectDrawingMethod } from 'cvat-canvas-wrapper';
 import React from 'react';
 import { connect } from 'react-redux';
-import { RadioChangeEvent } from 'antd/lib/radio';
-
-import { CombinedState, ShapeType, ObjectType } from 'reducers/interfaces';
-import { rememberObject } from 'actions/annotation-actions';
-import { Canvas, RectDrawingMethod, CuboidDrawingMethod } from 'cvat-canvas-wrapper';
-import DrawShapePopoverComponent from 'components/annotation-page/standard-workspace/controls-side-bar/draw-shape-popover';
+import { CombinedState, ObjectType, ShapeType } from 'reducers/interfaces';
 
 interface OwnProps {
     shapeType: ShapeType;

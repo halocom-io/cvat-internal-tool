@@ -2,22 +2,20 @@
 //
 // SPDX-License-Identifier: MIT
 
-import React from 'react';
-
-import { Row, Col } from 'antd/lib/grid';
-import Checkbox, { CheckboxChangeEvent } from 'antd/lib/checkbox';
-import Button from 'antd/lib/button';
-import Select from 'antd/lib/select';
-import Popover from 'antd/lib/popover';
-import InputNumber from 'antd/lib/input-number';
 import Icon from '@ant-design/icons';
+import Button from 'antd/lib/button';
+import Checkbox, { CheckboxChangeEvent } from 'antd/lib/checkbox';
+import { Col, Row } from 'antd/lib/grid';
+import InputNumber from 'antd/lib/input-number';
+import Popover from 'antd/lib/popover';
+import Select from 'antd/lib/select';
 import Text from 'antd/lib/typography/Text';
-import { CompactPicker } from 'react-color';
-
-import { clamp } from 'utils/math';
-import { BackJumpIcon, ForwardJumpIcon } from 'icons';
-import { FrameSpeed } from 'reducers/interfaces';
 import consts from 'consts';
+import { BackJumpIcon, ForwardJumpIcon } from 'icons';
+import React from 'react';
+import { CompactPicker } from 'react-color';
+import { FrameSpeed } from 'reducers/interfaces';
+import { clamp } from 'utils/math';
 
 interface Props {
     frameStep: number;

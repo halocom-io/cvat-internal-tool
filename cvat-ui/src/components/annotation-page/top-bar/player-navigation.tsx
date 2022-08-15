@@ -2,16 +2,14 @@
 //
 // SPDX-License-Identifier: MIT
 
-import React, { useState, useEffect } from 'react';
-
-import { Row, Col } from 'antd/lib/grid';
 import { LinkOutlined } from '@ant-design/icons';
-import Slider from 'antd/lib/slider';
-import InputNumber from 'antd/lib/input-number';
+import { Col, Row } from 'antd/lib/grid';
 import Input from 'antd/lib/input';
+import InputNumber from 'antd/lib/input-number';
+import Slider from 'antd/lib/slider';
 import Text from 'antd/lib/typography/Text';
-
 import CVATTooltip from 'components/common/cvat-tooltip';
+import React, { useEffect, useState } from 'react';
 import { clamp } from 'utils/math';
 
 interface Props {

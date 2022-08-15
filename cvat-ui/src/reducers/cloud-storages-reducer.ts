@@ -2,9 +2,10 @@
 //
 // SPDX-License-Identifier: MIT
 
-import { CloudStorageActions, CloudStorageActionTypes } from 'actions/cloud-storage-actions';
 import { AuthActions, AuthActionTypes } from 'actions/auth-actions';
-import { CloudStoragesState, CloudStorage } from './interfaces';
+import { CloudStorageActions, CloudStorageActionTypes } from 'actions/cloud-storage-actions';
+
+import { CloudStorage, CloudStoragesState } from './interfaces';
 
 const defaultState: CloudStoragesState = {
     initialized: false,

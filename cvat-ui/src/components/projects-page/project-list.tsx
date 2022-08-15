@@ -2,13 +2,13 @@
 //
 // SPDX-License-Identifier: MIT
 
-import React, { useCallback } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { Row, Col } from 'antd/lib/grid';
-import Pagination from 'antd/lib/pagination';
-
 import { getProjectsAsync } from 'actions/projects-actions';
+import { Col, Row } from 'antd/lib/grid';
+import Pagination from 'antd/lib/pagination';
+import React, { useCallback } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { CombinedState, Project } from 'reducers/interfaces';
+
 import ProjectItem from './project-item';
 
 export default function ProjectListComponent(): JSX.Element {

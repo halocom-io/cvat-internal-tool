@@ -2,19 +2,19 @@
 //
 // SPDX-License-Identifier: MIT
 
+import { PlusOutlined } from '@ant-design/icons';
+import Button from 'antd/lib/button';
+import { Col, Row } from 'antd/lib/grid';
+import Input from 'antd/lib/input';
+import { defaultVisibility, ResourceFilterHOC, SortingComponent } from 'components/resource-sorting-filtering';
 import React, { useState } from 'react';
 import { useHistory } from 'react-router';
-import { Row, Col } from 'antd/lib/grid';
-import Button from 'antd/lib/button';
-import { PlusOutlined } from '@ant-design/icons';
-
 import { CloudStoragesQuery } from 'reducers/interfaces';
-import Input from 'antd/lib/input';
-import { SortingComponent, ResourceFilterHOC, defaultVisibility } from 'components/resource-sorting-filtering';
 
 import {
-    localStorageRecentKeyword, localStorageRecentCapacity,
-    predefinedFilterValues, config,
+    config,
+    localStorageRecentCapacity,
+    localStorageRecentKeyword, predefinedFilterValues,
 } from './cloud-storages-filter-configuration';
 
 const FilteringComponent = ResourceFilterHOC(

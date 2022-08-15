@@ -2,11 +2,10 @@
 //
 // SPDX-License-Identifier: MIT
 
+import { updateJobAsync } from 'actions/tasks-actions';
+import JobListComponent from 'components/task-page/job-list';
 import React from 'react';
 import { connect } from 'react-redux';
-
-import JobListComponent from 'components/task-page/job-list';
-import { updateJobAsync } from 'actions/tasks-actions';
 import { Task } from 'reducers/interfaces';
 
 interface OwnProps {

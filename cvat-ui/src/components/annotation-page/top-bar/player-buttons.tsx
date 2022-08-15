@@ -2,27 +2,25 @@
 //
 // SPDX-License-Identifier: MIT
 
-import React from 'react';
-import { Col } from 'antd/lib/grid';
 import Icon from '@ant-design/icons';
+import { Col } from 'antd/lib/grid';
 import Popover from 'antd/lib/popover';
-
 import CVATTooltip from 'components/common/cvat-tooltip';
-
 import {
-    FirstIcon,
     BackJumpIcon,
-    PreviousIcon,
-    PreviousFilteredIcon,
-    PreviousEmptyIcon,
-    PlayIcon,
-    PauseIcon,
-    NextIcon,
-    NextFilteredIcon,
-    NextEmptyIcon,
+    FirstIcon,
     ForwardJumpIcon,
     LastIcon,
+    NextEmptyIcon,
+    NextFilteredIcon,
+    NextIcon,
+    PauseIcon,
+    PlayIcon,
+    PreviousEmptyIcon,
+    PreviousFilteredIcon,
+    PreviousIcon,
 } from 'icons';
+import React from 'react';
 
 interface Props {
     playing: boolean;

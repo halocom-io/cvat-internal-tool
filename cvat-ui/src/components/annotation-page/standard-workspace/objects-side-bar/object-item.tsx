@@ -2,12 +2,12 @@
 //
 // SPDX-License-Identifier: MIT
 
-import React from 'react';
-
 import ObjectButtonsContainer from 'containers/annotation-page/standard-workspace/objects-side-bar/object-buttons';
-import { ObjectType, ShapeType, ColorBy } from 'reducers/interfaces';
-import ItemDetails, { attrValuesAreEqual } from './object-item-details';
+import React from 'react';
+import { ColorBy, ObjectType, ShapeType } from 'reducers/interfaces';
+
 import ItemBasics from './object-item-basics';
+import ItemDetails, { attrValuesAreEqual } from './object-item-details';
 
 interface Props {
     normalizedKeyMap: Record<string, string>;

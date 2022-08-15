@@ -3,12 +3,12 @@
 // SPDX-License-Identifier: MIT
 
 import './styles.scss';
+
+import Alert from 'antd/lib/alert';
+import Modal from 'antd/lib/modal';
+import Progress from 'antd/lib/progress';
 import React from 'react';
 import { useSelector } from 'react-redux';
-import Modal from 'antd/lib/modal';
-import Alert from 'antd/lib/alert';
-import Progress from 'antd/lib/progress';
-
 import { CombinedState } from 'reducers/interfaces';
 
 function ImportDatasetStatusModal(): JSX.Element {

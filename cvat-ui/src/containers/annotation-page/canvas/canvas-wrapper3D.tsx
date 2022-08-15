@@ -2,9 +2,6 @@
 //
 // SPDX-License-Identifier: MIT
 
-import { connect } from 'react-redux';
-
-import CanvasWrapperComponent from 'components/annotation-page/canvas/canvas-wrapper3D';
 import {
     activateObject,
     confirmCanvasReady,
@@ -18,7 +15,10 @@ import {
     updateAnnotationsAsync,
     updateCanvasContextMenu,
 } from 'actions/annotation-actions';
-
+import CanvasWrapperComponent from 'components/annotation-page/canvas/canvas-wrapper3D';
+import { Canvas } from 'cvat-canvas-wrapper';
+import { Canvas3d } from 'cvat-canvas3d-wrapper';
+import { connect } from 'react-redux';
 import {
     ActiveControl,
     ColorBy,
@@ -29,8 +29,6 @@ import {
     Workspace,
 } from 'reducers/interfaces';
 
-import { Canvas3d } from 'cvat-canvas3d-wrapper';
-import { Canvas } from 'cvat-canvas-wrapper';
 import { KeyMap } from '../../../utils/mousetrap-react';
 
 interface StateToProps {

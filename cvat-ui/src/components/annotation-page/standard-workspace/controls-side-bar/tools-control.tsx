@@ -2,49 +2,48 @@
 //
 // SPDX-License-Identifier: MIT
 
-import React, { ReactPortal } from 'react';
-import ReactDOM from 'react-dom';
-import { connect } from 'react-redux';
 import Icon, {
     EnvironmentFilled,
     EnvironmentOutlined,
     LoadingOutlined,
     QuestionCircleOutlined,
 } from '@ant-design/icons';
-import Popover from 'antd/lib/popover';
-import Select from 'antd/lib/select';
-import Button from 'antd/lib/button';
-import Modal from 'antd/lib/modal';
-import Text from 'antd/lib/typography/Text';
-import Tabs from 'antd/lib/tabs';
-import { Row, Col } from 'antd/lib/grid';
-import notification from 'antd/lib/notification';
-import message from 'antd/lib/message';
-import Dropdown from 'antd/lib/dropdown';
-import lodash from 'lodash';
-
-import { AIToolsIcon } from 'icons';
-import { Canvas, convertShapesForInteractor } from 'cvat-canvas-wrapper';
-import getCore from 'cvat-core-wrapper';
-import openCVWrapper from 'utils/opencv-wrapper/opencv-wrapper';
 import {
-    CombinedState, ActiveControl, Model, ObjectType, ShapeType, ToolsBlockerState,
-} from 'reducers/interfaces';
-import {
+    createAnnotationsAsync,
+    fetchAnnotationsAsync,
     interactWithCanvas,
     switchNavigationBlocked as switchNavigationBlockedAction,
-    fetchAnnotationsAsync,
     updateAnnotationsAsync,
-    createAnnotationsAsync,
 } from 'actions/annotation-actions';
-import DetectorRunner from 'components/model-runner-modal/detector-runner';
-import LabelSelector from 'components/label-selector/label-selector';
-import CVATTooltip from 'components/common/cvat-tooltip';
-
+import { switchToolsBlockerState } from 'actions/settings-actions';
+import Button from 'antd/lib/button';
+import Dropdown from 'antd/lib/dropdown';
+import { Col, Row } from 'antd/lib/grid';
+import message from 'antd/lib/message';
+import Modal from 'antd/lib/modal';
+import notification from 'antd/lib/notification';
+import Popover from 'antd/lib/popover';
+import Select from 'antd/lib/select';
+import Tabs from 'antd/lib/tabs';
+import Text from 'antd/lib/typography/Text';
 import ApproximationAccuracy, {
     thresholdFromAccuracy,
 } from 'components/annotation-page/standard-workspace/controls-side-bar/approximation-accuracy';
-import { switchToolsBlockerState } from 'actions/settings-actions';
+import CVATTooltip from 'components/common/cvat-tooltip';
+import LabelSelector from 'components/label-selector/label-selector';
+import DetectorRunner from 'components/model-runner-modal/detector-runner';
+import { Canvas, convertShapesForInteractor } from 'cvat-canvas-wrapper';
+import getCore from 'cvat-core-wrapper';
+import { AIToolsIcon } from 'icons';
+import lodash from 'lodash';
+import React, { ReactPortal } from 'react';
+import ReactDOM from 'react-dom';
+import { connect } from 'react-redux';
+import {
+    ActiveControl, CombinedState, Model, ObjectType, ShapeType, ToolsBlockerState,
+} from 'reducers/interfaces';
+import openCVWrapper from 'utils/opencv-wrapper/opencv-wrapper';
+
 import withVisibilityHandling from './handle-popover-visibility';
 import ToolsTooltips from './interactor-tooltips';
 

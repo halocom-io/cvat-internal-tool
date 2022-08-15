@@ -3,18 +3,19 @@
 // SPDX-License-Identifier: MIT
 
 import './styles.scss';
+
+import { Col, Row } from 'antd/lib/grid';
+import Result from 'antd/lib/result';
+import Spin from 'antd/lib/spin';
+import ModelRunnerModal from 'components/model-runner-modal/model-runner-dialog';
+import MoveTaskModal from 'components/move-task-modal/move-task-modal';
+import DetailsContainer from 'containers/task-page/details';
+import JobListContainer from 'containers/task-page/job-list';
 import React from 'react';
 import { RouteComponentProps } from 'react-router';
 import { withRouter } from 'react-router-dom';
-import { Row, Col } from 'antd/lib/grid';
-import Spin from 'antd/lib/spin';
-import Result from 'antd/lib/result';
-
-import DetailsContainer from 'containers/task-page/details';
-import JobListContainer from 'containers/task-page/job-list';
-import ModelRunnerModal from 'components/model-runner-modal/model-runner-dialog';
-import MoveTaskModal from 'components/move-task-modal/move-task-modal';
 import { Task } from 'reducers/interfaces';
+
 import TopBarComponent from './top-bar';
 
 interface TaskPageComponentProps {

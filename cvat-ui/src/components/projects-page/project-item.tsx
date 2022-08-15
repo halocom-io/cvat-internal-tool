@@ -2,20 +2,20 @@
 //
 // SPDX-License-Identifier: MIT
 
-import React from 'react';
-import moment from 'moment';
-import { useSelector } from 'react-redux';
-import { useHistory } from 'react-router';
-import Text from 'antd/lib/typography/Text';
-import Empty from 'antd/lib/empty';
+import { MoreOutlined } from '@ant-design/icons';
+import Button from 'antd/lib/button';
 import Card from 'antd/lib/card';
 import Meta from 'antd/lib/card/Meta';
 import Dropdown from 'antd/lib/dropdown';
-import Button from 'antd/lib/button';
-import { MoreOutlined } from '@ant-design/icons';
-
+import Empty from 'antd/lib/empty';
+import Text from 'antd/lib/typography/Text';
+import moment from 'moment';
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router';
 import { CombinedState, Project } from 'reducers/interfaces';
 import { useCardHeightHOC } from 'utils/hooks';
+
 import ProjectActionsMenuComponent from './actions-menu';
 
 interface Props {

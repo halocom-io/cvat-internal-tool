@@ -2,10 +2,9 @@
 //
 // SPDX-License-Identifier: MIT
 
-import { ActionUnion, createAction, ThunkAction } from 'utils/redux';
 import getCore from 'cvat-core-wrapper';
-
 import { ShareFileInfo } from 'reducers/interfaces';
+import { ActionUnion, createAction, ThunkAction } from 'utils/redux';
 
 const core = getCore();
 

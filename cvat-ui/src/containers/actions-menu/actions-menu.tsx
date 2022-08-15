@@ -2,22 +2,20 @@
 //
 // SPDX-License-Identifier: MIT
 
-import React from 'react';
-import { connect } from 'react-redux';
-// eslint-disable-next-line import/no-extraneous-dependencies
-import { MenuInfo } from 'rc-menu/lib/interface';
-
-import ActionsMenuComponent, { Actions } from 'components/actions-menu/actions-menu';
-import { CombinedState } from 'reducers/interfaces';
-
+import { exportActions } from 'actions/export-actions';
 import { modelsActions } from 'actions/models-actions';
 import {
-    loadAnnotationsAsync,
     deleteTaskAsync,
     exportTaskAsync,
+    loadAnnotationsAsync,
     switchMoveTaskModalVisible,
 } from 'actions/tasks-actions';
-import { exportActions } from 'actions/export-actions';
+import ActionsMenuComponent, { Actions } from 'components/actions-menu/actions-menu';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { MenuInfo } from 'rc-menu/lib/interface';
+import React from 'react';
+import { connect } from 'react-redux';
+import { CombinedState } from 'reducers/interfaces';
 
 interface OwnProps {
     taskInstance: any;
@@ -97,7 +95,7 @@ function ActionsMenuContainer(props: OwnProps & StateToProps & DispatchToProps):
         openMoveTaskToProjectWindow,
     } = props;
 
-    function onClickMenu(params: MenuInfo): void {
+    const onClickMenu = (params: MenuInfo): void => {
         const [action] = params.keyPath;
         if (action === Actions.EXPORT_TASK_DATASET) {
             showExportModal(taskInstance);
@@ -112,14 +110,14 @@ function ActionsMenuContainer(props: OwnProps & StateToProps & DispatchToProps):
         } else if (action === Actions.MOVE_TASK_TO_PROJECT) {
             openMoveTaskToProjectWindow(taskInstance.id);
         }
-    }
+    };
 
-    function onUploadAnnotations(format: string, file: File): void {
+    const onUploadAnnotations = (format: string, file: File): void => {
         const [loader] = loaders.filter((_loader: any): boolean => _loader.name === format);
         if (loader && file) {
             loadAnnotations(taskInstance, loader, file);
         }
-    }
+    };
 
     return (
         <ActionsMenuComponent

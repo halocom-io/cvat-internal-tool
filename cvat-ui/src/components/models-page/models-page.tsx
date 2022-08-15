@@ -3,12 +3,13 @@
 // SPDX-License-Identifier: MIT
 
 import './styles.scss';
+
 import React from 'react';
 
+import { Model } from '../../reducers/interfaces';
+import FeedbackComponent from '../feedback/feedback';
 import DeployedModelsList from './deployed-models-list';
 import EmptyListComponent from './empty-list';
-import FeedbackComponent from '../feedback/feedback';
-import { Model } from '../../reducers/interfaces';
 
 interface Props {
     interactors: Model[];

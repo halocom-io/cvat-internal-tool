@@ -3,10 +3,11 @@
 // SPDX-License-Identifier: MIT
 
 import './styles.scss';
-import React from 'react';
-import Layout from 'antd/lib/layout';
 
+import Layout from 'antd/lib/layout';
 import CanvasWrapperContainer from 'containers/annotation-page/canvas/canvas-wrapper';
+import React from 'react';
+
 import TagAnnotationSidebar from './tag-annotation-sidebar/tag-annotation-sidebar';
 
 export default function TagAnnotationWorkspace(): JSX.Element {

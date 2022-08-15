@@ -2,10 +2,6 @@
 //
 // SPDX-License-Identifier: MIT
 
-import { connect } from 'react-redux';
-import { KeyMap } from 'utils/mousetrap-react';
-import { Canvas } from 'cvat-canvas-wrapper';
-import { Canvas3d } from 'cvat-canvas3d-wrapper';
 import {
     groupObjects,
     pasteShapeAsync,
@@ -14,7 +10,11 @@ import {
     resetAnnotationsGroup,
 } from 'actions/annotation-actions';
 import ControlsSideBarComponent from 'components/annotation-page/standard3D-workspace/controls-side-bar/controls-side-bar';
+import { Canvas } from 'cvat-canvas-wrapper';
+import { Canvas3d } from 'cvat-canvas3d-wrapper';
+import { connect } from 'react-redux';
 import { ActiveControl, CombinedState } from 'reducers/interfaces';
+import { KeyMap } from 'utils/mousetrap-react';
 
 interface StateToProps {
     canvasInstance: Canvas | Canvas3d;

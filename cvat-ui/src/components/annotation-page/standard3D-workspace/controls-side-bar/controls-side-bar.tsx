@@ -2,13 +2,8 @@
 //
 // SPDX-License-Identifier: MIT
 
-import React from 'react';
 import Layout from 'antd/lib/layout';
-import { ActiveControl } from 'reducers/interfaces';
-import { Canvas3d as Canvas } from 'cvat-canvas3d-wrapper';
-import MoveControl, {
-    Props as MoveControlProps,
-} from 'components/annotation-page/standard-workspace/controls-side-bar/move-control';
+import ControlVisibilityObserver from 'components/annotation-page/standard-workspace/controls-side-bar/control-visibility-observer';
 import CursorControl, {
     Props as CursorControlProps,
 } from 'components/annotation-page/standard-workspace/controls-side-bar/cursor-control';
@@ -18,8 +13,13 @@ import DrawCuboidControl, {
 import GroupControl, {
     Props as GroupControlProps,
 } from 'components/annotation-page/standard-workspace/controls-side-bar/group-control';
+import MoveControl, {
+    Props as MoveControlProps,
+} from 'components/annotation-page/standard-workspace/controls-side-bar/move-control';
+import { Canvas3d as Canvas } from 'cvat-canvas3d-wrapper';
+import React from 'react';
+import { ActiveControl } from 'reducers/interfaces';
 import GlobalHotKeys, { KeyMap } from 'utils/mousetrap-react';
-import ControlVisibilityObserver from 'components/annotation-page/standard-workspace/controls-side-bar/control-visibility-observer';
 
 interface Props {
     keyMap: KeyMap;

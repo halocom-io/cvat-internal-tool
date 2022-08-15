@@ -2,12 +2,11 @@
 //
 // SPDX-License-Identifier: MIT
 
-import React, { useState } from 'react';
 import Button from 'antd/lib/button';
+import { Col, Row } from 'antd/lib/grid';
 import Modal from 'antd/lib/modal';
 import Text from 'antd/lib/typography/Text';
-import { Row, Col } from 'antd/lib/grid';
-
+import React, { useState } from 'react';
 import patterns from 'utils/validation-patterns';
 
 interface Props {

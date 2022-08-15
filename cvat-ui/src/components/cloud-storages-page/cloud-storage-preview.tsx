@@ -2,13 +2,12 @@
 //
 // SPDX-License-Identifier: MIT
 
-import React, { useEffect } from 'react';
-
-import { useDispatch, useSelector } from 'react-redux';
 import { PictureOutlined } from '@ant-design/icons';
-import Spin from 'antd/lib/spin';
 import { getCloudStoragePreviewAsync } from 'actions/cloud-storage-actions';
-import { CombinedState, CloudStorage } from 'reducers/interfaces';
+import Spin from 'antd/lib/spin';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { CloudStorage, CombinedState } from 'reducers/interfaces';
 
 interface Props {
     cloudStorage: CloudStorage;

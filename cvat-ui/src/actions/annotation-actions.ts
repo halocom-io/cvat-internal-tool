@@ -2,16 +2,10 @@
 //
 // SPDX-License-Identifier: MIT
 
-import {
-    ActionCreator, AnyAction, Dispatch, Store,
-} from 'redux';
-import { ThunkAction } from 'utils/redux';
-import isAbleToChangeFrame from 'utils/is-able-to-change-frame';
-import { RectDrawingMethod, CuboidDrawingMethod, Canvas } from 'cvat-canvas-wrapper';
+import { Canvas, CuboidDrawingMethod, RectDrawingMethod } from 'cvat-canvas-wrapper';
 import getCore from 'cvat-core-wrapper';
 import logger, { LogType } from 'cvat-logger';
 import { getCVATStore } from 'cvat-store';
-
 import {
     ActiveControl,
     CombinedState,
@@ -26,8 +20,14 @@ import {
     Task,
     Workspace,
 } from 'reducers/interfaces';
-import { updateJobAsync } from './tasks-actions';
+import {
+    ActionCreator, AnyAction, Dispatch, Store,
+} from 'redux';
+import isAbleToChangeFrame from 'utils/is-able-to-change-frame';
+import { ThunkAction } from 'utils/redux';
+
 import { switchToolsBlockerState } from './settings-actions';
+import { updateJobAsync } from './tasks-actions';
 
 interface AnnotationsParameters {
     filters: string[];

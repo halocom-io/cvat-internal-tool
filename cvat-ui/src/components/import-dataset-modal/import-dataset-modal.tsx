@@ -3,23 +3,23 @@
 // SPDX-License-Identifier: MIT
 
 import './styles.scss';
-import React, { useCallback, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import Modal from 'antd/lib/modal';
-import Form from 'antd/lib/form';
-import Text from 'antd/lib/typography/Text';
-import Select from 'antd/lib/select';
-import Notification from 'antd/lib/notification';
-import message from 'antd/lib/message';
-import Upload, { RcFile } from 'antd/lib/upload';
 
 import {
-    UploadOutlined, InboxOutlined, LoadingOutlined, QuestionCircleOutlined,
+    InboxOutlined, LoadingOutlined, QuestionCircleOutlined,
+    UploadOutlined,
 } from '@ant-design/icons';
-
-import CVATTooltip from 'components/common/cvat-tooltip';
-import { CombinedState } from 'reducers/interfaces';
 import { importActions, importDatasetAsync } from 'actions/import-actions';
+import Form from 'antd/lib/form';
+import message from 'antd/lib/message';
+import Modal from 'antd/lib/modal';
+import Notification from 'antd/lib/notification';
+import Select from 'antd/lib/select';
+import Text from 'antd/lib/typography/Text';
+import Upload, { RcFile } from 'antd/lib/upload';
+import CVATTooltip from 'components/common/cvat-tooltip';
+import React, { useCallback, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { CombinedState } from 'reducers/interfaces';
 
 import ImportDatasetStatusModal from './import-dataset-status-modal';
 

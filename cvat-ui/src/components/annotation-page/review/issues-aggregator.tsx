@@ -3,13 +3,12 @@
 // SPDX-License-Identifier: MIT
 
 import './styles.scss';
-import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
 
-import { CombinedState } from 'reducers/interfaces';
+import { commentIssueAsync, reopenIssueAsync, resolveIssueAsync } from 'actions/review-actions';
 import { Canvas } from 'cvat-canvas/src/typescript/canvas';
-
-import { commentIssueAsync, resolveIssueAsync, reopenIssueAsync } from 'actions/review-actions';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { CombinedState } from 'reducers/interfaces';
 
 import CreateIssueDialog from './create-issue-dialog';
 import HiddenIssueLabel from './hidden-issue-label';

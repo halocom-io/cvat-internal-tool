@@ -3,40 +3,39 @@
 // SPDX-License-Identifier: MIT
 
 import './styles.scss';
+
+import Icon, {
+    CaretDownOutlined,
+    ControlOutlined,
+    EditOutlined,
+    InfoCircleOutlined,
+    LoadingOutlined,
+    LogoutOutlined,
+    PlusOutlined,
+    SettingOutlined,
+    TeamOutlined,
+} from '@ant-design/icons';
+import { UserIcon } from '@heroicons/react/outline';
+import { authActions, logoutAsync } from 'actions/auth-actions';
+import { switchSettingsDialog as switchSettingsDialogAction } from 'actions/settings-actions';
+import Button from 'antd/lib/button';
+import Dropdown from 'antd/lib/dropdown';
+import { Col, Row } from 'antd/lib/grid';
+import Layout from 'antd/lib/layout';
+import Menu from 'antd/lib/menu';
+import Modal from 'antd/lib/modal';
+import Select from 'antd/lib/select';
+import Text from 'antd/lib/typography/Text';
+import ChangePasswordDialog from 'components/change-password-modal/change-password-modal';
+import consts from 'consts';
+import getCore from 'cvat-core-wrapper';
+import { HaloLogo } from 'icons';
 import React from 'react';
 import { connect } from 'react-redux';
 import { useHistory, useLocation } from 'react-router';
-import { Row, Col } from 'antd/lib/grid';
-import Icon, {
-    SettingOutlined,
-    InfoCircleOutlined,
-    EditOutlined,
-    LoadingOutlined,
-    LogoutOutlined,
-    CaretDownOutlined,
-    ControlOutlined,
-    TeamOutlined,
-    PlusOutlined,
-} from '@ant-design/icons';
-import Layout from 'antd/lib/layout';
-import Button from 'antd/lib/button';
-import Menu from 'antd/lib/menu';
-import Dropdown from 'antd/lib/dropdown';
-import Modal from 'antd/lib/modal';
-import Text from 'antd/lib/typography/Text';
-import Select from 'antd/lib/select';
-
-import getCore from 'cvat-core-wrapper';
-import consts from 'consts';
-
-import { UserIcon } from '@heroicons/react/outline';
-
-import { HaloLogo } from 'icons';
-import ChangePasswordDialog from 'components/change-password-modal/change-password-modal';
-import { switchSettingsDialog as switchSettingsDialogAction } from 'actions/settings-actions';
-import { logoutAsync, authActions } from 'actions/auth-actions';
-import { CombinedState } from 'reducers/interfaces';
 import { Link } from 'react-router-dom';
+import { CombinedState } from 'reducers/interfaces';
+
 import SettingsModal from './settings-modal/settings-modal';
 
 const core = getCore();

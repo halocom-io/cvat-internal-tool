@@ -2,15 +2,15 @@
 //
 // SPDX-License-Identifier: MIT
 
+import { AnnotationActionTypes } from 'actions/annotation-actions';
+import { AuthActionTypes } from 'actions/auth-actions';
+import { BoundariesActionTypes } from 'actions/boundaries-actions';
+import { SettingsActionTypes } from 'actions/settings-actions';
 import { AnyAction } from 'redux';
 
-import { BoundariesActionTypes } from 'actions/boundaries-actions';
-import { AuthActionTypes } from 'actions/auth-actions';
-import { SettingsActionTypes } from 'actions/settings-actions';
-import { AnnotationActionTypes } from 'actions/annotation-actions';
-
 import {
-    SettingsState, GridColor, FrameSpeed, ColorBy, DimensionType,
+    ColorBy, DimensionType,
+    FrameSpeed, GridColor, SettingsState,
 } from './interfaces';
 
 const defaultState: SettingsState = {

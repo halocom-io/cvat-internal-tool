@@ -3,20 +3,20 @@
 // SPDX-License-Identifier: MIT
 
 import './styles.scss';
+
+import Button from 'antd/lib/button';
+import Divider from 'antd/lib/divider';
+import { Col, Row } from 'antd/lib/grid';
+import Layout from 'antd/lib/layout';
+import Text from 'antd/lib/typography/Text';
+import Title from 'antd/lib/typography/Title';
+import FooterDrawer from 'components/login-page/intel-footer-drawer';
+import consts from 'consts';
+import { OpenVINOIcon } from 'icons';
 import React from 'react';
 import { RouteComponentProps } from 'react-router';
 import { Link, withRouter } from 'react-router-dom';
-import Title from 'antd/lib/typography/Title';
-import Text from 'antd/lib/typography/Text';
-import { Row, Col } from 'antd/lib/grid';
-import Button from 'antd/lib/button';
-import Divider from 'antd/lib/divider';
-import Layout from 'antd/lib/layout';
 
-import FooterDrawer from 'components/login-page/intel-footer-drawer';
-
-import consts from 'consts';
-import { OpenVINOIcon } from 'icons';
 import LoginForm, { LoginData } from './login-form';
 
 interface LoginPageComponentProps {

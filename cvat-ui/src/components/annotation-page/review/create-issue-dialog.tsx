@@ -2,16 +2,15 @@
 //
 // SPDX-License-Identifier: MIT
 
+import { finishIssueAsync, reviewActions } from 'actions/review-actions';
+import Button from 'antd/lib/button';
+import Form from 'antd/lib/form';
+import { Store } from 'antd/lib/form/interface';
+import { Col, Row } from 'antd/lib/grid';
+import Input from 'antd/lib/input';
 import React, { ReactPortal } from 'react';
 import ReactDOM from 'react-dom';
 import { useDispatch } from 'react-redux';
-import Form from 'antd/lib/form';
-import Input from 'antd/lib/input';
-import Button from 'antd/lib/button';
-import { Row, Col } from 'antd/lib/grid';
-
-import { reviewActions, finishIssueAsync } from 'actions/review-actions';
-import { Store } from 'antd/lib/form/interface';
 
 interface FormProps {
     top: number;

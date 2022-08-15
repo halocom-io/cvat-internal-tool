@@ -3,18 +3,19 @@
 // SPDX-License-Identifier: MIT
 
 import './styles.scss';
-import React, { ReactText, useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Row } from 'antd/lib/grid';
-import Tree from 'antd/lib/tree/Tree';
-import Spin from 'antd/lib/spin';
+
+import { loadCloudStorageContentAsync } from 'actions/cloud-storage-actions';
 import Alert from 'antd/lib/alert';
-import Empty from 'antd/lib/empty';
-import { EventDataNode } from 'antd/lib/tree';
 import Checkbox, { CheckboxChangeEvent } from 'antd/lib/checkbox';
 import Divider from 'antd/lib/divider';
+import Empty from 'antd/lib/empty';
+import { Row } from 'antd/lib/grid';
+import Spin from 'antd/lib/spin';
+import { EventDataNode } from 'antd/lib/tree';
+import Tree from 'antd/lib/tree/Tree';
+import React, { ReactText, useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { CloudStorage, CombinedState } from 'reducers/interfaces';
-import { loadCloudStorageContentAsync } from 'actions/cloud-storage-actions';
 
 interface Props {
     cloudStorage: CloudStorage;
@@ -117,18 +118,17 @@ export default function CloudStorageFiles(props: Props): JSX.Element {
         return data;
     };
 
-    const onLoadData = (key: string): Promise<void> =>
-        new Promise((resolve) => {
-            if (initialData.children === null) {
-                resolve();
-                return;
-            }
-            setInitialData({
-                ...initialData,
-                children: updateData(key, initialData.children),
-            });
+    const onLoadData = (key: string): Promise<void> => new Promise((resolve) => {
+        if (initialData.children === null) {
             resolve();
+            return;
+        }
+        setInitialData({
+            ...initialData,
+            children: updateData(key, initialData.children),
         });
+        resolve();
+    });
 
     useEffect(() => {
         if (content) {

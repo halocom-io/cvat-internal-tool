@@ -2,12 +2,11 @@
 //
 // SPDX-License-Identifier: MIT
 
-import React from 'react';
-import { Row, Col } from 'antd/lib/grid';
-
+import { Col, Row } from 'antd/lib/grid';
 import ModelRunnerModal from 'components/model-runner-modal/model-runner-dialog';
 import MoveTaskModal from 'components/move-task-modal/move-task-modal';
 import TaskItem from 'containers/tasks-page/task-item';
+import React from 'react';
 
 export interface Props {
     currentTasksIndexes: number[];

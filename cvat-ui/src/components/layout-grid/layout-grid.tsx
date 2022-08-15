@@ -2,13 +2,13 @@
 //
 // SPDX-License-Identifier: MIT
 
+import './styles.scss';
+
 import React, { useCallback, useState } from 'react';
 import ReactDOM from 'react-dom';
 import { useSelector } from 'react-redux';
-
-import GlobalHotKeys from 'utils/mousetrap-react';
 import { CombinedState } from 'reducers/interfaces';
-import './styles.scss';
+import GlobalHotKeys from 'utils/mousetrap-react';
 
 const LayoutGrid = (): React.ReactPortal => {
     const [showGrid, setShowGrid] = useState(false);

@@ -2,14 +2,12 @@
 //
 // SPDX-License-Identifier: MIT
 
+import { updateCanvasContextMenu } from 'actions/annotation-actions';
+import { finishIssueAsync, reviewActions } from 'actions/review-actions';
+import CanvasContextMenuComponent from 'components/annotation-page/canvas/canvas-context-menu';
 import React from 'react';
-
 import { connect } from 'react-redux';
 import { CombinedState, ContextMenuType, Workspace } from 'reducers/interfaces';
-
-import CanvasContextMenuComponent from 'components/annotation-page/canvas/canvas-context-menu';
-import { updateCanvasContextMenu } from 'actions/annotation-actions';
-import { reviewActions, finishIssueAsync } from 'actions/review-actions';
 import { ThunkDispatch } from 'utils/redux';
 
 interface OwnProps {

@@ -2,17 +2,17 @@
 //
 // SPDX-License-Identifier: MIT
 
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
-import Title from 'antd/lib/typography/Title';
-import Text from 'antd/lib/typography/Text';
-import { Row, Col } from 'antd/lib/grid';
-import Layout from 'antd/lib/layout';
-
 import { requestPasswordResetAsync } from 'actions/auth-actions';
-import { CombinedState } from 'reducers/interfaces';
+import { Col, Row } from 'antd/lib/grid';
+import Layout from 'antd/lib/layout';
+import Text from 'antd/lib/typography/Text';
+import Title from 'antd/lib/typography/Title';
 import FooterDrawer from 'components/login-page/intel-footer-drawer';
+import React from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { CombinedState } from 'reducers/interfaces';
+
 import ResetPasswordForm, { ResetPasswordData } from './reset-password-form';
 
 interface StateToProps {

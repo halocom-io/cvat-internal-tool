@@ -2,17 +2,15 @@
 //
 // SPDX-License-Identifier: MIT
 
-import React from 'react';
-import { connect } from 'react-redux';
-
 import {
-    propagateObject as propagateObjectAction,
     changePropagateFrames as changePropagateFramesAction,
+    propagateObject as propagateObjectAction,
     propagateObjectAsync,
 } from 'actions/annotation-actions';
-
-import { CombinedState } from 'reducers/interfaces';
 import PropagateConfirmComponent from 'components/annotation-page/standard-workspace/propagate-confirm';
+import React from 'react';
+import { connect } from 'react-redux';
+import { CombinedState } from 'reducers/interfaces';
 
 interface StateToProps {
     objectState: any | null;

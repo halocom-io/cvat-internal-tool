@@ -2,14 +2,13 @@
 //
 // SPDX-License-Identifier: MIT
 
-import React from 'react';
 import Icon from '@ant-design/icons';
-
-import { MoveIcon } from 'icons';
-import { ActiveControl } from 'reducers/interfaces';
+import CVATTooltip from 'components/common/cvat-tooltip';
 import { Canvas } from 'cvat-canvas-wrapper';
 import { Canvas3d } from 'cvat-canvas3d-wrapper';
-import CVATTooltip from 'components/common/cvat-tooltip';
+import { MoveIcon } from 'icons';
+import React from 'react';
+import { ActiveControl } from 'reducers/interfaces';
 
 export interface Props {
     canvasInstance: Canvas | Canvas3d;

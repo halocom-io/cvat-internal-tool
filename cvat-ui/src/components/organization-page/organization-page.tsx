@@ -3,14 +3,15 @@
 // SPDX-License-Identifier: MIT
 
 import './styles.scss';
-import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+
 import Empty from 'antd/lib/empty';
 import Spin from 'antd/lib/spin';
-
+import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { CombinedState } from 'reducers/interfaces';
-import TopBarComponent from './top-bar';
+
 import MembersList from './members-list';
+import TopBarComponent from './top-bar';
 
 function fetchMembers(
     organizationInstance: any,

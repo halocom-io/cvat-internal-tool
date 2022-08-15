@@ -2,14 +2,12 @@
 //
 // SPDX-License-Identifier: MIT
 
-import React from 'react';
-import { connect } from 'react-redux';
-
+import { loadShareDataAsync } from 'actions/share-actions';
 import { TreeNodeNormal } from 'antd/lib/tree/Tree';
 import FileManagerComponent, { Files } from 'components/file-manager/file-manager';
-
-import { loadShareDataAsync } from 'actions/share-actions';
-import { ShareItem, CombinedState } from 'reducers/interfaces';
+import React from 'react';
+import { connect } from 'react-redux';
+import { CombinedState, ShareItem } from 'reducers/interfaces';
 
 interface OwnProps {
     ref: any;

@@ -3,19 +3,19 @@
 // SPDX-License-Identifier: MIT
 
 import './styles.scss';
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import Tabs from 'antd/lib/tabs';
-import Text from 'antd/lib/typography/Text';
-import Modal from 'antd/lib/modal/Modal';
-import Button from 'antd/lib/button';
-import notification from 'antd/lib/notification';
-import Tooltip from 'antd/lib/tooltip';
-import { PlayCircleOutlined, LaptopOutlined } from '@ant-design/icons';
 
+import { LaptopOutlined, PlayCircleOutlined } from '@ant-design/icons';
 import { setSettings } from 'actions/settings-actions';
-import WorkspaceSettingsContainer from 'containers/header/settings-modal/workspace-settings';
+import Button from 'antd/lib/button';
+import Modal from 'antd/lib/modal/Modal';
+import notification from 'antd/lib/notification';
+import Tabs from 'antd/lib/tabs';
+import Tooltip from 'antd/lib/tooltip';
+import Text from 'antd/lib/typography/Text';
 import PlayerSettingsContainer from 'containers/header/settings-modal/player-settings';
+import WorkspaceSettingsContainer from 'containers/header/settings-modal/workspace-settings';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { CombinedState } from 'reducers/interfaces';
 
 interface SettingsModalProps {

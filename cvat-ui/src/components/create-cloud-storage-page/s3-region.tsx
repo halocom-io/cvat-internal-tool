@@ -2,8 +2,9 @@
 //
 // SPDX-License-Identifier: MIT
 import React from 'react';
-import Location from './location';
+
 import consts from '../../consts';
+import Location from './location';
 
 interface Props {
     selectedRegion: any;

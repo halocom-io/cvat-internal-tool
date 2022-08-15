@@ -2,28 +2,28 @@
 //
 // SPDX-License-Identifier: MIT
 
-import React, { useState, useEffect } from 'react';
-import { connect } from 'react-redux';
 import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
-import { SelectValue } from 'antd/lib/select';
-import Layout, { SiderProps } from 'antd/lib/layout';
-import Text from 'antd/lib/typography/Text';
-
-import { Canvas } from 'cvat-canvas-wrapper';
-import { Canvas3d } from 'cvat-canvas3d-wrapper';
-import { LogType } from 'cvat-logger';
 import {
     activateObject as activateObjectAction,
     changeFrameAsync,
     updateAnnotationsAsync,
 } from 'actions/annotation-actions';
+import Layout, { SiderProps } from 'antd/lib/layout';
+import { SelectValue } from 'antd/lib/select';
+import Text from 'antd/lib/typography/Text';
+import AppearanceBlock from 'components/annotation-page/appearance-block';
+import { adjustContextImagePosition } from 'components/annotation-page/standard-workspace/context-image/context-image';
+import ObjectButtonsContainer from 'containers/annotation-page/standard-workspace/objects-side-bar/object-buttons';
+import { Canvas } from 'cvat-canvas-wrapper';
+import { Canvas3d } from 'cvat-canvas3d-wrapper';
+import { LogType } from 'cvat-logger';
+import React, { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
+import { CombinedState, ObjectType } from 'reducers/interfaces';
 import isAbleToChangeFrame from 'utils/is-able-to-change-frame';
 import GlobalHotKeys, { KeyMap } from 'utils/mousetrap-react';
 import { ThunkDispatch } from 'utils/redux';
-import AppearanceBlock from 'components/annotation-page/appearance-block';
-import ObjectButtonsContainer from 'containers/annotation-page/standard-workspace/objects-side-bar/object-buttons';
-import { adjustContextImagePosition } from 'components/annotation-page/standard-workspace/context-image/context-image';
-import { CombinedState, ObjectType } from 'reducers/interfaces';
+
 import AttributeEditor from './attribute-editor';
 import AttributeSwitcher from './attribute-switcher';
 import ObjectBasicsEditor from './object-basics-edtior';

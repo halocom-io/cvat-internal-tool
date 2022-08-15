@@ -2,10 +2,11 @@
 //
 // SPDX-License-Identifier: MIT
 
-import { BoundariesActionTypes, BoundariesActions } from 'actions/boundaries-actions';
-import { ShareActionTypes, ShareActions } from 'actions/share-actions';
-import { AuthActionTypes, AuthActions } from 'actions/auth-actions';
-import { ShareState, ShareFileInfo, ShareItem } from './interfaces';
+import { AuthActions, AuthActionTypes } from 'actions/auth-actions';
+import { BoundariesActions, BoundariesActionTypes } from 'actions/boundaries-actions';
+import { ShareActions, ShareActionTypes } from 'actions/share-actions';
+
+import { ShareFileInfo, ShareItem, ShareState } from './interfaces';
 
 const defaultState: ShareState = {
     root: {

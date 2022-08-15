@@ -2,25 +2,25 @@
 //
 // SPDX-License-Identifier: MIT
 
-import React, { RefObject } from 'react';
-import { RouteComponentProps } from 'react-router';
-import { withRouter } from 'react-router-dom';
-import { Row, Col } from 'antd/lib/grid';
 import Alert from 'antd/lib/alert';
 import Button from 'antd/lib/button';
 import Collapse from 'antd/lib/collapse';
+import { Col, Row } from 'antd/lib/grid';
 import notification from 'antd/lib/notification';
 import Text from 'antd/lib/typography/Text';
+import { Files } from 'components/file-manager/file-manager';
+import LabelsEditor from 'components/labels-editor/labels-editor';
+import ConnectedFileManager from 'containers/file-manager/file-manager';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { ValidateErrorEntity } from 'rc-field-form/lib/interface';
+import React, { RefObject } from 'react';
+import { RouteComponentProps } from 'react-router';
+import { withRouter } from 'react-router-dom';
 
-import ConnectedFileManager from 'containers/file-manager/file-manager';
-import LabelsEditor from 'components/labels-editor/labels-editor';
-import { Files } from 'components/file-manager/file-manager';
+import AdvancedConfigurationForm, { AdvancedConfiguration, SortingMethod } from './advanced-configuration-form';
 import BasicConfigurationForm, { BaseConfiguration } from './basic-configuration-form';
 import ProjectSearchField from './project-search-field';
 import ProjectSubsetField from './project-subset-field';
-import AdvancedConfigurationForm, { AdvancedConfiguration, SortingMethod } from './advanced-configuration-form';
 
 export interface CreateTaskData {
     projectId: number | null;

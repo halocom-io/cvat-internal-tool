@@ -3,17 +3,17 @@
 // SPDX-License-Identifier: MIT
 
 import './styles.scss';
+
+import { getCloudStoragesAsync } from 'actions/cloud-storage-actions';
+import { Col, Row } from 'antd/lib/grid';
+import Result from 'antd/lib/result';
+import Spin from 'antd/lib/spin';
+import Text from 'antd/lib/typography/Text';
+import CreateCloudStorageForm from 'components/create-cloud-storage-page/cloud-storage-form';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { Row, Col } from 'antd/lib/grid';
-import Spin from 'antd/lib/spin';
-import Result from 'antd/lib/result';
-import Text from 'antd/lib/typography/Text';
-
 import { CombinedState } from 'reducers/interfaces';
-import { getCloudStoragesAsync } from 'actions/cloud-storage-actions';
-import CreateCloudStorageForm from 'components/create-cloud-storage-page/cloud-storage-form';
 
 interface ParamType {
     id: string;

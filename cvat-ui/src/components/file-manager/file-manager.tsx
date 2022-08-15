@@ -3,22 +3,22 @@
 // SPDX-License-Identifier: MIT
 
 import './styles.scss';
-import React, { ReactText, RefObject } from 'react';
 
-import Tabs from 'antd/lib/tabs';
-import Input from 'antd/lib/input';
-import Text from 'antd/lib/typography/Text';
-import Paragraph from 'antd/lib/typography/Paragraph';
-import Upload, { RcFile } from 'antd/lib/upload';
+import { InboxOutlined } from '@ant-design/icons';
 import Empty from 'antd/lib/empty';
-import Tree, { TreeNodeNormal } from 'antd/lib/tree/Tree';
 import { FormInstance } from 'antd/lib/form';
+import Input from 'antd/lib/input';
+import Tabs from 'antd/lib/tabs';
+import Tree, { TreeNodeNormal } from 'antd/lib/tree/Tree';
+import Paragraph from 'antd/lib/typography/Paragraph';
+import Text from 'antd/lib/typography/Text';
+import Upload, { RcFile } from 'antd/lib/upload';
+import consts from 'consts';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { EventDataNode } from 'rc-tree/lib/interface';
-import { InboxOutlined } from '@ant-design/icons';
-
-import consts from 'consts';
+import React, { ReactText, RefObject } from 'react';
 import { CloudStorage } from 'reducers/interfaces';
+
 import CloudStorageTab from './cloud-storages-tab';
 
 export interface Files {

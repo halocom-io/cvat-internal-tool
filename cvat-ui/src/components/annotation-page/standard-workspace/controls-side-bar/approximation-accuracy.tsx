@@ -2,11 +2,11 @@
 //
 // SPDX-License-Identifier: MIT
 
+import { Col, Row } from 'antd/lib/grid';
+import Slider from 'antd/lib/slider';
+import Text from 'antd/lib/typography/Text';
 import React, { CSSProperties } from 'react';
 import ReactDOM from 'react-dom';
-import Text from 'antd/lib/typography/Text';
-import Slider from 'antd/lib/slider';
-import { Col, Row } from 'antd/lib/grid';
 
 interface Props {
     approxPolyAccuracy: number;

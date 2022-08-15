@@ -2,13 +2,13 @@
 //
 // SPDX-License-Identifier: MIT
 
-import React, { useEffect } from 'react';
-import { useHistory } from 'react-router';
+import './styles.scss';
+
+import Button from 'antd/lib/button';
 import Layout from 'antd/lib/layout';
+import notification from 'antd/lib/notification';
 import Result from 'antd/lib/result';
 import Spin from 'antd/lib/spin';
-import notification from 'antd/lib/notification';
-
 import AttributeAnnotationWorkspace from 'components/annotation-page/attribute-annotation-workspace/attribute-annotation-workspace';
 import ReviewAnnotationsWorkspace from 'components/annotation-page/review-workspace/review-workspace';
 import StandardWorkspaceComponent from 'components/annotation-page/standard-workspace/standard-workspace';
@@ -17,10 +17,10 @@ import TagAnnotationWorkspace from 'components/annotation-page/tag-annotation-wo
 import FiltersModalComponent from 'components/annotation-page/top-bar/filters-modal';
 import StatisticsModalComponent from 'components/annotation-page/top-bar/statistics-modal';
 import AnnotationTopBarContainer from 'containers/annotation-page/top-bar/top-bar';
+import React, { useEffect } from 'react';
+import { useHistory } from 'react-router';
 import { Workspace } from 'reducers/interfaces';
 import { usePrevious } from 'utils/hooks';
-import './styles.scss';
-import Button from 'antd/lib/button';
 
 interface Props {
     job: any | null | undefined;

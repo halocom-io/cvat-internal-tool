@@ -2,21 +2,21 @@
 //
 // SPDX-License-Identifier: MIT
 
+import { CopyOutlined, LoadingOutlined, QuestionCircleOutlined } from '@ant-design/icons';
+import Button from 'antd/lib/button';
+import { Col, Row } from 'antd/lib/grid';
+import Select from 'antd/lib/select';
+import Table from 'antd/lib/table';
+import { ColumnFilterItem } from 'antd/lib/table/interface';
+import Text from 'antd/lib/typography/Text';
+import CVATTooltip from 'components/common/cvat-tooltip';
+import copy from 'copy-to-clipboard';
+import moment from 'moment';
 import React, { useEffect, useState } from 'react';
 import { RouteComponentProps } from 'react-router';
 import { withRouter } from 'react-router-dom';
-import { Row, Col } from 'antd/lib/grid';
-import { LoadingOutlined, QuestionCircleOutlined, CopyOutlined } from '@ant-design/icons';
-import { ColumnFilterItem } from 'antd/lib/table/interface';
-import Table from 'antd/lib/table';
-import Button from 'antd/lib/button';
-import Select from 'antd/lib/select';
-import Text from 'antd/lib/typography/Text';
-import moment from 'moment';
-import copy from 'copy-to-clipboard';
-
 import { JobStage } from 'reducers/interfaces';
-import CVATTooltip from 'components/common/cvat-tooltip';
+
 import UserSelector, { User } from './user-selector';
 
 interface Props {

@@ -2,14 +2,13 @@
 //
 // SPDX-License-Identifier: MIT
 
-import React from 'react';
-import { Row, Col } from 'antd/lib/grid';
 import { CloseOutlined } from '@ant-design/icons';
-import Text from 'antd/lib/typography/Text';
-import Progress from 'antd/lib/progress';
+import { Col, Row } from 'antd/lib/grid';
 import Modal from 'antd/lib/modal';
-
+import Progress from 'antd/lib/progress';
+import Text from 'antd/lib/typography/Text';
 import CVATTooltip from 'components/common/cvat-tooltip';
+import React from 'react';
 import { ActiveInference } from 'reducers/interfaces';
 
 interface Props {

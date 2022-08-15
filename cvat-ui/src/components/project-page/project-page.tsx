@@ -3,35 +3,36 @@
 // SPDX-License-Identifier: MIT
 
 import './styles.scss';
-import React, { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { useHistory, useParams } from 'react-router';
-import Spin from 'antd/lib/spin';
-import { Row, Col } from 'antd/lib/grid';
-import Result from 'antd/lib/result';
-import Button from 'antd/lib/button';
-import Title from 'antd/lib/typography/Title';
-import Pagination from 'antd/lib/pagination';
+
 import { PlusOutlined } from '@ant-design/icons';
-import Empty from 'antd/lib/empty';
-import Input from 'antd/lib/input';
-
-import { CombinedState, Task, Indexable } from 'reducers/interfaces';
-import { getProjectsAsync, getProjectTasksAsync } from 'actions/projects-actions';
 import { cancelInferenceAsync } from 'actions/models-actions';
-import TaskItem from 'components/tasks-page/task-item';
-import MoveTaskModal from 'components/move-task-modal/move-task-modal';
-import ModelRunnerDialog from 'components/model-runner-modal/model-runner-dialog';
+import { getProjectsAsync, getProjectTasksAsync } from 'actions/projects-actions';
+import Button from 'antd/lib/button';
+import Empty from 'antd/lib/empty';
+import { Col, Row } from 'antd/lib/grid';
+import Input from 'antd/lib/input';
+import Pagination from 'antd/lib/pagination';
+import Result from 'antd/lib/result';
+import Spin from 'antd/lib/spin';
+import Title from 'antd/lib/typography/Title';
 import ImportDatasetModal from 'components/import-dataset-modal/import-dataset-modal';
+import ModelRunnerDialog from 'components/model-runner-modal/model-runner-dialog';
+import MoveTaskModal from 'components/move-task-modal/move-task-modal';
 import {
-    SortingComponent, ResourceFilterHOC, defaultVisibility, updateHistoryFromQuery,
+    defaultVisibility, ResourceFilterHOC, SortingComponent, updateHistoryFromQuery,
 } from 'components/resource-sorting-filtering';
-import DetailsComponent from './details';
-import ProjectTopBar from './top-bar';
+import TaskItem from 'components/tasks-page/task-item';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory, useParams } from 'react-router';
+import { CombinedState, Indexable, Task } from 'reducers/interfaces';
 
+import DetailsComponent from './details';
 import {
-    localStorageRecentKeyword, localStorageRecentCapacity, predefinedFilterValues, config,
+    config,
+    localStorageRecentCapacity, localStorageRecentKeyword, predefinedFilterValues,
 } from './project-tasks-filter-configuration';
+import ProjectTopBar from './top-bar';
 
 const FilteringComponent = ResourceFilterHOC(
     config, localStorageRecentKeyword, localStorageRecentCapacity, predefinedFilterValues,

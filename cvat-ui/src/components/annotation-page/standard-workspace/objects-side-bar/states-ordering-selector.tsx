@@ -2,11 +2,10 @@
 //
 // SPDX-License-Identifier: MIT
 
-import React from 'react';
 import { Col } from 'antd/lib/grid';
 import Select from 'antd/lib/select';
 import Text from 'antd/lib/typography/Text';
-
+import React from 'react';
 import { StatesOrdering } from 'reducers/interfaces';
 
 interface StatesOrderingSelectorComponentProps {

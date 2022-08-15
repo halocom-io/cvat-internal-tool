@@ -2,8 +2,9 @@
 //
 // SPDX-License-Identifier: MIT
 
-import { PluginsActionTypes, PluginActions } from 'actions/plugins-actions';
+import { PluginActions, PluginsActionTypes } from 'actions/plugins-actions';
 import { registerGitPlugin } from 'utils/git-utils';
+
 import { PluginsState } from './interfaces';
 
 const defaultState: PluginsState = {

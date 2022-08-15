@@ -2,15 +2,15 @@
 //
 // SPDX-License-Identifier: MIT
 
-import React, { useEffect, useRef, useState } from 'react';
 import { DeleteOutlined, PlusCircleOutlined, QuestionCircleOutlined } from '@ant-design/icons';
 import Button from 'antd/lib/button';
 import Col from 'antd/lib/col';
 import Form from 'antd/lib/form';
 import Input from 'antd/lib/input';
-import Row from 'antd/lib/row';
 import notification from 'antd/lib/notification';
+import Row from 'antd/lib/row';
 import Tooltip from 'antd/lib/tooltip';
+import React, { useEffect, useRef, useState } from 'react';
 
 interface Props {
     form: any;

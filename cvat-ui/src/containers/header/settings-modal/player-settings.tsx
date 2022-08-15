@@ -2,17 +2,16 @@
 //
 // SPDX-License-Identifier: MIT
 
-import { connect } from 'react-redux';
-
-import PlayerSettingsComponent from 'components/header/settings-modal/player-settings';
 import {
-    changeFrameStep,
+    changeCanvasBackgroundColor,
     changeFrameSpeed,
+    changeFrameStep,
     switchResetZoom,
     switchRotateAll,
-    changeCanvasBackgroundColor,
     switchSmoothImage,
 } from 'actions/settings-actions';
+import PlayerSettingsComponent from 'components/header/settings-modal/player-settings';
+import { connect } from 'react-redux';
 import { CombinedState, FrameSpeed } from 'reducers/interfaces';
 
 interface StateToProps {

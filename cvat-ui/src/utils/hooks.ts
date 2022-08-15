@@ -1,7 +1,7 @@
 // Copyright (C) 2021-2022 Intel Corporation
 //
 // SPDX-License-Identifier: MIT
-import { useRef, useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 // eslint-disable-next-line import/prefer-default-export
 export function usePrevious<T>(value: T): T | undefined {

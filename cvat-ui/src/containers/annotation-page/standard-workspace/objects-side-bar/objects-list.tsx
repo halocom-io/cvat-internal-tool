@@ -2,24 +2,24 @@
 //
 // SPDX-License-Identifier: MIT
 
-import React from 'react';
-import { connect } from 'react-redux';
-import GlobalHotKeys, { KeyMap } from 'utils/mousetrap-react';
-
-import ObjectsListComponent from 'components/annotation-page/standard-workspace/objects-side-bar/objects-list';
 import {
-    updateAnnotationsAsync,
-    removeObjectAsync,
     changeFrameAsync,
-    collapseObjectItems,
     changeGroupColorAsync,
+    collapseObjectItems,
     copyShape as copyShapeAction,
     propagateObject as propagateObjectAction,
+    removeObjectAsync,
+    updateAnnotationsAsync,
 } from 'actions/annotation-actions';
-import isAbleToChangeFrame from 'utils/is-able-to-change-frame';
+import ObjectsListComponent from 'components/annotation-page/standard-workspace/objects-side-bar/objects-list';
+import React from 'react';
+import { connect } from 'react-redux';
 import {
-    CombinedState, StatesOrdering, ObjectType, ColorBy,
+    ColorBy,
+    CombinedState, ObjectType, StatesOrdering,
 } from 'reducers/interfaces';
+import isAbleToChangeFrame from 'utils/is-able-to-change-frame';
+import GlobalHotKeys, { KeyMap } from 'utils/mousetrap-react';
 
 interface OwnProps {
     readonly: boolean;

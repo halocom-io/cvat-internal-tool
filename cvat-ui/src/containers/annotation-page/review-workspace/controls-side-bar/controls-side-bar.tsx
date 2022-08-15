@@ -2,11 +2,10 @@
 //
 // SPDX-License-Identifier: MIT
 
-import { connect } from 'react-redux';
-
-import { Canvas } from 'cvat-canvas-wrapper';
-import { selectIssuePosition as selectIssuePositionAction, rotateCurrentFrame } from 'actions/annotation-actions';
+import { rotateCurrentFrame, selectIssuePosition as selectIssuePositionAction } from 'actions/annotation-actions';
 import ControlsSideBarComponent from 'components/annotation-page/review-workspace/controls-side-bar/controls-side-bar';
+import { Canvas } from 'cvat-canvas-wrapper';
+import { connect } from 'react-redux';
 import { ActiveControl, CombinedState, Rotation } from 'reducers/interfaces';
 import { KeyMap } from 'utils/mousetrap-react';
 

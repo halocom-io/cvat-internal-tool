@@ -2,10 +2,10 @@
 //
 // SPDX-License-Identifier: MIT
 
-import React from 'react';
-
-import { StatesOrdering } from 'reducers/interfaces';
 import ObjectItemContainer from 'containers/annotation-page/standard-workspace/objects-side-bar/object-item';
+import React from 'react';
+import { StatesOrdering } from 'reducers/interfaces';
+
 import ObjectListHeader from './objects-list-header';
 
 interface Props {

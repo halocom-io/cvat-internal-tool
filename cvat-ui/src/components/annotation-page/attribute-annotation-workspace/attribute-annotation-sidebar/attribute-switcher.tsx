@@ -2,12 +2,11 @@
 //
 // SPDX-License-Identifier: MIT
 
-import React from 'react';
-import Text from 'antd/lib/typography/Text';
-import Button from 'antd/lib/button';
 import { LeftOutlined, RightOutlined } from '@ant-design/icons';
-
+import Button from 'antd/lib/button';
+import Text from 'antd/lib/typography/Text';
 import CVATTooltip from 'components/common/cvat-tooltip';
+import React from 'react';
 
 interface Props {
     currentAttribute: string;

@@ -3,14 +3,15 @@
 // SPDX-License-Identifier: MIT
 
 import './styles.scss';
-import React, { useState } from 'react';
-import { Row, Col } from 'antd/lib/grid';
-import Text from 'antd/lib/typography/Text';
 
+import { Col, Row } from 'antd/lib/grid';
+import Text from 'antd/lib/typography/Text';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import CreateProjectContent from './create-project-content';
+
 import { CombinedState } from '../../reducers/interfaces';
 import CreateProjectContext, { ICreateProjectContext } from './create-project.context';
+import CreateProjectContent from './create-project-content';
 
 function CreateProjectPageComponent(props: StateToProps): JSX.Element {
     const { isTrainingActive } = props;

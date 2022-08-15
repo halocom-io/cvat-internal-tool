@@ -2,11 +2,11 @@
 //
 // SPDX-License-Identifier: MIT
 
+import { registerAsync } from 'actions/auth-actions';
+import { UserConfirmation } from 'components/register-page/register-form';
+import RegisterPageComponent from 'components/register-page/register-page';
 import React from 'react';
 import { connect } from 'react-redux';
-import { registerAsync } from 'actions/auth-actions';
-import RegisterPageComponent from 'components/register-page/register-page';
-import { UserConfirmation } from 'components/register-page/register-form';
 import { CombinedState, UserAgreement } from 'reducers/interfaces';
 
 interface StateToProps {

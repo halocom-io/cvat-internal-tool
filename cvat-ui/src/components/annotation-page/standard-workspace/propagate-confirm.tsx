@@ -2,11 +2,10 @@
 //
 // SPDX-License-Identifier: MIT
 
-import React from 'react';
-
-import Modal from 'antd/lib/modal';
 import InputNumber from 'antd/lib/input-number';
+import Modal from 'antd/lib/modal';
 import Text from 'antd/lib/typography/Text';
+import React from 'react';
 import { clamp } from 'utils/math';
 
 interface Props {

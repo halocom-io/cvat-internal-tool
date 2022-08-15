@@ -2,12 +2,13 @@
 //
 // SPDX-License-Identifier: MIT
 
-import React, { useEffect } from 'react';
+import { getCloudStorageStatusAsync } from 'actions/cloud-storage-actions';
 import Paragraph from 'antd/lib/typography/Paragraph';
 import Text from 'antd/lib/typography/Text';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getCloudStorageStatusAsync } from 'actions/cloud-storage-actions';
-import { CombinedState, CloudStorage } from 'reducers/interfaces';
+import { CloudStorage, CombinedState } from 'reducers/interfaces';
+
 import { StorageStatuses } from '../../utils/enums';
 
 interface Props {

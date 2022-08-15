@@ -3,22 +3,22 @@
 // SPDX-License-Identifier: MIT
 
 import './styles.scss';
-import React from 'react';
-import { connect } from 'react-redux';
-import Result from 'antd/lib/result';
-import Text from 'antd/lib/typography/Text';
-import Paragraph from 'antd/lib/typography/Paragraph';
+
+import { resetAfterErrorAsync } from 'actions/boundaries-actions';
 import Collapse from 'antd/lib/collapse';
 import TextArea from 'antd/lib/input/TextArea';
-import copy from 'copy-to-clipboard';
-import ErrorStackParser from 'error-stack-parser';
-
-import { ThunkDispatch } from 'utils/redux';
-import { resetAfterErrorAsync } from 'actions/boundaries-actions';
-import { CombinedState } from 'reducers/interfaces';
-import logger, { LogType } from 'cvat-logger';
+import Result from 'antd/lib/result';
+import Paragraph from 'antd/lib/typography/Paragraph';
+import Text from 'antd/lib/typography/Text';
 import CVATTooltip from 'components/common/cvat-tooltip';
 import consts from 'consts';
+import copy from 'copy-to-clipboard';
+import logger, { LogType } from 'cvat-logger';
+import ErrorStackParser from 'error-stack-parser';
+import React from 'react';
+import { connect } from 'react-redux';
+import { CombinedState } from 'reducers/interfaces';
+import { ThunkDispatch } from 'utils/redux';
 
 interface OwnProps {
     children: JSX.Element;

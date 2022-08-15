@@ -2,10 +2,10 @@
 //
 // SPDX-License-Identifier: MIT
 
-import React from 'react';
 import Select, { SelectProps } from 'antd/lib/select';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { OptionData, OptionGroupData } from 'rc-select/lib/interface';
+import React from 'react';
 
 interface Props extends SelectProps<string> {
     labels: any[];

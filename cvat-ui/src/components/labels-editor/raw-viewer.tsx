@@ -2,19 +2,20 @@
 //
 // SPDX-License-Identifier: MIT
 
-import React, { RefObject } from 'react';
-import { Row, Col } from 'antd/lib/grid';
-import Input from 'antd/lib/input';
 import Button from 'antd/lib/button';
 import Form, { FormInstance, RuleObject } from 'antd/lib/form';
-import Tag from 'antd/lib/tag';
-import Modal from 'antd/lib/modal';
 import { Store } from 'antd/lib/form/interface';
+import { Col, Row } from 'antd/lib/grid';
+import Input from 'antd/lib/input';
+import Modal from 'antd/lib/modal';
+import Tag from 'antd/lib/tag';
 import Paragraph from 'antd/lib/typography/Paragraph';
-
 import CVATTooltip from 'components/common/cvat-tooltip';
+import React, { RefObject } from 'react';
+
 import {
-    Label, Attribute, validateParsedLabel, idGenerator,
+    Attribute, idGenerator,
+    Label, validateParsedLabel,
 } from './common';
 
 function validateLabels(_: RuleObject, value: string): Promise<void> {

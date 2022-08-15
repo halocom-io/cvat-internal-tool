@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: MIT
 
 import { clamp } from 'utils/math';
+
 import { TrackerModel, TrackingResult } from './opencv-interfaces';
 
 export type TrackerMIL = TrackerModel;

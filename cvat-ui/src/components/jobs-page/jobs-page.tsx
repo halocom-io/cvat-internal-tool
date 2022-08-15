@@ -3,22 +3,22 @@
 // SPDX-License-Identifier: MIT
 
 import './styles.scss';
-import React, { useEffect, useState } from 'react';
-import { useHistory } from 'react-router';
-import { useDispatch, useSelector } from 'react-redux';
-import Spin from 'antd/lib/spin';
+
+import { getJobsAsync } from 'actions/jobs-actions';
+import Empty from 'antd/lib/empty';
 import { Col, Row } from 'antd/lib/grid';
 import Pagination from 'antd/lib/pagination';
-import Empty from 'antd/lib/empty';
+import Spin from 'antd/lib/spin';
 import Text from 'antd/lib/typography/Text';
-
 import FeedbackComponent from 'components/feedback/feedback';
 import { updateHistoryFromQuery } from 'components/resource-sorting-filtering';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router';
 import { CombinedState, Indexable } from 'reducers/interfaces';
-import { getJobsAsync } from 'actions/jobs-actions';
 
-import TopBarComponent from './top-bar';
 import JobsContentComponent from './jobs-content';
+import TopBarComponent from './top-bar';
 
 function JobsPageComponent(): JSX.Element {
     const dispatch = useDispatch();

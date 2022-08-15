@@ -2,16 +2,15 @@
 //
 // SPDX-License-Identifier: MIT
 
-import React from 'react';
-import ReactDOM from 'react-dom';
 import Menu from 'antd/lib/menu';
+import consts from 'consts';
+import ObjectItemContainer from 'containers/annotation-page/standard-workspace/objects-side-bar/object-item';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { MenuInfo } from 'rc-menu/lib/interface';
-
-import ObjectItemContainer from 'containers/annotation-page/standard-workspace/objects-side-bar/object-item';
+import React from 'react';
+import ReactDOM from 'react-dom';
 import { Workspace } from 'reducers/interfaces';
 import { rotatePoint } from 'utils/math';
-import consts from 'consts';
 
 interface Props {
     readonly: boolean;

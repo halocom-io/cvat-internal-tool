@@ -2,13 +2,13 @@
 //
 // SPDX-License-Identifier: MIT
 
-import React from 'react';
+import { removeOrganizationMemberAsync, updateOrganizationMemberAsync } from 'actions/organization-actions';
 import Pagination from 'antd/lib/pagination';
 import Spin from 'antd/lib/spin';
-
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { CombinedState } from 'reducers/interfaces';
-import { removeOrganizationMemberAsync, updateOrganizationMemberAsync } from 'actions/organization-actions';
+
 import MemberItem from './member-item';
 
 export interface Props {

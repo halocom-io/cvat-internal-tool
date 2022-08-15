@@ -2,9 +2,9 @@
 //
 // SPDX-License-Identifier: MIT
 
-import React from 'react';
-import { Row } from 'antd/lib/grid';
 import Collapse from 'antd/lib/collapse';
+import { Row } from 'antd/lib/grid';
+import React from 'react';
 
 import ItemAttribute from './object-item-attribute';
 

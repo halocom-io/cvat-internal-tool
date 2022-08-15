@@ -2,13 +2,13 @@
 //
 // SPDX-License-Identifier: MIT
 
-import React from 'react';
 import Icon from '@ant-design/icons';
 import Popover from 'antd/lib/popover';
-
-import { RotateIcon } from 'icons';
-import { Rotation } from 'reducers/interfaces';
 import CVATTooltip from 'components/common/cvat-tooltip';
+import { RotateIcon } from 'icons';
+import React from 'react';
+import { Rotation } from 'reducers/interfaces';
+
 import withVisibilityHandling from './handle-popover-visibility';
 
 export interface Props {

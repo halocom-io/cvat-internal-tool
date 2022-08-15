@@ -2,20 +2,19 @@
 //
 // SPDX-License-Identifier: MIT
 
-import { connect } from 'react-redux';
-
-import { Canvas } from 'cvat-canvas-wrapper';
 import {
-    mergeObjects,
     groupObjects,
-    splitTrack,
-    redrawShapeAsync,
-    rotateCurrentFrame,
-    repeatDrawShapeAsync,
+    mergeObjects,
     pasteShapeAsync,
+    redrawShapeAsync,
+    repeatDrawShapeAsync,
     resetAnnotationsGroup,
+    rotateCurrentFrame,
+    splitTrack,
 } from 'actions/annotation-actions';
 import ControlsSideBarComponent from 'components/annotation-page/standard-workspace/controls-side-bar/controls-side-bar';
+import { Canvas } from 'cvat-canvas-wrapper';
+import { connect } from 'react-redux';
 import { ActiveControl, CombinedState, Rotation } from 'reducers/interfaces';
 import { KeyMap } from 'utils/mousetrap-react';
 

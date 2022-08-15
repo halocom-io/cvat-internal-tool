@@ -2,15 +2,14 @@
 //
 // SPDX-License-Identifier: MIT
 
+import { changeFrameAsync, updateAnnotationsAsync } from 'actions/annotation-actions';
+import ItemButtonsComponent from 'components/annotation-page/standard-workspace/objects-side-bar/object-item-buttons';
+import { LogType } from 'cvat-logger';
 import React from 'react';
 import { connect } from 'react-redux';
-
-import { LogType } from 'cvat-logger';
+import { CombinedState } from 'reducers/interfaces';
 import isAbleToChangeFrame from 'utils/is-able-to-change-frame';
 import { ThunkDispatch } from 'utils/redux';
-import { updateAnnotationsAsync, changeFrameAsync } from 'actions/annotation-actions';
-import { CombinedState } from 'reducers/interfaces';
-import ItemButtonsComponent from 'components/annotation-page/standard-workspace/objects-side-bar/object-item-buttons';
 
 interface OwnProps {
     readonly: boolean;

@@ -2,24 +2,25 @@
 //
 // SPDX-License-Identifier: MIT
 
-import React from 'react';
+import { PlusCircleOutlined, UpOutlined } from '@ant-design/icons';
+import Dropdown from 'antd/lib/dropdown';
 import Layout from 'antd/lib/layout';
 import Slider from 'antd/lib/slider';
-import Dropdown from 'antd/lib/dropdown';
-import { PlusCircleOutlined, UpOutlined } from '@ant-design/icons';
-
-import GlobalHotKeys, { KeyMap } from 'utils/mousetrap-react';
-import {
-    ColorBy, GridColor, ObjectType, ContextMenuType, Workspace, ShapeType,
-} from 'reducers/interfaces';
-import { LogType } from 'cvat-logger';
+import CVATTooltip from 'components/common/cvat-tooltip';
+import consts from 'consts';
 import { Canvas } from 'cvat-canvas-wrapper';
 import { Canvas3d } from 'cvat-canvas3d-wrapper';
 import getCore from 'cvat-core-wrapper';
-import consts from 'consts';
-import CVATTooltip from 'components/common/cvat-tooltip';
-import ImageSetupsContent from './image-setups-content';
+import { LogType } from 'cvat-logger';
+import React from 'react';
+import {
+    ColorBy, ContextMenuType, GridColor, ObjectType, ShapeType,
+    Workspace,
+} from 'reducers/interfaces';
+import GlobalHotKeys, { KeyMap } from 'utils/mousetrap-react';
+
 import ContextImage from '../standard-workspace/context-image/context-image';
+import ImageSetupsContent from './image-setups-content';
 
 const cvat = getCore();
 

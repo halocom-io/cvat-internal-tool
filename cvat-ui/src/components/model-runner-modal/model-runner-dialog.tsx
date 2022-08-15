@@ -3,13 +3,14 @@
 // SPDX-License-Identifier: MIT
 
 import './styles.scss';
+
+import { modelsActions, startInferenceAsync } from 'actions/models-actions';
+import Modal from 'antd/lib/modal';
 import React from 'react';
 import { connect } from 'react-redux';
-import Modal from 'antd/lib/modal';
-
+import { CombinedState, Model } from 'reducers/interfaces';
 import { ThunkDispatch } from 'utils/redux';
-import { modelsActions, startInferenceAsync } from 'actions/models-actions';
-import { Model, CombinedState } from 'reducers/interfaces';
+
 import DetectorRunner from './detector-runner';
 
 interface StateToProps {

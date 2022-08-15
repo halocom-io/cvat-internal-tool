@@ -3,33 +3,34 @@
 // SPDX-License-Identifier: MIT
 
 import './styles.scss';
-import React from 'react';
+
+import {
+    CloseCircleOutlined, LikeOutlined, MessageOutlined,
+    StarOutlined,
+} from '@ant-design/icons';
 import Button from 'antd/lib/button';
 import Popover from 'antd/lib/popover';
 import Text from 'antd/lib/typography/Text';
-import {
-    StarOutlined, LikeOutlined, CloseCircleOutlined, MessageOutlined,
-} from '@ant-design/icons';
-import {
-    FacebookShareButton,
-    LinkedinShareButton,
-    TwitterShareButton,
-    TelegramShareButton,
-    WhatsappShareButton,
-    VKShareButton,
-    RedditShareButton,
-    ViberShareButton,
-    FacebookIcon,
-    TwitterIcon,
-    TelegramIcon,
-    WhatsappIcon,
-    VKIcon,
-    RedditIcon,
-    ViberIcon,
-    LinkedinIcon,
-} from 'react-share';
-
 import consts from 'consts';
+import React from 'react';
+import {
+    FacebookIcon,
+    FacebookShareButton,
+    LinkedinIcon,
+    LinkedinShareButton,
+    RedditIcon,
+    RedditShareButton,
+    TelegramIcon,
+    TelegramShareButton,
+    TwitterIcon,
+    TwitterShareButton,
+    ViberIcon,
+    ViberShareButton,
+    VKIcon,
+    VKShareButton,
+    WhatsappIcon,
+    WhatsappShareButton,
+} from 'react-share';
 
 function renderContent(): JSX.Element {
     const { GITHUB_URL, GITHUB_IMAGE_URL, GITTER_PUBLIC_URL } = consts;

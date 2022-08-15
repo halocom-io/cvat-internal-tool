@@ -3,24 +3,24 @@
 // SPDX-License-Identifier: MIT
 
 import './styles.scss';
-import { useDispatch } from 'react-redux';
-import React, { useEffect, useState } from 'react';
-import { useHistory } from 'react-router';
-import Spin from 'antd/lib/spin';
-import Button from 'antd/lib/button';
-import message from 'antd/lib/message';
-import Text from 'antd/lib/typography/Text';
-import { Col, Row } from 'antd/lib/grid';
-import Pagination from 'antd/lib/pagination';
 
-import { TasksQuery, Indexable } from 'reducers/interfaces';
+import { getTasksAsync, hideEmptyTasks, importTaskAsync } from 'actions/tasks-actions';
+import Button from 'antd/lib/button';
+import { Col, Row } from 'antd/lib/grid';
+import message from 'antd/lib/message';
+import Pagination from 'antd/lib/pagination';
+import Spin from 'antd/lib/spin';
+import Text from 'antd/lib/typography/Text';
 import FeedbackComponent from 'components/feedback/feedback';
 import { updateHistoryFromQuery } from 'components/resource-sorting-filtering';
 import TaskListContainer from 'containers/tasks-page/tasks-list';
-import { getTasksAsync, hideEmptyTasks, importTaskAsync } from 'actions/tasks-actions';
+import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router';
+import { Indexable, TasksQuery } from 'reducers/interfaces';
 
-import TopBar from './top-bar';
 import EmptyListComponent from './empty-list';
+import TopBar from './top-bar';
 
 interface Props {
     fetching: boolean;

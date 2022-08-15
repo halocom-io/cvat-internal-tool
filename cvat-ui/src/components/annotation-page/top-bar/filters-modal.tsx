@@ -2,23 +2,23 @@
 //
 // SPDX-License-Identifier: MIT
 
+import 'react-awesome-query-builder/lib/css/styles.css';
+
+import { DownOutlined } from '@ant-design/icons';
+import { changeAnnotationsFilters, fetchAnnotationsAsync, showFilters } from 'actions/annotation-actions';
+import Button from 'antd/lib/button';
+import Dropdown from 'antd/lib/dropdown';
+import Menu from 'antd/lib/menu';
+import Modal from 'antd/lib/modal';
+import { omit } from 'lodash';
 import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import {
     Builder, Config, ImmutableTree, JsonLogicTree, Query, Utils as QbUtils,
 } from 'react-awesome-query-builder';
 import AntdWidgets from 'react-awesome-query-builder/lib/components/widgets/antd';
 import AntdConfig from 'react-awesome-query-builder/lib/config/antd';
-import 'react-awesome-query-builder/lib/css/styles.css';
-import { DownOutlined } from '@ant-design/icons';
-import Dropdown from 'antd/lib/dropdown';
-import Menu from 'antd/lib/menu';
-import Button from 'antd/lib/button';
-import Modal from 'antd/lib/modal';
-import { omit } from 'lodash';
-
+import { useDispatch, useSelector } from 'react-redux';
 import { CombinedState } from 'reducers/interfaces';
-import { changeAnnotationsFilters, fetchAnnotationsAsync, showFilters } from 'actions/annotation-actions';
 
 const { FieldDropdown } = AntdWidgets;
 

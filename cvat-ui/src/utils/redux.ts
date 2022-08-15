@@ -4,6 +4,7 @@
 
 import { Action, ActionCreatorsMapObject, AnyAction } from 'redux';
 import { ThunkAction as _ThunkAction, ThunkDispatch as _ThunkDispatch } from 'redux-thunk';
+
 import { CombinedState } from '../reducers/interfaces';
 
 export interface ActionWithPayload<T, P> extends Action<T> {

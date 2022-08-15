@@ -2,12 +2,11 @@
 //
 // SPDX-License-Identifier: MIT
 
+import { CheckCircleOutlined, CloseCircleOutlined } from '@ant-design/icons';
+import Tag from 'antd/lib/tag';
+import CVATTooltip from 'components/common/cvat-tooltip';
 import React, { ReactPortal, useEffect, useRef } from 'react';
 import ReactDOM from 'react-dom';
-import Tag from 'antd/lib/tag';
-import { CheckCircleOutlined, CloseCircleOutlined } from '@ant-design/icons';
-
-import CVATTooltip from 'components/common/cvat-tooltip';
 
 interface Props {
     id: number;

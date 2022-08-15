@@ -3,9 +3,10 @@
 // SPDX-License-Identifier: MIT
 
 import './styles.scss';
-import React from 'react';
-import { Row, Col } from 'antd/lib/grid';
+
+import { Col, Row } from 'antd/lib/grid';
 import Text from 'antd/lib/typography/Text';
+import React from 'react';
 
 import CreateOrganizationForm from './create-organization-form';
 

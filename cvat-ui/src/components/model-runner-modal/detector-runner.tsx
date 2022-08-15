@@ -3,21 +3,22 @@
 // SPDX-License-Identifier: MIT
 
 import './styles.scss';
-import React, { useState } from 'react';
-import { Row, Col } from 'antd/lib/grid';
+
 import { DeleteOutlined, QuestionCircleOutlined } from '@ant-design/icons';
-import Select, { BaseOptionType } from 'antd/lib/select';
+import Button from 'antd/lib/button';
 import Checkbox, { CheckboxChangeEvent } from 'antd/lib/checkbox';
+import { Col, Row } from 'antd/lib/grid';
+import InputNumber from 'antd/lib/input-number';
+import notification from 'antd/lib/notification';
+import Select, { BaseOptionType } from 'antd/lib/select';
 import Tag from 'antd/lib/tag';
 import Text from 'antd/lib/typography/Text';
-import InputNumber from 'antd/lib/input-number';
-import Button from 'antd/lib/button';
-import notification from 'antd/lib/notification';
-
-import { Model, StringObject } from 'reducers/interfaces';
 import CVATTooltip from 'components/common/cvat-tooltip';
-import { clamp } from 'utils/math';
 import consts from 'consts';
+import React, { useState } from 'react';
+import { Model, StringObject } from 'reducers/interfaces';
+import { clamp } from 'utils/math';
+
 import { DimensionType } from '../../reducers/interfaces';
 
 interface Props {

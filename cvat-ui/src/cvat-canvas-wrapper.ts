@@ -6,10 +6,10 @@ import {
     Canvas,
     CanvasMode,
     CanvasVersion,
-    RectDrawingMethod,
     CuboidDrawingMethod,
     InteractionData as _InteractionData,
     InteractionResult as _InteractionResult,
+    RectDrawingMethod,
 } from 'cvat-canvas/src/typescript/canvas';
 
 export function convertShapesForInteractor(shapes: InteractionResult[], button: number): number[][] {
@@ -32,5 +32,5 @@ export type InteractionData = _InteractionData;
 export type InteractionResult = _InteractionResult;
 
 export {
-    Canvas, CanvasMode, CanvasVersion, RectDrawingMethod, CuboidDrawingMethod,
+    Canvas, CanvasMode, CanvasVersion, CuboidDrawingMethod, RectDrawingMethod,
 };

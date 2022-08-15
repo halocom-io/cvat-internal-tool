@@ -2,24 +2,25 @@
 //
 // SPDX-License-Identifier: MIT
 
-import React, { RefObject } from 'react';
-import { Row, Col } from 'antd/lib/grid';
 import Icon, { DeleteOutlined, PlusCircleOutlined } from '@ant-design/icons';
-import Input from 'antd/lib/input';
+import Badge from 'antd/lib/badge';
 import Button from 'antd/lib/button';
 import Checkbox from 'antd/lib/checkbox';
-import Select from 'antd/lib/select';
 import Form, { FormInstance } from 'antd/lib/form';
-import Badge from 'antd/lib/badge';
 import { Store } from 'antd/lib/form/interface';
-
-import CVATTooltip from 'components/common/cvat-tooltip';
+import { Col, Row } from 'antd/lib/grid';
+import Input from 'antd/lib/input';
+import Select from 'antd/lib/select';
 import ColorPicker from 'components/annotation-page/standard-workspace/objects-side-bar/color-picker';
-import { ColorizeIcon } from 'icons';
-import patterns from 'utils/validation-patterns';
+import CVATTooltip from 'components/common/cvat-tooltip';
 import consts from 'consts';
+import { ColorizeIcon } from 'icons';
+import React, { RefObject } from 'react';
+import patterns from 'utils/validation-patterns';
+
 import {
-    equalArrayHead, idGenerator, Label, Attribute,
+    Attribute,
+    equalArrayHead, idGenerator, Label,
 } from './common';
 
 export enum AttributeType {

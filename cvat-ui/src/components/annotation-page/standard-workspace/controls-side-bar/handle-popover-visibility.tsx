@@ -2,8 +2,8 @@
 //
 // SPDX-License-Identifier: MIT
 
-import React, { useState } from 'react';
 import Popover, { PopoverProps } from 'antd/lib/popover';
+import React, { useState } from 'react';
 
 export default function withVisibilityHandling(WrappedComponent: typeof Popover, popoverType: string) {
     return (props: PopoverProps): JSX.Element => {

@@ -3,22 +3,22 @@
 // SPDX-License-Identifier: MIT
 
 import './styles.scss';
-import React, { Dispatch, TransitionEvent } from 'react';
-import { AnyAction } from 'redux';
-import { connect } from 'react-redux';
-import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
-import Text from 'antd/lib/typography/Text';
-import Tabs from 'antd/lib/tabs';
-import Layout from 'antd/lib/layout';
 
+import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
+import { collapseSidebar as collapseSidebarAction } from 'actions/annotation-actions';
+import Layout from 'antd/lib/layout';
+import Tabs from 'antd/lib/tabs';
+import Text from 'antd/lib/typography/Text';
+import AppearanceBlock from 'components/annotation-page/appearance-block';
+import { adjustContextImagePosition } from 'components/annotation-page/standard-workspace/context-image/context-image';
+import IssuesListComponent from 'components/annotation-page/standard-workspace/objects-side-bar/issues-list';
+import LabelsList from 'components/annotation-page/standard-workspace/objects-side-bar/labels-list';
 import { Canvas } from 'cvat-canvas-wrapper';
 import { Canvas3d } from 'cvat-canvas3d-wrapper';
+import React, { Dispatch, TransitionEvent } from 'react';
+import { connect } from 'react-redux';
 import { CombinedState, DimensionType } from 'reducers/interfaces';
-import LabelsList from 'components/annotation-page/standard-workspace/objects-side-bar/labels-list';
-import { adjustContextImagePosition } from 'components/annotation-page/standard-workspace/context-image/context-image';
-import { collapseSidebar as collapseSidebarAction } from 'actions/annotation-actions';
-import AppearanceBlock from 'components/annotation-page/appearance-block';
-import IssuesListComponent from 'components/annotation-page/standard-workspace/objects-side-bar/issues-list';
+import { AnyAction } from 'redux';
 
 interface OwnProps {
     objectsList: JSX.Element;

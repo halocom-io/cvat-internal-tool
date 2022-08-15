@@ -3,10 +3,11 @@
 // SPDX-License-Identifier: MIT
 
 import getCore from 'cvat-core-wrapper';
+
 import HistogramEqualizationImplementation, { HistogramEqualization } from './histogram-equalization';
-import TrackerMImplementation from './tracker-mil';
 import IntelligentScissorsImplementation, { IntelligentScissors } from './intelligent-scissors';
 import { OpenCVTracker } from './opencv-interfaces';
+import TrackerMImplementation from './tracker-mil';
 
 const core = getCore();
 const baseURL = core.config.backendAPI.slice(0, -7);

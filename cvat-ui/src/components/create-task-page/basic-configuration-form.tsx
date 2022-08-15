@@ -2,10 +2,10 @@
 //
 // SPDX-License-Identifier: MIT
 
-import React, { RefObject } from 'react';
-import Input from 'antd/lib/input';
 import Form, { FormInstance } from 'antd/lib/form';
 import { Store } from 'antd/lib/form/interface';
+import Input from 'antd/lib/input';
+import React, { RefObject } from 'react';
 
 export interface BaseConfiguration {
     name: string;

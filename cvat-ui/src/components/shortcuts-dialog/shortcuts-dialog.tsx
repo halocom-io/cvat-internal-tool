@@ -2,13 +2,13 @@
 //
 // SPDX-License-Identifier: MIT
 
+import { shortcutsActions } from 'actions/shortcuts-actions';
 import Modal from 'antd/lib/modal';
 import Table from 'antd/lib/table';
 import React from 'react';
 import { connect } from 'react-redux';
-import { getApplicationKeyMap } from 'utils/mousetrap-react';
-import { shortcutsActions } from 'actions/shortcuts-actions';
 import { CombinedState } from 'reducers/interfaces';
+import { getApplicationKeyMap } from 'utils/mousetrap-react';
 
 interface StateToProps {
     visible: boolean;

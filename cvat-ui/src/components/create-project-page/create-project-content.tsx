@@ -2,24 +2,24 @@
 //
 // SPDX-License-Identifier: MIT
 
+import { createProjectAsync } from 'actions/projects-actions';
+import Button from 'antd/lib/button';
+import Form, { FormInstance } from 'antd/lib/form';
+import { Col, Row } from 'antd/lib/grid';
+import Input from 'antd/lib/input';
+import notification from 'antd/lib/notification';
+import Select from 'antd/lib/select';
+import Switch from 'antd/lib/switch';
+import Text from 'antd/lib/typography/Text';
+import LabelsEditor from 'components/labels-editor/labels-editor';
 import React, {
     RefObject, useContext, useEffect, useRef, useState,
 } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
-import Switch from 'antd/lib/switch';
-import Select from 'antd/lib/select';
-import { Col, Row } from 'antd/lib/grid';
-import Text from 'antd/lib/typography/Text';
-import Form, { FormInstance } from 'antd/lib/form';
-import Button from 'antd/lib/button';
-import Input from 'antd/lib/input';
-import notification from 'antd/lib/notification';
-
-import patterns from 'utils/validation-patterns';
 import { CombinedState } from 'reducers/interfaces';
-import LabelsEditor from 'components/labels-editor/labels-editor';
-import { createProjectAsync } from 'actions/projects-actions';
+import patterns from 'utils/validation-patterns';
+
 import CreateProjectContext from './create-project.context';
 
 const { Option } = Select;

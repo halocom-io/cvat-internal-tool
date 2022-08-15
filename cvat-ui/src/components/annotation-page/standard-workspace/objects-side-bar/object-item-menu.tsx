@@ -2,21 +2,24 @@
 //
 // SPDX-License-Identifier: MIT
 
-import React from 'react';
-import Menu from 'antd/lib/menu';
-import Button from 'antd/lib/button';
-import Modal from 'antd/lib/modal';
 import Icon, {
-    LinkOutlined, CopyOutlined, BlockOutlined, RetweetOutlined, DeleteOutlined,
+    BlockOutlined, CopyOutlined, DeleteOutlined,
+    LinkOutlined, RetweetOutlined,
 } from '@ant-design/icons';
-
-import {
-    BackgroundIcon, ForegroundIcon, ResetPerspectiveIcon, ColorizeIcon,
-} from 'icons';
+import Button from 'antd/lib/button';
+import Menu from 'antd/lib/menu';
+import Modal from 'antd/lib/modal';
 import CVATTooltip from 'components/common/cvat-tooltip';
 import {
-    ObjectType, ShapeType, ColorBy, DimensionType,
+    BackgroundIcon, ColorizeIcon,
+    ForegroundIcon, ResetPerspectiveIcon,
+} from 'icons';
+import React from 'react';
+import {
+    ColorBy, DimensionType,
+    ObjectType, ShapeType,
 } from 'reducers/interfaces';
+
 import ColorPicker from './color-picker';
 
 interface Props {

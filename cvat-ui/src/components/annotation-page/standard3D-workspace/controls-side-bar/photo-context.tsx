@@ -2,12 +2,11 @@
 //
 // SPDX-License-Identifier: MIT
 
-import React from 'react';
 import CameraIcon from '@ant-design/icons/CameraOutlined';
-
 import CVATTooltip from 'components/common/cvat-tooltip';
-import { Canvas3d } from 'cvat-canvas3d-wrapper';
 import { Canvas } from 'cvat-canvas-wrapper';
+import { Canvas3d } from 'cvat-canvas3d-wrapper';
+import React from 'react';
 import { ActiveControl } from 'reducers/interfaces';
 
 interface Props {

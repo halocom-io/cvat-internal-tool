@@ -19,7 +19,6 @@ module.exports = {
     extends: ['plugin:@typescript-eslint/recommended', 'airbnb-typescript'],
     rules: {
         ...globalConfig.rules,
-        'max-len': 'warn',
         '@typescript-eslint/no-explicit-any': 0,
         '@typescript-eslint/indent': ['error', 4],
         '@typescript-eslint/lines-between-class-members': 0,

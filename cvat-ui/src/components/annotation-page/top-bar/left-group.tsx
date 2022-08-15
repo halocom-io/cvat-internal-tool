@@ -2,21 +2,20 @@
 //
 // SPDX-License-Identifier: MIT
 
-import React from 'react';
-import { Col } from 'antd/lib/grid';
-import { StopOutlined, CheckCircleOutlined } from '@ant-design/icons';
-import Modal from 'antd/lib/modal';
-import Button from 'antd/lib/button';
-import Timeline from 'antd/lib/timeline';
-import Dropdown from 'antd/lib/dropdown';
-
+import { CheckCircleOutlined, StopOutlined } from '@ant-design/icons';
 import {
-    MenuIcon, SaveIcon, ArrowSmLeftIcon, ArrowSmRightIcon,
+    ArrowSmLeftIcon, ArrowSmRightIcon,
+    MenuIcon, SaveIcon,
 } from '@heroicons/react/outline';
-
-import AnnotationMenuContainer from 'containers/annotation-page/top-bar/annotation-menu';
-import { ActiveControl, ToolsBlockerState } from 'reducers/interfaces';
+import Button from 'antd/lib/button';
+import Dropdown from 'antd/lib/dropdown';
+import { Col } from 'antd/lib/grid';
+import Modal from 'antd/lib/modal';
+import Timeline from 'antd/lib/timeline';
 import CVATTooltip from 'components/common/cvat-tooltip';
+import AnnotationMenuContainer from 'containers/annotation-page/top-bar/annotation-menu';
+import React from 'react';
+import { ActiveControl, ToolsBlockerState } from 'reducers/interfaces';
 
 interface Props {
     saving: boolean;

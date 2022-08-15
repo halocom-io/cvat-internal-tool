@@ -2,13 +2,13 @@
 //
 // SPDX-License-Identifier: MIT
 
-import React from 'react';
+import { DeleteOutlined } from '@ant-design/icons';
+import { Col, Row } from 'antd/lib/grid';
+import Modal from 'antd/lib/modal';
 import Select from 'antd/lib/select';
 import Text from 'antd/lib/typography/Text';
-import { Row, Col } from 'antd/lib/grid';
 import moment from 'moment';
-import { DeleteOutlined } from '@ant-design/icons';
-import Modal from 'antd/lib/modal';
+import React from 'react';
 
 export interface Props {
     membershipInstance: any;

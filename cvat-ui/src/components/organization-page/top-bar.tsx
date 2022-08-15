@@ -2,30 +2,30 @@
 //
 // SPDX-License-Identifier: MIT
 
-import React, { useState, useRef, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import moment from 'moment';
-import { Row, Col } from 'antd/lib/grid';
-import Text from 'antd/lib/typography/Text';
-import Modal from 'antd/lib/modal';
-import Button from 'antd/lib/button';
-import Space from 'antd/lib/space';
-import Input from 'antd/lib/input';
-import Form from 'antd/lib/form';
-import Select from 'antd/lib/select';
-import { useForm } from 'antd/lib/form/Form';
-import { Store } from 'antd/lib/form/interface';
 import {
+    DeleteOutlined,
     EditTwoTone, EnvironmentOutlined,
-    MailOutlined, PhoneOutlined, PlusCircleOutlined, DeleteOutlined,
+    MailOutlined, PhoneOutlined, PlusCircleOutlined,
 } from '@ant-design/icons';
-
 import {
     inviteOrganizationMembersAsync,
     leaveOrganizationAsync,
     removeOrganizationAsync,
     updateOrganizationAsync,
 } from 'actions/organization-actions';
+import Button from 'antd/lib/button';
+import Form from 'antd/lib/form';
+import { useForm } from 'antd/lib/form/Form';
+import { Store } from 'antd/lib/form/interface';
+import { Col, Row } from 'antd/lib/grid';
+import Input from 'antd/lib/input';
+import Modal from 'antd/lib/modal';
+import Select from 'antd/lib/select';
+import Space from 'antd/lib/space';
+import Text from 'antd/lib/typography/Text';
+import moment from 'moment';
+import React, { useEffect, useRef, useState } from 'react';
+import { useDispatch } from 'react-redux';
 
 export interface Props {
     organizationInstance: any;

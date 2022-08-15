@@ -2,15 +2,14 @@
 //
 // SPDX-License-Identifier: MIT
 
-import React from 'react';
-import Popover from 'antd/lib/popover';
 import Icon from '@ant-design/icons';
-
+import Popover from 'antd/lib/popover';
+import DrawShapePopoverContainer from 'containers/annotation-page/standard-workspace/controls-side-bar/draw-shape-popover';
 import { Canvas } from 'cvat-canvas-wrapper';
 import { PolygonIcon } from 'icons';
+import React from 'react';
 import { ShapeType } from 'reducers/interfaces';
 
-import DrawShapePopoverContainer from 'containers/annotation-page/standard-workspace/controls-side-bar/draw-shape-popover';
 import withVisibilityHandling from './handle-popover-visibility';
 
 export interface Props {

@@ -2,13 +2,12 @@
 //
 // SPDX-License-Identifier: MIT
 
+import { rememberObject, updateAnnotationsAsync } from 'actions/annotation-actions';
+import message from 'antd/lib/message';
+import LabelItemContainer from 'containers/annotation-page/standard-workspace/objects-side-bar/label-item';
 import React, { useCallback, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import message from 'antd/lib/message';
-
 import { CombinedState } from 'reducers/interfaces';
-import { rememberObject, updateAnnotationsAsync } from 'actions/annotation-actions';
-import LabelItemContainer from 'containers/annotation-page/standard-workspace/objects-side-bar/label-item';
 import GlobalHotKeys from 'utils/mousetrap-react';
 
 function LabelsListComponent(): JSX.Element {

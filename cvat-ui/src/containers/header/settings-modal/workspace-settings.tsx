@@ -2,26 +2,23 @@
 //
 // SPDX-License-Identifier: MIT
 
-import React from 'react';
-import { connect } from 'react-redux';
-
 import {
-    switchAutoSave,
-    changeAutoSaveInterval,
     changeAAMZoomMargin,
+    changeAutoSaveInterval,
+    changeDefaultApproxPolyAccuracy,
+    switchAutomaticBordering,
+    switchAutoSave,
+    switchIntelligentPolygonCrop,
     switchShowingInterpolatedTracks,
     switchShowingObjectsTextAlways,
-    switchAutomaticBordering,
-    switchIntelligentPolygonCrop,
-    changeDefaultApproxPolyAccuracy,
+    switchTextContent,
     switchTextFontSize,
     switchTextPosition,
-    switchTextContent,
 } from 'actions/settings-actions';
-
-import { CombinedState } from 'reducers/interfaces';
-
 import WorkspaceSettingsComponent from 'components/header/settings-modal/workspace-settings';
+import React from 'react';
+import { connect } from 'react-redux';
+import { CombinedState } from 'reducers/interfaces';
 
 interface StateToProps {
     autoSave: boolean;

@@ -2,14 +2,15 @@
 //
 // SPDX-License-Identifier: MIT
 
-import React, { useState } from 'react';
 import { Col, Row } from 'antd/lib/grid';
 import Input from 'antd/lib/input';
-
+import { defaultVisibility, ResourceFilterHOC, SortingComponent } from 'components/resource-sorting-filtering';
+import React, { useState } from 'react';
 import { JobsQuery } from 'reducers/interfaces';
-import { SortingComponent, ResourceFilterHOC, defaultVisibility } from 'components/resource-sorting-filtering';
+
 import {
-    localStorageRecentKeyword, localStorageRecentCapacity, predefinedFilterValues, config,
+    config,
+    localStorageRecentCapacity, localStorageRecentKeyword, predefinedFilterValues,
 } from './jobs-filter-configuration';
 
 const FilteringComponent = ResourceFilterHOC(

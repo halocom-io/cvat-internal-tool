@@ -3,13 +3,14 @@
 // SPDX-License-Identifier: MIT
 
 import './styles.scss';
+
+import { Col, Row } from 'antd/lib/grid';
+import TextArea from 'antd/lib/input/TextArea';
+import Modal from 'antd/lib/modal';
+import Paragraph from 'antd/lib/typography/Paragraph';
+import Text from 'antd/lib/typography/Text';
 import React, { useEffect } from 'react';
 import { useLocation } from 'react-router';
-import { Row, Col } from 'antd/lib/grid';
-import Modal from 'antd/lib/modal';
-import Text from 'antd/lib/typography/Text';
-import Paragraph from 'antd/lib/typography/Paragraph';
-import TextArea from 'antd/lib/input/TextArea';
 
 import CreateTaskContent, { CreateTaskData } from './create-task-content';
 

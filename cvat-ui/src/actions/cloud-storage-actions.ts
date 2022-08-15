@@ -2,10 +2,10 @@
 //
 // SPDX-License-Identifier: MIT
 
-import { Dispatch, ActionCreator } from 'redux';
-import { ActionUnion, createAction, ThunkAction } from 'utils/redux';
 import getCore from 'cvat-core-wrapper';
-import { CloudStoragesQuery, CloudStorage, Indexable } from 'reducers/interfaces';
+import { CloudStorage, CloudStoragesQuery, Indexable } from 'reducers/interfaces';
+import { ActionCreator, Dispatch } from 'redux';
+import { ActionUnion, createAction, ThunkAction } from 'utils/redux';
 
 const cvat = getCore();
 

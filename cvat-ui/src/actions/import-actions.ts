@@ -2,8 +2,9 @@
 //
 // SPDX-License-Identifier: MIT
 
-import { createAction, ActionUnion, ThunkAction } from 'utils/redux';
 import { CombinedState } from 'reducers/interfaces';
+import { ActionUnion, createAction, ThunkAction } from 'utils/redux';
+
 import { getProjectsAsync } from './projects-actions';
 
 export enum ImportActionTypes {

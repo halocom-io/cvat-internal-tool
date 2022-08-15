@@ -2,15 +2,14 @@
 //
 // SPDX-License-Identifier: MIT
 
+import Button from 'antd/lib/button';
+import { Col, Row } from 'antd/lib/grid';
+import Popover from 'antd/lib/popover';
+import Text from 'antd/lib/typography/Text';
+import CVATTooltip from 'components/common/cvat-tooltip';
 import React from 'react';
 import { useSelector } from 'react-redux';
-import Popover from 'antd/lib/popover';
-import Button from 'antd/lib/button';
-import { Row, Col } from 'antd/lib/grid';
-import Text from 'antd/lib/typography/Text';
-
 import { CombinedState } from 'reducers/interfaces';
-import CVATTooltip from 'components/common/cvat-tooltip';
 
 interface LabelKeySelectorPopoverProps {
     updateLabelShortcutKey(updatedKey: string, labelID: number): void;

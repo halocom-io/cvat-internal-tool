@@ -2,16 +2,15 @@
 //
 // SPDX-License-Identifier: MIT
 
-import React, { useState, useEffect, useRef } from 'react';
-import { Col } from 'antd/lib/grid';
-import Select from 'antd/lib/select';
-import Radio, { RadioChangeEvent } from 'antd/lib/radio';
 import Checkbox, { CheckboxChangeEvent } from 'antd/lib/checkbox';
+import { Col } from 'antd/lib/grid';
 import Input from 'antd/lib/input';
 import InputNumber from 'antd/lib/input-number';
+import Radio, { RadioChangeEvent } from 'antd/lib/radio';
+import Select from 'antd/lib/select';
 import Text from 'antd/lib/typography/Text';
-
 import consts from 'consts';
+import React, { useEffect, useRef, useState } from 'react';
 import { clamp } from 'utils/math';
 
 interface Props {

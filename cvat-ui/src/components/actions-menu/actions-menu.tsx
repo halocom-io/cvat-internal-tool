@@ -3,15 +3,16 @@
 // SPDX-License-Identifier: MIT
 
 import './styles.scss';
-import React, { useCallback } from 'react';
+
+import { LoadingOutlined } from '@ant-design/icons';
 import Menu from 'antd/lib/menu';
 import Modal from 'antd/lib/modal';
-import { LoadingOutlined } from '@ant-design/icons';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { MenuInfo } from 'rc-menu/lib/interface';
+import React, { useCallback } from 'react';
 
-import LoadSubmenu from './load-submenu';
 import { DimensionType } from '../../reducers/interfaces';
+import LoadSubmenu from './load-submenu';
 
 interface Props {
     taskID: number;

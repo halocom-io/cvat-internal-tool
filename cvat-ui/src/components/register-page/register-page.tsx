@@ -3,16 +3,17 @@
 // SPDX-License-Identifier: MIT
 
 import './styles.scss';
+
+import { Col, Row } from 'antd/lib/grid';
+import Layout from 'antd/lib/layout';
+import Text from 'antd/lib/typography/Text';
+import Title from 'antd/lib/typography/Title';
+import FooterDrawer from 'components/login-page/intel-footer-drawer';
 import React from 'react';
 import { RouteComponentProps } from 'react-router';
 import { Link, withRouter } from 'react-router-dom';
-import Title from 'antd/lib/typography/Title';
-import Text from 'antd/lib/typography/Text';
-import { Row, Col } from 'antd/lib/grid';
-import Layout from 'antd/lib/layout';
-
 import { UserAgreement } from 'reducers/interfaces';
-import FooterDrawer from 'components/login-page/intel-footer-drawer';
+
 import RegisterForm, { RegisterData, UserConfirmation } from './register-form';
 
 interface RegisterPageComponentProps {

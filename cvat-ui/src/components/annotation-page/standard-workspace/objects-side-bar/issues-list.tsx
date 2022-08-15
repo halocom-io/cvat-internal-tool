@@ -2,18 +2,18 @@
 //
 // SPDX-License-Identifier: MIT
 
-import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
 import {
-    LeftOutlined, RightOutlined, EyeInvisibleFilled, EyeOutlined,
     CheckCircleFilled, CheckCircleOutlined,
+    EyeInvisibleFilled, EyeOutlined,
+    LeftOutlined, RightOutlined,
 } from '@ant-design/icons';
-import Alert from 'antd/lib/alert';
-import { Row, Col } from 'antd/lib/grid';
-
 import { changeFrameAsync } from 'actions/annotation-actions';
 import { reviewActions } from 'actions/review-actions';
+import Alert from 'antd/lib/alert';
+import { Col, Row } from 'antd/lib/grid';
 import CVATTooltip from 'components/common/cvat-tooltip';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { CombinedState } from 'reducers/interfaces';
 
 export default function LabelsListComponent(): JSX.Element {

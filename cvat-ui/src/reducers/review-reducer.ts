@@ -2,10 +2,11 @@
 //
 // SPDX-License-Identifier: MIT
 
-import consts from 'consts';
 import { AnnotationActionTypes } from 'actions/annotation-actions';
-import { ReviewActionTypes } from 'actions/review-actions';
 import { AuthActionTypes } from 'actions/auth-actions';
+import { ReviewActionTypes } from 'actions/review-actions';
+import consts from 'consts';
+
 import { ReviewState } from './interfaces';
 
 const defaultState: ReviewState = {

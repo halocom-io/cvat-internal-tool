@@ -2,54 +2,52 @@
 //
 // SPDX-License-Identifier: MIT
 
-import { connect } from 'react-redux';
-import { KeyMap } from 'utils/mousetrap-react';
-
-import CanvasWrapperComponent from 'components/annotation-page/canvas/canvas-wrapper';
 import {
-    confirmCanvasReady,
-    dragCanvas,
-    zoomCanvas,
-    resetCanvas,
-    shapeDrawn,
-    mergeObjects,
-    groupObjects,
-    splitTrack,
-    editShape,
-    updateAnnotationsAsync,
-    createAnnotationsAsync,
-    mergeAnnotationsAsync,
-    groupAnnotationsAsync,
-    splitAnnotationsAsync,
     activateObject,
-    updateCanvasContextMenu,
     addZLayer,
-    switchZLayer,
+    confirmCanvasReady,
+    createAnnotationsAsync,
+    dragCanvas,
+    editShape,
     fetchAnnotationsAsync,
     getDataFailed,
+    groupAnnotationsAsync,
+    groupObjects,
+    mergeAnnotationsAsync,
+    mergeObjects,
+    resetCanvas,
+    shapeDrawn,
+    splitAnnotationsAsync,
+    splitTrack,
+    switchZLayer,
+    updateAnnotationsAsync,
+    updateCanvasContextMenu,
+    zoomCanvas,
 } from 'actions/annotation-actions';
-import {
-    switchGrid,
-    changeGridColor,
-    changeGridOpacity,
-    changeBrightnessLevel,
-    changeContrastLevel,
-    changeSaturationLevel,
-    switchAutomaticBordering,
-} from 'actions/settings-actions';
 import { reviewActions } from 'actions/review-actions';
 import {
-    ColorBy,
-    GridColor,
-    ObjectType,
-    CombinedState,
-    ContextMenuType,
-    Workspace,
-    ActiveControl,
-} from 'reducers/interfaces';
-
+    changeBrightnessLevel,
+    changeContrastLevel,
+    changeGridColor,
+    changeGridOpacity,
+    changeSaturationLevel,
+    switchAutomaticBordering,
+    switchGrid,
+} from 'actions/settings-actions';
+import CanvasWrapperComponent from 'components/annotation-page/canvas/canvas-wrapper';
 import { Canvas } from 'cvat-canvas-wrapper';
 import { Canvas3d } from 'cvat-canvas3d-wrapper';
+import { connect } from 'react-redux';
+import {
+    ActiveControl,
+    ColorBy,
+    CombinedState,
+    ContextMenuType,
+    GridColor,
+    ObjectType,
+    Workspace,
+} from 'reducers/interfaces';
+import { KeyMap } from 'utils/mousetrap-react';
 
 interface StateToProps {
     sidebarCollapsed: boolean;

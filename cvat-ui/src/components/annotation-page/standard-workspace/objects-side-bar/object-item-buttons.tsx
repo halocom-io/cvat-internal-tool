@@ -2,27 +2,27 @@
 //
 // SPDX-License-Identifier: MIT
 
-import React from 'react';
-import { Row, Col } from 'antd/lib/grid';
 import Icon, {
-    UnlockOutlined,
+    EyeInvisibleFilled,
+    EyeOutlined,
     LockFilled,
-    TeamOutlined,
-    UserOutlined,
     PushpinFilled,
     PushpinOutlined,
-    EyeInvisibleFilled,
-    StarFilled,
     SelectOutlined,
+    StarFilled,
     StarOutlined,
-    EyeOutlined,
+    TeamOutlined,
+    UnlockOutlined,
+    UserOutlined,
 } from '@ant-design/icons';
-
+import { Col, Row } from 'antd/lib/grid';
 import CVATTooltip from 'components/common/cvat-tooltip';
-import { ObjectType, ShapeType } from 'reducers/interfaces';
 import {
-    ObjectOutsideIcon, FirstIcon, LastIcon, PreviousIcon, NextIcon,
+    FirstIcon, LastIcon, NextIcon,
+    ObjectOutsideIcon, PreviousIcon,
 } from 'icons';
+import React from 'react';
+import { ObjectType, ShapeType } from 'reducers/interfaces';
 
 interface Props {
     readonly: boolean;

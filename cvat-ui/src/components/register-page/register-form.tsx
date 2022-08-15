@@ -2,17 +2,15 @@
 //
 // SPDX-License-Identifier: MIT
 
-import React from 'react';
-import { UserAddOutlined, MailOutlined, LockOutlined } from '@ant-design/icons';
-import Form, { RuleRender, RuleObject } from 'antd/lib/form';
+import { LockOutlined, MailOutlined, UserAddOutlined } from '@ant-design/icons';
 import Button from 'antd/lib/button';
-import Input from 'antd/lib/input';
 import Checkbox from 'antd/lib/checkbox';
-
-import patterns from 'utils/validation-patterns';
-
+import Form, { RuleObject, RuleRender } from 'antd/lib/form';
+import { Col, Row } from 'antd/lib/grid';
+import Input from 'antd/lib/input';
+import React from 'react';
 import { UserAgreement } from 'reducers/interfaces';
-import { Row, Col } from 'antd/lib/grid';
+import patterns from 'utils/validation-patterns';
 
 export interface UserConfirmation {
     name: string;

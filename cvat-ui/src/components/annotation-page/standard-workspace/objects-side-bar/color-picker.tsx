@@ -1,17 +1,15 @@
 // Copyright (C) 2020-2021 Intel Corporation
 //
 // SPDX-License-Identifier: MIT
-import React, { useState } from 'react';
-import { Row, Col } from 'antd/lib/grid';
-
 import { CloseOutlined } from '@ant-design/icons';
 import Button from 'antd/lib/button';
+import { Col, Row } from 'antd/lib/grid';
 import Popover from 'antd/lib/popover';
 import Text from 'antd/lib/typography/Text';
-import { SketchPicker } from 'react-color';
-
-import getCore from 'cvat-core-wrapper';
 import CVATTooltip from 'components/common/cvat-tooltip';
+import getCore from 'cvat-core-wrapper';
+import React, { useState } from 'react';
+import { SketchPicker } from 'react-color';
 
 const core = getCore();
 

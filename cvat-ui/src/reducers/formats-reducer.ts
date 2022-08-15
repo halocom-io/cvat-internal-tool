@@ -2,9 +2,9 @@
 //
 // SPDX-License-Identifier: MIT
 
+import { AuthActions, AuthActionTypes } from 'actions/auth-actions';
 import { BoundariesActions, BoundariesActionTypes } from 'actions/boundaries-actions';
-import { FormatsActionTypes, FormatsActions } from 'actions/formats-actions';
-import { AuthActionTypes, AuthActions } from 'actions/auth-actions';
+import { FormatsActions, FormatsActionTypes } from 'actions/formats-actions';
 
 import { FormatsState } from './interfaces';
 

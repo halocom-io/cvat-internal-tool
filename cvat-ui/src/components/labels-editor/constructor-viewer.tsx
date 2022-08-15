@@ -2,12 +2,12 @@
 //
 // SPDX-License-Identifier: MIT
 
-import React from 'react';
 import { PlusCircleOutlined } from '@ant-design/icons';
 import Button from 'antd/lib/button';
+import React from 'react';
 
-import ConstructorViewerItem from './constructor-viewer-item';
 import { Label } from './common';
+import ConstructorViewerItem from './constructor-viewer-item';
 
 interface ConstructorViewerProps {
     labels: Label[];

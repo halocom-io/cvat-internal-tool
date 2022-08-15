@@ -2,59 +2,52 @@
 //
 // SPDX-License-Identifier: MIT
 
-import React from 'react';
-import { Redirect, Route, Switch } from 'react-router';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
+import 'antd/dist/antd.less';
+import '../halo-styles.scss';
+import '../styles.scss';
+
 import { Col, Row } from 'antd/lib/grid';
 import Layout from 'antd/lib/layout';
 import Modal from 'antd/lib/modal';
 import notification from 'antd/lib/notification';
 import Spin from 'antd/lib/spin';
 import Text from 'antd/lib/typography/Text';
-import 'antd/dist/antd.less';
-import '../halo-styles.scss';
-
-import LoginPageContainer from 'containers/login-page/login-page';
-import LoginWithTokenComponent from 'components/login-with-token/login-with-token';
-import RegisterPageContainer from 'containers/register-page/register-page';
-import ResetPasswordPageConfirmComponent from 'components/reset-password-confirm-page/reset-password-confirm-page';
-import ResetPasswordPageComponent from 'components/reset-password-page/reset-password-page';
-
-import Header from 'components/header/header';
-import GlobalErrorBoundary from 'components/global-error-boundary/global-error-boundary';
-
-import ShortcutsDialog from 'components/shortcuts-dialog/shortcuts-dialog';
-import ExportDatasetModal from 'components/export-dataset/export-dataset-modal';
-import ModelsPageContainer from 'containers/models-page/models-page';
-
-import JobsPageComponent from 'components/jobs-page/jobs-page';
-
-import TasksPageContainer from 'containers/tasks-page/tasks-page';
-import CreateTaskPageContainer from 'containers/create-task-page/create-task-page';
-import TaskPageContainer from 'containers/task-page/task-page';
-
-import ProjectsPageComponent from 'components/projects-page/projects-page';
-import CreateProjectPageComponent from 'components/create-project-page/create-project-page';
-import ProjectPageComponent from 'components/project-page/project-page';
-
 import CloudStoragesPageComponent from 'components/cloud-storages-page/cloud-storages-page';
 import CreateCloudStoragePageComponent from 'components/create-cloud-storage-page/create-cloud-storage-page';
-import UpdateCloudStoragePageComponent from 'components/update-cloud-storage-page/update-cloud-storage-page';
-
-import OrganizationPage from 'components/organization-page/organization-page';
 import CreateOrganizationComponent from 'components/create-organization-page/create-organization-page';
-
+import CreateProjectPageComponent from 'components/create-project-page/create-project-page';
+import ExportDatasetModal from 'components/export-dataset/export-dataset-modal';
+import GlobalErrorBoundary from 'components/global-error-boundary/global-error-boundary';
+import Header from 'components/header/header';
+import JobsPageComponent from 'components/jobs-page/jobs-page';
+import LoginWithTokenComponent from 'components/login-with-token/login-with-token';
+import OrganizationPage from 'components/organization-page/organization-page';
+import ProjectPageComponent from 'components/project-page/project-page';
+import ProjectsPageComponent from 'components/projects-page/projects-page';
+import ResetPasswordPageConfirmComponent from 'components/reset-password-confirm-page/reset-password-confirm-page';
+import ResetPasswordPageComponent from 'components/reset-password-page/reset-password-page';
+import ShortcutsDialog from 'components/shortcuts-dialog/shortcuts-dialog';
+import UpdateCloudStoragePageComponent from 'components/update-cloud-storage-page/update-cloud-storage-page';
 import AnnotationPageContainer from 'containers/annotation-page/annotation-page';
+import CreateTaskPageContainer from 'containers/create-task-page/create-task-page';
+import LoginPageContainer from 'containers/login-page/login-page';
+import ModelsPageContainer from 'containers/models-page/models-page';
+import RegisterPageContainer from 'containers/register-page/register-page';
+import TaskPageContainer from 'containers/task-page/task-page';
+import TasksPageContainer from 'containers/tasks-page/tasks-page';
 import getCore from 'cvat-core-wrapper';
-import GlobalHotKeys, { KeyMap } from 'utils/mousetrap-react';
+import React from 'react';
+import { Redirect, Route, Switch } from 'react-router';
+import { RouteComponentProps, withRouter } from 'react-router-dom';
 import { NotificationsState } from 'reducers/interfaces';
 import { customWaViewHit } from 'utils/enviroment';
+import GlobalHotKeys, { KeyMap } from 'utils/mousetrap-react';
 import showPlatformNotification, {
     platformInfo,
-    stopNotifications,
     showUnsupportedNotification,
+    stopNotifications,
 } from 'utils/platform-checker';
-import '../styles.scss';
+
 import EmailConfirmationPage from './email-confirmation-page/email-confirmed';
 
 interface CVATAppProps {

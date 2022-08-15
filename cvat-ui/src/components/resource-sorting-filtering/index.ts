@@ -3,9 +3,11 @@
 // SPDX-License-Identifier: MIT
 
 import './styles.scss';
+
 import { Indexable } from 'reducers/interfaces';
-import SortingComponent from './sorting';
+
 import ResourceFilterHOC from './filtering';
+import SortingComponent from './sorting';
 
 const defaultVisibility = {
     predefined: false,
@@ -26,8 +28,8 @@ function updateHistoryFromQuery(query: Indexable): string {
 }
 
 export {
-    SortingComponent,
-    ResourceFilterHOC,
     defaultVisibility,
+    ResourceFilterHOC,
+    SortingComponent,
     updateHistoryFromQuery,
 };

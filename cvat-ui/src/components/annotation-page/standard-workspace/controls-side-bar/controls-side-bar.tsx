@@ -2,31 +2,30 @@
 //
 // SPDX-License-Identifier: MIT
 
-import React from 'react';
 import Layout from 'antd/lib/layout';
-
+import { Canvas } from 'cvat-canvas-wrapper';
+import React from 'react';
 import { ActiveControl, Rotation } from 'reducers/interfaces';
 import GlobalHotKeys, { KeyMap } from 'utils/mousetrap-react';
-import { Canvas } from 'cvat-canvas-wrapper';
 
 import ControlVisibilityObserver, { ExtraControlsControl } from './control-visibility-observer';
-import RotateControl, { Props as RotateControlProps } from './rotate-control';
 import CursorControl, { Props as CursorControlProps } from './cursor-control';
-import MoveControl, { Props as MoveControlProps } from './move-control';
-import FitControl, { Props as FitControlProps } from './fit-control';
-import ResizeControl, { Props as ResizeControlProps } from './resize-control';
-import ToolsControl from './tools-control';
-import OpenCVControl from './opencv-control';
-import DrawRectangleControl, { Props as DrawRectangleControlProps } from './draw-rectangle-control';
+import DrawCuboidControl, { Props as DrawCuboidControlProps } from './draw-cuboid-control';
+import DrawEllipseControl, { Props as DrawEllipseControlProps } from './draw-ellipse-control';
+import DrawPointsControl, { Props as DrawPointsControlProps } from './draw-points-control';
 import DrawPolygonControl, { Props as DrawPolygonControlProps } from './draw-polygon-control';
 import DrawPolylineControl, { Props as DrawPolylineControlProps } from './draw-polyline-control';
-import DrawPointsControl, { Props as DrawPointsControlProps } from './draw-points-control';
-import DrawEllipseControl, { Props as DrawEllipseControlProps } from './draw-ellipse-control';
-import DrawCuboidControl, { Props as DrawCuboidControlProps } from './draw-cuboid-control';
-import SetupTagControl, { Props as SetupTagControlProps } from './setup-tag-control';
-import MergeControl, { Props as MergeControlProps } from './merge-control';
+import DrawRectangleControl, { Props as DrawRectangleControlProps } from './draw-rectangle-control';
+import FitControl, { Props as FitControlProps } from './fit-control';
 import GroupControl, { Props as GroupControlProps } from './group-control';
+import MergeControl, { Props as MergeControlProps } from './merge-control';
+import MoveControl, { Props as MoveControlProps } from './move-control';
+import OpenCVControl from './opencv-control';
+import ResizeControl, { Props as ResizeControlProps } from './resize-control';
+import RotateControl, { Props as RotateControlProps } from './rotate-control';
+import SetupTagControl, { Props as SetupTagControlProps } from './setup-tag-control';
 import SplitControl, { Props as SplitControlProps } from './split-control';
+import ToolsControl from './tools-control';
 
 interface Props {
     canvasInstance: Canvas;

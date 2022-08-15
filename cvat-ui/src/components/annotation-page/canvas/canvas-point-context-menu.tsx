@@ -2,15 +2,14 @@
 //
 // SPDX-License-Identifier: MIT
 
+import { DeleteOutlined, EnvironmentOutlined } from '@ant-design/icons';
+import { updateAnnotationsAsync, updateCanvasContextMenu } from 'actions/annotation-actions';
+import Button from 'antd/lib/button';
+import CVATTooltip from 'components/common/cvat-tooltip';
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
-import Button from 'antd/lib/button';
-import { DeleteOutlined, EnvironmentOutlined } from '@ant-design/icons';
 import { connect } from 'react-redux';
-
 import { CombinedState, ContextMenuType } from 'reducers/interfaces';
-import { updateAnnotationsAsync, updateCanvasContextMenu } from 'actions/annotation-actions';
-import CVATTooltip from 'components/common/cvat-tooltip';
 
 interface StateToProps {
     activatedState: any | null;

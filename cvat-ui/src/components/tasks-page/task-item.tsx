@@ -2,19 +2,19 @@
 //
 // SPDX-License-Identifier: MIT
 
+import { MoreOutlined } from '@ant-design/icons';
+import Button from 'antd/lib/button';
+import Dropdown from 'antd/lib/dropdown';
+import { Col, Row } from 'antd/lib/grid';
+import Progress from 'antd/lib/progress';
+import Text from 'antd/lib/typography/Text';
+import ActionsMenuContainer from 'containers/actions-menu/actions-menu';
+import moment from 'moment';
 import React from 'react';
 import { RouteComponentProps } from 'react-router';
 import { withRouter } from 'react-router-dom';
-import Text from 'antd/lib/typography/Text';
-import { Row, Col } from 'antd/lib/grid';
-import Button from 'antd/lib/button';
-import { MoreOutlined } from '@ant-design/icons';
-import Dropdown from 'antd/lib/dropdown';
-import Progress from 'antd/lib/progress';
-import moment from 'moment';
-
-import ActionsMenuContainer from 'containers/actions-menu/actions-menu';
 import { ActiveInference } from 'reducers/interfaces';
+
 import AutomaticAnnotationProgress from './automatic-annotation-progress';
 
 export interface TaskItemProps {

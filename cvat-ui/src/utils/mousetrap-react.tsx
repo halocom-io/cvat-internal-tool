@@ -2,8 +2,8 @@
 //
 // SPDX-License-Identifier: MIT
 
-import React, { useEffect } from 'react';
 import Mousetrap from 'mousetrap';
+import React, { useEffect } from 'react';
 
 export interface KeyMapItem {
     name: string;

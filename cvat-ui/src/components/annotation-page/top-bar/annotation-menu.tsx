@@ -2,22 +2,19 @@
 //
 // SPDX-License-Identifier: MIT
 
-import React from 'react';
-import { withRouter, RouteComponentProps } from 'react-router';
-
+import Checkbox from 'antd/lib/checkbox';
+import Collapse from 'antd/lib/collapse';
+import InputNumber from 'antd/lib/input-number';
 import Menu from 'antd/lib/menu';
 import Modal from 'antd/lib/modal';
 import Text from 'antd/lib/typography/Text';
-import InputNumber from 'antd/lib/input-number';
-import Checkbox from 'antd/lib/checkbox';
-import Collapse from 'antd/lib/collapse';
-
+import LoadSubmenu from 'components/actions-menu/load-submenu';
+import CVATTooltip from 'components/common/cvat-tooltip';
+import getCore from 'cvat-core-wrapper';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { MenuInfo } from 'rc-menu/lib/interface';
-
-import CVATTooltip from 'components/common/cvat-tooltip';
-import LoadSubmenu from 'components/actions-menu/load-submenu';
-import getCore from 'cvat-core-wrapper';
+import React from 'react';
+import { RouteComponentProps, withRouter } from 'react-router';
 import { JobStage } from 'reducers/interfaces';
 
 const core = getCore();

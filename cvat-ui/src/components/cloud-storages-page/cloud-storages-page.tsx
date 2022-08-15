@@ -3,15 +3,16 @@
 // SPDX-License-Identifier: MIT
 
 import './styles.scss';
-import React, { useCallback, useEffect, useState } from 'react';
-import { useHistory } from 'react-router';
-import { useDispatch, useSelector } from 'react-redux';
-import { Row, Col } from 'antd/lib/grid';
-import Spin from 'antd/lib/spin';
 
-import { CombinedState, Indexable } from 'reducers/interfaces';
 import { getCloudStoragesAsync } from 'actions/cloud-storage-actions';
+import { Col, Row } from 'antd/lib/grid';
+import Spin from 'antd/lib/spin';
 import { updateHistoryFromQuery } from 'components/resource-sorting-filtering';
+import React, { useCallback, useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router';
+import { CombinedState, Indexable } from 'reducers/interfaces';
+
 import CloudStoragesListComponent from './cloud-storages-list';
 import EmptyCloudStorageListComponent from './empty-cloud-storages-list';
 import TopBarComponent from './top-bar';

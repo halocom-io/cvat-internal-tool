@@ -2,15 +2,14 @@
 //
 // SPDX-License-Identifier: MIT
 
-import React from 'react';
-import { useHistory } from 'react-router';
-import { Row, Col } from 'antd/lib/grid';
 import { LeftOutlined, MoreOutlined } from '@ant-design/icons';
 import Button from 'antd/lib/button';
 import Dropdown from 'antd/lib/dropdown';
+import { Col, Row } from 'antd/lib/grid';
 import Text from 'antd/lib/typography/Text';
-
 import ActionsMenuContainer from 'containers/actions-menu/actions-menu';
+import React from 'react';
+import { useHistory } from 'react-router';
 
 interface DetailsComponentProps {
     taskInstance: any;

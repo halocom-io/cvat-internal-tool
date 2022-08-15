@@ -2,17 +2,16 @@
 //
 // SPDX-License-Identifier: MIT
 
-import React, { useState } from 'react';
-import { useHistory } from 'react-router';
-import Card from 'antd/lib/card';
-import Empty from 'antd/lib/empty';
-import Descriptions from 'antd/lib/descriptions';
 import { MoreOutlined } from '@ant-design/icons';
+import Card from 'antd/lib/card';
+import Descriptions from 'antd/lib/descriptions';
 import Dropdown from 'antd/lib/dropdown';
+import Empty from 'antd/lib/empty';
 import Menu from 'antd/lib/menu';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { MenuInfo } from 'rc-menu/lib/interface';
-
+import React, { useState } from 'react';
+import { useHistory } from 'react-router';
 import { useCardHeightHOC } from 'utils/hooks';
 
 const useCardHeight = useCardHeightHOC({

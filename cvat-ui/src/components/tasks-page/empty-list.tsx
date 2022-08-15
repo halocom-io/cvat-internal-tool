@@ -2,13 +2,12 @@
 //
 // SPDX-License-Identifier: MIT
 
+import Empty from 'antd/lib/empty';
+import { Col, Row } from 'antd/lib/grid';
+import Text from 'antd/lib/typography/Text';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Text from 'antd/lib/typography/Text';
-import { Row, Col } from 'antd/lib/grid';
-
 import { TasksQuery } from 'reducers/interfaces';
-import Empty from 'antd/lib/empty';
 
 interface Props {
     query: TasksQuery;

@@ -2,29 +2,28 @@
 //
 // SPDX-License-Identifier: MIT
 
-import React from 'react';
-import copy from 'copy-to-clipboard';
-import { connect } from 'react-redux';
-
-import { LogType } from 'cvat-logger';
 import {
-    collapseObjectItems,
-    updateAnnotationsAsync,
-    changeFrameAsync,
-    removeObjectAsync,
-    changeGroupColorAsync,
-    pasteShapeAsync,
-    copyShape as copyShapeAction,
     activateObject as activateObjectAction,
+    changeFrameAsync,
+    changeGroupColorAsync,
+    collapseObjectItems,
+    copyShape as copyShapeAction,
+    pasteShapeAsync,
     propagateObject as propagateObjectAction,
+    removeObjectAsync,
+    updateAnnotationsAsync,
 } from 'actions/annotation-actions';
-import {
-    ActiveControl, CombinedState, ColorBy, ShapeType,
-} from 'reducers/interfaces';
 import ObjectStateItemComponent from 'components/annotation-page/standard-workspace/objects-side-bar/object-item';
-import { shift } from 'utils/math';
+import copy from 'copy-to-clipboard';
 import { Canvas } from 'cvat-canvas-wrapper';
 import { Canvas3d } from 'cvat-canvas3d-wrapper';
+import { LogType } from 'cvat-logger';
+import React from 'react';
+import { connect } from 'react-redux';
+import {
+    ActiveControl, ColorBy, CombinedState, ShapeType,
+} from 'reducers/interfaces';
+import { shift } from 'utils/math';
 
 interface OwnProps {
     readonly: boolean;

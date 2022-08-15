@@ -2,17 +2,17 @@
 //
 // SPDX-License-Identifier: MIT
 
-import React, { RefObject } from 'react';
-import { Row, Col } from 'antd/lib/grid';
 import { PercentageOutlined } from '@ant-design/icons';
-import Input from 'antd/lib/input';
-import Select from 'antd/lib/select';
-import Radio from 'antd/lib/radio';
 import Checkbox from 'antd/lib/checkbox';
 import Form, { FormInstance, RuleObject, RuleRender } from 'antd/lib/form';
-import Text from 'antd/lib/typography/Text';
 import { Store } from 'antd/lib/form/interface';
+import { Col, Row } from 'antd/lib/grid';
+import Input from 'antd/lib/input';
+import Radio from 'antd/lib/radio';
+import Select from 'antd/lib/select';
+import Text from 'antd/lib/typography/Text';
 import CVATTooltip from 'components/common/cvat-tooltip';
+import React, { RefObject } from 'react';
 import patterns from 'utils/validation-patterns';
 
 const { Option } = Select;

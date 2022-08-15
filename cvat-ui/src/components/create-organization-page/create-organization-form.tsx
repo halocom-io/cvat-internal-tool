@@ -2,20 +2,19 @@
 //
 // SPDX-License-Identifier: MIT
 
-import React from 'react';
-import { useHistory } from 'react-router';
-import { useDispatch, useSelector } from 'react-redux';
-import Form from 'antd/lib/form';
-import Input from 'antd/lib/input';
-import Button from 'antd/lib/button';
-import Space from 'antd/lib/space';
-import { Store } from 'antd/lib/form/interface';
-import { useForm } from 'antd/lib/form/Form';
-import notification from 'antd/lib/notification';
-
 import { createOrganizationAsync } from 'actions/organization-actions';
-import validationPatterns from 'utils/validation-patterns';
+import Button from 'antd/lib/button';
+import Form from 'antd/lib/form';
+import { useForm } from 'antd/lib/form/Form';
+import { Store } from 'antd/lib/form/interface';
+import Input from 'antd/lib/input';
+import notification from 'antd/lib/notification';
+import Space from 'antd/lib/space';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router';
 import { CombinedState } from 'reducers/interfaces';
+import validationPatterns from 'utils/validation-patterns';
 
 function CreateOrganizationForm(): JSX.Element {
     const [form] = useForm<Store>();

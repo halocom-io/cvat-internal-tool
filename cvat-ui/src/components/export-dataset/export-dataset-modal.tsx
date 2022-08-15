@@ -3,20 +3,20 @@
 // SPDX-License-Identifier: MIT
 
 import './styles.scss';
-import React, { useState, useEffect, useCallback } from 'react';
+
+import { DownloadOutlined, LoadingOutlined } from '@ant-design/icons';
+import { exportActions, exportDatasetAsync } from 'actions/export-actions';
+import Checkbox from 'antd/lib/checkbox';
+import Form from 'antd/lib/form';
+import Input from 'antd/lib/input';
 import Modal from 'antd/lib/modal';
 import Notification from 'antd/lib/notification';
-import { useSelector, useDispatch } from 'react-redux';
-import { DownloadOutlined, LoadingOutlined } from '@ant-design/icons';
-import Text from 'antd/lib/typography/Text';
 import Select from 'antd/lib/select';
-import Checkbox from 'antd/lib/checkbox';
-import Input from 'antd/lib/input';
-import Form from 'antd/lib/form';
-
-import { CombinedState } from 'reducers/interfaces';
-import { exportActions, exportDatasetAsync } from 'actions/export-actions';
+import Text from 'antd/lib/typography/Text';
 import getCore from 'cvat-core-wrapper';
+import React, { useCallback, useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { CombinedState } from 'reducers/interfaces';
 
 const core = getCore();
 

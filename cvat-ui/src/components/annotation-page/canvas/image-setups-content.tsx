@@ -2,27 +2,26 @@
 //
 // SPDX-License-Identifier: MIT
 
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Row, Col } from 'antd/lib/grid';
+import {
+    changeBrightnessLevel,
+    changeContrastLevel,
+    changeGridColor,
+    changeGridOpacity,
+    changeGridSize,
+    changeSaturationLevel,
+    switchGrid,
+} from 'actions/settings-actions';
+import Button from 'antd/lib/button';
 import Checkbox, { CheckboxChangeEvent } from 'antd/lib/checkbox';
-import Text from 'antd/lib/typography/Text';
+import { Col, Row } from 'antd/lib/grid';
 import InputNumber from 'antd/lib/input-number';
 import Select from 'antd/lib/select';
 import Slider from 'antd/lib/slider';
-import Button from 'antd/lib/button';
-
-import {
-    switchGrid,
-    changeGridColor,
-    changeGridOpacity,
-    changeBrightnessLevel,
-    changeContrastLevel,
-    changeSaturationLevel,
-    changeGridSize,
-} from 'actions/settings-actions';
+import Text from 'antd/lib/typography/Text';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { CombinedState, GridColor, PlayerSettingsState } from 'reducers/interfaces';
 import { clamp } from 'utils/math';
-import { GridColor, CombinedState, PlayerSettingsState } from 'reducers/interfaces';
 
 const minGridSize = 5;
 const maxGridSize = 1000;

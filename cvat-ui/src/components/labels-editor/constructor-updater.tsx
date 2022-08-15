@@ -4,8 +4,8 @@
 
 import React from 'react';
 
-import LabelForm from './label-form';
 import { Label } from './common';
+import LabelForm from './label-form';
 
 interface Props {
     label: Label;

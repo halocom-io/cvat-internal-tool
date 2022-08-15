@@ -2,12 +2,13 @@
 //
 // SPDX-License-Identifier: MIT
 
-import React, { useRef } from 'react';
-import { Link } from 'react-router-dom';
+import './styles.scss';
+
 import { Col, Row } from 'antd/lib/grid';
 import Layout from 'antd/lib/layout';
 import Statistic from 'antd/lib/statistic';
-import './styles.scss';
+import React, { useRef } from 'react';
+import { Link } from 'react-router-dom';
 
 const { Content } = Layout;
 const { Countdown } = Statistic;

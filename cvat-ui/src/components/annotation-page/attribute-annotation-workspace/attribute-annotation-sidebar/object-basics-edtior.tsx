@@ -2,8 +2,8 @@
 //
 // SPDX-License-Identifier: MIT
 
-import React from 'react';
 import Select, { SelectValue } from 'antd/lib/select';
+import React from 'react';
 
 interface Props {
     currentLabel: string;

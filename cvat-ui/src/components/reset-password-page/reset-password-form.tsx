@@ -2,11 +2,11 @@
 //
 // SPDX-License-Identifier: MIT
 
-import React from 'react';
-import Form from 'antd/lib/form';
-import Button from 'antd/lib/button';
 import { MailOutlined } from '@ant-design/icons';
+import Button from 'antd/lib/button';
+import Form from 'antd/lib/form';
 import Input from 'antd/lib/input';
+import React from 'react';
 
 export interface ResetPasswordData {
     email: string;

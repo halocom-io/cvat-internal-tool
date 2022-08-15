@@ -2,28 +2,27 @@
 //
 // SPDX-License-Identifier: MIT
 
-import React, { Dispatch } from 'react';
-import { AnyAction } from 'redux';
-import { connect } from 'react-redux';
-import Text from 'antd/lib/typography/Text';
-import Radio, { RadioChangeEvent } from 'antd/lib/radio';
-import Slider from 'antd/lib/slider';
-import Checkbox, { CheckboxChangeEvent } from 'antd/lib/checkbox';
-import Collapse from 'antd/lib/collapse';
-import Button from 'antd/lib/button';
-
-import ColorPicker from 'components/annotation-page/standard-workspace/objects-side-bar/color-picker';
-import { ColorizeIcon } from 'icons';
-import { ColorBy, CombinedState, DimensionType } from 'reducers/interfaces';
 import { collapseAppearance as collapseAppearanceAction } from 'actions/annotation-actions';
 import {
+    changeSelectedShapesOpacity as changeSelectedShapesOpacityAction,
     changeShapesColorBy as changeShapesColorByAction,
     changeShapesOpacity as changeShapesOpacityAction,
-    changeSelectedShapesOpacity as changeSelectedShapesOpacityAction,
     changeShapesOutlinedBorders as changeShapesOutlinedBordersAction,
     changeShowBitmap as changeShowBitmapAction,
     changeShowProjections as changeShowProjectionsAction,
 } from 'actions/settings-actions';
+import Button from 'antd/lib/button';
+import Checkbox, { CheckboxChangeEvent } from 'antd/lib/checkbox';
+import Collapse from 'antd/lib/collapse';
+import Radio, { RadioChangeEvent } from 'antd/lib/radio';
+import Slider from 'antd/lib/slider';
+import Text from 'antd/lib/typography/Text';
+import ColorPicker from 'components/annotation-page/standard-workspace/objects-side-bar/color-picker';
+import { ColorizeIcon } from 'icons';
+import React, { Dispatch } from 'react';
+import { connect } from 'react-redux';
+import { ColorBy, CombinedState, DimensionType } from 'reducers/interfaces';
+import { AnyAction } from 'redux';
 
 interface StateToProps {
     appearanceCollapsed: boolean;

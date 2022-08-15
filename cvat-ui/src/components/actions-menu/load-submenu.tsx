@@ -2,12 +2,13 @@
 //
 // SPDX-License-Identifier: MIT
 
-import React from 'react';
-import Menu from 'antd/lib/menu';
-import Upload from 'antd/lib/upload';
+import { LoadingOutlined, UploadOutlined } from '@ant-design/icons';
 import Button from 'antd/lib/button';
+import Menu from 'antd/lib/menu';
 import Text from 'antd/lib/typography/Text';
-import { UploadOutlined, LoadingOutlined } from '@ant-design/icons';
+import Upload from 'antd/lib/upload';
+import React from 'react';
+
 import { DimensionType } from '../../reducers/interfaces';
 
 interface Props {

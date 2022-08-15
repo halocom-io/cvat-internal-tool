@@ -2,15 +2,14 @@
 //
 // SPDX-License-Identifier: MIT
 
-import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import { Row, Col } from 'antd/lib/grid';
-import Text from 'antd/lib/typography/Text';
+import { Col, Row } from 'antd/lib/grid';
 import Select from 'antd/lib/select';
-
+import Text from 'antd/lib/typography/Text';
+import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { CombinedState } from 'reducers/interfaces';
-import GlobalHotKeys, { KeyMap } from 'utils/mousetrap-react';
 import { shift } from 'utils/math';
+import GlobalHotKeys, { KeyMap } from 'utils/mousetrap-react';
 
 interface ShortcutLabelMap {
     [index: number]: any;

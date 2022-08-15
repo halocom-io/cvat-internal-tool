@@ -2,21 +2,21 @@
 //
 // SPDX-License-Identifier: MIT
 
-import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router';
-import { Row, Col } from 'antd/lib/grid';
+import { LoadingOutlined, PlusOutlined, UploadOutlined } from '@ant-design/icons';
 import Button from 'antd/lib/button';
 import Dropdown from 'antd/lib/dropdown';
+import { Col, Row } from 'antd/lib/grid';
 import Input from 'antd/lib/input';
-import { PlusOutlined, UploadOutlined, LoadingOutlined } from '@ant-design/icons';
 import Upload from 'antd/lib/upload';
-
-import { usePrevious } from 'utils/hooks';
+import { defaultVisibility, ResourceFilterHOC, SortingComponent } from 'components/resource-sorting-filtering';
+import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router';
 import { ProjectsQuery } from 'reducers/interfaces';
-import { SortingComponent, ResourceFilterHOC, defaultVisibility } from 'components/resource-sorting-filtering';
+import { usePrevious } from 'utils/hooks';
 
 import {
-    localStorageRecentKeyword, localStorageRecentCapacity, predefinedFilterValues, config,
+    config,
+    localStorageRecentCapacity, localStorageRecentKeyword, predefinedFilterValues,
 } from './projects-filter-configuration';
 
 const FilteringComponent = ResourceFilterHOC(

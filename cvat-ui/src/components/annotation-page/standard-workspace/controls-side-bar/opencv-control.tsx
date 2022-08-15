@@ -2,47 +2,47 @@
 //
 // SPDX-License-Identifier: MIT
 
-import React from 'react';
-import { connect } from 'react-redux';
-import { Row, Col } from 'antd/lib/grid';
-import Popover from 'antd/lib/popover';
 import Icon, { AreaChartOutlined, ScissorOutlined } from '@ant-design/icons';
-import Text from 'antd/lib/typography/Text';
-import Tabs from 'antd/lib/tabs';
+import { CubeTransparentIcon } from '@heroicons/react/outline';
+import {
+    changeFrameAsync,
+    createAnnotationsAsync,
+    fetchAnnotationsAsync,
+    interactWithCanvas,
+    switchNavigationBlocked as switchNavigationBlockedAction,
+    updateAnnotationsAsync,
+} from 'actions/annotation-actions';
+import { switchToolsBlockerState } from 'actions/settings-actions';
 import Button from 'antd/lib/button';
+import { Col, Row } from 'antd/lib/grid';
+import message from 'antd/lib/message';
+import notification from 'antd/lib/notification';
+import Popover from 'antd/lib/popover';
 import Progress from 'antd/lib/progress';
 import Select from 'antd/lib/select';
-import notification from 'antd/lib/notification';
-import message from 'antd/lib/message';
-
-import { CubeTransparentIcon } from '@heroicons/react/outline';
-import { Canvas, convertShapesForInteractor } from 'cvat-canvas-wrapper';
-import getCore from 'cvat-core-wrapper';
-import openCVWrapper from 'utils/opencv-wrapper/opencv-wrapper';
-import { IntelligentScissors } from 'utils/opencv-wrapper/intelligent-scissors';
-import {
-    CombinedState,
-    ActiveControl,
-    OpenCVTool,
-    ObjectType,
-    ShapeType,
-    ToolsBlockerState,
-} from 'reducers/interfaces';
-import {
-    interactWithCanvas,
-    fetchAnnotationsAsync,
-    updateAnnotationsAsync,
-    createAnnotationsAsync,
-    changeFrameAsync,
-    switchNavigationBlocked as switchNavigationBlockedAction,
-} from 'actions/annotation-actions';
-import LabelSelector from 'components/label-selector/label-selector';
-import CVATTooltip from 'components/common/cvat-tooltip';
+import Tabs from 'antd/lib/tabs';
+import Text from 'antd/lib/typography/Text';
 import ApproximationAccuracy, {
     thresholdFromAccuracy,
 } from 'components/annotation-page/standard-workspace/controls-side-bar/approximation-accuracy';
+import CVATTooltip from 'components/common/cvat-tooltip';
+import LabelSelector from 'components/label-selector/label-selector';
+import { Canvas, convertShapesForInteractor } from 'cvat-canvas-wrapper';
+import getCore from 'cvat-core-wrapper';
+import React from 'react';
+import { connect } from 'react-redux';
+import {
+    ActiveControl,
+    CombinedState,
+    ObjectType,
+    OpenCVTool,
+    ShapeType,
+    ToolsBlockerState,
+} from 'reducers/interfaces';
+import { IntelligentScissors } from 'utils/opencv-wrapper/intelligent-scissors';
 import { ImageProcessing, OpenCVTracker, TrackerModel } from 'utils/opencv-wrapper/opencv-interfaces';
-import { switchToolsBlockerState } from 'actions/settings-actions';
+import openCVWrapper from 'utils/opencv-wrapper/opencv-wrapper';
+
 import withVisibilityHandling from './handle-popover-visibility';
 
 interface Props {

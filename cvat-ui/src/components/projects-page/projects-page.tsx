@@ -3,19 +3,20 @@
 // SPDX-License-Identifier: MIT
 
 import './styles.scss';
-import React, { useEffect, useState } from 'react';
-import { useHistory } from 'react-router';
-import { useDispatch, useSelector } from 'react-redux';
-import Spin from 'antd/lib/spin';
 
-import { CombinedState, Indexable } from 'reducers/interfaces';
 import { getProjectsAsync, restoreProjectAsync } from 'actions/projects-actions';
+import Spin from 'antd/lib/spin';
 import FeedbackComponent from 'components/feedback/feedback';
-import { updateHistoryFromQuery } from 'components/resource-sorting-filtering';
 import ImportDatasetModal from 'components/import-dataset-modal/import-dataset-modal';
+import { updateHistoryFromQuery } from 'components/resource-sorting-filtering';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router';
+import { CombinedState, Indexable } from 'reducers/interfaces';
+
 import EmptyListComponent from './empty-list';
-import TopBarComponent from './top-bar';
 import ProjectListComponent from './project-list';
+import TopBarComponent from './top-bar';
 
 export default function ProjectsPageComponent(): JSX.Element {
     const dispatch = useDispatch();

@@ -2,32 +2,32 @@
 //
 // SPDX-License-Identifier: MIT
 
-import React, { useState, useEffect } from 'react';
-import { connect } from 'react-redux';
-import { Action } from 'redux';
-import { ThunkDispatch } from 'redux-thunk';
-import { Row, Col } from 'antd/lib/grid';
 import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
-import Layout, { SiderProps } from 'antd/lib/layout';
-import Checkbox, { CheckboxChangeEvent } from 'antd/lib/checkbox/Checkbox';
-import Button from 'antd/lib/button/button';
-import Text from 'antd/lib/typography/Text';
-import Tag from 'antd/lib/tag';
-
 import {
-    createAnnotationsAsync,
-    removeObjectAsync,
     changeFrameAsync,
+    createAnnotationsAsync,
     rememberObject,
+    removeObjectAsync,
 } from 'actions/annotation-actions';
-import { Canvas } from 'cvat-canvas-wrapper';
-import { Canvas3d } from 'cvat-canvas3d-wrapper';
-import { CombinedState, ObjectType } from 'reducers/interfaces';
+import Button from 'antd/lib/button/button';
+import Checkbox, { CheckboxChangeEvent } from 'antd/lib/checkbox/Checkbox';
+import { Col, Row } from 'antd/lib/grid';
+import Layout, { SiderProps } from 'antd/lib/layout';
+import Tag from 'antd/lib/tag';
+import Text from 'antd/lib/typography/Text';
 import { adjustContextImagePosition } from 'components/annotation-page/standard-workspace/context-image/context-image';
 import LabelSelector from 'components/label-selector/label-selector';
+import { Canvas } from 'cvat-canvas-wrapper';
+import { Canvas3d } from 'cvat-canvas3d-wrapper';
 import getCore from 'cvat-core-wrapper';
+import React, { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
+import { CombinedState, ObjectType } from 'reducers/interfaces';
+import { Action } from 'redux';
+import { ThunkDispatch } from 'redux-thunk';
 import isAbleToChangeFrame from 'utils/is-able-to-change-frame';
 import GlobalHotKeys, { KeyMap } from 'utils/mousetrap-react';
+
 import ShortcutsSelect from './shortcuts-select';
 
 const cvat = getCore();

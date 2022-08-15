@@ -2,25 +2,25 @@
 //
 // SPDX-License-Identifier: MIT
 
+import { CloseOutlined } from '@ant-design/icons';
+import { deleteIssueAsync } from 'actions/review-actions';
+import Button from 'antd/lib/button';
+import Comment from 'antd/lib/comment';
+import { Col, Row } from 'antd/lib/grid';
+import Input from 'antd/lib/input';
+import Modal from 'antd/lib/modal';
+import Text from 'antd/lib/typography/Text';
+import Title from 'antd/lib/typography/Title';
+import CVATTooltip from 'components/common/cvat-tooltip';
+import moment from 'moment';
 import React, {
-    useState,
+    useCallback,
     useEffect,
     useRef,
-    useCallback,
+    useState,
 } from 'react';
 import ReactDOM from 'react-dom';
 import { useDispatch } from 'react-redux';
-import Modal from 'antd/lib/modal';
-import { Row, Col } from 'antd/lib/grid';
-import { CloseOutlined } from '@ant-design/icons';
-import Comment from 'antd/lib/comment';
-import Text from 'antd/lib/typography/Text';
-import Title from 'antd/lib/typography/Title';
-import Button from 'antd/lib/button';
-import Input from 'antd/lib/input';
-import moment from 'moment';
-import CVATTooltip from 'components/common/cvat-tooltip';
-import { deleteIssueAsync } from 'actions/review-actions';
 
 interface Props {
     id: number;

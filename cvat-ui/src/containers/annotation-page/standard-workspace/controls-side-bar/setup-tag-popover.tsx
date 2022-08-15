@@ -2,15 +2,13 @@
 //
 // SPDX-License-Identifier: MIT
 
-import React from 'react';
-import { connect } from 'react-redux';
-
-import { CombinedState, ObjectType } from 'reducers/interfaces';
 import { createAnnotationsAsync, rememberObject } from 'actions/annotation-actions';
 import SetupTagPopoverComponent from 'components/annotation-page/standard-workspace/controls-side-bar/setup-tag-popover';
-
 import { Canvas } from 'cvat-canvas-wrapper';
 import getCore from 'cvat-core-wrapper';
+import React from 'react';
+import { connect } from 'react-redux';
+import { CombinedState, ObjectType } from 'reducers/interfaces';
 
 const cvat = getCore();
 interface DispatchToProps {

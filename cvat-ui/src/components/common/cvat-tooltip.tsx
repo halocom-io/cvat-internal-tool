@@ -2,8 +2,8 @@
 //
 // SPDX-License-Identifier: MIT
 
-import React from 'react';
 import Tooltip, { TooltipProps } from 'antd/lib/tooltip';
+import React from 'react';
 
 function CVATTooltip(props: TooltipProps): JSX.Element {
     const { children, ...rest } = props;

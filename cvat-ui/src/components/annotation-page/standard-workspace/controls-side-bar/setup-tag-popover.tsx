@@ -2,13 +2,12 @@
 //
 // SPDX-License-Identifier: MIT
 
-import React from 'react';
-import { Row, Col } from 'antd/lib/grid';
 import Button from 'antd/lib/button';
+import { Col, Row } from 'antd/lib/grid';
 import Text from 'antd/lib/typography/Text';
-
-import LabelSelector from 'components/label-selector/label-selector';
 import CVATTooltip from 'components/common/cvat-tooltip';
+import LabelSelector from 'components/label-selector/label-selector';
+import React from 'react';
 
 interface Props {
     labels: any[];

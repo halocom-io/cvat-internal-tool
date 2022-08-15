@@ -2,14 +2,11 @@
 //
 // SPDX-License-Identifier: MIT
 
-import { connect } from 'react-redux';
-
-import { TasksQuery, CombinedState, ActiveInference } from 'reducers/interfaces';
-
-import TaskItemComponent from 'components/tasks-page/task-item';
-
-import { getTasksAsync } from 'actions/tasks-actions';
 import { cancelInferenceAsync } from 'actions/models-actions';
+import { getTasksAsync } from 'actions/tasks-actions';
+import TaskItemComponent from 'components/tasks-page/task-item';
+import { connect } from 'react-redux';
+import { ActiveInference, CombinedState, TasksQuery } from 'reducers/interfaces';
 
 interface StateToProps {
     deleted: boolean;

@@ -2,16 +2,15 @@
 //
 // SPDX-License-Identifier: MIT
 
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
-import { RouteComponentProps } from 'react-router';
-
-import AnnotationPageComponent from 'components/annotation-page/annotation-page';
 import {
-    getJobAsync, saveLogsAsync, changeFrameAsync,
+    changeFrameAsync,
     closeJob as closeJobAction,
+    getJobAsync, saveLogsAsync,
 } from 'actions/annotation-actions';
-
+import AnnotationPageComponent from 'components/annotation-page/annotation-page';
+import { connect } from 'react-redux';
+import { RouteComponentProps } from 'react-router';
+import { withRouter } from 'react-router-dom';
 import { CombinedState, Workspace } from 'reducers/interfaces';
 
 type OwnProps = RouteComponentProps<{

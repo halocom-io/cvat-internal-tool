@@ -2,11 +2,11 @@
 //
 // SPDX-License-Identifier: MIT
 
-import React from 'react';
+import { Col, Row } from 'antd/lib/grid';
 import Pagination from 'antd/lib/pagination';
-import { Row, Col } from 'antd/lib/grid';
-
+import React from 'react';
 import { CloudStorage } from 'reducers/interfaces';
+
 import CloudStorageItemComponent from './cloud-storage-item';
 
 interface Props {

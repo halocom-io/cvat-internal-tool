@@ -3,8 +3,8 @@
 // SPDX-License-Identifier: MIT
 
 import React, { useEffect } from 'react';
-import { Redirect, useParams, useLocation } from 'react-router';
 import { useCookies } from 'react-cookie';
+import { Redirect, useLocation, useParams } from 'react-router';
 
 export default function LoginWithTokenComponent(): JSX.Element {
     const location = useLocation();

@@ -2,10 +2,10 @@
 //
 // SPDX-License-Identifier: MIT
 
-import { connect } from 'react-redux';
-import LoginPageComponent from 'components/login-page/login-page';
-import { CombinedState } from 'reducers/interfaces';
 import { loginAsync } from 'actions/auth-actions';
+import LoginPageComponent from 'components/login-page/login-page';
+import { connect } from 'react-redux';
+import { CombinedState } from 'reducers/interfaces';
 
 interface StateToProps {
     fetching: boolean;

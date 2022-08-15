@@ -3,20 +3,20 @@
 // SPDX-License-Identifier: MIT
 
 import './styles.scss';
-import React from 'react';
+
+import {
+    BuildOutlined, EditOutlined, ExclamationCircleOutlined,
+} from '@ant-design/icons';
+import ModalConfirm from 'antd/lib/modal/confirm';
 import Tabs from 'antd/lib/tabs';
 import Text from 'antd/lib/typography/Text';
-import ModalConfirm from 'antd/lib/modal/confirm';
-import {
-    EditOutlined, BuildOutlined, ExclamationCircleOutlined,
-} from '@ant-design/icons';
+import React from 'react';
 
-import RawViewer from './raw-viewer';
-import ConstructorViewer from './constructor-viewer';
+import { Attribute, idGenerator, Label } from './common';
 import ConstructorCreator from './constructor-creator';
 import ConstructorUpdater from './constructor-updater';
-
-import { idGenerator, Label, Attribute } from './common';
+import ConstructorViewer from './constructor-viewer';
+import RawViewer from './raw-viewer';
 
 enum ConstructorMode {
     SHOW = 'SHOW',

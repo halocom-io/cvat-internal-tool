@@ -2,13 +2,12 @@
 //
 // SPDX-License-Identifier: MIT
 
-import React, { useState, useEffect, useRef } from 'react';
-import { SelectValue, RefSelectProps } from 'antd/lib/select';
 import Autocomplete from 'antd/lib/auto-complete';
 import Input from 'antd/lib/input';
-import debounce from 'lodash/debounce';
-
+import { RefSelectProps, SelectValue } from 'antd/lib/select';
 import getCore from 'cvat-core-wrapper';
+import debounce from 'lodash/debounce';
+import React, { useEffect, useRef, useState } from 'react';
 
 const core = getCore();
 

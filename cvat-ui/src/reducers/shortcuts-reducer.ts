@@ -2,10 +2,11 @@
 //
 // SPDX-License-Identifier: MIT
 
-import { BoundariesActions, BoundariesActionTypes } from 'actions/boundaries-actions';
 import { AuthActions, AuthActionTypes } from 'actions/auth-actions';
+import { BoundariesActions, BoundariesActionTypes } from 'actions/boundaries-actions';
 import { ShortcutsActions, ShortcutsActionsTypes } from 'actions/shortcuts-actions';
 import { KeyMap, KeyMapItem } from 'utils/mousetrap-react';
+
 import { DimensionType, ShortcutsState } from './interfaces';
 
 function formatShortcuts(shortcuts: KeyMapItem): string {

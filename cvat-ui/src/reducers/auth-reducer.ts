@@ -2,8 +2,9 @@
 //
 // SPDX-License-Identifier: MIT
 
-import { BoundariesActions, BoundariesActionTypes } from 'actions/boundaries-actions';
 import { AuthActions, AuthActionTypes } from 'actions/auth-actions';
+import { BoundariesActions, BoundariesActionTypes } from 'actions/boundaries-actions';
+
 import { AuthState } from './interfaces';
 
 const defaultState: AuthState = {

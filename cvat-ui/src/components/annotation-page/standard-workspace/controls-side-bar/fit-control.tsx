@@ -2,12 +2,11 @@
 //
 // SPDX-License-Identifier: MIT
 
-import React from 'react';
 import Icon from '@ant-design/icons';
-
-import { FitIcon } from 'icons';
-import { Canvas } from 'cvat-canvas-wrapper';
 import CVATTooltip from 'components/common/cvat-tooltip';
+import { Canvas } from 'cvat-canvas-wrapper';
+import { FitIcon } from 'icons';
+import React from 'react';
 
 export interface Props {
     canvasInstance: Canvas;

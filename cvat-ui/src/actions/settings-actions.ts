@@ -2,10 +2,10 @@
 //
 // SPDX-License-Identifier: MIT
 
-import { AnyAction } from 'redux';
 import {
-    GridColor, ColorBy, SettingsState, ToolsBlockerState,
+    ColorBy, GridColor, SettingsState, ToolsBlockerState,
 } from 'reducers/interfaces';
+import { AnyAction } from 'redux';
 
 export enum SettingsActionTypes {
     SWITCH_ROTATE_ALL = 'SWITCH_ROTATE_ALL',

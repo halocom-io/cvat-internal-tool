@@ -4,6 +4,7 @@
 
 import { AuthActions, AuthActionTypes } from 'actions/auth-actions';
 import { OrganizationActions, OrganizationActionsTypes } from 'actions/organization-actions';
+
 import { OrganizationState } from './interfaces';
 
 const defaultState: OrganizationState = {

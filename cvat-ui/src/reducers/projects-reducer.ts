@@ -2,11 +2,11 @@
 //
 // SPDX-License-Identifier: MIT
 
-import { AnyAction } from 'redux';
-import { omit } from 'lodash';
-import { ProjectsActionTypes } from 'actions/projects-actions';
-import { BoundariesActionTypes } from 'actions/boundaries-actions';
 import { AuthActionTypes } from 'actions/auth-actions';
+import { BoundariesActionTypes } from 'actions/boundaries-actions';
+import { ProjectsActionTypes } from 'actions/projects-actions';
+import { omit } from 'lodash';
+import { AnyAction } from 'redux';
 
 import { Project, ProjectsState } from './interfaces';
 

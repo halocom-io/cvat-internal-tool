@@ -2,18 +2,17 @@
 //
 // SPDX-License-Identifier: MIT
 
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import moment from 'moment';
-import { Row, Col } from 'antd/lib/grid';
-import Title from 'antd/lib/typography/Title';
-import Text from 'antd/lib/typography/Text';
-
-import getCore from 'cvat-core-wrapper';
 import { updateProjectAsync } from 'actions/projects-actions';
+import { Col, Row } from 'antd/lib/grid';
+import Text from 'antd/lib/typography/Text';
+import Title from 'antd/lib/typography/Title';
 import LabelsEditor from 'components/labels-editor/labels-editor';
 import BugTrackerEditor from 'components/task-page/bug-tracker-editor';
 import UserSelector from 'components/task-page/user-selector';
+import getCore from 'cvat-core-wrapper';
+import moment from 'moment';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 
 const core = getCore();
 

@@ -2,13 +2,13 @@
 //
 // SPDX-License-Identifier: MIT
 
-import { AnyAction } from 'redux';
-import { omit } from 'lodash';
+import { AuthActionTypes } from 'actions/auth-actions';
 import { BoundariesActionTypes } from 'actions/boundaries-actions';
 import { TasksActionTypes } from 'actions/tasks-actions';
-import { AuthActionTypes } from 'actions/auth-actions';
+import { omit } from 'lodash';
+import { AnyAction } from 'redux';
 
-import { TasksState, Task } from './interfaces';
+import { Task, TasksState } from './interfaces';
 
 const defaultState: TasksState = {
     initialized: false,

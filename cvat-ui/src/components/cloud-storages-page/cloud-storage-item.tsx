@@ -2,25 +2,25 @@
 //
 // SPDX-License-Identifier: MIT
 
-import React, { useCallback } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router';
 import { MoreOutlined, QuestionCircleOutlined } from '@ant-design/icons';
+import { deleteCloudStorageAsync } from 'actions/cloud-storage-actions';
+import Button from 'antd/lib/button';
 import Card from 'antd/lib/card';
 import Meta from 'antd/lib/card/Meta';
-import Paragraph from 'antd/lib/typography/Paragraph';
-import Text from 'antd/lib/typography/Text';
-import Button from 'antd/lib/button';
 import Dropdown from 'antd/lib/dropdown';
 import Menu from 'antd/lib/menu';
 import Modal from 'antd/lib/modal';
-import moment from 'moment';
-
-import { CloudStorage, CombinedState } from 'reducers/interfaces';
-import { deleteCloudStorageAsync } from 'actions/cloud-storage-actions';
+import Paragraph from 'antd/lib/typography/Paragraph';
+import Text from 'antd/lib/typography/Text';
 import CVATTooltip from 'components/common/cvat-tooltip';
-import Status from './cloud-storage-status';
+import moment from 'moment';
+import React, { useCallback } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router';
+import { CloudStorage, CombinedState } from 'reducers/interfaces';
+
 import Preview from './cloud-storage-preview';
+import Status from './cloud-storage-status';
 
 interface Props {
     cloudStorage: CloudStorage;

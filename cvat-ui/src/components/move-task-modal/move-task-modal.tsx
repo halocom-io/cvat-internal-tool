@@ -3,19 +3,20 @@
 // SPDX-License-Identifier: MIT
 
 import './styles.scss';
-import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import Modal from 'antd/lib/modal';
-import { Row, Col } from 'antd/lib/grid';
-import Divider from 'antd/lib/divider';
-import notification from 'antd/lib/notification';
-import { QuestionCircleOutlined } from '@ant-design/icons';
 
-import ProjectSearch from 'components/create-task-page/project-search-field';
+import { QuestionCircleOutlined } from '@ant-design/icons';
+import { moveTaskToProjectAsync, switchMoveTaskModalVisible } from 'actions/tasks-actions';
+import Divider from 'antd/lib/divider';
+import { Col, Row } from 'antd/lib/grid';
+import Modal from 'antd/lib/modal';
+import notification from 'antd/lib/notification';
 import CVATTooltip from 'components/common/cvat-tooltip';
-import { CombinedState } from 'reducers/interfaces';
-import { switchMoveTaskModalVisible, moveTaskToProjectAsync } from 'actions/tasks-actions';
+import ProjectSearch from 'components/create-task-page/project-search-field';
 import getCore from 'cvat-core-wrapper';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { CombinedState } from 'reducers/interfaces';
+
 import LabelMapperItem, { LabelMapperItemValue } from './label-mapper-item';
 
 const core = getCore();

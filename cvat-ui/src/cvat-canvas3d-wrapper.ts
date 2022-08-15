@@ -3,14 +3,15 @@
 // SPDX-License-Identifier: MIT
 
 import {
+    CameraAction,
     Canvas3d,
     Canvas3dVersion,
     MouseInteraction,
-    ViewType,
-    CameraAction,
     ViewsDOM,
+    ViewType,
 } from 'cvat-canvas3d/src/typescript/canvas3d';
 
 export {
-    Canvas3d, Canvas3dVersion, MouseInteraction, ViewType, CameraAction, ViewsDOM,
+    CameraAction, Canvas3d, Canvas3dVersion, MouseInteraction, ViewsDOM,
+    ViewType,
 };

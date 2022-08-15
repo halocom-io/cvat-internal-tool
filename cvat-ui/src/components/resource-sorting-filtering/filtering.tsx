@@ -2,23 +2,24 @@
 //
 // SPDX-License-Identifier: MIT
 
-import React, { useState, useEffect } from 'react';
 import 'react-awesome-query-builder/lib/css/styles.css';
-import AntdConfig from 'react-awesome-query-builder/lib/config/antd';
-import {
-    Builder, Config, ImmutableTree, Query, Utils as QbUtils,
-} from 'react-awesome-query-builder';
+
 import {
     DownOutlined, FilterFilled, FilterOutlined,
 } from '@ant-design/icons';
-import Dropdown from 'antd/lib/dropdown';
-import Space from 'antd/lib/space';
 import Button from 'antd/lib/button';
 import Checkbox, { CheckboxChangeEvent } from 'antd/lib/checkbox/Checkbox';
+import Dropdown from 'antd/lib/dropdown';
 import Menu from 'antd/lib/menu';
+import Space from 'antd/lib/space';
+import { User } from 'components/task-page/user-selector';
+import React, { useEffect, useState } from 'react';
+import {
+    Builder, Config, ImmutableTree, Query, Utils as QbUtils,
+} from 'react-awesome-query-builder';
+import AntdConfig from 'react-awesome-query-builder/lib/config/antd';
 import { useSelector } from 'react-redux';
 import { CombinedState } from 'reducers/interfaces';
-import { User } from 'components/task-page/user-selector';
 
 interface ResourceFilterProps {
     predefinedVisible: boolean;
