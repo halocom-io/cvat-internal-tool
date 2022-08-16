@@ -408,7 +408,7 @@ function HeaderContainer(props: Props): JSX.Element {
         <Layout.Header className='cvat-header bg-white shadow z-10'>
             <div className='cvat-left-header'>
                 <Link href='/projects' to='/projects'>
-                    <Icon className='cvat-logo-icon mx-3' component={HaloLogo} />
+                    <Icon className='cvat-logo-icon mx-3' component={() => <HaloLogo />} />
                 </Link>
                 <Button
                     className={getButtonClassName('projects')}

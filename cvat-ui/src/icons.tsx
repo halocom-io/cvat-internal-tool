@@ -54,7 +54,7 @@ import SVGCVATAzureProvider from './assets/vscode-icons_file-type-azure.svg';
 import SVGZoomIcon from './assets/zoom-icon.svg';
 
 export const CVATLogo = React.memo((): JSX.Element => <SVGCVATLogo />);
-export const HaloLogo = React.memo((): JSX.Element => <SVGHaloLogo />);
+export const HaloLogo: ISvgComponent = React.memo((props): JSX.Element => <SVGHaloLogo {...props} />);
 export const CursorIcon = React.memo((): JSX.Element => <SVGCursorIcon />);
 export const MoveIcon = React.memo((): JSX.Element => <SVGMoveIcon />);
 export const RotateIcon = React.memo((): JSX.Element => <SVGRotateIcon />);

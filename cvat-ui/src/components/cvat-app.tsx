@@ -2,6 +2,7 @@
 //
 // SPDX-License-Identifier: MIT
 
+import 'animate.css';
 import 'antd/dist/antd.less';
 import '../halo-styles.scss';
 import '../styles.scss';

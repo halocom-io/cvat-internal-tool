@@ -59,11 +59,12 @@ function LoginFormComponent(props: Props): JSX.Element {
 
             <Form.Item>
                 <Button
+                    block
                     type='primary'
                     loading={fetching}
                     disabled={fetching}
                     htmlType='submit'
-                    className='login-form-button'
+                    className='login-form-button mt-3'
                 >
                     Sign in
                 </Button>
